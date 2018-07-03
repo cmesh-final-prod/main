@@ -8,21 +8,47 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
+const mongoose = require('mongoose').set('debug', true);
+const keys = require('./config/keys');
+const cookieSession = require('cookie-session');
+
+// Passport Strategy Stuff
+const passport = require('passport');
+require('./models/User');
+require('./services/passport');
 
 // Instantiating the express app
 const app = express();
 
-// App middlewares
+// Establishing connection with mongo database
+mongoose.connect(keys.mongoURI);
+
+//////////////////////////////////////////////////////////////////
+////////////             MIDDLEWARES               ///////////////
+//////////////////////////////////////////////////////////////////
+
 app.use(morgan('combined'));
 app.use(bodyParser.json());
+app.use(
+  cookieSession({
+    maxAge: 365 * 24 * 60 * 60 * 1000, //365 Days
+    keys: [keys.cookieKey]
+  })
+);
+app.use(passport.initialize());
+app.use(passport.session());
 
 //////////////////////////////////////////////////////////////////
 ////////////           SETTING UP THE ROUTES       ///////////////
 //////////////////////////////////////////////////////////////////
 
 require('./routes/test')(app);
+require('./routes/authLinkedin')(app);
 
-// Rendering Client Side App at Production
+//////////////////////////////////////////////////////////////////
+////////////        CLIENT APP AT PRODUCTION       ///////////////
+//////////////////////////////////////////////////////////////////
+
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('client/build'));
 
@@ -32,6 +58,9 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-// starting the PORT
+//////////////////////////////////////////////////////////////////
+////////////                  PORT                 ///////////////
+//////////////////////////////////////////////////////////////////
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);

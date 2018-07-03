@@ -16,7 +16,6 @@ import reduxThunk from 'redux-thunk';
 import reducers from 'reducers';
 
 // importing components
-// import Root from 'Root';
 import App from 'components/attendees/App';
 import About from 'components/organizers/About';
 
