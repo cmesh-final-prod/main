@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import registerServiceWorker from './registerServiceWorker';
 import { BrowserRouter, Route } from 'react-router-dom';
 
 // importing css
@@ -33,4 +32,3 @@ ReactDOM.render(
   </BrowserRouter>,
   document.getElementById('root')
 );
-registerServiceWorker();
