@@ -1,9 +1,16 @@
 import React, { Component } from 'react';
+import { isMobile, isTablet } from 'react-device-detect';
 
 // importing components
 import Test from 'components/Test';
 
 class App extends Component {
+  componentDidMount() {
+    if (!isMobile || isTablet) {
+      this.props.history.push('/about');
+    }
+  }
+
   render() {
     return (
       <div>
