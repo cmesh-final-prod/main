@@ -1,11 +1,9 @@
 const passport = require('passport');
 
 module.exports = app => {
-  app.get(
-    '/auth/linkedin',
-    passport.authenticate('linkedin'),
-    (req, res) => {}
-  );
+  app.get('/auth/linkedin', passport.authenticate('linkedin'), (req, res) => {
+    res.send({ hi: 'from auth/linkedin' });
+  });
 
   app.get(
     '/auth/linkedin/callback',
