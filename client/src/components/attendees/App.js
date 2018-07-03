@@ -15,9 +15,7 @@ class App extends Component {
     return (
       <div>
         <h1>App component</h1>
-        <a href="https://agile-depths-87121.herokuapp.com/auth/linkedin">
-          Sign In With Linkedin
-        </a>
+        <a href="/auth/linkedin">Sign In With Linkedin</a>
         <Test />
       </div>
     );
