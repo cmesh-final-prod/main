@@ -33,5 +33,5 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 // starting the PORT
-const PORT = process.env.NODE_ENV || 5000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT);
