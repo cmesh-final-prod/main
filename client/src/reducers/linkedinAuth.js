@@ -1,8 +1,9 @@
-import { TEST_CONNECTION } from 'actions/types';
+import { LINKEDIN_AUTH_USER } from 'actions/types';
 
 export default (state = {}, action) => {
   switch (action.type) {
-    case TEST_CONNECTION:
+    case LINKEDIN_AUTH_USER:
+      console.log('reducer: ', action.payload);
       return action.payload;
     default:
       return state;

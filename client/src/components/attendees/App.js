@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 import { isMobile, isTablet } from 'react-device-detect';
+import { Route, withRouter } from 'react-router-dom';
+
+// importing css
+import 'css/app.css';
 
 // importing components
-import Test from 'components/Test';
+import Navbar from 'components/attendees/Navbar';
+import LandingPage from 'components/attendees/LandingPage';
+import SigninWithLinkedin from 'components/attendees/SigninWithLinkedin';
 
 class App extends Component {
   componentDidMount() {
@@ -14,9 +20,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <h1>App component</h1>
-        <a href="/auth/linkedin">Sign In With Linkedin</a>
-        <Test />
+        <Navbar />
+        <Route path="/" exact component={LandingPage} />
       </div>
     );
   }

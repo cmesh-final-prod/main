@@ -1,1 +1,1 @@
-export const TEST_CONNECTION = 'test_connection';
+export const LINKEDIN_AUTH_USER = 'linkedin_auth_user';

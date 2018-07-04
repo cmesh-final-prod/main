@@ -16,7 +16,9 @@ import reducers from 'reducers';
 
 // importing components
 import App from 'components/attendees/App';
+import SigninWithLinkedin from 'components/attendees/SigninWithLinkedin';
 import About from 'components/organizers/About';
+import MeshList from 'components/attendees/MeshList';
 
 // redux store
 const store = createStore(reducers, applyMiddleware(reduxThunk));
@@ -27,6 +29,8 @@ ReactDOM.render(
       <div>
         <Route path="/" exact component={App} />
         <Route path="/about" component={About} />
+        <Route path="/signinWithLinkedin" component={SigninWithLinkedin} />
+        <Route path="/meshlist" component={MeshList} />
       </div>
     </Provider>
   </BrowserRouter>,

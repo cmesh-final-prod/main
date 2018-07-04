@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
 // importing reducers
-import testReducer from 'reducers/test';
+import linkedinAuthReducer from 'reducers/linkedinAuth';
 
 export default combineReducers({
-  test: testReducer
+  linkedinAuth: linkedinAuthReducer
 });

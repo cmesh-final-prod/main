@@ -1,11 +1,11 @@
-import { TEST_CONNECTION } from 'actions/types';
+import { LINKEDIN_AUTH_USER } from 'actions/types';
 import axios from 'axios';
 
-export const testConnection = () => async dispatch => {
-  const res = await axios.get('/api/test');
-
+export const linkedinAuthUser = () => async dispatch => {
+  const res = await axios.get('/api/current_user');
+  console.log('actions: ', res);
   dispatch({
-    type: TEST_CONNECTION,
+    type: LINKEDIN_AUTH_USER,
     payload: res.data
   });
 };
