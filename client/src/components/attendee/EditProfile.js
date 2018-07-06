@@ -30,8 +30,8 @@ class EditProfile extends Component {
           <ul className="collection avatar">
             <li className="collection-item">
               <img src="" alt="" className="circle" />
-              <span className="title">linkedinFirstName</span>
-              <p>linkedinHeadline</p>
+              <span className="title">{linkedinFirstName}</span>
+              <p>{linkedinHeadline}</p>
             </li>
           </ul>
         </div>

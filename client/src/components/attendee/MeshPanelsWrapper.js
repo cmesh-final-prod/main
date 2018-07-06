@@ -8,7 +8,9 @@ import * as actions from 'actions';
 import MeshPanel from 'components/attendee/MeshPanel';
 
 class LandingPage extends Component {
-  componentDidMount() {}
+  componentDidMount() {
+    this.props.fetchActiveMeshes();
+  }
 
   renderActiveMeshes() {
     return this.props.activeMeshes.map(mesh => {
