@@ -1,9 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
-
-// importing components
-import Navbar from 'components/attendees/Navbar';
 
 // importing action creators
 import * as actions from 'actions';
@@ -16,7 +12,6 @@ class MeshList extends Component {
   render() {
     const {
       linkedinFirstName,
-      linkedinLastName,
       linkedinURL,
       linkedinProfilePictures,
       linkedinHeadline
@@ -24,7 +19,6 @@ class MeshList extends Component {
 
     return (
       <div>
-        <Navbar />
         <section className="section">
           <ul className="collection">
             <li className="collection-item avatar">

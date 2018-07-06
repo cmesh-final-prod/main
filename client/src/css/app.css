@@ -3,7 +3,14 @@
 }
 
 .mesh-panel {
-  height: 50vh;
-  width: 40vh;
-  radius: 20px;
+  margin-top: 5vh;
+  height: 500px;
+  max-height: 60vh;
+  width: 80vw;
+  border-radius: 30px;
+}
+
+.btn-join {
+  width: 60vw;
+  border-radius: 30px;
 }

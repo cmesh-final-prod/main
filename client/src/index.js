@@ -1,6 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter, Route } from 'react-router-dom';
 
 // importing css
 import 'materialize-css/dist/css/materialize.min.css';
@@ -15,24 +14,16 @@ import reduxThunk from 'redux-thunk';
 import reducers from 'reducers';
 
 // importing components
-import App from 'components/attendees/App';
-import SigninWithLinkedin from 'components/attendees/SigninWithLinkedin';
-import About from 'components/organizers/About';
-import MeshList from 'components/attendees/MeshList';
+import Routes from 'components/Routes';
 
 // redux store
 const store = createStore(reducers, applyMiddleware(reduxThunk));
 
 ReactDOM.render(
-  <BrowserRouter>
-    <Provider store={store}>
-      <div>
-        <Route path="/" exact component={App} />
-        <Route path="/about" component={About} />
-        <Route path="/signinWithLinkedin" component={SigninWithLinkedin} />
-        <Route path="/meshlist" component={MeshList} />
-      </div>
-    </Provider>
-  </BrowserRouter>,
+  <Provider store={store}>
+    <div>
+      <Routes />
+    </div>
+  </Provider>,
   document.getElementById('root')
 );

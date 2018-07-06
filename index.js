@@ -15,6 +15,7 @@ const cookieSession = require('cookie-session');
 // Passport Strategy Stuff
 const passport = require('passport');
 require('./models/User');
+require('./models/Mesh');
 require('./services/passport');
 
 // Instantiating the express app
@@ -43,6 +44,7 @@ app.use(passport.session());
 //////////////////////////////////////////////////////////////////
 
 require('./routes/authLinkedin')(app);
+require('./routes/meshRoutes')(app);
 
 //////////////////////////////////////////////////////////////////
 ////////////        CLIENT APP AT PRODUCTION       ///////////////
