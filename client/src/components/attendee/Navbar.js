@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+// importing action creators
+import * as actions from 'actions';
 
 class Navbar extends Component {
   render() {
@@ -10,6 +14,18 @@ class Navbar extends Component {
               <div className="brand-logo grey-text text-darken-2">
                 circle<b>mesh</b>
               </div>
+              <ul className="right">
+                <li>
+                  <button
+                    className="btn"
+                    onClick={() =>
+                      this.props.createMesh({ title: 'mesh nine' })
+                    }
+                  >
+                    create
+                  </button>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -18,4 +34,7 @@ class Navbar extends Component {
   }
 }
 
-export default Navbar;
+export default connect(
+  null,
+  actions
+)(Navbar);

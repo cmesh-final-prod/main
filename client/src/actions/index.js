@@ -1,9 +1,19 @@
 import {
   LINKEDIN_AUTH_USER,
   MESHES_ACTIVE,
-  MESH_SELECTED
+  MESH_SELECTED,
+  CREATE_MESH
 } from 'actions/types';
+
 import axios from 'axios';
+
+export const createMesh = title => async dispatch => {
+  const res = axios.post('/api/mesh/create', title);
+  dispatch({
+    type: CREATE_MESH,
+    payload: res
+  });
+};
 
 export const fetchLinkedinUser = () => async dispatch => {
   const res = await axios.get('/api/current_user');
