@@ -10,7 +10,7 @@ module.exports = app => {
   app.get(
     '/auth/linkedin/callback',
     passport.authenticate('linkedin', {
-      successRedirect: '/meshlist',
+      successRedirect: '/mesh',
       failureRedirect: '/auth/linkedin'
     })
   );

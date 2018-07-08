@@ -1,29 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router } from 'react-router-dom';
 
 // importing css
 import 'materialize-css/dist/css/materialize.min.css';
 import 'css/index.css';
 
-// Redux
-import { createStore, applyMiddleware } from 'redux';
-import { Provider } from 'react-redux';
-import reduxThunk from 'redux-thunk';
-
-// importing reducers
-import reducers from 'reducers';
-
 // importing components
-import Routes from 'components/Routes';
-
-// redux store
-const store = createStore(reducers, applyMiddleware(reduxThunk));
+import App from 'components/App';
+import Root from 'Root';
 
 ReactDOM.render(
-  <Provider store={store}>
+  <Root>
     <div>
-      <Routes />
+      <Router>
+        <App />
+      </Router>
     </div>
-  </Provider>,
+  </Root>,
   document.getElementById('root')
 );

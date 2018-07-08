@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 
-// importing action creators
+// container elements
+import { connect } from 'react-redux';
 import * as actions from 'actions';
 
 class Navbar extends Component {
@@ -18,9 +18,7 @@ class Navbar extends Component {
                 <li>
                   <button
                     className="btn"
-                    onClick={() =>
-                      this.props.createMesh({ title: 'mesh nine' })
-                    }
+                    onClick={() => this.props.addMesh({ title: 'mesh nine' })}
                   >
                     create
                   </button>

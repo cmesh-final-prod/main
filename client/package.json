@@ -12,6 +12,7 @@
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "lodash": "^4.17.10",
     "materialize-css": "^1.0.0-rc.2",
     "react": "^16.4.1",
     "react-device-detect": "^1.5.8",
@@ -20,6 +21,7 @@
     "react-router-dom": "^4.3.1",
     "react-scripts": "1.1.4",
     "redux": "^4.0.0",
+    "redux-promise-middleware": "^5.1.1",
     "redux-thunk": "^2.3.0"
   },
   "scripts": {
@@ -27,5 +29,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.5"
   }
 }

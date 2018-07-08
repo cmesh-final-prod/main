@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 // importing css
 import 'css/about.css';
 
-class About extends Component {
+class AboutContent extends Component {
   render() {
     return (
       <div>
@@ -44,9 +45,12 @@ class About extends Component {
 
             <h5 className="grey-text lighten-4">more about your audience</h5>
           </div>
+          <Link to="/manage" className="btn light-blue">
+            Organizers
+          </Link>
         </section>
       </div>
     );
   }
 }
-export default About;
+export default AboutContent;

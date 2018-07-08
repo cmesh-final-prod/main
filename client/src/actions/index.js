@@ -1,54 +1,36 @@
-import {
-  LINKEDIN_AUTH_USER,
-  MESHES_ACTIVE,
-  MESH_SELECTED,
-  CREATE_MESH
-} from 'actions/types';
+import { AUTH_LINKEDIN, FETCH_MESHES, SELECT_MESH } from 'actions/types';
 
 import axios from 'axios';
 
-export const createMesh = title => async dispatch => {
-  const res = axios.post('/api/mesh/create', title);
+export const addMesh = title => {
+  axios.post('/api/mesh/create', title);
+};
+
+export const authLinkedin = () => dispatch => {
+  const response = axios.get('/api/current_user');
+
   dispatch({
-    type: CREATE_MESH,
-    payload: res
+    type: AUTH_LINKEDIN,
+    payload: response
   });
 };
 
-export const fetchLinkedinUser = () => async dispatch => {
-  const res = await axios.get('/api/current_user');
-
-  console.log('actions: ', res.data);
+export const fetchMeshes = () => dispatch => {
+  const response = axios.get('/api/mesh/active');
 
   dispatch({
-    type: LINKEDIN_AUTH_USER,
-    payload: res.data
+    type: FETCH_MESHES,
+    payload: response
   });
 };
 
-export const fetchActiveMeshes = () => async dispatch => {
-  const res = await axios.get('/api/mesh/active');
-
+export const selectMesh = meshId => dispatch => {
   dispatch({
-    type: MESHES_ACTIVE,
-    payload: res.data
+    type: SELECT_MESH,
+    payload: meshId
   });
 };
 
-export const fetchMeshSelected = id => async dispatch => {
-  const res = await axios.post('/api/mesh/selected', { id });
-
-  dispatch({
-    type: MESH_SELECTED,
-    payoad: res.data
-  });
-};
-
-export const updateMeshWithNewAttendee = values => async dispatch => {
-  const res = await axios.post('/api/mesh/addAttendee', values);
-
-  dispatch({
-    type: MESH_SELECTED,
-    payload: res.data
-  });
+export const updateMeshWithUserId = values => {
+  axios.post('/api/mesh/addAttendee', values);
 };

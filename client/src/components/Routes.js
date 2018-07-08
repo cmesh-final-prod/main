@@ -4,9 +4,12 @@ import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 
 // importing attendee components
 import App from 'components/attendee/App';
-import MeshList from 'components/attendee/MeshList';
-import EditProfile from 'components/attendee/EditProfile';
-import SigninWithLinkedin from 'components/attendee/SigninWithLinkedin';
+import SigninWithLinkedin from 'components/attendee/misc/SigninWithLinkedin';
+// mesh components
+import MeshAppWrapper from 'components/attendee/meshApp/Wrapper';
+import EditProfile from 'components/attendee/meshApp/EditProfile';
+import MeshList from 'components/attendee/meshApp/MeshList';
+import MeshPublicWrapper from 'components/attendee/meshPublic/Wrapper';
 
 // importing organizer components
 import About from 'components/organizer/About';
@@ -16,9 +19,13 @@ class Routes extends Component {
   renderAttendeeRoutes() {
     return (
       <div>
-        <Route path="/meshlist" component={MeshList} />
-        <Route path="/editProfile/:id" component={EditProfile} />
-        <Route path="/signinWithLinkedin" component={SigninWithLinkedin} />
+        <Route exact path="/mesh/:id" component={MeshList} />
+        <Route exact path="/mesh/edit/:id" component={EditProfile} />
+        <Route
+          exact
+          path="/signinWithLinkedin"
+          component={SigninWithLinkedin}
+        />
       </div>
     );
   }
@@ -26,8 +33,8 @@ class Routes extends Component {
   renderOrganizerRoutes() {
     return (
       <div>
-        <Route path="/about" component={About} />
         <Route exact path="/manage" component={Manage} />
+        <Route path="/about" component={About} />
       </div>
     );
   }
@@ -40,11 +47,11 @@ class Routes extends Component {
             exact
             path="/"
             render={() =>
-              !isMobile || isTablet ? <Redirect to="/about" /> : <App />
+              !isMobile || isTablet ? <Redirect to="/about" /> : ''
             }
           />
-          {this.renderAttendeeRoutes()}
           {this.renderOrganizerRoutes()}
+          <App>{this.renderAttendeeRoutes()}</App>
         </div>
       </BrowserRouter>
     );

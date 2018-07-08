@@ -1,4 +1,5 @@
-export const LINKEDIN_AUTH_USER = 'linkedin_auth_user';
-export const MESHES_ACTIVE = 'meshes_active';
-export const MESH_SELECTED = 'mesh_selected';
-export const CREATE_MESH = 'create_mesh';
+export const AUTH_LINKEDIN = 'auth_linkedin';
+export const FETCH_MESHES = 'fetch_meshes';
+
+// user inputs
+export const SELECT_MESH = 'select_mesh';
