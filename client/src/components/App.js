@@ -2,15 +2,13 @@ import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { isMobile, isTablet } from 'react-device-detect';
 
-// importing components
-
-// --------------Wrappers----------------
+// importing wrapper components
 import RootWrapper from 'components/root/Wrapper';
 import MeshWrapper from 'components/mesh/Wrapper';
 import ManageWrapper from 'components/manage/Wrapper';
 import AboutWrapper from 'components/about/Wrapper';
 
-// --------------_misc--------------------
+// importing _misc components
 import SigninWithLinkedin from 'components/_misc/SigninWithLinkedin';
 
 class App extends Component {

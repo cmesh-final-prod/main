@@ -12,10 +12,10 @@ import * as actions from 'actions';
 
 class MeshWrapper extends Component {
   renderNavigation() {
-    const { selected } = this.props;
+    const { selectedMesh } = this.props;
     const { match } = this.props;
 
-    if (selected.meshId !== null) {
+    if (selectedMesh.isPopulated) {
       // Only fetch authLinkedin() when being redirected from Linkedin OAuth
       return (
         <Route
@@ -23,7 +23,7 @@ class MeshWrapper extends Component {
           path={`${match.url}`}
           render={() => {
             this.props.authLinkedin();
-            return <Redirect to={`/mesh/${selected.meshId}`} />;
+            return <Redirect to={`/mesh/${selectedMesh.meshId}`} />;
           }}
         />
       );
@@ -47,8 +47,8 @@ class MeshWrapper extends Component {
   }
 }
 
-function mapStateToProps({ selected }) {
-  return { selected };
+function mapStateToProps({ selectedMesh }) {
+  return { selectedMesh };
 }
 
 export default connect(

@@ -1,5 +1,15 @@
-export const AUTH_LINKEDIN = 'auth_linkedin';
-export const FETCH_MESHES = 'fetch_meshes';
+// CLIENT ONLY
+export const SELECT_MESH = 'SELECT_MESH';
 
-// user inputs
-export const SELECT_MESH = 'select_mesh';
+// AUTH ROUTES
+export const FETCH_AUTH_LINKEDIN_USER = 'FETCH_AUTH_LINKEDIN_USER';
+
+// MESH ROUTES
+export const CREATE_MESH = 'CREATE_MESH';
+export const FETCH_MESHES = 'FETCH_MESHES';
+export const FETCH_MESH_USERS = 'FETCH_MESH_USERS';
+export const ADD_MESH_USER = 'ADD_MESH_USER';
+export const EXIT_MESH_USER = 'EXIT_MESH_USER';
+
+// ORGANIZER ROUTES
+export const FETCH_MESH_ORGANIZER = 'FETCH_MESH_ORGANIZER';

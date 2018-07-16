@@ -9,8 +9,10 @@ import { connect } from 'react-redux';
 
 class PanelsWrapper extends Component {
   renderActiveMeshes() {
-    return this.props.mesh.data.map(mesh => {
-      return <Panel key={mesh.id} meshId={mesh.id} title={mesh.title} />;
+    return this.props.meshes.data.map(mesh => {
+      return (
+        <Panel key={mesh.meshId} meshId={mesh.meshId} title={mesh.title} />
+      );
     });
   }
 
@@ -27,8 +29,8 @@ class PanelsWrapper extends Component {
   }
 }
 
-function mapStateToProps({ mesh }) {
-  return { mesh };
+function mapStateToProps({ meshes }) {
+  return { meshes };
 }
 
 export default connect(mapStateToProps)(PanelsWrapper);

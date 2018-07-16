@@ -12,7 +12,10 @@ export const loadState = () => {
 
 export const saveState = state => {
   try {
-    const serializedState = JSON.stringify(state);
+    const serializedState = JSON.stringify({
+      auth: state.auth,
+      selectedMesh: state.selectedMesh
+    });
     localStorage.setItem('state', serializedState);
   } catch (err) {
     // ignore errors

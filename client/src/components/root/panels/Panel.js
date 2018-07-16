@@ -5,6 +5,9 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
+// TODO: move Auth to higher order component
+// Protected routes should self redirect to sign in w/ linkedin
+
 class MeshPanel extends Component {
   renderLink() {
     switch (this.props.auth.status) {
@@ -15,8 +18,8 @@ class MeshPanel extends Component {
     }
   }
 
-  handleClick(meshId) {
-    this.props.selectMesh(meshId);
+  handleClick() {
+    this.props.selectMesh(this.props.meshId);
   }
 
   render() {
@@ -29,7 +32,7 @@ class MeshPanel extends Component {
 
           <Link
             to={this.renderLink()}
-            onClick={() => this.handleClick(this.props.meshId)}
+            onClick={() => this.handleClick()}
             className="btn btn-large btn-join light-blue"
           >
             Join The Room

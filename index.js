@@ -12,23 +12,30 @@ const mongoose = require('mongoose').set('debug', true);
 const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 
-// Passport Strategy Stuff
-const passport = require('passport');
-require('./models/User');
-require('./models/Mesh');
-require('./services/passport');
-
-// Instantiating the express app
-const app = express();
-
 // Establishing connection with mongo database
 mongoose.connect(keys.mongoURI);
 
+// Passport Strategy Stuff
+const passport = require('passport');
+require('./db/models/User');
+require('./db/models/Mesh');
+require('./db/models/Organizer');
+require('./services/passport');
+
+// seeding data
+// require('./db/seeds');
+
 //////////////////////////////////////////////////////////////////
-////////////             MIDDLEWARES               ///////////////
+////////////             1. EXPRESS APP            ///////////////
 //////////////////////////////////////////////////////////////////
 
-app.use(morgan('combined'));
+const app = express();
+
+//////////////////////////////////////////////////////////////////
+////////////             2. MIDDLEWARES            ///////////////
+//////////////////////////////////////////////////////////////////
+
+app.use(morgan('dev'));
 app.use(bodyParser.json());
 app.use(
   cookieSession({
@@ -40,14 +47,30 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 //////////////////////////////////////////////////////////////////
-////////////           SETTING UP THE ROUTES       ///////////////
+////////////         3. SETTING UP THE ROUTES      ///////////////
 //////////////////////////////////////////////////////////////////
 
-require('./routes/authLinkedin')(app);
-require('./routes/meshRoutes')(app);
+require('./routes/auth')(app);
+require('./routes/mesh')(app);
+require('./routes/organizer')(app);
 
 //////////////////////////////////////////////////////////////////
-////////////        CLIENT APP AT PRODUCTION       ///////////////
+////////////            4. ERROR HANDLING          ///////////////
+//////////////////////////////////////////////////////////////////
+
+app.use((req, res, next) => {
+  const error = new Error('Not found');
+  error.status = 404;
+  next(error);
+});
+
+app.use((err, req, res, next) => {
+  res.status(422).send({ error: err.message });
+  next();
+});
+
+//////////////////////////////////////////////////////////////////
+////////////      5. CLIENT APP AT PRODUCTION      ///////////////
 //////////////////////////////////////////////////////////////////
 
 if (process.env.NODE_ENV === 'production') {
@@ -60,8 +83,10 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 //////////////////////////////////////////////////////////////////
-////////////                  PORT                 ///////////////
+////////////                6. PORT                ///////////////
 //////////////////////////////////////////////////////////////////
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT);
+
+module.exports = app;

@@ -1,36 +1,101 @@
-import { AUTH_LINKEDIN, FETCH_MESHES, SELECT_MESH } from 'actions/types';
-
+import {
+  SELECT_MESH,
+  FETCH_AUTH_LINKEDIN_USER,
+  CREATE_MESH,
+  FETCH_MESHES,
+  FETCH_MESH_USERS,
+  ADD_MESH_USER,
+  EXIT_MESH_USER,
+  FETCH_MESH_ORGANIZER
+} from 'actions/types';
 import axios from 'axios';
 
-export const addMesh = title => {
-  axios.post('/api/mesh/create', title);
+//////////////////////////////////////////////////////////////////
+//////                  --ATTENTION--                        /////
+//////   PROMISE RESOLUTION WITH REDUX PROMISE MIDDLEWARE    /////
+//////     SEND UNRESOLVED PROMISES via ACTION.PAYLOAD       /////
+//////     DO NOT RESOLVE PROMISES IN ACTION CREATORS        /////
+//////////////////////////////////////////////////////////////////
+
+//////////////////////////////////////////////////////////////////
+////////////            CLIENT ONLY                ///////////////
+//////////////////////////////////////////////////////////////////
+
+export const selectMesh = meshId => (dispatch, getState) => {
+  const { meshes } = getState();
+  const filteredArray = meshes.data.filter(mesh => {
+    return mesh.meshId === meshId;
+  });
+
+  const selectedMeshProps = {
+    meshId,
+    data: filteredArray[0]
+  };
+
+  dispatch({
+    type: SELECT_MESH,
+    payload: selectedMeshProps
+  });
 };
 
-export const authLinkedin = () => dispatch => {
+//////////////////////////////////////////////////////////////////
+////////////            AUTH ROUTES                ///////////////
+//////////////////////////////////////////////////////////////////
+
+export const fetchAuthLinkedinUser = () => dispatch => {
   const response = axios.get('/api/current_user');
 
   dispatch({
-    type: AUTH_LINKEDIN,
+    type: FETCH_AUTH_LINKEDIN_USER,
     payload: response
   });
 };
 
-export const fetchMeshes = () => dispatch => {
-  const response = axios.get('/api/mesh/active');
+//////////////////////////////////////////////////////////////////
+////////////            MESH ROUTES                ///////////////
+//////////////////////////////////////////////////////////////////
 
-  dispatch({
-    type: FETCH_MESHES,
+export const fetchMeshes = (lng, lat) => dispatch => {
+  if (lng && lat) {
+    const response = axios.get(`/api/meshes?lng=${lng}&lat=${lat}`);
+    dispatch({
+      type: FETCH_MESHES,
+      payload: response
+    });
+  }
+};
+
+export const createMesh = (meshProps, organizerId) => {
+  axios.post(`/api/meshes/${organizerId}`, meshProps);
+  return { type: CREATE_MESH };
+};
+
+export const fetchMeshUsers = meshId => {
+  const response = axios.get(`/api/meshes/${meshId}`);
+  return {
+    type: FETCH_MESH_USERS,
     payload: response
-  });
+  };
 };
 
-export const selectMesh = meshId => dispatch => {
-  dispatch({
-    type: SELECT_MESH,
-    payload: meshId
-  });
+export const addMeshUser = (meshId, userId) => {
+  axios.put(`/api/meshes/${meshId}/add/${userId}`);
+  return { type: ADD_MESH_USER };
 };
 
-export const updateMeshWithUserId = values => {
-  axios.post('/api/mesh/addAttendee', values);
+export const exitMeshUser = (meshId, userId) => {
+  axios.put(`/api/meshes/${meshId}/exit/${userId}`);
+  return { type: EXIT_MESH_USER };
+};
+
+//////////////////////////////////////////////////////////////////
+////////////          ORGANIZER ROUTES             ///////////////
+//////////////////////////////////////////////////////////////////
+
+export const fetchMeshOrganizer = meshId => {
+  const response = axios.get(`/api/organizers/${meshId}`);
+  return {
+    type: FETCH_MESH_ORGANIZER,
+    payload: response
+  };
 };

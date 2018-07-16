@@ -3,22 +3,35 @@ import { Link } from 'react-router-dom';
 
 // container elements
 import { connect } from 'react-redux';
+import * as actions from 'actions';
 
 class Profile extends Component {
   renderUserContent() {
     const {
-      linkedinFirstName,
-      linkedinHeadline,
-      linkedinProfilePictures
-    } = this.props.auth.linkedin;
+      lnId,
+      firstName,
+      lastName,
+      url,
+      photos,
+      headline
+    } = this.props.auth.data.linkedin;
 
     return (
-      <li className="collection-item">
-        <img src={linkedinProfilePictures} alt="" className="circle" />
-        <span className="title">{linkedinFirstName}</span>
-        <p>{linkedinHeadline}</p>
+      <li key={lnId} className="collection-item avatar">
+        <img src={photos[0]} alt="" className="circle" />
+        <span className="title">
+          {firstName} {lastName}
+        </span>
+        <p>{headline}</p>
+        <a href={url}>View Profile</a>
       </li>
     );
+  }
+
+  handleClick() {
+    const { meshId } = this.props.match.params;
+    const userId = this.props.auth.data._id;
+    this.props.addMeshUser(meshId, userId);
   }
 
   render() {
@@ -26,21 +39,27 @@ class Profile extends Component {
       <div>
         <div className="container">
           <h3 className="center">How you appear</h3>
-          <ul className="collection avatar">{this.renderUserContent()}</ul>
+
+          <ul className="collection">{this.renderUserContent()}</ul>
+
+          <Link
+            to={`${this.props.match.url}/list`}
+            className="btn light-blue center"
+            onClick={() => this.handleClick()}
+          >
+            Got it
+          </Link>
         </div>
-        <Link
-          to={`${this.props.match.url}/list`}
-          className="btn light-blue center"
-        >
-          Got it
-        </Link>
       </div>
     );
   }
 }
 
-function mapStateToProps({ auth }) {
-  return { auth };
+function mapStateToProps({ auth, selectedMesh }) {
+  return { auth, selectedMesh };
 }
 
-export default connect(mapStateToProps)(Profile);
+export default connect(
+  mapStateToProps,
+  actions
+)(Profile);

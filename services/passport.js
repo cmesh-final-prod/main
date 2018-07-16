@@ -3,7 +3,7 @@ const passport = require('passport');
 
 // connesting with the db
 const mongoose = require('mongoose').set('debug', true);
-const User = require('../models/User');
+const User = require('../db/models/User');
 
 ///////////////////////////////////////////////////////////////
 ///////////       Serializing-Deserializing         ///////////
@@ -51,15 +51,27 @@ passport.use(
           return photo.value;
         });
 
-        const user = await new User({
-          linkedinID: profile.id,
-          linkedinEmails: emailsArray,
-          linkedinFirstName: profile.name.givenName,
-          linkedinLastName: profile.name.familyName,
-          linkedinURL: profile._json.siteStandardProfileRequest.url,
-          linkedinProfilePictures: photosArray,
-          linkedinHeadline: profile._json.headline
-        }).save();
+        const user = await User.create({
+          linkedin: {
+            lnId: profile.id,
+            firstName: profile.name.givenName,
+            lastName: profile.name.familyName,
+            emails: emailsArray,
+            url: profile._json.siteStandardProfileRequest.url,
+            photos: photosArray,
+            headline: profile._json.headline
+          }
+        });
+
+        // const user = await new User({
+        //   linkedinID: profile.id,
+        //   linkedinEmails: emailsArray,
+        //   linkedinFirstName: profile.name.givenName,
+        //   linkedinLastName: profile.name.familyName,
+        //   linkedinURL: profile._json.siteStandardProfileRequest.url,
+        //   linkedinProfilePictures: photosArray,
+        //   linkedinHeadline: profile._json.headline
+        // }).save();
 
         return done(null, user);
       });

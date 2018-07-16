@@ -1,0 +1,9 @@
+const mongoose = require('mongoose').set('debug', true);
+const { Schema } = mongoose;
+
+const geoJSONSchema = new Schema({
+  type: { type: String, default: 'Point' },
+  coordinates: { type: [Number], index: '2dsphere' }
+});
+
+module.exports = geoJSONSchema;
