@@ -58,12 +58,6 @@ require('./routes/organizer')(app);
 ////////////            4. ERROR HANDLING          ///////////////
 //////////////////////////////////////////////////////////////////
 
-app.use((req, res, next) => {
-  const error = new Error('Not found');
-  error.status = 404;
-  next(error);
-});
-
 app.use((err, req, res, next) => {
   res.status(422).send({ error: err.message });
   next();
