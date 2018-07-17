@@ -2,7 +2,7 @@ const mongoose = require('mongoose').set('debug', true);
 const { Schema } = mongoose;
 
 // subdocuments
-const MeshUserSchema = require('../schema/MeshUser');
+const MeshUserSchema = require('../schema/meshUser');
 const GeoJSONSchema = require('../schema/GeoJSON');
 const EventDetailsSchema = require('../schema/EventDetailsSchema');
 
