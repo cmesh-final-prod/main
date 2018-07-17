@@ -100,9 +100,9 @@ module.exports = {
         } else {
           res.send({ isFound: false });
         }
+      } else {
+        res.send({ isFound: false });
       }
-
-      res.send({ isFound: false });
     } catch (e) {
       next(e);
     }

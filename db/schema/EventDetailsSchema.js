@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const EventDetailsSchema = new Schema({
+const eventDetailsSchema = new Schema({
   title: String,
   description: String,
   startDate: Date,
@@ -9,4 +9,4 @@ const EventDetailsSchema = new Schema({
   address: String
 });
 
-module.exports = EventDetailsSchema;
+module.exports = eventDetailsSchema;
