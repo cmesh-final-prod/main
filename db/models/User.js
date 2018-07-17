@@ -2,12 +2,12 @@ const mongoose = require('mongoose').set('debug', true);
 const { Schema } = mongoose;
 
 // subdocuments
-const LinkedinSchema = require('../schema/linkedin');
+const LinkedinSchema = require('../schema/Linkedin');
 
-const userSchema = new Schema({
+const UserSchema = new Schema({
   linkedin: LinkedinSchema,
-  meshes: [{ type: Schema.Types.ObjectId, ref: 'mesh' }]
+  meshes: [{ type: Schema.Types.ObjectId, ref: 'Mesh' }]
 });
 
-const User = mongoose.model('user', userSchema);
+const User = mongoose.model('User', UserSchema);
 module.exports = User;

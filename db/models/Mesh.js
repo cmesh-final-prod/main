@@ -1,26 +1,26 @@
 const mongoose = require('mongoose').set('debug', true);
 const { Schema } = mongoose;
 
-//// subdocuments
-const meshUserSchema = require('../schema/meshUser');
-const geoJSONSchema = require('../schema/geoJSON');
-const eventDetailsSchema = require('../schema/eventDetailsSchema');
+// subdocuments
+const MeshUserSchema = require('../schema/MeshUser');
+const GeoJSONSchema = require('../schema/GeoJSON');
+const EventDetailsSchema = require('../schema/EventDetailsSchema');
 
 const MeshSchema = new Schema({
-  eventDetails: eventDetailsSchema,
+  eventDetails: EventDetailsSchema,
   startDate: Date,
   endDate: Date,
-  users: [meshUserSchema],
+  users: [MeshUserSchema],
   duration: Number,
   source: String,
-  geometry: geoJSONSchema,
-  organizer: { type: Schema.Types.ObjectId, ref: 'organizer' }
+  geometry: GeoJSONSchema,
+  organizer: { type: Schema.Types.ObjectId, ref: 'Organizer' }
 });
 
 MeshSchema.virtual('usersCount').get(function() {
   return this.users.length;
 });
 
-const Mesh = mongoose.model('mesh', MeshSchema);
+const Mesh = mongoose.model('Mesh', MeshSchema);
 
 module.exports = Mesh;

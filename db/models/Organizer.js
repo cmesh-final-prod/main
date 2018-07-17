@@ -2,12 +2,12 @@ const mongoose = require('mongoose').set('debug', true);
 const { Schema } = mongoose;
 
 // subdocuments
-const LinkedinSchema = require('../schema/linkedin');
-const AuthSchema = require('../schema/auth');
-const OrgSchema = require('../schema/org');
-const BookmarksSchema = require('../schema/bookmarks');
+const LinkedinSchema = require('../schema/Linkedin');
+const AuthSchema = require('../schema/Auth');
+const OrgSchema = require('../schema/Org');
+const BookmarksSchema = require('../schema/Bookmarks');
 
-const organizerSchema = new Schema({
+const OrganizerSchema = new Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   linkedin: LinkedinSchema,
@@ -17,6 +17,6 @@ const organizerSchema = new Schema({
   bookmarks: [BookmarksSchema]
 });
 
-const Organizer = mongoose.model('organizer', organizerSchema);
+const Organizer = mongoose.model('Organizer', OrganizerSchema);
 
 module.exports = Organizer;

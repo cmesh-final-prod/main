@@ -1,9 +1,9 @@
 const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
-const authSchema = new Schema({
+const AuthSchema = new Schema({
   email: { type: String, required: true },
   password: { type: String, required: true }
 });
 
-module.exports = authSchema;
+module.exports = AuthSchema;

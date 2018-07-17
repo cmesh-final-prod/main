@@ -1,7 +1,7 @@
 const mongoose = require('mongoose').set('debug', true);
 const { Schema } = mongoose;
 
-const linkedinSchema = new Schema({
+const LinkedinSchema = new Schema({
   lnId: { type: String, unique: true },
   firstName: String,
   lastName: String,
@@ -11,4 +11,4 @@ const linkedinSchema = new Schema({
   headline: String
 });
 
-module.exports = linkedinSchema;
+module.exports = LinkedinSchema;
