@@ -1,7 +1,7 @@
 const mongoose = require('mongoose').set('debug', true);
 const { Schema } = mongoose;
 
-// subdocuments
+//// subdocuments
 const meshUserSchema = require('../schema/meshUser');
 const geoJSONSchema = require('../schema/geoJSON');
 const eventDetailsSchema = require('../schema/eventDetailsSchema');
