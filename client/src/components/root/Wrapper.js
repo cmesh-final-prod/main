@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import * as actions from 'actions';
 
 // TODO: Implement geolocation HOC
+// TODO: Make components render dynamically
 
 class ComponentsWrapper extends Component {
   constructor(props) {

@@ -6,11 +6,19 @@ import * as actions from 'actions';
 
 class Navbar extends Component {
   createMeshProps() {
-    const title = 'Near By Mesh';
-    const coordinates = [-122.4451599, 37.664456099999995];
+    const meshProps = {
+      title: 'Near By And Active',
+      coordinates: [-122.4451599, 37.664456099999995],
+      duration: 5,
+      startDate: new Date(),
+      description:
+        'Odit sit ab repudiandae dolor necessitatibus ea asperiores a consectetur.',
+      address: '077 Ashly Course'
+    };
+
     const organizerId = '5b4ba413d0f8cc5b14661967';
 
-    this.props.createMesh({ title, coordinates }, organizerId);
+    this.props.createMesh(meshProps, organizerId);
   }
 
   render() {

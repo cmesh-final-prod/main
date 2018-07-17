@@ -2,14 +2,47 @@ const mongoose = require('mongoose').set('debug', true);
 const Mesh = require('../db/models/Mesh');
 const User = require('../db/models/User');
 const Organizer = require('../db/models/Organizer');
+const dateParser = require('../utils/dateParser');
+
+// TODO: Add conversion from google maps address to longitude and latitude
 
 module.exports = {
   async createMesh(req, res, next) {
     try {
-      const { title, coordinates } = req.body;
-      const { organizerId } = req.params;
-      const mesh = await Mesh.create({
+      // event details
+      const {
         title,
+        coordinates,
+        duration,
+        startDate,
+        description,
+        address
+      } = req.body;
+
+      // source
+      const source = 'manual';
+
+      // dates
+      const startDate_utc = dateParser.utc(startDate);
+      const endDate_utc = dateParser.addHours(startDate_utc, duration);
+      const startDate_utc_pre = dateParser.subtractHours(startDate_utc, 1);
+      const endDate_utc_post = dateParser.addHours(endDate_utc, 1);
+
+      // organizer
+      const { organizerId } = req.params;
+
+      const mesh = await Mesh.create({
+        eventDetails: {
+          title,
+          description,
+          address,
+          startDate: startDate_utc,
+          endDate: endDate_utc
+        },
+        startDate: startDate_utc_pre,
+        endDate: endDate_utc_post,
+        duration,
+        source,
         geometry: {
           type: 'Point',
           coordinates
@@ -34,7 +67,7 @@ module.exports = {
     try {
       const { lng, lat } = req.query;
 
-      const meshes = await Mesh.aggregate([
+      const nearByMeshes = await Mesh.aggregate([
         {
           $geoNear: {
             near: {
@@ -48,16 +81,28 @@ module.exports = {
         }
       ]);
 
-      const conciseInfo = await meshes.map(mesh => {
-        return {
-          meshId: mesh._id,
-          title: mesh.title,
-          numberOfAttendees: mesh.users.length,
-          distance: mesh.dist
-        };
-      });
+      if (nearByMeshes.length > 0) {
+        const nearByAndActiveMeshes = await nearByMeshes.filter(mesh => {
+          return dateParser.isBetween(mesh.startDate, mesh.endDate);
+        });
 
-      res.send(conciseInfo);
+        if (nearByAndActiveMeshes.length > 0) {
+          const publicInfo = await nearByAndActiveMeshes.map(mesh => {
+            return {
+              meshId: mesh._id,
+              title: mesh.eventDetails.title,
+              numberOfAttendees: mesh.users.length,
+              distance: mesh.dist
+            };
+          });
+
+          res.send({ isFound: true, publicInfo });
+        } else {
+          res.send({ isFound: false });
+        }
+      }
+
+      res.send({ isFound: false });
     } catch (e) {
       next(e);
     }

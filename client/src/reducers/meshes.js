@@ -19,18 +19,18 @@ export default (state = initialState, action) => {
         error: action.payload
       };
     case `${FETCH_MESHES}_FULFILLED`:
-      if (action.payload.data.length === 0) {
+      if (action.payload.data.isFound) {
         return {
           ...state,
           isFetching: false,
-          data: action.payload.data
+          isPopulated: true,
+          data: action.payload.data.publicInfo
         };
       } else {
         return {
           ...state,
           isFetching: false,
-          isPopulated: true,
-          data: action.payload.data
+          isPopulated: false
         };
       }
 

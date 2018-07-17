@@ -4,9 +4,11 @@ const Mesh = require('../db/models/Mesh');
 const User = require('../db/models/User');
 const request = require('supertest');
 const app = require('../index');
+const faker = require('faker');
 
-describe('Mesh Controller', () => {
+describe('Mesh Controller Test', () => {
   let users;
+  let currentDate = new Date();
   beforeEach(async () => {
     await Mesh.remove();
 
@@ -17,6 +19,10 @@ describe('Mesh Controller', () => {
       .post(`/api/meshes/${organizer1}`)
       .send({
         title: 'Near By Mesh',
+        startDate: faker.date.future(),
+        description: faker.lorem.sentence(),
+        duration: 5,
+        address: faker.address.streetAddress(),
         coordinates: [-122.40080849999998, 37.79041710000001]
       });
 
@@ -24,10 +30,16 @@ describe('Mesh Controller', () => {
       .post(`/api/meshes/${organizer2}`)
       .send({
         title: 'Far Away Mesh',
+        startDate: faker.date.future(),
+        duration: 3,
+        address: faker.address.streetAddress(),
+        description: faker.lorem.sentence(),
         coordinates: [-102.40080849999998, 37.79041710000001]
       });
 
-    const selectedMesh = await Mesh.findOne({ title: 'Near By Mesh' });
+    const selectedMesh = await Mesh.findOne({
+      'eventDetails.title': 'Near By Mesh'
+    });
     users = await User.find();
 
     await request(app).put(
@@ -39,11 +51,15 @@ describe('Mesh Controller', () => {
   });
 
   it('has created 2 meshes', async () => {
+    const meshes = await Mesh.find();
+
+    console.log('-------------------------------------------');
+    console.log(meshes);
     const count = await Mesh.countDocuments();
     assert(count === 2);
   });
 
-  it.only('adds user to a mesh', async () => {
+  it('adds user to a mesh', async () => {
     const farMesh = await Mesh.findOne({ title: 'Far Away Mesh' });
     await request(app).put(`/api/meshes/${farMesh._id}/add/${users[4]._id}`);
 
@@ -51,11 +67,12 @@ describe('Mesh Controller', () => {
     assert(updatedFarMesh.users.length === 1);
   });
 
-  it('fetches near by mesh', async () => {
+  it.only('fetches near by mesh', async () => {
     const response = await request(app).get(
       '/api/meshes?lng=-122.401906&lat=37.7907733'
     );
-    assert(response.body[0].title === 'Near By Mesh');
+    console.log('---------------------------------');
+    console.log(response.body);
   });
 
   it('fetches mesh users', async () => {

@@ -8,9 +8,6 @@ import ListItem from 'components/mesh/ListItem';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
-// TODO: Render list
-// FIXME: Cannot read property 'data'
-
 class List extends Component {
   componentWillMount() {
     const { meshId } = this.props.match.params;
