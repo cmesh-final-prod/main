@@ -37,17 +37,19 @@ passport.use(
     },
     (acessToken, refreshToken, profile, done) => {
       process.nextTick(async () => {
-        const existingUser = await User.findOne({ linkedinID: profile.id });
+        const existingUser = await User.findOne({
+          'linkedin.lnId': profile.id
+        });
 
         if (existingUser) {
           return done(null, existingUser);
         }
 
-        const emailsArray = profile.emails.map(email => {
+        const emailsArray = await profile.emails.map(email => {
           return email.value;
         });
 
-        const photosArray = profile.photos.map(photo => {
+        const photosArray = await profile.photos.map(photo => {
           return photo.value;
         });
 
@@ -62,16 +64,6 @@ passport.use(
             headline: profile._json.headline
           }
         });
-
-        // const user = await new User({
-        //   linkedinID: profile.id,
-        //   linkedinEmails: emailsArray,
-        //   linkedinFirstName: profile.name.givenName,
-        //   linkedinLastName: profile.name.familyName,
-        //   linkedinURL: profile._json.siteStandardProfileRequest.url,
-        //   linkedinProfilePictures: photosArray,
-        //   linkedinHeadline: profile._json.headline
-        // }).save();
 
         return done(null, user);
       });

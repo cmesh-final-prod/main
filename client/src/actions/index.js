@@ -1,4 +1,5 @@
 import {
+  CLEAR_STATE,
   SELECT_MESH,
   FETCH_AUTH_LINKEDIN_USER,
   CREATE_MESH,
@@ -20,6 +21,12 @@ import axios from 'axios';
 //////////////////////////////////////////////////////////////////
 ////////////            CLIENT ONLY                ///////////////
 //////////////////////////////////////////////////////////////////
+
+export const clearState = () => {
+  return {
+    type: CLEAR_STATE
+  };
+};
 
 export const selectMesh = meshId => (dispatch, getState) => {
   const { meshes } = getState();
@@ -93,6 +100,13 @@ export const exitMeshUser = (meshId, userId) => {
 //////////////////////////////////////////////////////////////////
 
 export const fetchMeshOrganizer = meshId => {
+  if (!meshId) {
+    return {
+      type: 'FETCH_MESH_ORGANIZER_FULFILLED',
+      payload: {}
+    };
+  }
+
   const response = axios.get(`/api/organizers/${meshId}`);
   return {
     type: FETCH_MESH_ORGANIZER,

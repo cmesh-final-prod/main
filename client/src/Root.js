@@ -7,7 +7,7 @@ import throttle from 'lodash/throttle';
 
 // importing reducers
 import reducers from 'reducers';
-import { loadState, saveState } from 'reducers/localStorage';
+import { loadState, saveState } from 'reducers/sessionStorage';
 
 // middlewares
 import thunk from 'redux-thunk';

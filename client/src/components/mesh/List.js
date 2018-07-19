@@ -19,12 +19,13 @@ class List extends Component {
       subscribeKey: keys.pubnubSubscribeKey
     });
     this.pubnub.init(this);
-  }
-  componentWillMount() {
+
     const { meshId } = this.props.match.params;
     this.props.fetchMeshOrganizer(meshId);
     this.props.fetchMeshUsers(meshId);
+  }
 
+  componentWillMount() {
     this.pubnub.subscribe({
       channels: ['fetchMeshUsers'],
       withPresence: true
@@ -42,29 +43,36 @@ class List extends Component {
   }
 
   renderOrganizer() {
-    const { organizer } = this.props.selectedMesh;
-    return (
-      <ListItem
-        key={organizer._id}
-        photos={organizer.linkedin.photos[0]}
-        headline={organizer.linkedin.headline}
-        profileLink={organizer.linkedin.url}
-      />
-    );
+    const { organizer, isPopulated } = this.props.selectedMesh;
+
+    if (isPopulated) {
+      return (
+        <ListItem
+          key={organizer._id}
+          photos={organizer.linkedin.photos[0]}
+          headline={organizer.linkedin.headline}
+          profileLink={organizer.linkedin.url}
+        />
+      );
+    }
   }
 
   renderUsers() {
-    const { users } = this.props.selectedMesh;
-    return users.map(user => {
-      return (
-        <ListItem
-          key={user._id}
-          photos={user.linkedin.photos[0]}
-          headline={user.linkedin.headline}
-          profileLink={user.linkedin.url}
-        />
-      );
-    });
+    const { users, isPopulated } = this.props.selectedMesh;
+
+    if (isPopulated) {
+      return users.map(user => {
+        return (
+          <ListItem
+            key={user._id}
+            firstName={user.linkedin.firstName}
+            photos={user.linkedin.photos[0]}
+            headline={user.linkedin.headline}
+            profileLink={user.linkedin.url}
+          />
+        );
+      });
+    }
   }
 
   render() {

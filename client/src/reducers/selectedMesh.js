@@ -1,4 +1,5 @@
 import {
+  CLEAR_STATE,
   SELECT_MESH,
   FETCH_MESH_USERS,
   FETCH_MESH_ORGANIZER
@@ -6,8 +7,8 @@ import {
 
 const initialState = {
   isFetching: false,
+  isFetched: false,
   isPopulated: false,
-  meshId: '',
   data: {},
   users: [],
   organizer: {},
@@ -16,19 +17,19 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case CLEAR_STATE:
+      return initialState;
     case SELECT_MESH:
       if (action.payload.data === undefined) {
         return {
           ...state,
-          isFetching: false,
-          isPopulated: false,
+          isFetched: false,
           data: {}
         };
       } else {
         return {
           ...state,
-          isFetching: false,
-          isPopulated: true,
+          isFetched: true,
           data: action.payload.data
         };
       }
@@ -41,10 +42,11 @@ export default (state = initialState, action) => {
         error: action.payload
       };
     case `${FETCH_MESH_USERS}_FULFILLED`:
-      if (state.isPopulated) {
+      if (state.isFetched) {
         return {
           ...state,
           isFetching: false,
+          isPopulated: true,
           users: action.payload.data
         };
       } else {
@@ -59,10 +61,11 @@ export default (state = initialState, action) => {
         error: action.payload
       };
     case `${FETCH_MESH_ORGANIZER}_FULFILLED`:
-      if (state.isPopulated) {
+      if (state.isFetched) {
         return {
           ...state,
           isFetching: false,
+          isPopulated: true,
           organizer: action.payload.data
         };
       } else {

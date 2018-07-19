@@ -11,14 +11,11 @@ import LearnContent from 'components/root/learn/Content';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
-// TODO: Make components render dynamically
 // TODO: QC Mesh Radius on deployment, by walking around
 // TODO: Implement Mesh Timeleft
 
 let lng;
 let lat;
-
-// TODO: Move dev keys and prod keys into separate files
 
 class ComponentsWrapper extends Component {
   constructor(props) {
@@ -28,15 +25,14 @@ class ComponentsWrapper extends Component {
       subscribeKey: keys.pubnubSubscribeKey
     });
     this.pubnub.init(this);
+
+    // clearing state
+    this.props.clearState();
   }
 
   componentWillMount() {
-    console.log('xxxxxxxxxxxxx', process.env.NODE_ENV);
-    console.log('-------------', keys.pubnubSubscribeKey);
     this.getLocation();
     this.props.fetchAuthLinkedinUser();
-    // clearing previously selected mesh from local storage
-    this.props.selectMesh();
     this.pubnub.subscribe({
       channels: ['fetchMeshes'],
       withPresence: true

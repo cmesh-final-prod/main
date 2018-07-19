@@ -1,4 +1,5 @@
 // CLIENT ONLY
+export const CLEAR_STATE = 'CLEAR_STATE';
 export const SELECT_MESH = 'SELECT_MESH';
 
 // AUTH ROUTES //

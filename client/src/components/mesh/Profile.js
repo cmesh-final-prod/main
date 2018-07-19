@@ -7,25 +7,29 @@ import * as actions from 'actions';
 
 class Profile extends Component {
   renderUserContent() {
-    const {
-      lnId,
-      firstName,
-      lastName,
-      url,
-      photos,
-      headline
-    } = this.props.auth.data.linkedin;
+    if (this.props.auth.status) {
+      const {
+        lnId,
+        firstName,
+        lastName,
+        url,
+        photos,
+        headline
+      } = this.props.auth.data.linkedin;
 
-    return (
-      <li key={lnId} className="collection-item avatar">
-        <img src={photos[0]} alt="" className="circle" />
-        <span className="title">
-          {firstName} {lastName}
-        </span>
-        <p>{headline}</p>
-        <a href={url}>View Profile</a>
-      </li>
-    );
+      return (
+        <li key={lnId} className="collection-item avatar">
+          <img src={photos[0]} alt="" className="circle" />
+          <span className="title">
+            {firstName} {lastName}
+          </span>
+          <p>{headline}</p>
+          <a href={url}>View Profile</a>
+        </li>
+      );
+    }
+
+    return <div>Loading...</div>;
   }
 
   handleClick() {

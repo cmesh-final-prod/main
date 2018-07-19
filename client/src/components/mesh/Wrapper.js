@@ -15,7 +15,7 @@ class MeshWrapper extends Component {
     const { selectedMesh } = this.props;
     const { match } = this.props;
 
-    if (selectedMesh.isPopulated) {
+    if (selectedMesh.isFetched) {
       // Only fetch authLinkedin() when being redirected from Linkedin OAuth
       return (
         <Route
@@ -23,7 +23,7 @@ class MeshWrapper extends Component {
           path={`${match.url}`}
           render={() => {
             this.props.fetchAuthLinkedinUser();
-            return <Redirect to={`/mesh/${selectedMesh.meshId}`} />;
+            return <Redirect to={`/mesh/${selectedMesh.data.meshId}`} />;
           }}
         />
       );
