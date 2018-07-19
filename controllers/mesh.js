@@ -3,10 +3,17 @@ const Mesh = require('../db/models/Mesh');
 const User = require('../db/models/User');
 const Organizer = require('../db/models/Organizer');
 const dateParser = require('../utils/dateParser');
+const pubnub = require('../utils/pubnub');
 
 // TODO: Add conversion from google maps address to longitude and latitude
 
 module.exports = {
+  //////////////////////////////////////////////////////////////////
+  ////////////               CREATE MESH             ///////////////
+  //////////////////////////////////////////////////////////////////
+
+  // TODO: Add Mesh Created at property
+
   async createMesh(req, res, next) {
     try {
       // event details
@@ -50,6 +57,8 @@ module.exports = {
         organizer: organizerId
       });
 
+      await pubnub.dispatchAction('fetchMeshes');
+
       await Organizer.update(
         { _id: organizerId },
         {
@@ -62,6 +71,12 @@ module.exports = {
       next(e);
     }
   },
+
+  //////////////////////////////////////////////////////////////////
+  ////////////              FETCH MESHES             ///////////////
+  //////////////////////////////////////////////////////////////////
+
+  // TODO: Sort meshes by created at time before serving them
 
   async fetchMeshes(req, res, next) {
     try {
@@ -108,33 +123,11 @@ module.exports = {
     }
   },
 
-  async addMeshUser(req, res, next) {
-    try {
-      const { meshId, userId } = req.params;
-      console.log('xxxxxx', meshId, userId);
-      await Mesh.update(
-        {
-          _id: meshId
-        },
-        {
-          $addToSet: { users: { userId } }
-        }
-      );
+  //////////////////////////////////////////////////////////////////
+  ////////////            FETCH MESH USERS           ///////////////
+  //////////////////////////////////////////////////////////////////
 
-      const mesh = await Mesh.findOne({ _id: meshId });
-      await User.update(
-        {
-          _id: userId
-        },
-        {
-          meshes: mesh
-        }
-      );
-      res.send({ message: 'User saved' });
-    } catch (e) {
-      next(e);
-    }
-  },
+  // TODO: Sort users by joined at property before serving to client
 
   async fetchMeshUsers(req, res, next) {
     try {
@@ -170,6 +163,46 @@ module.exports = {
     }
   },
 
+  //////////////////////////////////////////////////////////////////
+  ////////////              ADD MESH USER            ///////////////
+  //////////////////////////////////////////////////////////////////
+
+  // TODO: At joined at property
+
+  async addMeshUser(req, res, next) {
+    try {
+      const { meshId, userId } = req.params;
+      console.log('xxxxxx', meshId, userId);
+      await Mesh.update(
+        {
+          _id: meshId
+        },
+        {
+          $addToSet: { users: { userId } }
+        }
+      );
+
+      await pubnub.dispatchAction('fetchMeshUsers');
+
+      const mesh = await Mesh.findOne({ _id: meshId });
+      await User.update(
+        {
+          _id: userId
+        },
+        {
+          meshes: mesh
+        }
+      );
+      res.send({ message: 'User saved' });
+    } catch (e) {
+      next(e);
+    }
+  },
+
+  //////////////////////////////////////////////////////////////////
+  ////////////              EXIT MESH USER           ///////////////
+  //////////////////////////////////////////////////////////////////
+
   async exitMeshUser(req, res, next) {
     try {
       const { meshId, userId } = req.params;
@@ -182,6 +215,8 @@ module.exports = {
           $set: { 'users.$.active': 'false' }
         }
       );
+
+      await pubnub.dispatchAction('fetchMeshUsers');
 
       res.send({ userId });
     } catch (e) {

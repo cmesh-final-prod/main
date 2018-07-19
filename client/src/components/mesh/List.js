@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PubNubReact from 'pubnub-react';
 
 // importing components
 import InnerPanel from 'components/mesh/InnerPanel';
@@ -8,11 +9,35 @@ import ListItem from 'components/mesh/ListItem';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
+// TODO: Move dev keys and prod keys into separate files
+
 class List extends Component {
+  constructor(props) {
+    super(props);
+    this.pubnub = new PubNubReact({
+      subscribeKey: 'sub-c-208db30e-8b3e-11e8-b601-f67fbeaec001'
+    });
+    this.pubnub.init(this);
+  }
   componentWillMount() {
     const { meshId } = this.props.match.params;
     this.props.fetchMeshOrganizer(meshId);
     this.props.fetchMeshUsers(meshId);
+
+    this.pubnub.subscribe({
+      channels: ['fetchMeshUsers'],
+      withPresence: true
+    });
+    this.pubnub.getMessage('fetchMeshUsers', () => {
+      const { meshId } = this.props.match.params;
+      this.props.fetchMeshUsers(meshId);
+    });
+  }
+
+  componentWillUnmount() {
+    this.pubnub.unsubscribe({
+      channels: ['fetchMeshUsers']
+    });
   }
 
   renderOrganizer() {

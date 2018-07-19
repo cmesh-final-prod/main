@@ -22,7 +22,7 @@ class MeshWrapper extends Component {
           exact
           path={`${match.url}`}
           render={() => {
-            this.props.authLinkedin();
+            this.props.fetchAuthLinkedinUser();
             return <Redirect to={`/mesh/${selectedMesh.meshId}`} />;
           }}
         />

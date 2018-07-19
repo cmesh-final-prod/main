@@ -11,7 +11,12 @@ class PanelsWrapper extends Component {
   renderActiveMeshes() {
     return this.props.meshes.data.map(mesh => {
       return (
-        <Panel key={mesh.meshId} meshId={mesh.meshId} title={mesh.title} />
+        <Panel
+          key={mesh.meshId}
+          meshId={mesh.meshId}
+          title={mesh.title}
+          distance={mesh.distance.calculated}
+        />
       );
     });
   }

@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
-// TODO: move Auth to higher order component
-// Protected routes should self redirect to sign in w/ linkedin
+// TODO: Move Auth to higher order component
+// TODO: Make protected routes self redirect to sign in w/ linkedin
 
 class MeshPanel extends Component {
   renderLink() {
@@ -23,6 +23,7 @@ class MeshPanel extends Component {
   }
 
   render() {
+    const distance = Math.round(this.props.distance * 10000) / 10000;
     return (
       <div className="card mesh-panel grey darken-2 z-depth-5">
         <div className="card-content center">
@@ -37,6 +38,8 @@ class MeshPanel extends Component {
           >
             Join The Room
           </Link>
+          <br />
+          <h2 className="white-text">{distance}</h2>
         </div>
       </div>
     );

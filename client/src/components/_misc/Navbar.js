@@ -7,7 +7,7 @@ import * as actions from 'actions';
 class Navbar extends Component {
   createMeshProps() {
     const meshProps = {
-      title: 'Near By And Active',
+      title: 'Near By And Active RealTime',
       coordinates: [-122.4451599, 37.664456099999995],
       duration: 5,
       startDate: new Date(),

@@ -59,7 +59,7 @@ describe('Mesh Controller Test', () => {
     assert(count === 2);
   });
 
-  it('adds user to a mesh', async () => {
+  it.only('adds user to a mesh', async () => {
     const farMesh = await Mesh.findOne({ title: 'Far Away Mesh' });
     await request(app).put(`/api/meshes/${farMesh._id}/add/${users[4]._id}`);
 

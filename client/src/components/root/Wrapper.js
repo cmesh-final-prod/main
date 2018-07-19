@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PubNubReact from 'pubnub-react';
 
 // importing components
 import Navbar from 'components/_misc/Navbar';
@@ -9,36 +10,69 @@ import LearnContent from 'components/root/learn/Content';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
-// TODO: Implement geolocation HOC
 // TODO: Make components render dynamically
+// TODO: QC Mesh Radius on deployment, by walking around
+// TODO: Implement Mesh Timeleft
+
+let lng;
+let lat;
+
+// TODO: Move dev keys and prod keys into separate files
 
 class ComponentsWrapper extends Component {
   constructor(props) {
     super(props);
     this.receivedLocation = this.receivedLocation.bind(this);
+    this.pubnub = new PubNubReact({
+      subscribeKey: 'sub-c-208db30e-8b3e-11e8-b601-f67fbeaec001'
+    });
+    this.pubnub.init(this);
   }
 
   componentWillMount() {
     this.getLocation();
     this.props.fetchAuthLinkedinUser();
-    // clearing previously selected mesh
+    // clearing previously selected mesh from local storage
     this.props.selectMesh();
+    this.pubnub.subscribe({
+      channels: ['fetchMeshes'],
+      withPresence: true
+    });
+    this.pubnub.getMessage('fetchMeshes', () => {
+      console.log('I am listening!');
+      this.props.fetchMeshes(lng, lat);
+    });
   }
 
+  componentWillUnmount() {
+    this.pubnub.unsubscribe({
+      channels: ['fetchMeshes']
+    });
+  }
+
+  // TODO: Move geolocation logic to HOC
+  // TODO: Check geolocation on all protected resources
+
   getLocation() {
+    const options = {
+      enableHighAccuracy: true
+    };
+
     if (!navigator.geolocation) {
       return <div>Turn location services on</div>;
     } else {
       navigator.geolocation.getCurrentPosition(
         this.receivedLocation,
-        this.notReceivedLocation
+        this.notReceivedLocation,
+        options
       );
     }
   }
 
   receivedLocation(position) {
-    console.log(position);
-    this.props.fetchMeshes(position.coords.longitude, position.coords.latitude);
+    lng = position.coords.longitude;
+    lat = position.coords.latitude;
+    this.props.fetchMeshes(lng, lat);
   }
 
   notReceivedLocation(positionError) {
