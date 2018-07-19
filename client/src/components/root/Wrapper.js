@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PubNubReact from 'pubnub-react';
+import keys from 'config/keys';
 
 // importing components
 import Navbar from 'components/_misc/Navbar';
@@ -24,7 +25,7 @@ class ComponentsWrapper extends Component {
     super(props);
     this.receivedLocation = this.receivedLocation.bind(this);
     this.pubnub = new PubNubReact({
-      subscribeKey: 'sub-c-208db30e-8b3e-11e8-b601-f67fbeaec001'
+      subscribeKey: keys.pubnubSubscribeKey
     });
     this.pubnub.init(this);
   }

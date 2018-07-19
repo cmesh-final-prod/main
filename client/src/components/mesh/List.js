@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PubNubReact from 'pubnub-react';
+import keys from 'config/keys';
 
 // importing components
 import InnerPanel from 'components/mesh/InnerPanel';
@@ -15,7 +16,7 @@ class List extends Component {
   constructor(props) {
     super(props);
     this.pubnub = new PubNubReact({
-      subscribeKey: 'sub-c-208db30e-8b3e-11e8-b601-f67fbeaec001'
+      subscribeKey: keys.pubnubSubscribeKey
     });
     this.pubnub.init(this);
   }
