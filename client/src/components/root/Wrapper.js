@@ -31,6 +31,8 @@ class ComponentsWrapper extends Component {
   }
 
   componentWillMount() {
+    console.log('xxxxxxxxxxxxx', process.env.NODE_ENV);
+    console.log('-------------', keys.pubnubSubscribeKey);
     this.getLocation();
     this.props.fetchAuthLinkedinUser();
     // clearing previously selected mesh from local storage
