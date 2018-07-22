@@ -5,6 +5,7 @@ import { Route, Redirect } from 'react-router-dom';
 import Navbar from 'components/_misc/Navbar';
 import Profile from 'components/mesh/Profile';
 import List from 'components/mesh/List';
+import Expired from 'components/mesh/Expired';
 
 // container elements
 import { connect } from 'react-redux';
@@ -41,7 +42,8 @@ class MeshWrapper extends Component {
         <Navbar />
         {this.renderNavigation()}
         <Route exact path={`${match.url}/:meshId`} component={Profile} />
-        <Route path={`${match.url}/:meshId/list`} component={List} />
+        <Route exact path={`${match.url}/:meshId/list`} component={List} />
+        <Route path={`${match.url}/:meshId/list/expired`} component={Expired} />
       </div>
     );
   }

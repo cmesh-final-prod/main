@@ -2,17 +2,17 @@
 // const faker = require('faker');
 //
 // describe('Seeding organizers', () => {
-//   beforeEach(async () => {
-//     await Organizer.remove();
-//     await Organizer.create({
+// beforeEach(async () => {
+//   await Organizer.remove();
+//   await Organizer.create({
+//     firstName: faker.name.firstName(),
+//     lastName: faker.name.lastName(),
+//     linkedin: {
+//       lnId: '1',
 //       firstName: faker.name.firstName(),
-//       lastName: faker.name.lastName(),
-//       linkedin: {
-//         lnId: '1',
-//         firstName: faker.name.firstName(),
-//         lastName: faker.name.firstName()
-//       }
-//     });
+//       lastName: faker.name.firstName()
+//     }
+//   });
 //
 //     await Organizer.create({
 //       firstName: faker.name.firstName(),

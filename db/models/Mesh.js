@@ -14,7 +14,8 @@ const MeshSchema = new Schema({
   duration: Number,
   source: String,
   geometry: GeoJSONSchema,
-  organizer: { type: Schema.Types.ObjectId, ref: 'Organizer' }
+  organizer: { type: Schema.Types.ObjectId, ref: 'Organizer' },
+  createdAt: Number
 });
 
 MeshSchema.virtual('usersCount').get(function() {

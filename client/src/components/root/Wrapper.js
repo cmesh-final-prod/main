@@ -11,9 +11,6 @@ import LearnContent from 'components/root/learn/Content';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
-// TODO: QC Mesh Radius on deployment, by walking around
-// TODO: Implement Mesh Timeleft
-
 let lng;
 let lat;
 
@@ -38,7 +35,6 @@ class ComponentsWrapper extends Component {
       withPresence: true
     });
     this.pubnub.getMessage('fetchMeshes', () => {
-      console.log('I am listening!');
       this.props.fetchMeshes(lng, lat);
     });
   }
@@ -72,6 +68,7 @@ class ComponentsWrapper extends Component {
     lng = position.coords.longitude;
     lat = position.coords.latitude;
     this.props.fetchMeshes(lng, lat);
+    this.props.postLocationToStore(lng, lat);
   }
 
   notReceivedLocation(positionError) {

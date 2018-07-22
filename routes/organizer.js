@@ -1,5 +1,5 @@
-const OrganizersController = require('../controllers/organizer');
+const createOrganizerController = require('../controllers/createOrganizer');
 
 module.exports = app => {
-  app.get('/api/organizers/:meshId', OrganizersController.fetchMeshOrganizer);
+  app.post('/api/organizers', createOrganizerController);
 };

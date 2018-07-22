@@ -1,6 +1,7 @@
 import {
   CLEAR_STATE,
   SELECT_MESH,
+  POST_LOCATION_TO_STORE,
   FETCH_AUTH_LINKEDIN_USER,
   CREATE_MESH,
   FETCH_MESHES,
@@ -43,6 +44,13 @@ export const selectMesh = meshId => (dispatch, getState) => {
     type: SELECT_MESH,
     payload: selectedMeshProps
   });
+};
+
+export const postLocationToStore = (lng, lat) => {
+  return {
+    type: POST_LOCATION_TO_STORE,
+    payload: { lng, lat }
+  };
 };
 
 //////////////////////////////////////////////////////////////////
@@ -95,10 +103,6 @@ export const exitMeshUser = (meshId, userId) => {
   return { type: EXIT_MESH_USER };
 };
 
-//////////////////////////////////////////////////////////////////
-////////////          ORGANIZER ROUTES             ///////////////
-//////////////////////////////////////////////////////////////////
-
 export const fetchMeshOrganizer = meshId => {
   if (!meshId) {
     return {
@@ -107,9 +111,13 @@ export const fetchMeshOrganizer = meshId => {
     };
   }
 
-  const response = axios.get(`/api/organizers/${meshId}`);
+  const response = axios.get(`/api/meshes/${meshId}/organizer`);
   return {
     type: FETCH_MESH_ORGANIZER,
     payload: response
   };
 };
+
+//////////////////////////////////////////////////////////////////
+////////////          ORGANIZER ROUTES             ///////////////
+//////////////////////////////////////////////////////////////////

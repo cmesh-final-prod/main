@@ -9,7 +9,7 @@ class Navbar extends Component {
     const meshProps = {
       title: 'Near By And Active RealTime',
       coordinates: [-122.4451599, 37.664456099999995],
-      duration: 5,
+      duration: 0.02,
       startDate: new Date(),
       description:
         'Odit sit ab repudiandae dolor necessitatibus ea asperiores a consectetur.',

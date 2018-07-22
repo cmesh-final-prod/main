@@ -10,8 +10,6 @@ import ListItem from 'components/mesh/ListItem';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
-// TODO: Move dev keys and prod keys into separate files
-
 class List extends Component {
   constructor(props) {
     super(props);
@@ -80,7 +78,7 @@ class List extends Component {
     const { meshId } = this.props.match.params;
     return (
       <div>
-        <InnerPanel title={data.title} meshId={meshId} />
+        <InnerPanel title={data.title} meshId={meshId} endDate={data.endDate} />
         <ul className="collection">
           {this.renderOrganizer()}
           {this.renderUsers()}

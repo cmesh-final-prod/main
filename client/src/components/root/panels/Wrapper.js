@@ -16,6 +16,7 @@ class PanelsWrapper extends Component {
           meshId={mesh.meshId}
           title={mesh.title}
           distance={mesh.distance.calculated}
+          endDate={mesh.endDate}
         />
       );
     });

@@ -3,10 +3,13 @@ const { Schema } = mongoose;
 
 // subdocuments
 const LinkedinSchema = require('../schema/Linkedin');
+const TermsSchema = require('../schema/Terms');
 
 const UserSchema = new Schema({
   linkedin: LinkedinSchema,
-  meshes: [{ type: Schema.Types.ObjectId, ref: 'Mesh' }]
+  meshes: [{ type: Schema.Types.ObjectId, ref: 'Mesh' }],
+  createdAt: Number,
+  termsOfUse: [TermsSchema]
 });
 
 const User = mongoose.model('User', UserSchema);

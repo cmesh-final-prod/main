@@ -2,7 +2,7 @@ const mongoose = require('mongoose').set('debug', true);
 const { Schema } = mongoose;
 
 const LinkedinSchema = new Schema({
-  lnId: { type: String, unique: true },
+  lnId: String,
   firstName: String,
   lastName: String,
   emails: [String],
