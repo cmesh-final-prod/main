@@ -6,8 +6,8 @@ import * as actions from 'actions';
 
 export default ChildComponent => {
   class ComposedComponent extends Component {
-    componentDidMount() {
-      this.props.fetchAuthLinkedinUser();
+    async componentDidMount() {
+      await this.props.fetchAuthLinkedinUser();
       const { isAuth, isFetching } = this.props.currentUser;
       if (!isAuth && !isFetching) {
         console.log('Not Auth: ', isAuth, isFetching);
