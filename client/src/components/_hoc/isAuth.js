@@ -15,6 +15,8 @@ export default ChildComponent => {
 
     redirectAsRequired() {
       console.log('isAuth redirectAsRequired');
+      console.log('this.props: ', this.props);
+      this.props.history.push('/signinWithLinkedin');
       const { isAuth, isCompliant, isFetching } = this.props.currentUser;
       if (!isFetching && !isAuth) {
         console.log('pushing to signin 1', isFetching);
