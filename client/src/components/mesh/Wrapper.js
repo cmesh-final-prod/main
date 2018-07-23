@@ -25,4 +25,4 @@ class MeshWrapper extends Component {
   }
 }
 
-export default isMeshSelected(isAuth(MeshWrapper));
+export default isAuth(isMeshSelected(MeshWrapper));
