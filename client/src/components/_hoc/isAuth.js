@@ -6,11 +6,11 @@ import * as actions from 'actions';
 
 export default ChildComponent => {
   class ComposedComponent extends Component {
-    async componentDidMount() {
+    componentDidMount() {
       console.log('isAuth componentDidMount fetchAuth');
-      await this.props.fetchAuthLinkedinUser();
+      this.props.fetchAuthLinkedinUser();
       console.log('isAuth componentDidMount redirectAsRequired');
-      await this.redirectAsRequired();
+      this.redirectAsRequired();
     }
 
     redirectAsRequired() {
