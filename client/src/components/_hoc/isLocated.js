@@ -13,6 +13,8 @@ export default (ChildComponent, action) => {
     constructor(props) {
       super(props);
       this.receivedLocation = this.receivedLocation.bind(this);
+      this.notReceivedLocation = this.notReceivedLocation.bind(this);
+      this.getLocation = this.getLocation.bind(this);
     }
 
     componentWillMount() {
@@ -25,7 +27,8 @@ export default (ChildComponent, action) => {
       };
 
       if (!navigator.geolocation) {
-        return <div>Turn location services on</div>;
+        console.log('navigator.geolcation === false', this.props);
+        this.props.history.push('/locationError');
       } else {
         navigator.geolocation.getCurrentPosition(
           this.receivedLocation,
@@ -43,7 +46,8 @@ export default (ChildComponent, action) => {
     }
 
     notReceivedLocation(positionError) {
-      return <div> No access to location</div>;
+      console.log('navigator.geolcation === true && notReceivedLocation');
+      this.props.history.push('/locationError');
     }
 
     render() {

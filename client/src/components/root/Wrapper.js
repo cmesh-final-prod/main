@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-// import PubNubReact from 'pubnub-react';
-// import keys from 'config/keys';
+import { withRouter } from 'react-router-dom';
 
 // importing components
 import Navbar from 'components/_misc/Navbar';
@@ -15,7 +14,7 @@ import * as actions from 'actions';
 import isLocated from 'components/_hoc/isLocated';
 import withPubNub from 'components/_hoc/withPubNub';
 
-class ComponentsWrapper extends Component {
+class RootWrapper extends Component {
   componentWillMount() {
     this.props.clearState();
   }
@@ -40,4 +39,4 @@ function mapStateToProps({ meshes }) {
 export default connect(
   mapStateToProps,
   actions
-)(isLocated(withPubNub(ComponentsWrapper, 'fetchMeshes'), 'fetchMeshes'));
+)(withRouter(isLocated(withPubNub(RootWrapper, 'fetchMeshes'), 'fetchMeshes')));
