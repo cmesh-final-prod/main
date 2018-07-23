@@ -13,7 +13,7 @@ export const loadState = () => {
 export const saveState = state => {
   try {
     const serializedState = JSON.stringify({
-      auth: state.auth,
+      currentUser: state.currentUser,
       selectedMesh: state.selectedMesh
     });
     sessionStorage.setItem('state', serializedState);

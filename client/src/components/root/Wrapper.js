@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import PubNubReact from 'pubnub-react';
-import keys from 'config/keys';
+// import PubNubReact from 'pubnub-react';
+// import keys from 'config/keys';
 
 // importing components
 import Navbar from 'components/_misc/Navbar';
@@ -11,70 +11,14 @@ import LearnContent from 'components/root/learn/Content';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
-let lng;
-let lat;
+// importing hoc
+import isLocated from 'components/_hoc/isLocated';
+import withPubNub from 'components/_hoc/withPubNub';
 
 class ComponentsWrapper extends Component {
-  constructor(props) {
-    super(props);
-    this.receivedLocation = this.receivedLocation.bind(this);
-    this.pubnub = new PubNubReact({
-      subscribeKey: keys.pubnubSubscribeKey
-    });
-    this.pubnub.init(this);
-
-    // clearing state
+  componentWillMount() {
     this.props.clearState();
   }
-
-  componentWillMount() {
-    this.getLocation();
-    this.props.fetchAuthLinkedinUser();
-    this.pubnub.subscribe({
-      channels: ['fetchMeshes'],
-      withPresence: true
-    });
-    this.pubnub.getMessage('fetchMeshes', () => {
-      this.props.fetchMeshes(lng, lat);
-    });
-  }
-
-  componentWillUnmount() {
-    this.pubnub.unsubscribe({
-      channels: ['fetchMeshes']
-    });
-  }
-
-  // TODO: Move geolocation logic to HOC
-  // TODO: Check geolocation on all protected resources
-
-  getLocation() {
-    const options = {
-      enableHighAccuracy: true
-    };
-
-    if (!navigator.geolocation) {
-      return <div>Turn location services on</div>;
-    } else {
-      navigator.geolocation.getCurrentPosition(
-        this.receivedLocation,
-        this.notReceivedLocation,
-        options
-      );
-    }
-  }
-
-  receivedLocation(position) {
-    lng = position.coords.longitude;
-    lat = position.coords.latitude;
-    this.props.fetchMeshes(lng, lat);
-    this.props.postLocationToStore(lng, lat);
-  }
-
-  notReceivedLocation(positionError) {
-    return <div> No access to location</div>;
-  }
-
   renderContent() {
     return this.props.meshes.isPopulated ? <PanelsWrapper /> : <LearnContent />;
   }
@@ -96,4 +40,4 @@ function mapStateToProps({ meshes }) {
 export default connect(
   mapStateToProps,
   actions
-)(ComponentsWrapper);
+)(isLocated(withPubNub(ComponentsWrapper, 'fetchMeshes'), 'fetchMeshes'));

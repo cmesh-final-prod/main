@@ -3,6 +3,7 @@ import { FETCH_MESHES, POST_LOCATION_TO_STORE } from 'actions/types';
 const initialState = {
   isFetching: false,
   isPopulated: false,
+  isLocated: false,
   data: [],
   location: {},
   error: null
@@ -11,7 +12,7 @@ const initialState = {
 export default (state = initialState, action) => {
   switch (action.type) {
     case POST_LOCATION_TO_STORE:
-      return { ...state, location: action.payload };
+      return { ...state, isLocated: true, location: action.payload };
     case `${FETCH_MESHES}_PENDING`:
       return { ...state, isFetching: true, isPopulated: false };
     case `${FETCH_MESHES}_REJECTED`:

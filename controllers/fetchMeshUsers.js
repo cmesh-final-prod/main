@@ -38,9 +38,9 @@ const fetchMeshUsers = async (req, res, next) => {
     s = {
       $sort: { __order: 1 }
     };
-    const agg = await User.aggregate([m, a, s]);
+    const meshUsers = await User.aggregate([m, a, s]);
 
-    res.send(agg);
+    res.send({ isAuth: true, isCompliant: true, meshUsers });
   } catch (e) {
     next(e);
   }

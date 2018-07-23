@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import PubNubReact from 'pubnub-react';
-import keys from 'config/keys';
 
 // importing components
 import InnerPanel from 'components/mesh/InnerPanel';
@@ -10,34 +8,14 @@ import ListItem from 'components/mesh/ListItem';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
+// importing hoc
+import withPubNub from 'components/_hoc/withPubNub';
+
 class List extends Component {
-  constructor(props) {
-    super(props);
-    this.pubnub = new PubNubReact({
-      subscribeKey: keys.pubnubSubscribeKey
-    });
-    this.pubnub.init(this);
-
+  async componentWillMount() {
     const { meshId } = this.props.match.params;
-    this.props.fetchMeshOrganizer(meshId);
-    this.props.fetchMeshUsers(meshId);
-  }
-
-  componentWillMount() {
-    this.pubnub.subscribe({
-      channels: ['fetchMeshUsers'],
-      withPresence: true
-    });
-    this.pubnub.getMessage('fetchMeshUsers', () => {
-      const { meshId } = this.props.match.params;
-      this.props.fetchMeshUsers(meshId);
-    });
-  }
-
-  componentWillUnmount() {
-    this.pubnub.unsubscribe({
-      channels: ['fetchMeshUsers']
-    });
+    await this.props.fetchMeshOrganizer(meshId);
+    await this.props.fetchMeshUsers(meshId);
   }
 
   renderOrganizer() {
@@ -88,11 +66,11 @@ class List extends Component {
   }
 }
 
-function mapStateToProps({ selectedMesh, auth }) {
-  return { selectedMesh, auth };
+function mapStateToProps({ selectedMesh }) {
+  return { selectedMesh };
 }
 
 export default connect(
   mapStateToProps,
   actions
-)(List);
+)(withPubNub(List, 'fetchMeshUsers'));

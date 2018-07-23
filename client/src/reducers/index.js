@@ -1,12 +1,12 @@
 import { combineReducers } from 'redux';
 
 // importing reducers
-import authReducer from 'reducers/auth';
+import currentUserReducer from 'reducers/currentUser';
 import meshesReducer from 'reducers/meshes';
 import selectedMeshReducer from 'reducers/selectedMesh';
 
 export default combineReducers({
-  auth: authReducer,
+  currentUser: currentUserReducer,
   meshes: meshesReducer,
   selectedMesh: selectedMeshReducer
 });

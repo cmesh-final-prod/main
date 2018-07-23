@@ -8,19 +8,7 @@ import * as actions from 'actions';
 // importing components
 import TimeLeft from 'components/_misc/TimeLeft';
 
-// TODO: Move Auth to higher order component
-// TODO: Make protected routes self redirect to sign in w/ linkedin
-
 class MeshPanel extends Component {
-  renderLink() {
-    switch (this.props.auth.status) {
-      case false:
-        return '/signinWithLinkedin';
-      default:
-        return `/mesh/${this.props.meshId}`;
-    }
-  }
-
   handleClick() {
     this.props.selectMesh(this.props.meshId);
   }
@@ -41,7 +29,7 @@ class MeshPanel extends Component {
           </div>
 
           <Link
-            to={this.renderLink()}
+            to="/mesh"
             onClick={() => this.handleClick()}
             className="btn btn-large btn-join light-blue"
           >
@@ -61,8 +49,8 @@ class MeshPanel extends Component {
   }
 }
 
-function mapStateToProps({ auth, meshes }) {
-  return { auth, meshes };
+function mapStateToProps({ meshes }) {
+  return { meshes };
 }
 
 export default connect(

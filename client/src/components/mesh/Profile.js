@@ -7,7 +7,8 @@ import * as actions from 'actions';
 
 class Profile extends Component {
   renderUserContent() {
-    if (this.props.auth.status) {
+    const { isAuth, isCompliant } = this.props.currentUser;
+    if (isAuth && isCompliant) {
       const {
         lnId,
         firstName,
@@ -15,7 +16,7 @@ class Profile extends Component {
         url,
         photos,
         headline
-      } = this.props.auth.data.linkedin;
+      } = this.props.currentUser.data.linkedin;
 
       return (
         <li key={lnId} className="collection-item avatar">
@@ -34,7 +35,7 @@ class Profile extends Component {
 
   handleClick() {
     const { meshId } = this.props.match.params;
-    const userId = this.props.auth.data._id;
+    const userId = this.props.currentUser.data._id;
     this.props.addMeshUser(meshId, userId);
   }
 
@@ -59,8 +60,8 @@ class Profile extends Component {
   }
 }
 
-function mapStateToProps({ auth, selectedMesh }) {
-  return { auth, selectedMesh };
+function mapStateToProps({ currentUser }) {
+  return { currentUser };
 }
 
 export default connect(

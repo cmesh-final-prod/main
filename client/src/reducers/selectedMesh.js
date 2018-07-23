@@ -6,6 +6,8 @@ import {
 } from 'actions/types';
 
 const initialState = {
+  isAuth: false,
+  isCompliant: false,
   isFetching: false,
   isFetched: false,
   isPopulated: false,
@@ -14,6 +16,9 @@ const initialState = {
   organizer: {},
   error: null
 };
+
+let isAuth;
+let isCompliant;
 
 export default (state = initialState, action) => {
   switch (action.type) {
@@ -42,12 +47,23 @@ export default (state = initialState, action) => {
         error: action.payload
       };
     case `${FETCH_MESH_USERS}_FULFILLED`:
-      if (state.isFetched) {
+      isAuth = action.payload.data.isAuth;
+      isCompliant = action.payload.data.isCompliant;
+      if (isAuth && isCompliant && state.isFetched) {
         return {
           ...state,
+          isAuth,
+          isCompliant,
           isFetching: false,
           isPopulated: true,
-          users: action.payload.data
+          users: action.payload.data.meshUsers
+        };
+      } else if (isAuth && !isCompliant && state.isFetched) {
+        return {
+          ...state,
+          isAuth,
+          isCompliant,
+          isFetching: false
         };
       } else {
         return state;
@@ -61,12 +77,24 @@ export default (state = initialState, action) => {
         error: action.payload
       };
     case `${FETCH_MESH_ORGANIZER}_FULFILLED`:
-      if (state.isFetched) {
+      isAuth = action.payload.data.isAuth;
+      isCompliant = action.payload.data.isCompliant;
+
+      if (isAuth && isCompliant && state.isFetched) {
         return {
           ...state,
+          isAuth,
+          isCompliant,
           isFetching: false,
           isPopulated: true,
-          organizer: action.payload.data
+          organizer: action.payload.data.meshOrganizer
+        };
+      } else if (isAuth && !isCompliant && state.isFetched) {
+        return {
+          ...state,
+          isAuth,
+          isCompliant,
+          isFetching: false
         };
       } else {
         return state;

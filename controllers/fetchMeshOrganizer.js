@@ -11,7 +11,7 @@ const fetchMeshOrganizer = async (req, res, next) => {
       }
     );
 
-    const organizerInfo = await Organizer.findOne(
+    const meshOrganizer = await Organizer.findOne(
       { _id: mesh.organizer },
       {
         'linkedin.firstName': 'true',
@@ -22,7 +22,7 @@ const fetchMeshOrganizer = async (req, res, next) => {
       }
     );
 
-    res.send(organizerInfo);
+    res.send({ isAuth: true, isCompliant: true, meshOrganizer });
   } catch (e) {
     next(e);
   }
