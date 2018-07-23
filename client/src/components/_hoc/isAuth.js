@@ -7,11 +7,14 @@ import * as actions from 'actions';
 export default ChildComponent => {
   class ComposedComponent extends Component {
     async componentDidMount() {
+      console.log('isAuth componentDidMount fetchAuth');
       await this.props.fetchAuthLinkedinUser();
+      console.log('isAuth componentDidMount redirectAsRequired');
       await this.redirectAsRequired();
     }
 
     redirectAsRequired() {
+      console.log('isAuth redirectAsRequired');
       const { isAuth, isCompliant, isFetching } = this.props.currentUser;
       if (!isFetching && !isAuth) {
         console.log('pushing to signin 1', isFetching);
