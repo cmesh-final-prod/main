@@ -8,19 +8,19 @@ export default ChildComponent => {
   class ComposedComponent extends Component {
     componentDidMount() {
       this.props.fetchAuthLinkedinUser();
-      const { isAuth } = this.props.currentUser;
-      if (!isAuth) {
+      const { isAuth, isFetching } = this.props.currentUser;
+      if (!isAuth && !isFetching) {
         console.log('Not Auth', isAuth);
         this.redirectAsRequired();
       }
     }
 
     redirectAsRequired() {
-      const { isCompliant, isFetching, isAuth } = this.props.currentUser;
-      if (!isFetching && !isAuth) {
+      const { isCompliant, isAuth } = this.props.currentUser;
+      if (!isAuth) {
         console.log('pushing to signin 1', isFetching);
         this.props.history.push('/signinWithLinkedin');
-      } else if (!isFetching && isAuth && !isCompliant) {
+      } else if (!isCompliant) {
         console.log('pushing to signin 2');
         this.props.history.push('/signinWithLinkedin');
       }
