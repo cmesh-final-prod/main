@@ -10,7 +10,7 @@ export default ChildComponent => {
       this.props.fetchAuthLinkedinUser();
       const { isAuth, isFetching } = this.props.currentUser;
       if (!isAuth && !isFetching) {
-        console.log('Not Auth', isAuth, isFetching);
+        console.log('Not Auth: ', isAuth, isFetching);
         this.redirectAsRequired();
       }
     }
