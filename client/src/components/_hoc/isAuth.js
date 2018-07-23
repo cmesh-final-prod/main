@@ -11,10 +11,6 @@ export default ChildComponent => {
       this.redirectAsRequired();
     }
 
-    componentDidUpdate() {
-      this.redirectAsRequired();
-    }
-
     redirectAsRequired() {
       const { isAuth, isCompliant, isFetching } = this.props.currentUser;
       if (!isFetching && !isAuth) {
