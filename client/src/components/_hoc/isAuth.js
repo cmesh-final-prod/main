@@ -8,7 +8,7 @@ export default ChildComponent => {
   class ComposedComponent extends Component {
     async componentDidMount() {
       await this.props.fetchAuthLinkedinUser();
-      this.redirectAsRequired();
+      await this.redirectAsRequired();
     }
 
     redirectAsRequired() {
