@@ -7,12 +7,12 @@ import * as actions from 'actions';
 export default ChildComponent => {
   class ComposedComponent extends Component {
     componentDidMount() {
-      this.props.fetchAuthLinkedinUser().then(() => {
-        const { isAuth } = this.props.currentUser;
-        if (!isAuth) {
-          this.redirectAsRequired();
-        }
-      });
+      this.props.fetchAuthLinkedinUser();
+      const { isAuth } = this.props.currentUser;
+      if (!isAuth) {
+        console.log('Not Auth', isAuth);
+        this.redirectAsRequired();
+      }
     }
 
     redirectAsRequired() {
