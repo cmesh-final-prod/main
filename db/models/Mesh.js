@@ -8,8 +8,8 @@ const EventDetailsSchema = require('../schema/EventDetailsSchema');
 
 const MeshSchema = new Schema({
   eventDetails: EventDetailsSchema,
-  startDate: Date,
-  endDate: Date,
+  startDate: Number,
+  endDate: Number,
   users: [MeshUserSchema],
   duration: Number,
   source: String,

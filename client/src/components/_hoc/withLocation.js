@@ -4,11 +4,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
-// TODO: Fix navigation when location services are not available
-
 let lng;
 let lat;
-export default (ChildComponent, action) => {
+export default (ChildComponent, isNotSupported, isLocated, isNotLocated) => {
   class ComposedComponent extends Component {
     constructor(props) {
       super(props);
@@ -28,7 +26,7 @@ export default (ChildComponent, action) => {
 
       if (!navigator.geolocation) {
         console.log('navigator.geolcation === false', this.props);
-        this.props.history.push('/locationError');
+        isNotSupported(this.props);
       } else {
         navigator.geolocation.getCurrentPosition(
           this.receivedLocation,
@@ -41,13 +39,13 @@ export default (ChildComponent, action) => {
     receivedLocation(position) {
       lng = position.coords.longitude;
       lat = position.coords.latitude;
-      this.props.postLocationToStore(lng, lat);
-      this.props[action](lng, lat);
+
+      isLocated(this.props, lng, lat);
     }
 
     notReceivedLocation(positionError) {
       console.log('navigator.geolcation === true && notReceivedLocation');
-      this.props.history.push('/locationError');
+      isNotLocated(this.props);
     }
 
     render() {

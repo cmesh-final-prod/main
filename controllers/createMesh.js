@@ -22,7 +22,9 @@ const createMesh = async (req, res, next) => {
     const startDate_utc = dateParser.utc(startDate);
     const endDate_utc = dateParser.addHours(startDate_utc, duration);
     const startDate_utc_pre = dateParser.subtractHours(startDate_utc, 1);
-    // const endDate_utc_post = dateParser.addHours(endDate_utc, 1);
+
+    const startDate_milli = dateParser.milli(startDate);
+    const endDate_milli = dateParser.milli(endDate_utc);
     const createdAt = new Date().getTime();
 
     // organizer
@@ -36,8 +38,8 @@ const createMesh = async (req, res, next) => {
         startDate: startDate_utc,
         endDate: endDate_utc
       },
-      startDate: startDate_utc_pre,
-      endDate: endDate_utc,
+      startDate: startDate_milli,
+      endDate: endDate_milli,
       duration,
       source,
       geometry: {

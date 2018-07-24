@@ -70,7 +70,20 @@ function mapStateToProps({ selectedMesh }) {
   return { selectedMesh };
 }
 
+//////////////////////////////////////////
+//////      withPubNub Props     /////////
+//////////////////////////////////////////
+
+const channel = 'fetchMeshUsers';
+const callback = ownProps => {
+  ownProps.fetchMeshUsers(ownProps.match.params.meshId);
+};
+
+//////////////////////////////////////////
+//////     ------ End -------    /////////
+//////////////////////////////////////////
+
 export default connect(
   mapStateToProps,
   actions
-)(withPubNub(List, 'fetchMeshUsers'));
+)(withPubNub(List, channel, callback));

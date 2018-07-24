@@ -1,6 +1,10 @@
 const moment = require('moment');
 
 module.exports = {
+  milli(date) {
+    return new Date(date).getTime();
+  },
+
   utc(date) {
     return moment(date)
       .utc()

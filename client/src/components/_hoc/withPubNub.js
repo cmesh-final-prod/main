@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PubNubReact from 'pubnub-react';
 import keys from 'config/keys';
 
-export default (ChildComponent, action) => {
+export default (ChildComponent, channel, callback) => {
   class ComposedComponent extends Component {
     constructor(props) {
       super(props);
@@ -14,22 +14,17 @@ export default (ChildComponent, action) => {
 
     componentWillMount() {
       this.pubnub.subscribe({
-        channels: [action],
+        channels: [channel],
         withPresence: true
       });
-      this.pubnub.getMessage(action, () => {
-        if (action === 'fetchMeshes') {
-          this.props.fetchMeshes(this.props.lng, this.props.lat);
-        } else if (action === 'fetchMeshUsers') {
-          const { meshId } = this.props.match.params;
-          this.props.fetchMeshUsers(meshId);
-        }
+      this.pubnub.getMessage(channel, () => {
+        callback(this.props);
       });
     }
 
     componentWillUnmount() {
       this.pubnub.unsubscribe({
-        channels: [action]
+        channels: [channel]
       });
     }
 

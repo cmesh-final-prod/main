@@ -8,8 +8,8 @@ import List from 'components/mesh/List';
 import Expired from 'components/mesh/Expired';
 
 // importing hoc
-import isAuth from 'components/_hoc/isAuth';
-import isMeshSelected from 'components/_hoc/isMeshSelected';
+import withAuth from 'components/_hoc/withAuth';
+import withSelection from 'components/_hoc/withSelection';
 
 class MeshWrapper extends Component {
   render() {
@@ -25,4 +25,4 @@ class MeshWrapper extends Component {
   }
 }
 
-export default isAuth(isMeshSelected(MeshWrapper));
+export default withAuth(withSelection(MeshWrapper));

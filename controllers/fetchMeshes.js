@@ -5,10 +5,15 @@ const pubnub = require('../utils/pubnub');
 const fetchMeshes = async (req, res, next) => {
   try {
     const { lng, lat } = req.query;
+    const now_milli = new Date().getTime();
 
-    const nearByMeshes = await Mesh.aggregate([
+    const nearByAndActiveMeshes = await Mesh.aggregate([
       {
         $geoNear: {
+          query: {
+            startDate: { $lt: now_milli },
+            endDate: { $gt: now_milli }
+          },
           near: {
             type: 'Point',
             coordinates: [parseFloat(lng), parseFloat(lat)]
@@ -23,27 +28,19 @@ const fetchMeshes = async (req, res, next) => {
       }
     ]);
 
-    if (nearByMeshes.length > 0) {
-      const nearByAndActiveMeshes = await nearByMeshes.filter(mesh => {
-        return dateParser.isBetween(mesh.startDate, mesh.endDate);
+    if (nearByAndActiveMeshes.length > 0) {
+      const publicInfo = await nearByAndActiveMeshes.map(mesh => {
+        return {
+          meshId: mesh._id,
+          title: mesh.eventDetails.title,
+          numberOfAttendees: mesh.users.length,
+          distance: mesh.dist,
+          endDate: mesh.endDate,
+          createdAt: mesh.createdAt
+        };
       });
 
-      if (nearByAndActiveMeshes.length > 0) {
-        const publicInfo = await nearByAndActiveMeshes.map(mesh => {
-          return {
-            meshId: mesh._id,
-            title: mesh.eventDetails.title,
-            numberOfAttendees: mesh.users.length,
-            distance: mesh.dist,
-            endDate: mesh.endDate,
-            createdAt: mesh.createdAt
-          };
-        });
-
-        res.send({ isFound: true, publicInfo });
-      } else {
-        res.send({ isFound: false });
-      }
+      res.send({ isFound: true, publicInfo });
     } else {
       res.send({ isFound: false });
     }
