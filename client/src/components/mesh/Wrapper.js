@@ -11,6 +11,10 @@ import Expired from 'components/mesh/Expired';
 import withAuth from 'components/_hoc/withAuth';
 import withSelection from 'components/_hoc/withSelection';
 
+// TODO: Check if user is still at the event location-- stillAtLocation
+// May be create a watch geolocation tag?
+// May be create a separate route to confirm if the user's location is within 200 of the selected mesh
+
 class MeshWrapper extends Component {
   render() {
     const { match } = this.props;

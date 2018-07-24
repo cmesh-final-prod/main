@@ -10,9 +10,9 @@ class ListItem extends Component {
         <p>
           {this.props.headline}
           <br />
-          <Link to={this.props.profileLink} className="btn light-blue">
+          <a href={this.props.profileLink} className="btn light-blue">
             View Profile
-          </Link>
+          </a>
         </p>
       </li>
     );
