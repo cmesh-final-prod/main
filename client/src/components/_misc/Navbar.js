@@ -28,11 +28,21 @@ class Navbar extends Component {
           <div className="nav-wrapper nav-gradient">
             <div className="row">
               <div className="container">
-                <div className="brand-logo">
+                <div className="brand-logo white-text text-darken-2">
                   <span className="logo">
                     circle<b>mesh</b>
                   </span>
                 </div>
+                <ul className="right">
+                  <li>
+                    <button
+                      className="btn-flat btn-small transparent"
+                      onClick={() => this.createMeshProps()}
+                    >
+                      create
+                    </button>
+                  </li>
+                </ul>
               </div>
             </div>
           </div>
