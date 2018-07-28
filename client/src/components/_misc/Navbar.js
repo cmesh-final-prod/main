@@ -9,7 +9,7 @@ class Navbar extends Component {
     const meshProps = {
       title: 'Near By And Active RealTime',
       coordinates: [-122.44577670000001, 37.6639105],
-      duration: 0.02,
+      duration: 1,
       startDate: new Date(),
       description:
         'Odit sit ab repudiandae dolor necessitatibus ea asperiores a consectetur.',
@@ -23,27 +23,21 @@ class Navbar extends Component {
 
   render() {
     return (
-      <nav className="white">
-        <div className="nav-wrapper">
-          <div className="row">
-            <div className="container">
-              <div className="brand-logo grey-text text-darken-2">
-                circle<b>mesh</b>
+      <div className="navbar-fixed">
+        <nav className="white">
+          <div className="nav-wrapper nav-gradient">
+            <div className="row">
+              <div className="container">
+                <div className="brand-logo">
+                  <span className="logo">
+                    circle<b>mesh</b>
+                  </span>
+                </div>
               </div>
-              <ul className="right">
-                <li>
-                  <button
-                    className="btn"
-                    onClick={() => this.createMeshProps()}
-                  >
-                    create
-                  </button>
-                </li>
-              </ul>
             </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+      </div>
     );
   }
 }

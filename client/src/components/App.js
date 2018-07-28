@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { isMobile, isTablet } from 'react-device-detect';
+import 'css/app.css';
 
 // importing wrapper components
 import RootWrapper from 'components/root/Wrapper';

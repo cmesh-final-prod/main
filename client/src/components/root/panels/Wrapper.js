@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import 'css/panels.css';
 
 // importing components
 import Panel from 'components/root/panels/Panel';

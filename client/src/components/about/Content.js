@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-// importing css
-import 'css/about.css';
-
 class AboutContent extends Component {
   render() {
     return (

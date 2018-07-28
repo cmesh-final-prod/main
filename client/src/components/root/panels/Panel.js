@@ -18,31 +18,56 @@ class MeshPanel extends Component {
     this.props.fetchMeshes(lng, lat);
   };
 
-  render() {
-    const distance = Math.round(this.props.distance * 10000) / 10000;
-
+  renderPanelHeader() {
     return (
-      <div className="card mesh-panel grey darken-2 z-depth-5">
-        <div className="card-content center">
-          <div className="container">
-            <h5 className="white-text">{this.props.title}</h5>
-          </div>
-
-          <Link
-            to="/mesh"
-            onClick={() => this.handleClick()}
-            className="btn btn-large btn-join light-blue"
-          >
-            Join The Room
-          </Link>
-          <br />
-          <h2 className="white-text">{distance}</h2>
-          <br />
+      <div className="m-header">
+        <p className="m-title white-text flow-text left-align">
+          {this.props.title}
+        </p>
+        <div className="m-label grey lighten-4">
+          <p className="grey-text text-darken-1">demo</p>
+        </div>
+        <div className="m-timer ">
           <TimeLeft
-            className="white-text"
+            className="white-text center-align"
             endDate={this.props.endDate}
             onMeshExpiry={() => this.refreshMeshes()}
           />
+        </div>
+      </div>
+    );
+  }
+
+  renderPanelBody() {
+    const distance = Math.round(this.props.distance * 10000) / 10000;
+    return (
+      <div className="m-body center">
+        <h2 className="white-text">{distance}</h2>
+      </div>
+    );
+  }
+
+  renderJoinButton() {
+    return (
+      <div className="center">
+        <Link
+          to="/mesh"
+          onClick={() => this.handleClick()}
+          className="btn-join btn-large waves-effect white-text light-blue"
+        >
+          <p className="flow-text">JOIN THE ROOM</p>
+        </Link>
+      </div>
+    );
+  }
+
+  render() {
+    return (
+      <div className="card m-panel grey darken-2 z-depth-5 m-gradient">
+        <div className="card-content">
+          {this.renderPanelHeader()}
+          {this.renderPanelBody()}
+          {this.renderJoinButton()}
         </div>
       </div>
     );

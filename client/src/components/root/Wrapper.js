@@ -49,7 +49,8 @@ const isLocated = (ownProps, lng, lat) => {
 };
 
 const isNotLocated = ownProps => {
-  ownProps.history.push('/locationError');
+  // TODO: TEMP code, undo comment
+  // ownProps.history.push('/locationError');
 };
 
 //////////////////////////////////////////
