@@ -6,31 +6,72 @@ import { connect } from 'react-redux';
 import * as actions from 'actions';
 
 class Profile extends Component {
+  renderTitle() {
+    return (
+      <div className="valign-wrapper">
+        <div className="edit-header">
+          <h5 className="center text-color-1 responsive edit-title">
+            EDIT YOUR PROFILE
+          </h5>
+        </div>
+      </div>
+    );
+  }
+
   renderUserContent() {
     const { isAuth, isCompliant } = this.props.currentUser;
     if (isAuth && isCompliant) {
       const {
-        lnId,
         firstName,
         lastName,
-        url,
         photos,
         headline
       } = this.props.currentUser.data.linkedin;
 
       return (
-        <li key={lnId} className="collection-item avatar">
-          <img src={photos[0]} alt="" className="circle" />
-          <span className="title">
-            {firstName} {lastName}
-          </span>
-          <p>{headline}</p>
-          <a href={url}>View Profile</a>
-        </li>
+        <div className="text-color-1 edit-content">
+          <div className="">
+            <p>
+              <img src={photos[0]} alt="" className="circle" />
+              <br />
+              <span className="responsive edit-name">
+                {`${firstName} ${lastName.substring(0, 1)}.`}
+              </span>
+              <br />
+              <span className="edit-headline">
+                {'Product At Circlemesh'}{' '}
+                <i className="tiny material-icons">edit</i>
+              </span>
+            </p>
+          </div>
+        </div>
       );
     }
+  }
 
-    return <div>Loading...</div>;
+  renderQuestions() {
+    return (
+      <div className="grey lighten-4 text-color-1 edit-questions">
+        <div className="row left-align">
+          <p>Are you hiring?</p>
+        </div>
+        <div className="row left-align">
+          <p>Are you looking for opportunities?</p>
+        </div>
+      </div>
+    );
+  }
+
+  renderButton() {
+    return (
+      <Link
+        to={`${this.props.match.url}/list`}
+        className="btn waves-effect color-1 center btn-letsGo"
+        onClick={() => this.handleClick()}
+      >
+        I'm good, let's go!
+      </Link>
+    );
   }
 
   handleClick() {
@@ -42,18 +83,11 @@ class Profile extends Component {
   render() {
     return (
       <div>
-        <div className="container">
-          <h3 className="center">How you appear</h3>
-
-          <ul className="collection">{this.renderUserContent()}</ul>
-
-          <Link
-            to={`${this.props.match.url}/list`}
-            className="btn light-blue center"
-            onClick={() => this.handleClick()}
-          >
-            Got it
-          </Link>
+        <div className="container center">
+          {this.renderTitle()}
+          {this.renderUserContent()}
+          {this.renderQuestions()}
+          {this.renderButton()}
         </div>
       </div>
     );
