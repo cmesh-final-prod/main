@@ -16,7 +16,7 @@ class Navbar extends Component {
     const { lng, lat } = this.props.meshes.location;
 
     const meshProps = {
-      title: 'Near By And Active RealTime',
+      title: 'This is a test event',
       coordinates: [lng, lat],
       duration: 1,
       startDate: new Date(),
