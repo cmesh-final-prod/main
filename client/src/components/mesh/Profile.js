@@ -29,7 +29,7 @@ class Profile extends Component {
       } = this.props.currentUser.data.linkedin;
 
       return (
-        <div className="text-color-1 edit-content">
+        <div className="text-color-1">
           <div className="">
             <p>
               <img src={photos[0]} alt="" className="circle" />
@@ -39,8 +39,7 @@ class Profile extends Component {
               </span>
               <br />
               <span className="edit-headline">
-                {'Product At Circlemesh'}{' '}
-                <i className="tiny material-icons">edit</i>
+                {headline} <i className="tiny material-icons">edit</i>
               </span>
             </p>
           </div>
@@ -50,14 +49,34 @@ class Profile extends Component {
   }
 
   renderQuestions() {
+    const QUESTIONS = [
+      { id: 1, text: 'Are you hiring?' },
+      { id: 2, text: 'Are you looking for opportunities?' }
+    ];
+
+    const questions = () => {
+      return QUESTIONS.map(question => {
+        return (
+          <div key={question.id} className="row">
+            <div className="col s8">
+              <p>{question.text}</p>
+            </div>
+            <div className="col s4">
+              <div className="switch">
+                <label>
+                  <input type="checkbox" />
+                  <span className="lever" />
+                </label>
+              </div>
+            </div>
+          </div>
+        );
+      });
+    };
+
     return (
       <div className="grey lighten-4 text-color-1 edit-questions">
-        <div className="row left-align">
-          <p>Are you hiring?</p>
-        </div>
-        <div className="row left-align">
-          <p>Are you looking for opportunities?</p>
-        </div>
+        <div className="row">{questions()}</div>
       </div>
     );
   }
@@ -85,8 +104,10 @@ class Profile extends Component {
       <div>
         <div className="container center">
           {this.renderTitle()}
-          {this.renderUserContent()}
-          {this.renderQuestions()}
+          <div className="edit-content">
+            {this.renderUserContent()}
+            {this.renderQuestions()}
+          </div>
           {this.renderButton()}
         </div>
       </div>

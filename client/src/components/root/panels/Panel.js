@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import * as actions from 'actions';
 
 // importing components
-import TimeLeft from 'components/_misc/TimeLeft';
+import PanelHeader from 'components/_misc/PanelHeader';
 
 class MeshPanel extends Component {
   handleClick() {
@@ -19,22 +19,15 @@ class MeshPanel extends Component {
   };
 
   renderPanelHeader() {
+    const { lng, lat } = this.props.meshes.location;
     return (
-      <div className="m-header">
-        <p className="m-title white-text flow-text left-align">
-          {this.props.title}
-        </p>
-        <div className="m-label grey lighten-4">
-          <p className="grey-text text-darken-1">demo</p>
-        </div>
-        <div className="m-timer ">
-          <TimeLeft
-            className="white-text center-align"
-            endDate={this.props.endDate}
-            onMeshExpiry={() => this.refreshMeshes()}
-          />
-        </div>
-      </div>
+      <PanelHeader
+        title={this.props.title}
+        color="white-text"
+        endDate={this.props.endDate}
+        organizer="demo"
+        onExpiry={() => this.props.fetchMeshes(lng, lat)}
+      />
     );
   }
 
