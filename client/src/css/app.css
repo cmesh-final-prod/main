@@ -182,11 +182,10 @@
   height: 0px;
 }
 
-.collection {
-  padding-top: 5px;
-  border-top: 0px;
-  border-bottom: 0px;
+.m-list {
+  padding-top: 1px;
 }
+
 .m-listItem {
   border-bottom: 1px solid #edebeb;
   padding-bottom: 10px;

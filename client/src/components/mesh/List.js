@@ -87,7 +87,7 @@ class List extends Component {
           <div className="m-ghost" />
           {this.renderFeedback()}
           <div className="m-list">
-            <ul className="collection">
+            <ul className="">
               {this.renderOrganizer()}
               {this.renderUsers()}
             </ul>

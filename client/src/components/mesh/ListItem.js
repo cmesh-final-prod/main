@@ -26,7 +26,9 @@ class ListItem extends Component {
                 </p>
               </div>
               <div className="col s2 m-bookmark">
-                <i className="material-icons text-color-1">bookmark_border</i>
+                <i className="material-icons text-color-1 small">
+                  bookmark_border
+                </i>
               </div>
             </div>
             <div className="row m-labels">

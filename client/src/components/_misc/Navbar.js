@@ -13,9 +13,11 @@ class Navbar extends Component {
   }
 
   createMeshProps() {
+    const { lng, lat } = this.props.meshes.location;
+
     const meshProps = {
       title: 'Near By And Active RealTime',
-      coordinates: [-122.44577670000001, 37.6639105],
+      coordinates: [lng, lat],
       duration: 1,
       startDate: new Date(),
       description:
@@ -92,7 +94,11 @@ class Navbar extends Component {
   }
 }
 
+function mapStateToProps({ meshes }) {
+  return { meshes };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(Navbar);
