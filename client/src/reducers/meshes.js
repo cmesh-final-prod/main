@@ -1,7 +1,7 @@
 import { FETCH_MESHES, POST_LOCATION_TO_STORE } from 'actions/types';
 
 const initialState = {
-  isFetching: false,
+  isFetching: true,
   isPopulated: false,
   isLocated: false,
   data: [],

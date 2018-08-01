@@ -1,5 +1,24 @@
-.section-landing {
-  height: 50vh;
+.spinner-m {
+  position: absolute;
+  top: 35vh;
+  left: 25vw;
+  width: 50vw;
+}
+
+.spinner-m .icon {
+  position: relative;
+  left: 10vw;
+  width: 30vw;
+  height: 30vw;
+}
+
+.spinner-m span {
+  font-size: 4em;
+  line-height: 30vw;
+}
+
+.section-root {
+  min-height: 90vh;
 }
 
 .section-about {
@@ -16,12 +35,43 @@
   background-image: linear-gradient(-180deg, #e3e3e3 0%, #ffffff 100%);
 }
 
+.sidenav-list {
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.btn-create {
+  margin-top: 100px;
+}
+
 .color-1 {
   background-color: #6e7985;
 }
 
 .text-color-1 {
   color: #6e7985;
+}
+
+.motto {
+  font-size: 2.4em;
+  font-stretch: expanded;
+  font-weight: bold;
+  margin-top: 5vh;
+  padding-top: 2vh;
+  padding-bottom: 10vh;
+}
+
+.motto span {
+  letter-spacing: 0.21em;
+  font-size: 1.1em;
+}
+
+.btn-demo {
+  height: 8vh;
+  width: 60vw;
+  line-height: 8vh;
+  font-size: 1.4em;
+  border-radius: 30px;
 }
 
 .edit-header {
@@ -55,6 +105,7 @@
   border-radius: 10px;
   font-weight: bold;
   font-size: 100%;
+  background-color: #6e7985;
 }
 
 .edit-questions .switch {
@@ -83,6 +134,7 @@
 
 .m-gradient {
   background-image: linear-gradient(134deg, #6f8ebd 54%, #a07ccb 100%);
+  /* background-image: linear-gradient(134deg, #222222 54%, #333333 100%); */
 }
 
 .m-shadow {
@@ -99,19 +151,22 @@
 
 .m-title {
   position: absolute;
-  font-size: 1.8em;
+  font-size: 1.7em;
+  font-weight: lighter;
   left: 10%;
   top: 10%;
   right: 10%;
+}
+
+.m-title-text {
+  overflow: scroll;
+  max-height: 2.4em;
   line-height: 1.2em;
+  text-overflow: ellipsis;
 }
 
 .m-label {
-  position: absolute;
-  top: 65%;
-  left: 10%;
-  font-size: 1em;
-  height: 20%;
+  font-size: 0.5em;
   border-radius: 10px;
   padding: 2px 10px 2px 10px;
 }
@@ -156,10 +211,10 @@
 }
 
 .m-main {
-  left: 5vw;
+  left: 2vw;
   margin-top: 5vh;
-  min-height: 70vh;
-  width: 90vw;
+  min-height: 80vh;
+  width: 96vw;
   min-width: 200px;
   border-radius: 30px;
   padding: 10px 0px 10px 0px;
@@ -168,7 +223,8 @@
 .m-main .m-header {
   position: absolute;
   top: 0%;
-  height: 120px;
+  font-size: 116%;
+  height: 130px;
   width: 100%;
   border-bottom: 1px solid #edebeb;
 }
@@ -178,7 +234,7 @@
 }
 
 .m-ghost {
-  margin-top: 112px;
+  margin-top: 125px;
   height: 0px;
 }
 
@@ -203,7 +259,9 @@
 }
 
 .m-avatar img {
-  width: 100%;
+  position: relative;
+  left: 10%;
+  width: 80%;
   max-width: 150px;
 }
 
@@ -225,10 +283,11 @@
   border-radius: 30px;
   border: 1px solid #edebeb;
   padding-left: 5px;
+  padding-right: 5px;
 }
 
 .m-view img {
   position: relative;
-  top: 5px;
-  height: 20px;
+  top: 3px;
+  height: 16px;
 }

@@ -24,11 +24,9 @@ class PanelsWrapper extends Component {
   render() {
     return (
       <div>
-        <section className="section section-landing grey lighten-5">
-          <div className="valign-wrapper">
-            <div className="row">{this.renderActiveMeshes()}</div>
-          </div>
-        </section>
+        <div className="valign-wrapper">
+          <div className="row">{this.renderActiveMeshes()}</div>
+        </div>
       </div>
     );
   }

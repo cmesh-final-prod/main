@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 
 // importing components
-import Navbar from 'components/_misc/Navbar';
+import NavbarWrapper from 'components/_misc/navbar/Wrapper';
 
 class SigninWithLinkedin extends Component {
   render() {
     return (
       <div>
-        <Navbar />
+        <NavbarWrapper />
         <section className="section center">
           <a href="/auth/linkedin" className="btn btn-large light-blue">
             Signin With Linkedin

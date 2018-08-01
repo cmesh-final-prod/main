@@ -5,7 +5,11 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import * as actions from 'actions';
 
-class Profile extends Component {
+// importing components
+import UserInfo from 'components/mesh/HowYouAppear/UserInfo';
+import Questions from 'components/mesh/HowYouAppear/Questions';
+
+class HowYouAppearWrapper extends Component {
   renderTitle() {
     return (
       <div className="valign-wrapper">
@@ -29,56 +33,18 @@ class Profile extends Component {
       } = this.props.currentUser.data.linkedin;
 
       return (
-        <div className="text-color-1">
-          <div className="">
-            <p>
-              <img src={photos[0]} alt="" className="circle" />
-              <br />
-              <span className="responsive edit-name">
-                {`${firstName} ${lastName.substring(0, 1)}.`}
-              </span>
-              <br />
-              <span className="edit-headline">
-                {headline} <i className="tiny material-icons">edit</i>
-              </span>
-            </p>
-          </div>
-        </div>
+        <UserInfo
+          firstName={firstName}
+          lastName={lastName}
+          photos={photos}
+          headline={headline}
+        />
       );
     }
   }
 
   renderQuestions() {
-    const QUESTIONS = [
-      { id: 1, text: 'Are you hiring?' },
-      { id: 2, text: 'Are you looking for opportunities?' }
-    ];
-
-    const questions = () => {
-      return QUESTIONS.map(question => {
-        return (
-          <div key={question.id} className="row">
-            <div className="col s8">
-              <p>{question.text}</p>
-            </div>
-            <div className="col s4">
-              <div className="switch">
-                <label>
-                  <input type="checkbox" />
-                  <span className="lever" />
-                </label>
-              </div>
-            </div>
-          </div>
-        );
-      });
-    };
-
-    return (
-      <div className="grey lighten-4 text-color-1 edit-questions">
-        <div className="row">{questions()}</div>
-      </div>
-    );
+    return <Questions />;
   }
 
   renderButton() {
@@ -122,4 +88,4 @@ function mapStateToProps({ currentUser }) {
 export default connect(
   mapStateToProps,
   actions
-)(Profile);
+)(HowYouAppearWrapper);

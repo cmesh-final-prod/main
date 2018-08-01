@@ -81,7 +81,7 @@ class List extends Component {
 
   render() {
     return (
-      <div className="card m-main z-depth-5">
+      <div className="card m-main z-depth-1">
         <div className="card-content">
           {this.renderHeader()}
           <div className="m-ghost" />

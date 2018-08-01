@@ -2,9 +2,11 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 
 // importing components
-import Navbar from 'components/_misc/Navbar';
+import NavbarWrapper from 'components/_misc/navbar/Wrapper';
 import PanelsWrapper from 'components/root/panels/Wrapper';
-import LearnContent from 'components/root/learn/Content';
+import LandingWrapper from 'components/root/landing/Wrapper';
+import Footer from 'components/_misc/Footer';
+import SpinnerM from 'components/_misc/spinners/M';
 
 // container elements
 import { connect } from 'react-redux';
@@ -13,20 +15,38 @@ import * as actions from 'actions';
 // importing hoc
 import withLocation from 'components/_hoc/withLocation';
 import withPubNub from 'components/_hoc/withPubNub';
+import withSpinner from 'components/_hoc/withSpinner';
 
 class RootWrapper extends Component {
+  state = { showSpinner: true };
+
   componentWillMount() {
     this.props.clearState();
   }
+
+  meshesNotFound() {
+    setTimeout(() => this.setState({ showSpinner: false }), 2000);
+    return this.state.showSpinner ? <SpinnerM /> : <LandingWrapper />;
+  }
+
   renderContent() {
-    return this.props.meshes.isPopulated ? <PanelsWrapper /> : <LearnContent />;
+    const { meshes } = this.props;
+
+    return meshes.isFetching ? (
+      <SpinnerM searching={true} />
+    ) : meshes.isPopulated ? (
+      <PanelsWrapper />
+    ) : (
+      this.meshesNotFound()
+    );
   }
 
   render() {
     return (
       <div>
-        <Navbar />
-        {this.renderContent()}
+        <NavbarWrapper sidenav={true} />
+        <div className="section-root">{this.renderContent()}</div>
+        <Footer />
       </div>
     );
   }
@@ -70,12 +90,14 @@ export default connect(
   mapStateToProps,
   actions
 )(
-  withRouter(
-    withLocation(
-      withPubNub(RootWrapper, channel, callback),
-      isNotSupported,
-      isLocated,
-      isNotLocated
+  withSpinner(
+    withRouter(
+      withLocation(
+        withPubNub(RootWrapper, channel, callback),
+        isNotSupported,
+        isLocated,
+        isNotLocated
+      )
     )
   )
 );

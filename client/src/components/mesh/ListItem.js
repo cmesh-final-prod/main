@@ -9,10 +9,10 @@ class ListItem extends Component {
     return (
       <li className="m-listItem">
         <div className="row">
-          <div className="col s5 m-avatar">
+          <div className="col s5 m-avatar m2">
             <img src={photos} alt="" className="circle z-depth-3" />
           </div>
-          <div className="col s7">
+          <div className="col s7 m10">
             <div className="row">
               <div className="col s10 m-info">
                 <p>
@@ -32,9 +32,9 @@ class ListItem extends Component {
               </div>
             </div>
             <div className="row m-labels">
-              <a href={profileLink} className="m-view transparent z-depth-2">
+              <a href={profileLink} className="m-view transparent grey-text">
                 view
-                <img src={linkedinLogo1} alt="" className="circle" />
+                <img src={linkedinLogo3} alt="" className="" />
               </a>
             </div>
           </div>

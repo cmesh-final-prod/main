@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 // importing components
-import Navbar from 'components/_misc/Navbar';
 import Instructions from 'components/locationError/Instructions';
 import BrowserNotSupported from 'components/locationError/BrowserNotSupported';
 
@@ -33,7 +32,6 @@ class LocationErrorWrapper extends Component {
   render() {
     return (
       <div>
-        <Navbar />
         <button
           className="btn light-blue white-text"
           // onClick={() => this.handleClick()}

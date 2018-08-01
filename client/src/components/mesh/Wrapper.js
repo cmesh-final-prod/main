@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
 // importing components
-import Navbar from 'components/_misc/Navbar';
-import Profile from 'components/mesh/Profile';
+import NavbarWrapper from 'components/_misc/navbar/Wrapper';
+import HowYouAppearWrapper from 'components/mesh/HowYouAppear/Wrapper';
 import List from 'components/mesh/List';
 import Expired from 'components/mesh/Expired';
 
@@ -20,8 +20,12 @@ class MeshWrapper extends Component {
     const { match } = this.props;
     return (
       <div>
-        <Navbar />
-        <Route exact path={`${match.url}/:meshId`} component={Profile} />
+        <NavbarWrapper />
+        <Route
+          exact
+          path={`${match.url}/:meshId`}
+          component={HowYouAppearWrapper}
+        />
         <Route exact path={`${match.url}/:meshId/list`} component={List} />
         <Route path={`${match.url}/:meshId/list/expired`} component={Expired} />
       </div>
