@@ -291,3 +291,15 @@
   top: 3px;
   height: 16px;
 }
+
+.m-expiry {
+  position: absolute;
+  top: 35vh;
+  width: 100%;
+}
+
+.m-expiry i {
+  font-size: 10em;
+  overflow: hidden;
+  word-break: break-all;
+}

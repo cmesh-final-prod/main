@@ -7,7 +7,13 @@ class Expired extends Component {
   }
 
   render() {
-    return <div>Mesh Has Expired</div>;
+    return (
+      <div className="container m-expiry center">
+        <i className="material-icons large text-color-1">broken_image</i>
+        <br />
+        <h4 className="text-color-1 flow-text">This mesh has expired!</h4>
+      </div>
+    );
   }
 }
 

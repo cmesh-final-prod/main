@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 
 // importing components
 import NavbarWrapper from 'components/_misc/navbar/Wrapper';
+import Footer from 'components/_misc/Footer';
 
 class SigninWithLinkedin extends Component {
   render() {
@@ -13,6 +14,7 @@ class SigninWithLinkedin extends Component {
             Signin With Linkedin
           </a>
         </section>
+        <Footer />
       </div>
     );
   }
