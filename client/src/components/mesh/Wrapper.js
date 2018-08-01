@@ -10,6 +10,7 @@ import Expired from 'components/mesh/Expired';
 // importing hoc
 import withAuth from 'components/_hoc/withAuth';
 import withSelection from 'components/_hoc/withSelection';
+import withSpinner from 'components/_hoc/withSpinner';
 
 // TODO: Check if user is still at the event location-- stillAtLocation
 // May be create a watch geolocation tag?
@@ -33,4 +34,4 @@ class MeshWrapper extends Component {
   }
 }
 
-export default withAuth(withSelection(MeshWrapper));
+export default withAuth(withSelection(withSpinner(MeshWrapper)));

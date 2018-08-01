@@ -11,6 +11,8 @@ import * as actions from 'actions';
 // importing hoc
 import withPubNub from 'components/_hoc/withPubNub';
 
+// TODO: BUG - Cannot read property linkedin.firstName of undefined. Mostlikely organizer data. Use debugger;
+
 class List extends Component {
   async componentWillMount() {
     const { meshId } = this.props.match.params;
@@ -81,7 +83,7 @@ class List extends Component {
 
   render() {
     return (
-      <div className="card m-main z-depth-1">
+      <div className="card m-main z-depth-5">
         <div className="card-content">
           {this.renderHeader()}
           <div className="m-ghost" />

@@ -15,7 +15,6 @@ import * as actions from 'actions';
 // importing hoc
 import withLocation from 'components/_hoc/withLocation';
 import withPubNub from 'components/_hoc/withPubNub';
-import withSpinner from 'components/_hoc/withSpinner';
 
 class RootWrapper extends Component {
   state = { showSpinner: true };
@@ -90,14 +89,12 @@ export default connect(
   mapStateToProps,
   actions
 )(
-  withSpinner(
-    withRouter(
-      withLocation(
-        withPubNub(RootWrapper, channel, callback),
-        isNotSupported,
-        isLocated,
-        isNotLocated
-      )
+  withRouter(
+    withLocation(
+      withPubNub(RootWrapper, channel, callback),
+      isNotSupported,
+      isLocated,
+      isNotLocated
     )
   )
 );
