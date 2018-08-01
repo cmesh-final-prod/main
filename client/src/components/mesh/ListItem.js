@@ -1,16 +1,26 @@
 import React, { Component } from 'react';
-import linkedinLogo1 from 'assets/in-1.png';
-import linkedinLogo2 from 'assets/in-2.png';
+import M from 'materialize-css';
+
+// importing assets
 import linkedinLogo3 from 'assets/in-3.png';
 
 class ListItem extends Component {
+  componentDidMount() {
+    const elems = document.querySelectorAll('.materialboxed');
+    M.Materialbox.init(elems);
+  }
+
   render() {
     const { firstName, lastName, headline, profileLink, photos } = this.props;
     return (
       <li className="m-listItem">
         <div className="row">
           <div className="col s5 m-avatar m2">
-            <img src={photos} alt="" className="circle z-depth-3" />
+            <img
+              src={photos}
+              alt=""
+              className="circle z-depth-3 materialboxed"
+            />
           </div>
           <div className="col s7 m10">
             <div className="row">
