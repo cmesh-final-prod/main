@@ -16,6 +16,8 @@ import * as actions from 'actions';
 import withLocation from 'components/_hoc/withLocation';
 import withPubNub from 'components/_hoc/withPubNub';
 
+// TODO: BUG FIX Can't call set state on an unmounted component
+
 class RootWrapper extends Component {
   state = { showSpinner: true };
 

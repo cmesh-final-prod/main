@@ -1,8 +1,9 @@
 const keys = require('../config/keys');
 const passport = require('passport');
 const latestPolicyUpdateOn = require('../utils/termsOfUse');
+const createLinkedinUserController = require('../controllers/POST/createLinkedinUser');
 
-// connesting with the db
+// connecting with the db
 const mongoose = require('mongoose').set('debug', true);
 const User = require('../db/models/User');
 
@@ -37,44 +38,8 @@ passport.use(
       proxy: true
     },
     (acessToken, refreshToken, profile, done) => {
-      process.nextTick(async () => {
-        const existingUser = await User.findOne({
-          'linkedin.lnId': profile.id
-        });
-
-        if (existingUser) {
-          return done(null, existingUser);
-        }
-
-        const emailsArray = await profile.emails.map(email => {
-          return email.value;
-        });
-
-        const photosArray = await profile.photos.map(photo => {
-          return photo.value;
-        });
-
-        const createdAt = new Date().getTime();
-
-        const user = await User.create({
-          createdAt,
-          linkedin: {
-            lnId: profile.id,
-            firstName: profile.name.givenName,
-            lastName: profile.name.familyName,
-            emails: emailsArray,
-            url: profile._json.siteStandardProfileRequest.url,
-            photos: photosArray,
-            headline: profile._json.headline
-          },
-          termsOfUse: {
-            latestPolicyUpdateOn,
-            accepted: true,
-            acceptedAt: createdAt
-          }
-        });
-
-        return done(null, user);
+      process.nextTick(() => {
+        createLinkedinUserController(profile, done);
       });
     }
   )

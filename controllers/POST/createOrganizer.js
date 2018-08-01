@@ -1,5 +1,5 @@
-const Organizer = require('../db/models/Organizer');
-const latestPolicyUpdateOn = require('../utils/termsOfUse');
+const Organizer = require('../../db/models/Organizer');
+const latestPolicyUpdateOn = require('../../utils/termsOfUse');
 
 const createOrganizer = async (req, res, next) => {
   try {

@@ -7,6 +7,7 @@ const AuthSchema = require('../schema/Auth');
 const OrgSchema = require('../schema/Org');
 const BookmarksSchema = require('../schema/Bookmarks');
 const TermsSchema = require('../schema/Terms');
+const UserGeneratedInfoSchema = require('../schema/UserGeneratedInfo');
 
 const OrganizerSchema = new Schema({
   firstName: { type: String, required: true },
@@ -17,7 +18,8 @@ const OrganizerSchema = new Schema({
   meshes: [{ type: Schema.Types.ObjectId, ref: 'mesh' }],
   bookmarks: [BookmarksSchema],
   createdAt: Number,
-  termsOfUse: [TermsSchema]
+  termsOfUse: [TermsSchema],
+  userGeneratedInfo: UserGeneratedInfoSchema
 });
 
 const Organizer = mongoose.model('Organizer', OrganizerSchema);

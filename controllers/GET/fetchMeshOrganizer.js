@@ -1,5 +1,5 @@
-const Mesh = require('../db/models/Mesh');
-const Organizer = require('../db/models/Organizer');
+const Mesh = require('../../db/models/Mesh');
+const Organizer = require('../../db/models/Organizer');
 
 const fetchMeshOrganizer = async (req, res, next) => {
   try {

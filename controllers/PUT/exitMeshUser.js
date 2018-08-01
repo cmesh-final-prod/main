@@ -1,6 +1,6 @@
-const Mesh = require('../db/models/Mesh');
-const dateParser = require('../utils/dateParser');
-const pubnub = require('../utils/pubnub');
+const Mesh = require('../../db/models/Mesh');
+const dateParser = require('../../utils/dateParser');
+const pubnub = require('../../utils/pubnub');
 
 const exitMeshUser = async (req, res, next) => {
   try {

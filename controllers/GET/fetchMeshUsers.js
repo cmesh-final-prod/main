@@ -1,7 +1,7 @@
-const Mesh = require('../db/models/Mesh');
-const User = require('../db/models/User');
-const dateParser = require('../utils/dateParser');
-const pubnub = require('../utils/pubnub');
+const Mesh = require('../../db/models/Mesh');
+const User = require('../../db/models/User');
+const dateParser = require('../../utils/dateParser');
+const pubnub = require('../../utils/pubnub');
 const sortBy = require('sort-by');
 
 const fetchMeshUsers = async (req, res, next) => {

@@ -1,7 +1,7 @@
-const Mesh = require('../db/models/Mesh');
-const User = require('../db/models/User');
-const dateParser = require('../utils/dateParser');
-const pubnub = require('../utils/pubnub');
+const Mesh = require('../../db/models/Mesh');
+const User = require('../../db/models/User');
+const dateParser = require('../../utils/dateParser');
+const pubnub = require('../../utils/pubnub');
 
 const addMeshUser = async (req, res, next) => {
   try {
