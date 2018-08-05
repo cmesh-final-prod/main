@@ -20,7 +20,8 @@ const editUserInfo = async (req, res, next) => {
       userInfo
     );
 
-    await pubnub.dispatchAction('fetchMeshUsers');
+    pubnub.dispatchAction('fetchMeshUsers');
+    pubnub.dispatchAction('fetchMeshes');
 
     res.send({ message: 'UserInfo has been updated' });
   } catch (e) {

@@ -16,6 +16,9 @@ class PanelsWrapper extends Component {
           title={mesh.title}
           distance={mesh.distance.calculated}
           endDate={mesh.endDate}
+          totalUsers={mesh.totalUsers}
+          totalHiring={mesh.totalHiring}
+          totalLookingForJob={mesh.totalLookingForJob}
         />
       );
     });

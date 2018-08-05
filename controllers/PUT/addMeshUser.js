@@ -23,7 +23,8 @@ const addMeshUser = async (req, res, next) => {
       }
     );
 
-    await pubnub.dispatchAction('fetchMeshUsers');
+    pubnub.dispatchAction('fetchMeshUsers');
+    pubnub.dispatchAction('fetchMeshes');
 
     const mesh = await Mesh.findOne({ _id: meshId });
 

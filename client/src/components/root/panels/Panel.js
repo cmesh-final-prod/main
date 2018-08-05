@@ -33,9 +33,13 @@ class MeshPanel extends Component {
 
   renderPanelBody() {
     const distance = Math.round(this.props.distance * 10000) / 10000;
+    const { totalUsers, totalHiring, totalLookingForJob } = this.props;
     return (
       <div className="m-body center">
-        <h2 className="white-text">{distance}</h2>
+        <h5 className="white-text">{totalUsers} users</h5>
+        <h5 className="white-text">{totalHiring} hiring</h5>
+        <h5 className="white-text">{totalLookingForJob} looking</h5>
+        <h5 className="white-text">{distance}</h5>
       </div>
     );
   }

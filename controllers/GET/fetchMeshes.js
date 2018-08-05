@@ -7,42 +7,95 @@ const fetchMeshes = async (req, res, next) => {
     const { lng, lat } = req.query;
     const now_milli = new Date().getTime();
 
-    const nearByAndActiveMeshes = await Mesh.aggregate([
-      {
-        $geoNear: {
-          query: {
-            startDate: { $lt: now_milli },
-            endDate: { $gt: now_milli }
-          },
-          near: {
-            type: 'Point',
-            coordinates: [parseFloat(lng), parseFloat(lat)]
-          },
-          distanceField: 'dist.calculated',
-          maxDistance: 200,
-          spherical: true
-        }
-      },
-      {
-        $sort: { createdAt: 1 }
+    const geoNear = {
+      $geoNear: {
+        query: {
+          startDate: { $lt: now_milli },
+          endDate: { $gt: now_milli }
+        },
+        near: {
+          type: 'Point',
+          coordinates: [parseFloat(lng), parseFloat(lat)]
+        },
+        distanceField: 'dist.calculated',
+        maxDistance: 200,
+        spherical: true
       }
+    };
+
+    const sort = {
+      $sort: { createdAt: 1 }
+    };
+
+    const lookup1 = {
+      $lookup: {
+        from: 'orgs',
+        localField: 'orgId',
+        foreignField: '_id',
+        as: 'ORG'
+      }
+    };
+
+    const lookup2 = {
+      $lookup: {
+        from: 'users',
+        localField: 'users._id',
+        foreignField: '_id',
+        as: 'USERS'
+      }
+    };
+
+    const project = {
+      $project: {
+        _id: 0,
+        createdAt: 1,
+        orgId: 1,
+        organizerId: 1,
+        endDate: 1,
+        meshId: '$_id',
+        orgTitle: '$ORG.title',
+        title: '$eventDetails.title',
+        distance: '$dist',
+        totalUsers: { $size: '$users' },
+        totalHiring: {
+          $reduce: {
+            input: '$USERS.userInfo.hiring',
+            initialValue: 0,
+            in: {
+              $cond: {
+                if: { $eq: ['$$this', true] },
+                then: { $add: ['$$value', 1] },
+                else: { $add: ['$$value', 0] }
+              }
+            }
+          }
+        },
+        totalLookingForJob: {
+          $reduce: {
+            input: '$USERS.userInfo.lookingForJob',
+            initialValue: 0,
+            in: {
+              $cond: {
+                if: { $eq: ['$$this', true] },
+                then: { $add: ['$$value', 1] },
+                else: { $add: ['$$value', 0] }
+              }
+            }
+          }
+        }
+      }
+    };
+
+    const nearByAndActiveMeshes = await Mesh.aggregate([
+      geoNear,
+      sort,
+      lookup1,
+      lookup2,
+      project
     ]);
 
     if (nearByAndActiveMeshes.length > 0) {
-      const publicInfo = await nearByAndActiveMeshes.map(mesh => {
-        return {
-          meshId: mesh._id,
-          title: mesh.eventDetails.title,
-          numberOfAttendees: mesh.users.length,
-          distance: mesh.dist,
-          endDate: mesh.endDate,
-          createdAt: mesh.createdAt,
-          orgId: mesh.orgId,
-          organizerId: mesh.organizerId
-        };
-      });
-
-      res.send({ isFound: true, publicInfo });
+      res.send({ isFound: true, publicInfo: nearByAndActiveMeshes });
     } else {
       res.send({ isFound: false });
     }
