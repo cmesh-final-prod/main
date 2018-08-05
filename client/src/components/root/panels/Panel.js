@@ -56,7 +56,7 @@ class MeshPanel extends Component {
 
   render() {
     return (
-      <div className="card m-panel grey darken-2 z-depth-5 m-gradient">
+      <div className="card m-panel grey darken-2 z-depth-5 gradient-1">
         <div className="card-content">
           {this.renderPanelHeader()}
           {this.renderPanelBody()}

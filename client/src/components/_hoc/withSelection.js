@@ -12,7 +12,11 @@ export default ChildComponent => {
     redirectAsRequired() {
       const { selectedMesh } = this.props;
       if (selectedMesh.isFetched) {
-        this.props.history.push(`/mesh/${selectedMesh.data.meshId}`);
+        if (selectedMesh.isCurrentUserAdded) {
+          this.props.history.push(`/mesh/${selectedMesh.data.meshId}/list`);
+        } else {
+          this.props.history.push(`/mesh/${selectedMesh.data.meshId}`);
+        }
       } else {
         this.props.history.push('/');
       }

@@ -36,7 +36,9 @@ const fetchMeshes = async (req, res, next) => {
           numberOfAttendees: mesh.users.length,
           distance: mesh.dist,
           endDate: mesh.endDate,
-          createdAt: mesh.createdAt
+          createdAt: mesh.createdAt,
+          orgId: mesh.orgId,
+          organizerId: mesh.organizerId
         };
       });
 

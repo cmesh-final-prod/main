@@ -1,4 +1,4 @@
-import { CLEAR_STATE, FETCH_AUTH_LINKEDIN_USER } from 'actions/types';
+import { CLEAR_STATE, FETCH_CURRENT_USER } from 'actions/types';
 
 const initialState = {
   isAuth: false,
@@ -12,16 +12,16 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case CLEAR_STATE:
       return initialState;
-    case `${FETCH_AUTH_LINKEDIN_USER}_PENDING`:
+    case `${FETCH_CURRENT_USER}_PENDING`:
       return { ...state, isFetching: true };
-    case `${FETCH_AUTH_LINKEDIN_USER}_REJECTED`:
+    case `${FETCH_CURRENT_USER}_REJECTED`:
       return {
         ...state,
         isAuth: false,
         isFetching: false,
         error: action.payload.message
       };
-    case `${FETCH_AUTH_LINKEDIN_USER}_FULFILLED`:
+    case `${FETCH_CURRENT_USER}_FULFILLED`:
       const { isAuth, isCompliant } = action.payload.data;
       if (isAuth && isCompliant) {
         return {

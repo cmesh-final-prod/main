@@ -1,23 +1,39 @@
 import React, { Component } from 'react';
 
 class Questions extends Component {
+  state = {
+    hiring: this.props.hiring,
+    lookingForJob: this.props.lookingForJob
+  };
+
   render() {
     const QUESTIONS = [
-      { id: 1, text: 'Are you hiring?' },
-      { id: 2, text: 'Are you looking for opportunities?' }
+      { id: 'hiring', text: 'Are you hiring?' },
+      {
+        id: 'lookingForJob',
+        text: 'Are you looking for opportunities?'
+      }
     ];
 
     const questions = () => {
-      return QUESTIONS.map(question => {
+      return QUESTIONS.map(q => {
+        let checked = null;
+        const { id, text, status } = q;
+        status ? (checked = true) : '';
         return (
-          <div key={question.id} className="row">
+          <div key={id} className="row">
             <div className="col s8">
-              <p>{question.text}</p>
+              <p>{text}</p>
             </div>
             <div className="col s4">
               <div className="switch">
                 <label>
-                  <input type="checkbox" />
+                  <input
+                    type="checkbox"
+                    onClick={() => this.props.onClick(id)}
+                    onChange={() => this.setState({ [id]: !this.state[id] })}
+                    checked={this.state[id]}
+                  />
                   <span className="lever" />
                 </label>
               </div>

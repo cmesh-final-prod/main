@@ -1,14 +1,15 @@
-const mongoose = require('mongoose').set('debug', true);
+const mongoose = require('mongoose');
 const { Schema } = mongoose;
 
 const LinkedinSchema = new Schema({
-  lnId: String,
+  _id: String,
   firstName: String,
   lastName: String,
   emails: [String],
   url: String,
   photos: [String],
-  headline: String
+  headline: String,
+  createdAt: Number
 });
 
 module.exports = LinkedinSchema;

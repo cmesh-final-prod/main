@@ -16,7 +16,7 @@ class Content extends Component {
           <div className="divider" />
         </div>
         <div className="center">
-          <Link to="/about" className="btn m-gradient z-depth-5 btn-demo">
+          <Link to="/about" className="btn grey gradient-1 z-depth-5 btn-demo">
             Learn More
           </Link>
         </div>

@@ -1,15 +1,4 @@
-import {
-  CLEAR_STATE,
-  SELECT_MESH,
-  POST_LOCATION_TO_STORE,
-  FETCH_AUTH_LINKEDIN_USER,
-  CREATE_MESH,
-  FETCH_MESHES,
-  FETCH_MESH_USERS,
-  ADD_MESH_USER,
-  EXIT_MESH_USER,
-  FETCH_MESH_ORGANIZER
-} from 'actions/types';
+import * as T from 'actions/types';
 import axios from 'axios';
 
 //////////////////////////////////////////////////////////////////
@@ -25,7 +14,7 @@ import axios from 'axios';
 
 export const clearState = () => {
   return {
-    type: CLEAR_STATE
+    type: T.CLEAR_STATE
   };
 };
 
@@ -41,29 +30,39 @@ export const selectMesh = meshId => (dispatch, getState) => {
   };
 
   dispatch({
-    type: SELECT_MESH,
+    type: T.SELECT_MESH,
     payload: selectedMeshProps
   });
 };
 
 export const postLocationToStore = (lng, lat) => {
   return {
-    type: POST_LOCATION_TO_STORE,
+    type: T.POST_LOCATION_TO_STORE,
     payload: { lng, lat }
   };
 };
 
 //////////////////////////////////////////////////////////////////
-////////////            AUTH ROUTES                ///////////////
+////////////            USER ROUTES                ///////////////
 //////////////////////////////////////////////////////////////////
 
-export const fetchAuthLinkedinUser = () => dispatch => {
-  const response = axios.get('/api/current_user');
+export const fetchCurrentUser = () => dispatch => {
+  const response = axios.get('/api/users');
 
   dispatch({
-    type: FETCH_AUTH_LINKEDIN_USER,
+    type: T.FETCH_CURRENT_USER,
     payload: response
   });
+};
+
+export const associateOrgWithUser = (userId, orgId) => {
+  axios.put(`/api/users/${userId}/add/${orgId}`);
+  return { type: T.ASSOCIATE_ORG_WITH_USER };
+};
+
+export const editUserInfo = (userId, userInfoProps) => {
+  axios.put(`/api/users/${userId}`, userInfoProps);
+  return { type: T.EDIT_USER_INFO };
 };
 
 //////////////////////////////////////////////////////////////////
@@ -74,50 +73,63 @@ export const fetchMeshes = (lng, lat) => dispatch => {
   if (lng && lat) {
     const response = axios.get(`/api/meshes?lng=${lng}&lat=${lat}`);
     dispatch({
-      type: FETCH_MESHES,
+      type: T.FETCH_MESHES,
       payload: response
     });
   }
 };
 
-export const createMesh = (meshProps, organizerId) => {
-  axios.post(`/api/meshes/${organizerId}`, meshProps);
-  return { type: CREATE_MESH };
+export const createMesh = (meshProps, orgId) => {
+  axios.post(`/api/meshes/${orgId}`, meshProps);
+  return { type: T.CREATE_MESH };
 };
 
 export const fetchMeshUsers = meshId => {
   const response = axios.get(`/api/meshes/${meshId}`);
   return {
-    type: FETCH_MESH_USERS,
+    type: T.FETCH_MESH_USERS,
     payload: response
   };
 };
 
 export const addMeshUser = (meshId, userId) => {
   axios.put(`/api/meshes/${meshId}/add/${userId}`);
-  return { type: ADD_MESH_USER };
+  return { type: T.ADD_MESH_USER };
 };
 
 export const exitMeshUser = (meshId, userId) => {
   axios.put(`/api/meshes/${meshId}/exit/${userId}`);
-  return { type: EXIT_MESH_USER };
+  return { type: T.EXIT_MESH_USER };
 };
 
-export const fetchMeshOrganizer = meshId => {
-  if (!meshId) {
-    return {
-      type: 'FETCH_MESH_ORGANIZER_FULFILLED',
-      payload: {}
-    };
-  }
+export const addMeshFeedback = (meshId, userId, feedbackProps) => {
+  axios.put(`/api/meshes/${meshId}/feedback/${userId}`, feedbackProps);
+  return { type: T.ADD_MESH_FEEDBACK };
+};
 
-  const response = axios.get(`/api/meshes/${meshId}/organizer`);
+//////////////////////////////////////////////////////////////////
+////////////              ORG ROUTES               ///////////////
+//////////////////////////////////////////////////////////////////
+
+export const createOrg = async orgProps => {
+  const response = await axios.post('/api/orgs', orgProps);
   return {
-    type: FETCH_MESH_ORGANIZER,
+    type: T.CREATE_ORG,
     payload: response
   };
 };
 
-//////////////////////////////////////////////////////////////////
-////////////          ORGANIZER ROUTES             ///////////////
-//////////////////////////////////////////////////////////////////
+// export const fetchMeshOrganizer = meshId => {
+//   if (!meshId) {
+//     return {
+//       type: 'FETCH_MESH_ORGANIZER_FULFILLED',
+//       payload: {}
+//     };
+//   }
+//
+//   const response = axios.get(`/api/meshes/${meshId}/organizer`);
+//   return {
+//     type: T.FETCH_MESH_ORGANIZER,
+//     payload: response
+//   };
+// };

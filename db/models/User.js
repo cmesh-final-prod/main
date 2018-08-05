@@ -1,17 +1,21 @@
-const mongoose = require('mongoose').set('debug', true);
+const mongoose = require('mongoose').set('debug', false);
 const { Schema } = mongoose;
 
 // subdocuments
-const LinkedinSchema = require('../schema/Linkedin');
 const TermsSchema = require('../schema/Terms');
-const UserGeneratedInfoSchema = require('../schema/UserGeneratedInfo');
+const UserInfoSchema = require('../schema/UserInfo');
+const BookmarksSchema = require('../schema/Bookmarks');
+const LinkedinSchema = require('../schema/Linkedin');
+const AuthSchema = require('../schema/Auth');
 
 const UserSchema = new Schema({
+  userInfo: UserInfoSchema,
   linkedin: LinkedinSchema,
+  auth: AuthSchema,
   meshes: [{ type: Schema.Types.ObjectId, ref: 'Mesh' }],
-  createdAt: Number,
   termsOfUse: [TermsSchema],
-  UserGeneratedInfo: UserGeneratedInfoSchema
+  bookmarks: [BookmarksSchema],
+  orgId: [{ type: Schema.Types.ObjectId, ref: 'Org' }]
 });
 
 const User = mongoose.model('User', UserSchema);

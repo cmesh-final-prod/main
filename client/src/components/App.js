@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
 import { isMobile, isTablet } from 'react-device-detect';
+
+// importing style sheets
 import 'css/app.css';
+import 'css/color.css';
+import 'css/layout.css';
 
 // importing wrapper components
 import RootWrapper from 'components/root/Wrapper';

@@ -4,7 +4,7 @@ class SpinnerM extends Component {
   renderIcon(text) {
     return (
       <div className="spinner-m">
-        <div className="white-text m-gradient center circle z-depth-5 icon btn-floating pulse grey lighten-1">
+        <div className="white-text gradient-1 center circle z-depth-5 icon btn-floating pulse grey lighten-1">
           <span>m</span>
         </div>
         <div className="row">

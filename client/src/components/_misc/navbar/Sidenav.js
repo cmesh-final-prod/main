@@ -17,8 +17,8 @@ class Sidenav extends Component {
 
   createMeshProps() {
     const { lng, lat } = this.props.meshes.location;
-    const organizerId = '5b4ba413d0f8cc5b14661967';
-    this.props.createMesh(MESH_PROPS(lng, lat), organizerId);
+    const orgId = '5b655afae0596954907ef72c';
+    this.props.createMesh(MESH_PROPS(lng, lat), orgId);
   }
 
   render() {

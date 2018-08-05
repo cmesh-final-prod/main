@@ -1,23 +1,21 @@
 // importing controllers
-const fetchMeshesController = require('../controllers/GET/fetchMeshes');
-const fetchMeshUsersController = require('../controllers/GET/fetchMeshUsers');
-const addMeshUserController = require('../controllers/PUT/addMeshUser');
-const exitMeshUserController = require('../controllers/PUT/exitMeshUser');
-const createMeshController = require('../controllers/POST/createMesh');
-const fetchMeshOrganizerController = require('../controllers/GET/fetchMeshOrganizer');
+const fetchMeshes = require('../controllers/GET/fetchMeshes');
+const fetchMeshUsers = require('../controllers/GET/fetchMeshUsers');
+const addMeshUser = require('../controllers/PUT/addMeshUser');
+const exitMeshUser = require('../controllers/PUT/exitMeshUser');
+const createMesh = require('../controllers/POST/createMesh');
+const addMeshFeedback = require('../controllers/PUT/addMeshFeedback');
 
 // importing middlewares
 const isAuth = require('../middlewares/isAuth');
 
+// TODO: Add isAuth middleware back to protected routes
+
 module.exports = app => {
-  app.get('/api/meshes', fetchMeshesController);
-  app.get('/api/meshes/:meshId', isAuth, fetchMeshUsersController);
-  app.put('/api/meshes/:meshId/add/:userId', isAuth, addMeshUserController);
-  app.put('/api/meshes/:meshId/exit/:userId', isAuth, exitMeshUserController);
-  app.get(
-    '/api/meshes/:meshId/organizer',
-    isAuth,
-    fetchMeshOrganizerController
-  );
-  app.post('/api/meshes/:organizerId', createMeshController);
+  app.get('/api/meshes', fetchMeshes);
+  app.get('/api/meshes/:meshId', fetchMeshUsers);
+  app.post('/api/meshes/:orgId', createMesh);
+  app.put('/api/meshes/:meshId/add/:userId', addMeshUser);
+  app.put('/api/meshes/:meshId/exit/:userId', isAuth, exitMeshUser);
+  app.put('/api/meshes/:meshId/feedback/:userId', addMeshFeedback);
 };

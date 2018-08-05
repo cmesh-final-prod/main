@@ -8,7 +8,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose').set('debug', true);
+const mongoose = require('mongoose');
 const keys = require('./config/keys');
 const cookieSession = require('cookie-session');
 
@@ -19,7 +19,7 @@ mongoose.connect(keys.mongoURI);
 const passport = require('passport');
 require('./db/models/User');
 require('./db/models/Mesh');
-require('./db/models/Organizer');
+require('./db/models/Org');
 require('./services/passport');
 
 // seeding data
@@ -51,8 +51,9 @@ app.use(passport.session());
 //////////////////////////////////////////////////////////////////
 
 require('./routes/auth')(app);
+require('./routes/user')(app);
 require('./routes/mesh')(app);
-require('./routes/organizer')(app);
+require('./routes/org')(app);
 
 //////////////////////////////////////////////////////////////////
 ////////////            4. ERROR HANDLING          ///////////////

@@ -7,7 +7,7 @@ import * as actions from 'actions';
 export default ChildComponent => {
   class ComposedComponent extends Component {
     componentDidMount() {
-      this.props.fetchAuthLinkedinUser();
+      this.props.fetchCurrentUser();
     }
 
     componentDidUpdate() {

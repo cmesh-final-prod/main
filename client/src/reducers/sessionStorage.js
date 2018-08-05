@@ -14,7 +14,8 @@ export const saveState = state => {
   try {
     const serializedState = JSON.stringify({
       currentUser: state.currentUser,
-      selectedMesh: state.selectedMesh
+      selectedMesh: state.selectedMesh,
+      org: state.org
     });
     sessionStorage.setItem('state', serializedState);
   } catch (err) {

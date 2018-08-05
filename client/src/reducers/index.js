@@ -4,9 +4,11 @@ import { combineReducers } from 'redux';
 import currentUserReducer from 'reducers/currentUser';
 import meshesReducer from 'reducers/meshes';
 import selectedMeshReducer from 'reducers/selectedMesh';
+import orgReducer from 'reducers/orgs';
 
 export default combineReducers({
   currentUser: currentUserReducer,
   meshes: meshesReducer,
-  selectedMesh: selectedMeshReducer
+  selectedMesh: selectedMeshReducer,
+  org: orgReducer
 });

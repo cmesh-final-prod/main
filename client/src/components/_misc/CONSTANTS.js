@@ -23,12 +23,13 @@ export const SIDENAV_MENU = [
 
 export const MESH_PROPS = (lng, lat) => {
   return {
-    title: 'Learn how to organize data using google maps',
+    title: 'This event has an organizer',
     coordinates: [lng, lat],
-    duration: 0.005,
+    duration: 1,
     startDate: new Date(),
     description:
       'Odit sit ab repudiandae dolor necessitatibus ea asperiores a consectetur.',
-    address: '077 Ashly Course'
+    address: '077 Ashly Course',
+    primaryOrganizerId: '5b66a503265a4a0314331d49'
   };
 };

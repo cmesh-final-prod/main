@@ -1,24 +1,22 @@
 const Mesh = require('../../db/models/Mesh');
-const Organizer = require('../../db/models/Organizer');
+const Org = require('../../db/models/Org');
 const dateParser = require('../../utils/dateParser');
 const pubnub = require('../../utils/pubnub');
 
 const createMesh = async (req, res, next) => {
   try {
-    // event details
     const {
       title,
       coordinates,
       duration,
       startDate,
       description,
-      address
+      address,
+      primaryOrganizerId
     } = req.body;
 
-    // source
     const source = 'manual';
 
-    // dates
     const startDate_utc = dateParser.utc(startDate);
     const endDate_utc = dateParser.addHours(startDate_utc, duration);
     const startDate_utc_pre = dateParser.subtractHours(startDate_utc, 1);
@@ -27,8 +25,7 @@ const createMesh = async (req, res, next) => {
     const endDate_milli = dateParser.milli(endDate_utc);
     const createdAt = new Date().getTime();
 
-    // organizer
-    const { organizerId } = req.params;
+    const { orgId } = req.params;
 
     const mesh = await Mesh.create({
       eventDetails: {
@@ -46,18 +43,27 @@ const createMesh = async (req, res, next) => {
         type: 'Point',
         coordinates
       },
-      organizer: organizerId,
+      orgId,
       createdAt
     });
 
-    await pubnub.dispatchAction('fetchMeshes');
-
-    await Organizer.update(
-      { _id: organizerId },
+    await Mesh.update(
       {
-        $addToSet: { meshes: mesh._id }
+        _id: mesh._id,
+        'users._id': { $ne: primaryOrganizerId }
+      },
+      {
+        $addToSet: {
+          users: {
+            _id: primaryOrganizerId,
+            joinedAt: createdAt
+          }
+        },
+        organizerId: primaryOrganizerId
       }
     );
+
+    pubnub.dispatchAction('fetchMeshes');
 
     res.send({ message: 'Mesh Saved' });
   } catch (e) {

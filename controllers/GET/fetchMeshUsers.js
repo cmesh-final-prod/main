@@ -4,6 +4,8 @@ const dateParser = require('../../utils/dateParser');
 const pubnub = require('../../utils/pubnub');
 const sortBy = require('sort-by');
 
+// TODO: Perform mesh & users lookup in one aggregate pipeline
+
 const fetchMeshUsers = async (req, res, next) => {
   try {
     const { meshId } = req.params;
@@ -22,23 +24,60 @@ const fetchMeshUsers = async (req, res, next) => {
       }
     });
 
-    m = {
+    match = {
       $match: { _id: { $in: userIds } }
     };
-    a = {
+
+    project = {
       $project: {
         __order: { $indexOfArray: [userIds, '$_id'] },
-        'linkedin.firstName': 1,
-        'linkedin.lastName': 1,
-        'linkedin.url': 1,
-        'linkedin.photos': 1,
-        'linkedin.headline': 1
+        firstName: {
+          $cond: {
+            if: '$userInfo.firstName',
+            then: '$userInfo.firstName',
+            else: '$linkedin.firstName'
+          }
+        },
+        lastName: {
+          $cond: {
+            if: '$userInfo.lastName',
+            then: '$userInfo.lastName',
+            else: '$linkedin.lastName'
+          }
+        },
+        url: {
+          $cond: {
+            if: '$userInfo.url',
+            then: '$userInfo.url',
+            else: '$linkedin.url'
+          }
+        },
+        photos: {
+          $cond: {
+            if: '$userInfo.photos',
+            then: '$userInfo.photos',
+            else: '$linkedin.photos'
+          }
+        },
+        headline: {
+          $cond: {
+            if: '$userInfo.headline',
+            then: '$userInfo.headline',
+            else: '$linkedin.headline'
+          }
+        },
+        hiring: '$userInfo.hiring',
+        lookingForJob: '$userInfo.lookingForJob',
+        orgId: 1,
+        viewed: '',
+        bookmarked: ''
       }
     };
-    s = {
+
+    sort = {
       $sort: { __order: 1 }
     };
-    const meshUsers = await User.aggregate([m, a, s]);
+    const meshUsers = await User.aggregate([match, project, sort]);
 
     res.send({ isAuth: true, isCompliant: true, meshUsers });
   } catch (e) {

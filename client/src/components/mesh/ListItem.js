@@ -5,13 +5,28 @@ import M from 'materialize-css';
 import linkedinLogo3 from 'assets/in-3.png';
 
 class ListItem extends Component {
+  state = { viewed: false, bookmarked: false };
+
   componentDidMount() {
     const elems = document.querySelectorAll('.materialboxed');
     M.Materialbox.init(elems);
   }
 
+  renderViewBg() {
+    if (this.state.viewed) {
+      return 'grey lighten-3';
+    } else {
+      return 'white';
+    }
+  }
+
   render() {
     const { firstName, lastName, headline, profileLink, photos } = this.props;
+    let boo;
+    if (this.props.organizer) {
+      boo = 'organizer';
+    }
+
     return (
       <li className="m-listItem">
         <div className="row">
@@ -42,10 +57,20 @@ class ListItem extends Component {
               </div>
             </div>
             <div className="row m-labels">
-              <a href={profileLink} className="m-view transparent grey-text">
+              <a
+                href={profileLink}
+                className={`m-view grey-text ${this.renderViewBg()}`}
+                rel="noopener noreferrer"
+                target="_blank"
+                onClick={() => this.setState({ viewed: true })}
+              >
                 view
                 <img src={linkedinLogo3} alt="" className="" />
               </a>
+              <p>
+                {this.props.hiring ? 'hiring' : ''}
+                {this.props.lookingForJob ? 'looking' : ''}
+              </p>
             </div>
           </div>
         </div>

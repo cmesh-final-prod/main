@@ -2,7 +2,7 @@ import {
   CLEAR_STATE,
   SELECT_MESH,
   FETCH_MESH_USERS,
-  FETCH_MESH_ORGANIZER
+  ADD_MESH_USER
 } from 'actions/types';
 
 const initialState = {
@@ -11,9 +11,9 @@ const initialState = {
   isFetching: false,
   isFetched: false,
   isPopulated: false,
+  isCurrentUserAdded: false,
   data: {},
   users: [],
-  organizer: {},
   error: null
 };
 
@@ -38,6 +38,8 @@ export default (state = initialState, action) => {
           data: action.payload.data
         };
       }
+    case ADD_MESH_USER:
+      return { ...state, isCurrentUserAdded: true };
     case `${FETCH_MESH_USERS}_PENDING`:
       return { ...state, isFetching: true };
     case `${FETCH_MESH_USERS}_REJECTED`:
@@ -57,37 +59,6 @@ export default (state = initialState, action) => {
           isFetching: false,
           isPopulated: true,
           users: action.payload.data.meshUsers
-        };
-      } else if (isAuth && !isCompliant && state.isFetched) {
-        return {
-          ...state,
-          isAuth,
-          isCompliant,
-          isFetching: false
-        };
-      } else {
-        return state;
-      }
-    case `${FETCH_MESH_ORGANIZER}_PENDING`:
-      return { ...state, isFetching: true };
-    case `${FETCH_MESH_ORGANIZER}_REJECTED`:
-      return {
-        ...state,
-        isFetching: false,
-        error: action.payload
-      };
-    case `${FETCH_MESH_ORGANIZER}_FULFILLED`:
-      isAuth = action.payload.data.isAuth;
-      isCompliant = action.payload.data.isCompliant;
-
-      if (isAuth && isCompliant && state.isFetched) {
-        return {
-          ...state,
-          isAuth,
-          isCompliant,
-          isFetching: false,
-          isPopulated: true,
-          organizer: action.payload.data.meshOrganizer
         };
       } else if (isAuth && !isCompliant && state.isFetched) {
         return {

@@ -11,12 +11,9 @@ import * as actions from 'actions';
 // importing hoc
 import withPubNub from 'components/_hoc/withPubNub';
 
-// TODO: BUG - Cannot read property linkedin.firstName of undefined. Mostlikely organizer data. Use debugger;
-
 class List extends Component {
   async componentWillMount() {
     const { meshId } = this.props.match.params;
-    await this.props.fetchMeshOrganizer(meshId);
     await this.props.fetchMeshUsers(meshId);
   }
 
@@ -45,36 +42,29 @@ class List extends Component {
     }
   }
 
-  renderOrganizer() {
-    const { organizer, isPopulated } = this.props.selectedMesh;
-
-    if (isPopulated) {
-      return (
-        <ListItem
-          key={organizer._id}
-          firstName={organizer.linkedin.firstName}
-          lastName={organizer.linkedin.lastName}
-          photos={organizer.linkedin.photos[0]}
-          headline={organizer.linkedin.headline}
-          profileLink={organizer.linkedin.url}
-        />
-      );
-    }
-  }
-
   renderUsers() {
-    const { users, isPopulated } = this.props.selectedMesh;
+    const { users, isPopulated, data } = this.props.selectedMesh;
 
     if (isPopulated) {
       return users.map(user => {
+        let bool = false;
+
+        if (data.organizerId.toString() === user._id.toString()) {
+          bool = true;
+        }
+
         return (
           <ListItem
             key={user._id}
-            firstName={user.linkedin.firstName}
-            lastName={user.linkedin.lastName}
-            photos={user.linkedin.photos[0]}
-            headline={user.linkedin.headline}
-            profileLink={user.linkedin.url}
+            firstName={user.firstName}
+            lastName={user.lastName}
+            photos={user.photos[0]}
+            headline={user.headline}
+            profileLink={user.url}
+            viewed={user.viewed}
+            hiring={user.hiring}
+            lookingForJob={user.lookingForJob}
+            organizer={bool}
           />
         );
       });
@@ -89,10 +79,7 @@ class List extends Component {
           <div className="m-ghost" />
           {this.renderFeedback()}
           <div className="m-list">
-            <ul className="">
-              {this.renderOrganizer()}
-              {this.renderUsers()}
-            </ul>
+            <ul className="">{this.renderUsers()}</ul>
           </div>
         </div>
       </div>

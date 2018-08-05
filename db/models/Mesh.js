@@ -1,10 +1,10 @@
-const mongoose = require('mongoose').set('debug', true);
+const mongoose = require('mongoose').set('debug', false);
 const { Schema } = mongoose;
 
 // subdocuments
 const MeshUserSchema = require('../schema/MeshUser');
 const GeoJSONSchema = require('../schema/GeoJSON');
-const EventDetailsSchema = require('../schema/EventDetailsSchema');
+const EventDetailsSchema = require('../schema/EventDetails');
 
 const MeshSchema = new Schema({
   eventDetails: EventDetailsSchema,
@@ -14,7 +14,8 @@ const MeshSchema = new Schema({
   duration: Number,
   source: String,
   geometry: GeoJSONSchema,
-  organizer: { type: Schema.Types.ObjectId, ref: 'Organizer' },
+  orgId: { type: Schema.Types.ObjectId, ref: 'Org' },
+  organizerId: { type: Schema.Types.ObjectId, ref: 'User' },
   createdAt: Number
 });
 

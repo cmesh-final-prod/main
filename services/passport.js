@@ -1,11 +1,13 @@
 const keys = require('../config/keys');
 const passport = require('passport');
 const latestPolicyUpdateOn = require('../utils/termsOfUse');
-const createLinkedinUserController = require('../controllers/POST/createLinkedinUser');
 
 // connecting with the db
-const mongoose = require('mongoose').set('debug', true);
+const mongoose = require('mongoose');
 const User = require('../db/models/User');
+
+// importing controllers
+const createUserController = require('../controllers/POST/createUser');
 
 ///////////////////////////////////////////////////////////////
 ///////////       Serializing-Deserializing         ///////////
@@ -39,7 +41,7 @@ passport.use(
     },
     (acessToken, refreshToken, profile, done) => {
       process.nextTick(() => {
-        createLinkedinUserController(profile, done);
+        createUserController(profile, done);
       });
     }
   )
