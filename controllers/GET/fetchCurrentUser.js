@@ -2,9 +2,16 @@ const fetchCurrentUser = (req, res, next) => {
   try {
     let user = {};
     let userInfo = {};
+
     const { linkedin, _id, orgId } = req.user;
+
     if (req.user.userInfo) {
       userInfo = req.user.userInfo;
+      userInfo.photos.length > 0
+        ? (user['photos'] = userInfo.photos)
+        : (user['photos'] = linkedin.photos);
+    } else {
+      user['photos'] = linkedin.photos;
     }
 
     user['_id'] = _id;
@@ -16,10 +23,6 @@ const fetchCurrentUser = (req, res, next) => {
     user['hiring'] = userInfo.hiring;
     user['lookingForJob'] = userInfo.lookingForJob;
     user['lnId'] = linkedin._id;
-
-    userInfo.photos.length > 0
-      ? (user['photos'] = userInfo.photos)
-      : (user['photos'] = linkedin.photos);
 
     res.send({ isAuth: true, isCompliant: true, user });
   } catch (e) {

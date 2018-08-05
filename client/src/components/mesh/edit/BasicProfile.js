@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 // importing components
-import Info from 'components/mesh/HowYouAppear/Info';
-import Questions from 'components/mesh/HowYouAppear/Questions';
-import Button from 'components/mesh/HowYouAppear/Button';
+import Info from 'components/mesh/edit/Info';
+import Questions from 'components/mesh/edit/Questions';
+import Button from 'components/mesh/edit/Button';
 
 class BasicProfile extends Component {
   state = {

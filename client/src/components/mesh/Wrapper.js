@@ -3,9 +3,9 @@ import { Route } from 'react-router-dom';
 
 // importing components
 import NavbarWrapper from 'components/_misc/navbar/Wrapper';
-import HowYouAppearWrapper from 'components/mesh/HowYouAppear/Wrapper';
-import List from 'components/mesh/List';
-import Expired from 'components/mesh/Expired';
+import EditWrapper from 'components/mesh/edit/Wrapper';
+import ListWrapper from 'components/mesh/list/Wrapper';
+import Expired from 'components/mesh/misc/Expired';
 
 // importing hoc
 import withAuth from 'components/_hoc/withAuth';
@@ -22,12 +22,12 @@ class MeshWrapper extends Component {
     return (
       <div>
         <NavbarWrapper />
+        <Route exact path={`${match.url}/:meshId`} component={EditWrapper} />
         <Route
           exact
-          path={`${match.url}/:meshId`}
-          component={HowYouAppearWrapper}
+          path={`${match.url}/:meshId/list`}
+          component={ListWrapper}
         />
-        <Route exact path={`${match.url}/:meshId/list`} component={List} />
         <Route path={`${match.url}/:meshId/list/expired`} component={Expired} />
       </div>
     );

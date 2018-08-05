@@ -4,7 +4,7 @@ import M from 'materialize-css';
 // importing assets
 import linkedinLogo3 from 'assets/in-3.png';
 
-class ListItem extends Component {
+class Item extends Component {
   state = { viewed: false, bookmarked: false };
 
   componentDidMount() {
@@ -79,4 +79,4 @@ class ListItem extends Component {
   }
 }
 
-export default ListItem;
+export default Item;

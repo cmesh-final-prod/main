@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 // importing components
-import ListItem from 'components/mesh/ListItem';
+import ListItem from 'components/mesh/list/Item';
 import PanelHeader from 'components/_misc/PanelHeader';
 
 // container elements
@@ -11,7 +11,7 @@ import * as actions from 'actions';
 // importing hoc
 import withPubNub from 'components/_hoc/withPubNub';
 
-class List extends Component {
+class ListWrapper extends Component {
   async componentWillMount() {
     const { meshId } = this.props.match.params;
     await this.props.fetchMeshUsers(meshId);
@@ -107,4 +107,4 @@ const callback = ownProps => {
 export default connect(
   mapStateToProps,
   actions
-)(withPubNub(List, channel, callback));
+)(withPubNub(ListWrapper, channel, callback));

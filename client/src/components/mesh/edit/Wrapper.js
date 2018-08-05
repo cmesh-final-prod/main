@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import * as actions from 'actions';
 
 // importing components
-import Title from 'components/mesh/HowYouAppear/Title';
-import BasicProfile from 'components/mesh/HowYouAppear/BasicProfile';
+import Title from 'components/mesh/edit/Title';
+import BasicProfile from 'components/mesh/edit/BasicProfile';
 
-class HowYouAppearWrapper extends Component {
+class Edit extends Component {
   handleSubmit(editedProfile) {
     const { meshId } = this.props.match.params;
     const userId = this.props.currentUser.data._id;
@@ -61,4 +61,4 @@ function mapStateToProps({ currentUser }) {
 export default connect(
   mapStateToProps,
   actions
-)(HowYouAppearWrapper);
+)(Edit);
