@@ -25,13 +25,14 @@ describe('PUT requests', () => {
 
   xit('edits user info', async () => {
     const headline = 'Product at circlemesh';
+    const hiring = true;
     const photos = 'hello1.photo.com';
     const res = await request(app)
       .put(`/api/users/${userId2}`)
-      .send({ headline });
+      .send({ hiring });
 
-    const user = await User.findById(userId, { 'userInfo.headline': true });
-    assert(user.userInfo.headline === headline);
+    // const user = await User.findById(userId, { 'userInfo.headline': true });
+    // assert(user.userInfo.headline === headline);
   });
 
   xit('adds mesh user', async () => {

@@ -1,4 +1,8 @@
-const fetchCurrentUser = (req, res, next) => {
+const reqUser = require('../../test/utils/REQ_USER');
+const Mesh = require('../../db/models/Mesh');
+const { ObjectId } = require('mongoose').Types;
+
+const fetchCurrentUser = async (req, res, next) => {
   try {
     let user = {};
     let userInfo = {};
@@ -23,6 +27,45 @@ const fetchCurrentUser = (req, res, next) => {
     user['hiring'] = userInfo.hiring;
     user['lookingForJob'] = userInfo.lookingForJob;
     user['lnId'] = linkedin._id;
+
+    // Checking if isFeedbackProvided
+
+    const meshId = ObjectId(req.params.meshId);
+    // const userId = ObjectId('5b662a3479c8797d475f533b');
+
+    const mesh = await Mesh.aggregate([
+      {
+        $match: {
+          _id: meshId
+        }
+      },
+      {
+        $unwind: '$users'
+      },
+      {
+        $project: {
+          userId: '$users._id',
+          isFeedbackProvided: {
+            $cond: {
+              if: '$users.feedback',
+              then: true,
+              else: false
+            }
+          }
+        }
+      },
+      {
+        $match: {
+          userId: _id
+        }
+      }
+    ]);
+
+    if (mesh.length > 0) {
+      user['isFeedbackProvided'] = mesh[0].isFeedbackProvided;
+    } else {
+      user['isFeedbackProvided'] = false;
+    }
 
     res.send({ isAuth: true, isCompliant: true, user });
   } catch (e) {

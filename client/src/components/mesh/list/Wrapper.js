@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 // importing components
 import ListItem from 'components/mesh/list/Item';
 import PanelHeader from 'components/_misc/PanelHeader';
+import FeedbackWrapper from 'components/mesh/feedback/Wrapper';
 
 // container elements
 import { connect } from 'react-redux';
@@ -24,7 +25,7 @@ class ListWrapper extends Component {
         title={data.title}
         color="text-color-1"
         endDate={data.endDate}
-        organizer="demo"
+        orgTitle={data.orgTitle}
         onExpiry={() =>
           this.props.history.push(`${this.props.match.url}/expired`)
         }
@@ -33,13 +34,7 @@ class ListWrapper extends Component {
   }
 
   renderFeedback() {
-    if (this.props.feedback) {
-      return (
-        <div className="m-feedback center light-blue">
-          <p>Please provide feedback</p>
-        </div>
-      );
-    }
+    return <FeedbackWrapper />;
   }
 
   renderUsers() {
@@ -47,15 +42,9 @@ class ListWrapper extends Component {
 
     if (isPopulated) {
       return users.map(user => {
-        let bool = false;
-
-        if (data.organizerId.toString() === user._id.toString()) {
-          bool = true;
-        }
-
         return (
           <ListItem
-            key={user._id}
+            key={user.userId}
             firstName={user.firstName}
             lastName={user.lastName}
             photos={user.photos[0]}
@@ -64,7 +53,7 @@ class ListWrapper extends Component {
             viewed={user.viewed}
             hiring={user.hiring}
             lookingForJob={user.lookingForJob}
-            organizer={bool}
+            isOrganizer={user.isOrganizer}
           />
         );
       });

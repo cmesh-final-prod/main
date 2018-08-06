@@ -46,8 +46,8 @@ export const postLocationToStore = (lng, lat) => {
 ////////////            USER ROUTES                ///////////////
 //////////////////////////////////////////////////////////////////
 
-export const fetchCurrentUser = () => dispatch => {
-  const response = axios.get('/api/users');
+export const fetchCurrentUser = meshId => dispatch => {
+  const response = axios.get(`/api/users/${meshId}`);
 
   dispatch({
     type: T.FETCH_CURRENT_USER,
@@ -61,7 +61,7 @@ export const associateOrgWithUser = (userId, orgId) => {
 };
 
 export const editUserInfo = (userId, userInfoProps) => {
-  axios.put(`/api/users/${userId}`, userInfoProps);
+  axios.put(`/api/users/edit/${userId}`, userInfoProps);
   return { type: T.EDIT_USER_INFO };
 };
 

@@ -10,8 +10,8 @@ const addBookmark = require('../controllers/PUT/addBookmark');
 // TODO: Add isAuth back to fetch curent user
 
 module.exports = app => {
-  app.get('/api/users', fetchCurrentUser);
+  app.get('/api/users/:meshId', fetchCurrentUser);
   app.put('/api/users/:userId/add/:orgId', associateOrgWithUser);
-  app.put('/api/users/:userId', editUserInfo);
+  app.put('/api/users/edit/:userId', editUserInfo);
   app.put('/api/users/:userId/bookmark/:bookmarkId', addBookmark);
 };

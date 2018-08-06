@@ -12,6 +12,7 @@ class PanelsWrapper extends Component {
       return (
         <Panel
           key={mesh.meshId}
+          orgTitle={mesh.orgTitle}
           meshId={mesh.meshId}
           title={mesh.title}
           distance={mesh.distance.calculated}

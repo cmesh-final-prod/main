@@ -21,11 +21,14 @@ class Item extends Component {
   }
 
   render() {
-    const { firstName, lastName, headline, profileLink, photos } = this.props;
-    let boo;
-    if (this.props.organizer) {
-      boo = 'organizer';
-    }
+    const {
+      firstName,
+      lastName,
+      headline,
+      profileLink,
+      photos,
+      isOrganizer
+    } = this.props;
 
     return (
       <li className="m-listItem">

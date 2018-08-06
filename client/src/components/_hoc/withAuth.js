@@ -7,7 +7,8 @@ import * as actions from 'actions';
 export default ChildComponent => {
   class ComposedComponent extends Component {
     componentDidMount() {
-      this.props.fetchCurrentUser();
+      const { meshId } = this.props.selectedMesh.data;
+      this.props.fetchCurrentUser(meshId);
     }
 
     componentDidUpdate() {
@@ -31,8 +32,8 @@ export default ChildComponent => {
     }
   }
 
-  function mapStateToProps({ currentUser }) {
-    return { currentUser };
+  function mapStateToProps({ currentUser, selectedMesh }) {
+    return { currentUser, selectedMesh };
   }
 
   return connect(

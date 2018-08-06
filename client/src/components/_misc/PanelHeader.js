@@ -14,17 +14,15 @@ class PanelHeader extends Component {
   }
 
   render() {
-    let { title, color, endDate, organizer } = this.props;
-    // if (title.length > 30) {
-    //   title = `${title.substring(0, 30)}...`;
-    // }
+    let { title, color, endDate, orgTitle } = this.props;
+
     return (
       <div className="m-header">
         <div className={`m-title ${color} left-align`}>
           <div className="m-title-text">{title}</div>
 
           <span className="grey-text text-darken-1 m-label grey lighten-4">
-            {organizer}
+            {orgTitle}
           </span>
         </div>
 

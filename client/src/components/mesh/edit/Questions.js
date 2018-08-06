@@ -17,9 +17,8 @@ class Questions extends Component {
 
     const questions = () => {
       return QUESTIONS.map(q => {
-        let checked = null;
-        const { id, text, status } = q;
-        status ? (checked = true) : '';
+        const { id, text } = q;
+
         return (
           <div key={id} className="row">
             <div className="col s8">

@@ -24,7 +24,7 @@ const fetchMeshes = async (req, res, next) => {
     };
 
     const sort = {
-      $sort: { createdAt: 1 }
+      $sort: { dist: 1 }
     };
 
     const lookup1 = {
