@@ -7,6 +7,7 @@ import * as actions from 'actions';
 
 // importing components
 import TimeLeft from 'components/_misc/TimeLeft';
+import Label from 'components/_misc/labels/Label';
 
 class PanelHeader extends Component {
   onExpiry() {
@@ -20,10 +21,12 @@ class PanelHeader extends Component {
       <div className="m-header">
         <div className={`m-title ${color} left-align`}>
           <div className="m-title-text">{title}</div>
-
-          <span className="grey-text text-darken-1 m-label grey lighten-4">
-            {orgTitle}
-          </span>
+          <div className="m-labels">
+            <Label
+              text={orgTitle}
+              bg="grey-text text-darken-1 grey lighten-4"
+            />
+          </div>
         </div>
 
         <div className="m-timer ">

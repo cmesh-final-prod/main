@@ -147,8 +147,7 @@
 
 .m-title {
   position: absolute;
-  font-size: 1.7em;
-  font-weight: lighter;
+
   left: 10%;
   top: 10%;
   right: 10%;
@@ -156,6 +155,8 @@
 
 .m-title-text {
   overflow: scroll;
+  font-size: 1.7em;
+  font-weight: lighter;
   max-height: 2.4em;
   line-height: 1.2em;
   text-overflow: ellipsis;
@@ -272,10 +273,6 @@
 .m-ghost {
   margin-top: 125px;
   height: 0px;
-}
-
-.m-sort-list .label {
-  display: inline-block !important;
 }
 
 .m-list {

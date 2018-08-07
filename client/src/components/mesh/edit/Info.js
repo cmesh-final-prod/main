@@ -1,5 +1,8 @@
 import React from 'react';
 
+// importing components
+import Label from 'components/_misc/labels/Label';
+
 const Info = ({
   firstName,
   lastName,
@@ -16,23 +19,19 @@ const Info = ({
         id: 1,
         text: 'hiring',
         render: hiring,
-        className: 'hiring light-blue white-text'
+        className: 'light-blue white-text'
       },
       {
         id: 2,
         text: 'looking for opportunities',
         render: lookingForJob,
-        className: 'looking white light-blue-text'
+        className: 'white light-blue-text light-blue-border'
       }
     ];
 
     return Q.map(q => {
       if (q.render) {
-        return (
-          <div key={q.id} className={`q-label ${q.className}`}>
-            {q.text}
-          </div>
-        );
+        return <Label key={q.id} bg={q.className} text={q.text} />;
       }
     });
   };
@@ -61,15 +60,21 @@ const Info = ({
   };
 
   return (
-    <div className="edit-basic-profile text-color-1">
-      <img src={photos[0]} alt="" className="circle" />
-      <br />
-      <span className="responsive edit-name">
-        {`${firstName} ${lastName.substring(0, 1)}.`}
-      </span>
-      <br />
-      {renderInputField()}
-      <div className="center-align">{renderQLabels()}</div>
+    <div className="edit-basic-profile">
+      <div className="row">
+        <div className="col s12 text-color-1">
+          <img src={photos[0]} alt="" className="circle" />
+          <br />
+          <span className="responsive edit-name">
+            {`${firstName} ${lastName.substring(0, 1)}.`}
+          </span>
+          <br />
+          {renderInputField()}
+        </div>
+        <div className="col s12">
+          <div className="horizontal-menu">{renderQLabels()}</div>
+        </div>
+      </div>
     </div>
   );
 };

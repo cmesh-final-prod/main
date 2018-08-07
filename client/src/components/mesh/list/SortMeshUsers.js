@@ -117,7 +117,11 @@ class SortMeshUsers extends Component {
 
   render() {
     this.renderButtonClass();
-    return <div className="m-sort-list">{this.renderSortOptions()}</div>;
+    return (
+      <div className="horizontal-menu grey lighten-3">
+        {this.renderSortOptions()}
+      </div>
+    );
   }
 }
 
