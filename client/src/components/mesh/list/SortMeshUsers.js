@@ -49,8 +49,8 @@ class SortMeshUsers extends Component {
   }
 
   renderButtonClass() {
-    const active = 'light-blue white-text';
-    const inActive = 'white light-blue-text';
+    const active = 'grey white-text';
+    const inActive = 'grey lighten-5 grey-text';
     switch (this.state.sortOption) {
       case 'all':
         allClass = active;
@@ -102,13 +102,13 @@ class SortMeshUsers extends Component {
       return SORT_OPTIONS.map(option => {
         if (option.render) {
           return (
-            <button
+            <div
               key={option.id}
-              className={`${option.className} btn`}
+              className={`${option.className} label`}
               onClick={() => this.handleClick(option.id)}
             >
               {option.name}
-            </button>
+            </div>
           );
         }
       });

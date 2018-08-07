@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import M from 'materialize-css';
 
-// importing assets
-import linkedinLogo3 from 'assets/in-3.png';
+// importing components
+import ViewLn from 'components/_misc/labels/ViewLn';
+import Label from 'components/_misc/labels/Label';
 
 class Item extends Component {
   state = { viewed: false, bookmarked: false };
@@ -20,6 +21,25 @@ class Item extends Component {
     }
   }
 
+  renderHiringLabel() {
+    return this.props.hiring ? (
+      <Label text="hiring" bg="light-blue white-text" />
+    ) : (
+      ''
+    );
+  }
+
+  renderLookingLabel() {
+    return this.props.lookingForJob ? (
+      <Label
+        text="looking for opportunities"
+        bg="light-blue-text white light-blue-border"
+      />
+    ) : (
+      ''
+    );
+  }
+
   render() {
     const {
       firstName,
@@ -33,14 +53,14 @@ class Item extends Component {
     return (
       <li className="m-listItem">
         <div className="row">
-          <div className="col s5 m-avatar m2">
+          <div className="col s3 m-avatar m2">
             <img
               src={photos}
               alt=""
               className="circle z-depth-3 materialboxed"
             />
           </div>
-          <div className="col s7 m10">
+          <div className="col s9 m10">
             <div className="row">
               <div className="col s10 m-info">
                 <p>
@@ -59,21 +79,16 @@ class Item extends Component {
                 </i>
               </div>
             </div>
-            <div className="row m-labels">
-              <a
-                href={profileLink}
-                className={`m-view grey-text ${this.renderViewBg()}`}
-                rel="noopener noreferrer"
-                target="_blank"
-                onClick={() => this.setState({ viewed: true })}
-              >
-                view
-                <img src={linkedinLogo3} alt="" className="" />
-              </a>
-              <p>
-                {this.props.hiring ? 'hiring' : ''}
-                {this.props.lookingForJob ? 'looking' : ''}
-              </p>
+            <div className="row">
+              <div className="col s12 m-labels">
+                <ViewLn
+                  profileLink={profileLink}
+                  bg={this.renderViewBg()}
+                  onClick={viewed => this.setState({ viewed })}
+                />
+                {this.renderHiringLabel()}
+                {this.renderLookingLabel()}
+              </div>
             </div>
           </div>
         </div>

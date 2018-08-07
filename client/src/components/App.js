@@ -6,6 +6,7 @@ import { isMobile, isTablet } from 'react-device-detect';
 import 'css/app.css';
 import 'css/color.css';
 import 'css/layout.css';
+import 'css/labels.css';
 
 // importing wrapper components
 import RootWrapper from 'components/root/Wrapper';

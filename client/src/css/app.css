@@ -101,33 +101,6 @@
   margin: 0px 0px 0px 0px;
 }
 
-.q-label {
-  border-radius: 10px;
-  padding: 2px 10px 2px 10px;
-  margin-bottom: 2px;
-}
-
-.hiring {
-  width: 20%;
-  max-width: 100px;
-}
-
-.looking {
-  width: 60%;
-  max-width: 200px;
-  border: 1px solid #03a9f4;
-}
-
-.edit-basic-profile .hiring {
-  position: relative;
-  left: 40%;
-}
-
-.edit-basic-profile .looking {
-  position: relative;
-  left: 20%;
-}
-
 .edit-questions {
   margin-top: 20px;
   padding: 10px 20px 0px 20px;
@@ -186,12 +159,6 @@
   max-height: 2.4em;
   line-height: 1.2em;
   text-overflow: ellipsis;
-}
-
-.m-label {
-  font-size: 0.5em;
-  border-radius: 10px;
-  padding: 2px 10px 2px 10px;
 }
 
 .m-timer {
@@ -275,12 +242,11 @@
 }
 
 .m-main {
-  left: 2vw;
-  margin-top: 5vh;
+  left: 1vw;
   min-height: 80vh;
-  width: 96vw;
+  width: 98vw;
   min-width: 200px;
-  border-radius: 30px;
+  border-radius: 0px 30px 0px 0px;
   padding: 10px 0px 10px 0px;
 }
 
@@ -291,6 +257,12 @@
   height: 130px;
   width: 100%;
   border-bottom: 1px solid #edebeb;
+  border-radius: 0px 30px 0px 0px;
+  background-color: #6e7985;
+}
+
+.m-feedback-trigger {
+  margin-bottom: 0px !important;
 }
 
 .m-feedback {
@@ -300,6 +272,10 @@
 .m-ghost {
   margin-top: 125px;
   height: 0px;
+}
+
+.m-sort-list .label {
+  display: inline-block !important;
 }
 
 .m-list {
@@ -319,13 +295,17 @@
 }
 
 .m-info {
-  padding-left: 0px !important;
+  padding-left: 5px !important;
+}
+
+.m-avatar {
+  padding-left: 3px !important;
+  padding-right: 3px !important;
 }
 
 .m-avatar img {
   position: relative;
-  left: 10%;
-  width: 80%;
+  width: 100%;
   max-width: 150px;
 }
 
@@ -341,19 +321,6 @@
 
 .m-bookmark {
   padding-left: 0px !important;
-}
-
-.m-view {
-  border-radius: 30px;
-  border: 1px solid #edebeb;
-  padding-left: 5px;
-  padding-right: 5px;
-}
-
-.m-view img {
-  position: relative;
-  top: 3px;
-  height: 16px;
 }
 
 .m-expiry {

@@ -81,12 +81,9 @@ class Feedback extends Component {
 
   renderForm() {
     return (
-      <div>
-        <div className="center">
-          <a
-            href="#feedbackModal"
-            className="waves-effects btn light-blue waves-light modal-trigger"
-          >
+      <div className="row m-feedback-trigger">
+        <div className="col s12 center waves-effects light-blue waves-light z-depth-2 ">
+          <a href="#feedbackModal" className="modal-trigger">
             <p className="white-text">Please provide feedback</p>
           </a>
         </div>
