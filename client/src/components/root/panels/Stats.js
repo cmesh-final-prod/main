@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import CountUp from 'react-countup';
 
 let hiringData;
 let lookingData;
