@@ -16,13 +16,15 @@ class BasicProfile extends Component {
     const { firstName, lastName, photos } = this.props;
 
     return (
-      <div className="row">
-        <form className="col s12">
+      <div className="">
+        <form className="">
           <Info
             firstName={firstName}
             lastName={lastName}
             photos={photos}
             headline={this.state.headline}
+            hiring={this.state.hiring}
+            lookingForJob={this.state.lookingForJob}
             onChange={headline => this.setState({ headline })}
             onFocus={() => this.setState({ headline: '' })}
           />
@@ -42,5 +44,3 @@ class BasicProfile extends Component {
 }
 
 export default BasicProfile;
-
-// <i className="tiny material-icons">edit</i>

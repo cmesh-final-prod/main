@@ -33,7 +33,7 @@ class RootWrapper extends Component {
   renderContent() {
     const { meshes } = this.props;
 
-    return meshes.isFetching ? (
+    return meshes.isFetching && !meshes.isPopulated ? (
       <SpinnerM searching={true} />
     ) : meshes.isPopulated ? (
       <PanelsWrapper />

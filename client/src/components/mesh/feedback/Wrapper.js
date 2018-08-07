@@ -11,7 +11,8 @@ class Feedback extends Component {
     eventFeedback: 0,
     eventDescription: '',
     cmeshFeedback: 0,
-    cmeshDescription: ''
+    cmeshDescription: '',
+    submittedAt: new Date().getTime()
   };
 
   componentDidMount() {
@@ -21,12 +22,10 @@ class Feedback extends Component {
 
   handleEventFeedback(nextValue, prevValue, name) {
     this.setState({ eventFeedback: nextValue });
-    console.log(nextValue, prevValue, name);
   }
 
   handleCmeshFeedback(nextValue, prevValue, name) {
     this.setState({ cmeshFeedback: nextValue });
-    console.log(nextValue, prevValue, name);
   }
 
   handleSumbit() {

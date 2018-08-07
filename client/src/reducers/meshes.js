@@ -14,7 +14,7 @@ export default (state = initialState, action) => {
     case POST_LOCATION_TO_STORE:
       return { ...state, isLocated: true, location: action.payload };
     case `${FETCH_MESHES}_PENDING`:
-      return { ...state, isFetching: true, isPopulated: false };
+      return { ...state, isFetching: true };
     case `${FETCH_MESHES}_REJECTED`:
       return {
         ...state,

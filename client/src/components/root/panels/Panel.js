@@ -7,6 +7,7 @@ import * as actions from 'actions';
 
 // importing components
 import PanelHeader from 'components/_misc/PanelHeader';
+import Stats from 'components/root/panels/Stats';
 
 class MeshPanel extends Component {
   handleClick() {
@@ -31,17 +32,36 @@ class MeshPanel extends Component {
     );
   }
 
-  renderPanelBody() {
-    const distance = Math.round(this.props.distance * 10000) / 10000;
+  renderStats() {
     const { totalUsers, totalHiring, totalLookingForJob } = this.props;
     return (
-      <div className="m-body center">
-        <h5 className="white-text">{totalUsers} users</h5>
-        <h5 className="white-text">{totalHiring} hiring</h5>
-        <h5 className="white-text">{totalLookingForJob} looking</h5>
-        <h5 className="white-text">{distance}</h5>
+      <Stats
+        totalUsers={totalUsers}
+        totalHiring={totalHiring}
+        totalLookingForJob={totalLookingForJob}
+      />
+    );
+  }
+
+  renderBodyResting() {
+    return (
+      <div className="center">
+        <div className="row">
+          <div className="m-body col s10 offset-s1">
+            <div className="m-body-inner white-text">
+              <div className="m-body-resting pulse btn-floating btn-flat transparent circle">
+                LIVE
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     );
+  }
+
+  renderPanelBody() {
+    const { totalUsers } = this.props;
+    return totalUsers > 1 ? this.renderStats() : this.renderBodyResting();
   }
 
   renderJoinButton() {

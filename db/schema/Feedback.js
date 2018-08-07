@@ -5,7 +5,8 @@ const FeedbackSchema = new Schema({
   eventFeedback: Number,
   eventDescription: String,
   cmeshFeedback: Number,
-  cmeshDescription: String
+  cmeshDescription: String,
+  submittedAt: Number
 });
 
 module.exports = FeedbackSchema;
