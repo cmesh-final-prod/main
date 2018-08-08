@@ -79,7 +79,7 @@ const isNotLocated = ownProps => {
 
 const channel = 'fetchMeshes';
 const callback = ownProps => {
-  ownProps.fetchMeshes(ownProps.lng, ownProps.lat);
+  // ownProps.fetchMeshes(ownProps.lng, ownProps.lat);
 };
 
 //////////////////////////////////////////
