@@ -1,0 +1,39 @@
+.section-location {
+  min-height: 80vh;
+}
+
+.oops {
+  margin-top: 20px;
+  height: 8em;
+  border-radius: 20px;
+  border: 1px solid #dddddd;
+  padding-top: 10px !important;
+  background-color: white;
+}
+
+.oops-title {
+  font-size: 4em;
+}
+
+.oops-icon {
+  font-size: 2em;
+  line-height: 1.4em;
+}
+
+.location-problem {
+  font-size: 1.8em;
+  font-weight: lighter;
+}
+
+.location-solution {
+  height: 4em;
+  border-radius: 20px;
+  font-size: 1.4em;
+  font-weight: bold;
+  padding-top: 10px !important;
+}
+
+.location-instructions-solution {
+  margin-top: 10px;
+  font-size: 1.4em;
+}
