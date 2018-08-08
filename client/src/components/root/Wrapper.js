@@ -70,7 +70,7 @@ const isLocated = (ownProps, lng, lat) => {
 };
 
 const isNotLocated = ownProps => {
-  ownProps.history.push('/locationError');
+  // ownProps.history.push('/locationError');
 };
 
 //////////////////////////////////////////
@@ -79,7 +79,7 @@ const isNotLocated = ownProps => {
 
 const channel = 'fetchMeshes';
 const callback = ownProps => {
-  // ownProps.fetchMeshes(ownProps.lng, ownProps.lat);
+  ownProps.fetchMeshes(ownProps.lng, ownProps.lat);
 };
 
 //////////////////////////////////////////
