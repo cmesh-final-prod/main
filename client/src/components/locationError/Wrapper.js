@@ -47,28 +47,30 @@ class LocationErrorWrapper extends Component {
   }
 }
 
-//////////////////////////////////////////
-//////     withLocation Props    /////////
-//////////////////////////////////////////
+// //////////////////////////////////////////
+// //////     withLocation Props    /////////
+// //////////////////////////////////////////
+//
+// const isNotSupported = ownProps => {
+//   ownProps.history.push('/locationError/browser');
+// };
+// const isLocated = (ownProps, lng, lat) => {
+//   ownProps.history.push('/');
+// };
+//
+// const isNotLocated = ownProps => {
+//   ownProps.history.push('/locationError/instructions');
+// };
+//
+// //////////////////////////////////////////
+// //////     ------ End -------    /////////
+// //////////////////////////////////////////
+//
+// export default withLocation(
+//   LocationErrorWrapper,
+//   isNotSupported,
+//   isLocated,
+//   isNotLocated
+// );
 
-const isNotSupported = ownProps => {
-  ownProps.history.push('/locationError/browser');
-};
-const isLocated = (ownProps, lng, lat) => {
-  ownProps.history.push('/');
-};
-
-const isNotLocated = ownProps => {
-  ownProps.history.push('/locationError/instructions');
-};
-
-//////////////////////////////////////////
-//////     ------ End -------    /////////
-//////////////////////////////////////////
-
-export default withLocation(
-  LocationErrorWrapper,
-  isNotSupported,
-  isLocated,
-  isNotLocated
-);
+export default LocationErrorWrapper;
