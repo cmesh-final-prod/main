@@ -25,7 +25,7 @@ export default (ChildComponent, isNotSupported, isLocated, isNotLocated) => {
       };
 
       if (!navigator.geolocation) {
-        console.log('navigator.geolcation === false', this.props);
+        console.log('navigator.geolocation === false', this.props);
         isNotSupported(this.props);
       } else {
         navigator.geolocation.getCurrentPosition(
@@ -44,7 +44,7 @@ export default (ChildComponent, isNotSupported, isLocated, isNotLocated) => {
     }
 
     notReceivedLocation(positionError) {
-      console.log('navigator.geolcation === true && notReceivedLocation');
+      console.log('navigator.geolocation === true && notReceivedLocation');
       isNotLocated(this.props);
     }
 

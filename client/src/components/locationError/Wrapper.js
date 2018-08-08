@@ -52,14 +52,14 @@ class LocationErrorWrapper extends Component {
 //////////////////////////////////////////
 
 const isNotSupported = ownProps => {
-  // ownProps.history.push('/locationError/browser');
+  ownProps.history.push('/locationError/browser');
 };
 const isLocated = (ownProps, lng, lat) => {
-  // ownProps.history.push('/');
+  ownProps.history.push('/');
 };
 
 const isNotLocated = ownProps => {
-  // ownProps.history.push('/locationError/instructions');
+  ownProps.history.push('/locationError/instructions');
 };
 
 //////////////////////////////////////////
