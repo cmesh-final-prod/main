@@ -2,19 +2,23 @@ import React from 'react';
 
 const Footer = () => {
   return (
-    <footer className="page-footer color-1">
+    <footer className="color-1">
       <div className="row center">
-        <div className="col s12">
-          <a
-            href="mailto:team@circlemesh.com"
-            className="btn-flat white grey-text"
-          >
-            <i className="material-icons right tiny">email</i>Contact Us
-          </a>
+        <div className="col s6 white-text">
+          <p>&copy; All Rights Reserved</p>
         </div>
-      </div>
-      <div className="footer-copyright center">
-        <div className="container">All Rights Reserved</div>
+        <div className="col s6">
+          <div className="footer-btn">
+            <a
+              href="mailto:team@circlemesh.com"
+              className="white-text right-align"
+            >
+              <p>
+                <u>Contact Us</u>
+              </p>
+            </a>
+          </div>
+        </div>
       </div>
     </footer>
   );

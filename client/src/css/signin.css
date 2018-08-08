@@ -1,0 +1,35 @@
+.signin {
+  border-radius: 30px;
+  padding-top: 20px !important;
+}
+
+.signin-check {
+  margin-top: 20px;
+}
+
+.signin-check .material-icons {
+  font-size: 2em;
+  font-weight: bolder;
+}
+
+.signin-reason {
+  font-size: 1.4em;
+  font-weight: lighter;
+  font-style: italic;
+}
+
+.signin-title {
+  font-size: 2.4em;
+  font-weight: bold;
+  padding-left: 20px;
+}
+
+.signin-divider {
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.signin-btn {
+  width: 100%;
+  border-radius: 30px;
+}

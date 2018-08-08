@@ -1,7 +1,16 @@
 .m-feedback-trigger {
+  margin-top: 10px;
   margin-bottom: 0px !important;
-  height: 30px;
-  line-height: 30px;
+}
+
+.m-feedback-trigger .col {
+  height: 3em;
+  line-height: 1em;
+  border-radius: 20px;
+}
+
+.m-feedback-trigger .col p {
+  font-size: 1em;
 }
 
 .m-feedback-modal {

@@ -26,7 +26,7 @@ class ListWrapper extends Component {
     return (
       <PanelHeader
         title={data.title}
-        bg="grey lighten-5"
+        bg="grey lighten-3"
         color="text-color-1"
         endDate={data.endDate}
         orgTitle={data.orgTitle}
@@ -86,6 +86,7 @@ class ListWrapper extends Component {
   render() {
     return (
       <div>
+        {this.renderFeedback()}
         <div className="card m-main z-depth-0">
           <div className="card-content">
             {this.renderHeader()}
@@ -93,7 +94,7 @@ class ListWrapper extends Component {
             <SortMeshUsers
               onClick={sortOption => this.setState({ sortOption })}
             />
-            {this.renderFeedback()}
+
             <div className="m-list">
               <ul className="">{this.renderList()}</ul>
             </div>

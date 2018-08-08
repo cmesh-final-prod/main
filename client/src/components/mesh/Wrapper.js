@@ -6,6 +6,7 @@ import NavbarWrapper from 'components/_misc/navbar/Wrapper';
 import EditWrapper from 'components/mesh/edit/Wrapper';
 import ListWrapper from 'components/mesh/list/Wrapper';
 import Expired from 'components/mesh/misc/Expired';
+import Footer from 'components/_misc/Footer';
 
 // importing hoc
 import withAuth from 'components/_hoc/withAuth';
@@ -29,6 +30,7 @@ class MeshWrapper extends Component {
           component={ListWrapper}
         />
         <Route path={`${match.url}/:meshId/list/expired`} component={Expired} />
+        <Footer />
       </div>
     );
   }

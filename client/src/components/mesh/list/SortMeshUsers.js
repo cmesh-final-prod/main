@@ -31,10 +31,9 @@ class SortMeshUsers extends Component {
     let lookingForJob = 0;
 
     users.forEach(user => {
-      if (user.hiring) {
-        return hiring++;
-      }
-      return user.lookingForJob ? lookingForJob++ : '';
+      const a = user.hiring ? hiring++ : '';
+      const b = user.lookingForJob ? lookingForJob++ : '';
+      return [a, b];
     });
 
     hiring === 0

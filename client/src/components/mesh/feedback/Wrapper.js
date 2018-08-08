@@ -48,13 +48,13 @@ class Feedback extends Component {
     const CONTENT = [
       {
         id: 'eventFeedback',
-        text: 'Please rate this event: ',
+        text: 'How was your experience coming to this event?',
         cb: this.handleEventFeedback.bind(this),
         desc: 'eventDescription'
       },
       {
         id: 'cmeshFeedback',
-        text: 'Please rate circlemesh: ',
+        text: 'How was your experience using this app?',
         cb: this.handleCmeshFeedback.bind(this),
         desc: 'cmeshDescription'
       }
@@ -81,7 +81,7 @@ class Feedback extends Component {
               <textarea
                 id={content.id}
                 className="materialize-textarea text-color-1"
-                placeholder="describe..."
+                placeholder="please explain"
                 onChange={e =>
                   this.setState({ [content.desc]: e.target.value })
                 }
@@ -97,14 +97,16 @@ class Feedback extends Component {
     return (
       <div className="modal m-feedback-modal" id="feedbackModal">
         <div className="modal-content m-feedback-content">
-          <p className="m-feedback-title text-color-1">Feedback</p>
+          <p className="m-feedback-title text-color-1">
+            <i className="material-icons left medium">feedback</i>Feedback
+          </p>
           <div className="m-feedback-divider divider color-1" />
           {this.renderModalContent()}
         </div>
         <div className="row">
           <div className="col s12 m-feedback-footer center">
             <div
-              className="waves-effect light-blue m-feedback-button btn"
+              className="waves-effect color-1 m-feedback-button btn"
               onClick={() => this.handleSumbit()}
               disabled={this.shouldDisable()}
             >
@@ -118,10 +120,10 @@ class Feedback extends Component {
 
   renderForm() {
     return (
-      <div className="row">
-        <div className="col s12  m-feedback-trigger center waves-effects light-blue waves-light z-depth-2 ">
+      <div className="row m-feedback-trigger">
+        <div className="col s8 offset-s2 center waves-effects btn gradient-1 z-depth-2">
           <a href="#feedbackModal" className="modal-trigger">
-            <p className="white-text">PROVIDE FEEDBACK</p>
+            <p className="white-text responsive">PLEASE PROVIDE FEEDBACK</p>
           </a>
         </div>
         {this.renderModal()}
