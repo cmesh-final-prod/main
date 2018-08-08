@@ -26,7 +26,8 @@ class ListWrapper extends Component {
     return (
       <PanelHeader
         title={data.title}
-        color="white-text"
+        bg="grey lighten-5"
+        color="text-color-1"
         endDate={data.endDate}
         orgTitle={data.orgTitle}
         onExpiry={() =>

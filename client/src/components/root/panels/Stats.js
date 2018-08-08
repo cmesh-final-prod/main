@@ -54,14 +54,14 @@ class Stats extends Component {
     ];
 
     return STATS.map(item => {
-      if (this.state[item.id]) {
-        return (
-          <div key={item.id} className="m-stats white-text">
-            <div className="m-stats-data right-align">{item.data}</div>
-            <div className="m-stats-text left-align">{item.text}</div>
-          </div>
-        );
-      }
+      return this.state[item.id] ? (
+        <div key={item.id} className="m-stats white-text">
+          <div className="m-stats-data right-align">{item.data}</div>
+          <div className="m-stats-text left-align">{item.text}</div>
+        </div>
+      ) : (
+        ''
+      );
     });
   }
 

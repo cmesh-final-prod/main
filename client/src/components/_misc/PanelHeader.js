@@ -18,7 +18,7 @@ class PanelHeader extends Component {
     let { title, color, endDate, orgTitle } = this.props;
 
     return (
-      <div className="m-header">
+      <div className={`m-header ${this.props.bg}`}>
         <div className={`m-title ${color} left-align`}>
           <div className="m-title-text">{title}</div>
           <div className="m-labels">

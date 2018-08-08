@@ -21,6 +21,34 @@ class Item extends Component {
     }
   }
 
+  renderLabels() {
+    const LABELS = [
+      {
+        text: 'organizer',
+        cond: this.props.isOrganizer,
+        bg: 'grey lighten-1 white-text grey-border'
+      },
+      {
+        text: 'hiring',
+        cond: this.props.hiring,
+        bg: 'light-blue white-text light-blue-border'
+      },
+      {
+        text: 'looking for opportunities',
+        cond: this.props.lookingForJob,
+        bg: 'light-blue-text white light-blue-border'
+      }
+    ];
+
+    return LABELS.map(label => {
+      return label.cond ? (
+        <Label key={label.text} text={label.text} bg={label.bg} />
+      ) : (
+        ''
+      );
+    });
+  }
+
   renderHiringLabel() {
     return this.props.hiring ? (
       <Label text="hiring" bg="light-blue white-text" />
@@ -41,14 +69,7 @@ class Item extends Component {
   }
 
   render() {
-    const {
-      firstName,
-      lastName,
-      headline,
-      profileLink,
-      photos,
-      isOrganizer
-    } = this.props;
+    const { firstName, lastName, headline, profileLink, photos } = this.props;
 
     return (
       <li className="m-listItem">
@@ -86,8 +107,7 @@ class Item extends Component {
                   bg={this.renderViewBg()}
                   onClick={viewed => this.setState({ viewed })}
                 />
-                {this.renderHiringLabel()}
-                {this.renderLookingLabel()}
+                {this.renderLabels()}
               </div>
             </div>
           </div>

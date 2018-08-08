@@ -31,8 +31,10 @@ class SortMeshUsers extends Component {
     let lookingForJob = 0;
 
     users.forEach(user => {
-      user.hiring ? hiring++ : '';
-      user.lookingForJob ? lookingForJob++ : '';
+      if (user.hiring) {
+        return hiring++;
+      }
+      return user.lookingForJob ? lookingForJob++ : '';
     });
 
     hiring === 0
@@ -100,17 +102,17 @@ class SortMeshUsers extends Component {
       ];
 
       return SORT_OPTIONS.map(option => {
-        if (option.render) {
-          return (
-            <div
-              key={option.id}
-              className={`${option.className} label`}
-              onClick={() => this.handleClick(option.id)}
-            >
-              {option.name}
-            </div>
-          );
-        }
+        return option.render ? (
+          <div
+            key={option.id}
+            className={`${option.className} label`}
+            onClick={() => this.handleClick(option.id)}
+          >
+            {option.name}
+          </div>
+        ) : (
+          ''
+        );
       });
     }
   }

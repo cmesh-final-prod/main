@@ -30,9 +30,11 @@ const Info = ({
     ];
 
     return Q.map(q => {
-      if (q.render) {
-        return <Label key={q.id} bg={q.className} text={q.text} />;
-      }
+      return q.render ? (
+        <Label key={q.id} bg={q.className} text={q.text} />
+      ) : (
+        ''
+      );
     });
   };
 
@@ -60,7 +62,7 @@ const Info = ({
   };
 
   return (
-    <div className="edit-basic-profile">
+    <div className="edit-basic-profile grey lighten-5">
       <div className="row">
         <div className="col s12 text-color-1">
           <img src={photos[0]} alt="" className="circle" />

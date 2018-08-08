@@ -7,6 +7,7 @@ import 'css/app.css';
 import 'css/color.css';
 import 'css/layout.css';
 import 'css/labels.css';
+import 'css/feedback.css';
 
 // importing wrapper components
 import RootWrapper from 'components/root/Wrapper';

@@ -26,7 +26,7 @@ class NavbarWrapper extends Component {
       <div>
         <div className="navbar-fixed">
           <nav className="white">
-            <div className="nav-wrapper gradient-2">
+            <div className="nav-wrapper color-1">
               <div className="row">
                 <div className="">
                   {this.renderTitle()}

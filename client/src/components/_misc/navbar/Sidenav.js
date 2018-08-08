@@ -68,7 +68,7 @@ export const hamburgerMenu = () => {
         <a
           href=""
           data-target="mobile-nav"
-          className="button-collapse sidenav-trigger text-color-1"
+          className="button-collapse sidenav-trigger white-text"
         >
           <i className="material-icons">menu</i>
         </a>

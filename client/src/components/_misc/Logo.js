@@ -2,8 +2,8 @@ import React from 'react';
 
 const Logo = () => {
   return (
-    <div className="brand-logo white-text text-darken-2">
-      <span className="text-color-1">
+    <div className="brand-logo">
+      <span className="white-text">
         circle<b>mesh</b>
       </span>
     </div>
