@@ -39,13 +39,30 @@ export default (ChildComponent, isNotSupported, isLocated, isNotLocated) => {
     receivedLocation(position) {
       lng = position.coords.longitude;
       lat = position.coords.latitude;
-
       isLocated(this.props, lng, lat);
+      console.log('recieved lcation', position);
     }
 
-    notReceivedLocation(positionError) {
-      console.log('navigator.geolocation === true && notReceivedLocation');
-      isNotLocated(this.props);
+    notReceivedLocation(error) {
+      switch (error.code) {
+        case error.PERMISSION_DENIED:
+          console.log('permission denied');
+          isNotLocated(this.props);
+          return;
+        case error.POSITION_UNAVAILABLE:
+          console.log('position unavailable');
+          break;
+        case error.TIMEOUT:
+          console.log('timeout');
+          break;
+        case error.UNKNOWN_ERROR:
+          console.log('unknown error');
+          break;
+        default:
+          console.log('default case');
+          break;
+      }
+      console.log('not received location');
     }
 
     render() {
