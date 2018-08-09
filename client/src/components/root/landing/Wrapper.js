@@ -4,20 +4,20 @@ import { Link } from 'react-router-dom';
 // temp
 import ip from 'ip';
 import { deviceDetect, browserName, browserVersion } from 'react-device-detect';
-import publicIp from 'public-ip';
+// import publicIp from 'public-ip';
 
 let ipV4, ipV6;
 class Content extends Component {
-  componentDidMount() {
-    publicIp.v4().then(ip => {
-      ipV4 = ip;
-      console.log(ipV4);
-    });
-    publicIp.v6().then(ip => {
-      ipV6 = ip;
-      console.log(ipV6);
-    });
-  }
+  // componentDidMount() {
+  //   publicIp.v4().then(ip => {
+  //     ipV4 = ip;
+  //     console.log(ipV4);
+  //   });
+  //   publicIp.v6().then(ip => {
+  //     ipV6 = ip;
+  //     console.log(ipV6);
+  //   });
+  // }
 
   renderDeviceData() {
     return (
