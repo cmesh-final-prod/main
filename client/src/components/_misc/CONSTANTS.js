@@ -22,6 +22,11 @@ export const SIDENAV_MENU = [
 ];
 
 export const MESH_PROPS = (lng, lat) => {
+  let primaryOrganizerId;
+  process.env.NODE_ENV === 'development'
+    ? (primaryOrganizerId = '5b66a503265a4a0314331d49')
+    : (primaryOrganizerId = '5b66d4d562317f00142d708b');
+
   return {
     title: 'This event has an organizer',
     coordinates: [lng, lat],
@@ -30,6 +35,6 @@ export const MESH_PROPS = (lng, lat) => {
     description:
       'Odit sit ab repudiandae dolor necessitatibus ea asperiores a consectetur.',
     address: '077 Ashly Course',
-    primaryOrganizerId: '5b66a503265a4a0314331d49'
+    primaryOrganizerId
   };
 };

@@ -111,25 +111,10 @@ export const addMeshFeedback = (meshId, userId, feedbackProps) => {
 ////////////              ORG ROUTES               ///////////////
 //////////////////////////////////////////////////////////////////
 
-export const createOrg = async orgProps => {
-  const response = await axios.post('/api/orgs', orgProps);
+export const createOrg = orgProps => {
+  const response = axios.post('/api/orgs', orgProps);
   return {
     type: T.CREATE_ORG,
     payload: response
   };
 };
-
-// export const fetchMeshOrganizer = meshId => {
-//   if (!meshId) {
-//     return {
-//       type: 'FETCH_MESH_ORGANIZER_FULFILLED',
-//       payload: {}
-//     };
-//   }
-//
-//   const response = axios.get(`/api/meshes/${meshId}/organizer`);
-//   return {
-//     type: T.FETCH_MESH_ORGANIZER,
-//     payload: response
-//   };
-// };
