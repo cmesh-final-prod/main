@@ -8,21 +8,26 @@ import publicIp from 'public-ip';
 
 let ipV4, ipV6;
 class Content extends Component {
-  renderDeviceData() {
+  componentDidMount() {
     publicIp.v4().then(ip => {
       ipV4 = ip;
+      console.log(ipV4);
     });
     publicIp.v6().then(ip => {
       ipV6 = ip;
+      console.log(ipV6);
     });
+  }
+
+  renderDeviceData() {
     return (
       <div>
         <p>
           Ip: {ip.address()}
           <br />
-          IpV4: {ipV4}
+          IpV4: {}
           <br />
-          IpV6: {ipV6}
+          IpV6: {}
           <br />
           browserName: {browserName}
           <br />
@@ -60,6 +65,7 @@ class Content extends Component {
           <div className="divider" />
         </div>
         {this.renderDeviceData()}
+
         <div className="center">
           <Link to="/about" className="btn grey gradient-1 z-depth-5 btn-demo">
             Learn More
