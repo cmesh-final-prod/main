@@ -4,13 +4,25 @@ import { Link } from 'react-router-dom';
 // temp
 import ip from 'ip';
 import { deviceDetect, browserName, browserVersion } from 'react-device-detect';
+import publicIp from 'public-ip';
 
+let ipV4, ipV6;
 class Content extends Component {
   renderDeviceData() {
+    publicIp.v4().then(ip => {
+      ipV4 = ip;
+    });
+    publicIp.v6().then(ip => {
+      ipV6 = ip;
+    });
     return (
       <div>
         <p>
           Ip: {ip.address()}
+          <br />
+          IpV4: {ipV4}
+          <br />
+          IpV6: {ipV6}
           <br />
           browserName: {browserName}
           <br />
