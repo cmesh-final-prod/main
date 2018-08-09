@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 // temp
 import ip from 'ip';
 import { deviceDetect, browserName, browserVersion } from 'react-device-detect';
-// import publicIp from 'public-ip';
+import publicIp from 'public-ip';
 
 let ipV4, ipV6;
 class Content extends Component {
