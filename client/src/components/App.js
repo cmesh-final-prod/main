@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Route, Redirect } from 'react-router-dom';
-import { isMobile, isTablet } from 'react-device-detect';
+import {
+  isMobile,
+  isTablet,
+  deviceDetect,
+  browserVersion,
+  browserName
+} from 'react-device-detect';
 
 // importing style sheets
 import 'css/app.css';
