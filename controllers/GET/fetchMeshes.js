@@ -4,7 +4,8 @@ const pubnub = require('../../utils/pubnub');
 
 const fetchMeshes = async (req, res, next) => {
   try {
-    console.log('-----------', req);
+    ip = req.connection.remoteAddress;
+    console.log('-----------', ip);
     const { lng, lat } = req.query;
     const now_milli = new Date().getTime();
 
@@ -96,7 +97,11 @@ const fetchMeshes = async (req, res, next) => {
     ]);
 
     if (nearByAndActiveMeshes.length > 0) {
-      res.send({ isFound: true, publicInfo: nearByAndActiveMeshes });
+      res.send({
+        isFound: true,
+        publicInfo: nearByAndActiveMeshes,
+        ip
+      });
     } else {
       res.send({ isFound: false });
     }
