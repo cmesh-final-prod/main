@@ -4,8 +4,8 @@ const pubnub = require('../../utils/pubnub');
 
 const fetchMeshes = async (req, res, next) => {
   try {
-    // ip = req.connection.remoteAddress;
-    ip = req.ip;
+    // ip = req.ip;
+    ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
     console.log('-----------', ip);
     const { lng, lat } = req.query;
     const now_milli = new Date().getTime();
