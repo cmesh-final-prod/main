@@ -4,6 +4,7 @@ const pubnub = require('../../utils/pubnub');
 
 const fetchMeshes = async (req, res, next) => {
   try {
+    console.log('-----------', req);
     const { lng, lat } = req.query;
     const now_milli = new Date().getTime();
 

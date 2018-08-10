@@ -64,7 +64,6 @@ class Content extends Component {
           </p>
           <div className="divider" />
         </div>
-        // {this.renderDeviceData()}
         <div className="center">
           <Link to="/about" className="btn grey gradient-1 z-depth-5 btn-demo">
             Learn More
