@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 // temp
-import IP from 'public-ip';
+// import publicIp from 'public-ip';
 import ip from 'ip';
 import { deviceDetect, browserName, browserVersion } from 'react-device-detect';
 
