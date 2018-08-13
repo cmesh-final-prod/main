@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { deviceDetect, browserName, browserVersion } from 'react-device-detect';
 import Fingerprint2 from 'fingerprintjs2';
 import * as L from 'components/_misc/LOG-TYPES';
 
@@ -26,6 +27,8 @@ export default (ChildComponent, isNotSupported, isLocated, isNotLocated) => {
         new Fingerprint2().get((result, components) => {
           const createLogProps = {
             fingerPrint: result,
+            device: deviceDetect(),
+            browser: { browserName, browserVersion },
             log: {
               logType,
               componentServed: '_hoc-withLocation'
