@@ -23,3 +23,55 @@
 .grey-border {
   border: 1px solid #cccccc;
 }
+
+.dark-primary-color {
+  /* background-color: #0288d1; */
+  background-color: #628395;
+}
+
+.primary-color {
+  /* background-color: #03a9f4; */
+  background-color: #628395;
+}
+
+.accent-color {
+  /* background-color: #448aff; */
+  background-color: #efefef;
+  color: #7b8c96 !important;
+}
+
+.dark-primary-color-text {
+  color: #0288d1;
+}
+.primary-color-text {
+  color: #03a9f4;
+}
+
+.light-primary-color {
+  background-color: #b3e5fc;
+}
+
+.light-primary-color-text {
+  color: #b3e5fc;
+}
+
+.accent-color-text {
+  color: #448aff;
+}
+
+.primary-text {
+  color: #212121;
+}
+
+.primary-icon-color {
+  color: #ffffff;
+}
+
+.secondary-text {
+  color: #757575;
+}
+
+.divider-color {
+  background-color: #bdbdbd;
+  color: #bdbdbd;
+}

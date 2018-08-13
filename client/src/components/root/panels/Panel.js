@@ -86,7 +86,7 @@ class MeshPanel extends Component {
         <Link
           to="/mesh"
           onClick={() => this.handleClick()}
-          className="btn-join btn-large waves-effect white-text light-blue"
+          className="btn-join btn-large waves-effect white-text accent-color"
         >
           <p className="flow-text">JOIN THE ROOM</p>
         </Link>
@@ -96,7 +96,7 @@ class MeshPanel extends Component {
 
   render() {
     return (
-      <div className="card m-panel grey darken-2 z-depth-5 gradient-1">
+      <div className="card m-panel z-depth-5 primary-color">
         <div className="card-content">
           {this.renderPanelHeader()}
           {this.renderPanelBody()}

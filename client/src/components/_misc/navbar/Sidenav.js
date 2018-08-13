@@ -95,8 +95,8 @@ export const hamburgerMenu = ownProps => {
   );
 };
 
-function mapStateToProps({ meshes, currentUser }) {
-  return { meshes, currentUser };
+function mapStateToProps({ meshes }) {
+  return { meshes };
 }
 
 export default connect(

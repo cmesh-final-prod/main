@@ -30,7 +30,7 @@ class NavbarWrapper extends Component {
       <div>
         <div className="navbar-fixed">
           <nav className="white">
-            <div className="nav-wrapper color-1">
+            <div className="nav-wrapper dark-primary-color">
               <div className="row">
                 <div className="">
                   {this.renderTitle()}
@@ -47,7 +47,11 @@ class NavbarWrapper extends Component {
   }
 }
 
+function mapStateToProps({ currentUser }) {
+  return { currentUser };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(withRouter(NavbarWrapper));
