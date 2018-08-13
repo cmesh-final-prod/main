@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { deviceDetect, browserName, browserVersion } from 'react-device-detect';
+import Fingerprint2 from 'fingerprintjs2';
 
 // container elements
 import { connect } from 'react-redux';
@@ -14,6 +15,10 @@ export default (ChildComponent, logProps) => {
         log: logProps(this.props)
       };
       this.props.createLog(createLogProps);
+
+      new Fingerprint2().get((result, components) => {
+        console.log('-----------------------', result);
+      });
     }
 
     render() {
