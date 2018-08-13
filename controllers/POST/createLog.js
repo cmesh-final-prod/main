@@ -1,4 +1,5 @@
 const requestIp = require('request-ip');
+const publicIp = require('public-ip');
 
 // importing models
 const Log = require('../../db/models/Log');
@@ -7,8 +8,14 @@ const UserAgent = require('../../db/models/UserAgent');
 const createLog = async (req, res, next) => {
   try {
     const clientIp = requestIp.getClientIp(req);
+
+    const pIp4 = await publicIp.v4();
+    const pIp6 = await publicIp.v6();
+
     // const clientIp = null;
-    !clientIp ? (ip = `RAND${Math.random().toString()}`) : (ip = clientIp);
+    !clientIp ? (ip = `RAND${Math.random().toString()}`) : (ip = pIp6);
+
+    console.log(pIp4, pIp6);
 
     const timestamp = new Date().getTime();
     const props = req.body;
