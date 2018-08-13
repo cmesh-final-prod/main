@@ -1,4 +1,4 @@
-const requestIp = require('request-ip');
+// const requestIp = require('request-ip');
 const publicIp = require('public-ip');
 
 // importing models
@@ -7,15 +7,17 @@ const UserAgent = require('../../db/models/UserAgent');
 
 const createLog = async (req, res, next) => {
   try {
-    const clientIp = requestIp.getClientIp(req);
+    // const clientIp = requestIp.getClientIp(req);
 
-    const pIp4 = await publicIp.v4();
-    const pIp6 = await publicIp.v6();
+    const IpV4 = await publicIp.v4();
+    const IpV6 = await publicIp.v6();
+    let IpV;
 
     // const clientIp = null;
-    !clientIp ? (ip = `RAND${Math.random().toString()}`) : (ip = pIp6);
+    // !clientIp ? (ip = `RAND${Math.random().toString()}`) : (ip = clientIp);
 
-    console.log(pIp4, pIp6);
+    !IpV6 ? (IpV = IpV4) : (IpV = IpV6);
+    !IpV ? (ip = `RAND${Math.random().toString()}`) : (ip = IpV);
 
     const timestamp = new Date().getTime();
     const props = req.body;
@@ -29,6 +31,7 @@ const createLog = async (req, res, next) => {
     const { logType } = logProps;
 
     const existingUserAgent = await UserAgent.findOne({ ip });
+
     if (!existingUserAgent) {
       const userAgent = await UserAgent.create({
         ip,
