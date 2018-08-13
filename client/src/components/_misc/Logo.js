@@ -3,7 +3,7 @@ import React from 'react';
 const Logo = () => {
   return (
     <div className="brand-logo">
-      <span className="white-text">
+      <span className="primary-color-text">
         circle<b>mesh</b>
       </span>
     </div>

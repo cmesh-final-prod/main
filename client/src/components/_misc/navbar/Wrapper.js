@@ -29,8 +29,8 @@ class NavbarWrapper extends Component {
     return (
       <div>
         <div className="navbar-fixed">
-          <nav className="white">
-            <div className="nav-wrapper dark-primary-color">
+          <nav className="transparent">
+            <div className="nav-wrapper">
               <div className="row">
                 <div className="">
                   {this.renderTitle()}

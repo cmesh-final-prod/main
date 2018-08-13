@@ -26,12 +26,17 @@
 
 .dark-primary-color {
   /* background-color: #0288d1; */
-  background-color: #628395;
+  background-color: #5d6987;
 }
 
 .primary-color {
   /* background-color: #03a9f4; */
-  background-color: #628395;
+  /* background-color: #ffffff; */
+  background-image: linear-gradient(180deg, #6c8cd8 54%, #5d6987 120%);
+}
+
+.primary-color-text {
+  color: #5d6987;
 }
 
 .accent-color {
@@ -42,9 +47,6 @@
 
 .dark-primary-color-text {
   color: #0288d1;
-}
-.primary-color-text {
-  color: #03a9f4;
 }
 
 .light-primary-color {
