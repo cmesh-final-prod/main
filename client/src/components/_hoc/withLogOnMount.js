@@ -16,9 +16,12 @@ export default (ChildComponent, logProps) => {
       };
       this.props.createLog(createLogProps);
 
-      new Fingerprint2().get((result, components) => {
-        console.log('-----------------------', result);
-      });
+      setTimeout(
+        new Fingerprint2().get((result, components) => {
+          console.log('-----------------------', result);
+        }),
+        500
+      );
     }
 
     render() {
