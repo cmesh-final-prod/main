@@ -1,5 +1,4 @@
-// const requestIp = require('request-ip');
-// const publicIp = require('public-ip');
+const getClientAddress = require('client-address');
 
 // importing models
 const Log = require('../../db/models/Log');
@@ -7,17 +6,8 @@ const UserAgent = require('../../db/models/UserAgent');
 
 const createLog = async (req, res, next) => {
   try {
-    // const clientIp = requestIp.getClientIp(req);
-
-    // const IpV4 = await publicIp.v4();
-    // const IpV6 = await publicIp.v6();
-    // let IpV;
-
-    const clientIp = null;
+    const clientIp = getClientAddress(req);
     !clientIp ? (ip = `RAND${Math.random().toString()}`) : (ip = clientIp);
-
-    // !IpV6 ? (IpV = IpV4) : (IpV = IpV6);
-    // !IpV ? (ip = `RAND${Math.random().toString()}`) : (ip = IpV);
 
     const timestamp = new Date().getTime();
     const props = req.body;
@@ -29,11 +19,17 @@ const createLog = async (req, res, next) => {
     const { meshId } = logProps;
     const { componentServed } = logProps;
     const { logType } = logProps;
+    let fingerPrint;
 
-    const existingUserAgent = await UserAgent.findOne({ ip });
+    !props.fingerPrint
+      ? (fingerPrint = `RAND${Math.random().toString()}`)
+      : (fingerPrint = props.fingerPrint);
+
+    const existingUserAgent = await UserAgent.findOne({ fingerPrint });
 
     if (!existingUserAgent) {
       const userAgent = await UserAgent.create({
+        fingerPrint,
         ip,
         device: deviceProps,
         browser: browserProps,

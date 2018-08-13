@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import Fingerprint2 from 'fingerprintjs2';
+import * as L from 'components/_misc/LOG-TYPES';
 
 // container elements
 import { connect } from 'react-redux';
@@ -17,6 +19,22 @@ export default (ChildComponent, isNotSupported, isLocated, isNotLocated) => {
 
     componentWillMount() {
       this.getLocation();
+    }
+
+    postLog(logType) {
+      setTimeout(
+        new Fingerprint2().get((result, components) => {
+          const createLogProps = {
+            fingerPrint: result,
+            log: {
+              logType,
+              componentServed: '_hoc-withLocation'
+            }
+          };
+          this.props.createLog(createLogProps);
+        }),
+        500
+      );
     }
 
     getLocation() {
@@ -40,29 +58,29 @@ export default (ChildComponent, isNotSupported, isLocated, isNotLocated) => {
       lng = position.coords.longitude;
       lat = position.coords.latitude;
       isLocated(this.props, lng, lat);
-      console.log('recieved lcation', position);
+      this.postLog(L.LOCATION_SUCCESS);
     }
 
     notReceivedLocation(error) {
       switch (error.code) {
         case error.PERMISSION_DENIED:
-          console.log('permission denied');
+          this.postLog(L.LOCATION_PERMISSION_DENIED);
           isNotLocated(this.props);
           return;
         case error.POSITION_UNAVAILABLE:
-          console.log('position unavailable');
+          this.postLog(L.LOCATION_POSITION_UNAVAILABLE);
           break;
         case error.TIMEOUT:
-          console.log('timeout');
+          this.postLog(L.LOCATION_TIMEOUT);
           break;
         case error.UNKNOWN_ERROR:
-          console.log('unknown error');
+          this.postLog(L.LOCATION_UNKNOWN_ERROR);
           break;
         default:
-          console.log('default case');
+          this.postLog(L.LOCATION_DEFAULT_CASE);
           break;
       }
-      console.log('not received location');
+      this.postLog(L.LOCATION_NO_ERROR_CODE);
     }
 
     render() {

@@ -6,6 +6,7 @@ const DeviceSchema = require('../schema/Device');
 const BrowserSchema = require('../schema/Browser');
 
 const UserAgentSchema = new Schema({
+  fingerPrint: String,
   ip: String,
   device: DeviceSchema,
   browser: [BrowserSchema],

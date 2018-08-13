@@ -19,7 +19,9 @@ class BasicProfile extends Component {
 
   handleQuestionSelection(q) {
     this.setState({ [q]: !this.state[q] });
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: `${L.QUESTIONS_TOGGLED}: ${q}`,
         componentServed: 'mesh-edit-basicProfile',
@@ -32,7 +34,9 @@ class BasicProfile extends Component {
 
   handleOnFocus() {
     this.setState({ headline: '' });
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.EDIT_HEADLINE_CLICKED,
         componentServed: 'mesh-edit-basicProfile',

@@ -125,5 +125,13 @@ export const createOrg = orgProps => {
 
 export const createLog = createLogProps => {
   axios.post('/api/logs', createLogProps);
-  return { type: `${T.CREATE_LOG}: ${createLogProps.log.logType}` };
+
+  if (createLogProps.log.logType === 'MOUNT') {
+    return {
+      type: `${T.CREATE_LOG}: ${createLogProps.log.logType}`,
+      payload: createLogProps.fingerPrint
+    };
+  } else {
+    return { type: `${T.CREATE_LOG}: ${createLogProps.log.logType}` };
+  }
 };

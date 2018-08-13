@@ -50,7 +50,9 @@ class SortMeshUsers extends Component {
     this.props.onClick(optionId);
     this.setState({ sortOption: optionId });
 
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: `${L.SORT_OPTION_CLICKED}: ${optionId}`,
         componentServed: 'mesh-list-sortMeshUsers',

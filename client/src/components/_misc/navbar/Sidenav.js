@@ -68,7 +68,9 @@ class Sidenav extends Component {
 
 export const hamburgerMenu = ownProps => {
   const handleClick = () => {
+    const { fingerPrint } = ownProps.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.SIDENAV_MENU_CLICKED,
         componentServed: '_misc-navbar-sidenav'
@@ -93,8 +95,8 @@ export const hamburgerMenu = ownProps => {
   );
 };
 
-function mapStateToProps({ meshes }) {
-  return { meshes };
+function mapStateToProps({ meshes, currentUser }) {
+  return { meshes, currentUser };
 }
 
 export default connect(

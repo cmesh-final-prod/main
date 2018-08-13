@@ -14,7 +14,6 @@
     "axios": "^0.18.0",
     "faker": "^4.1.0",
     "fingerprintjs2": "^1.8.1",
-    "ip": "^1.1.5",
     "lodash": "^4.17.10",
     "materialize-css": "^1.0.0-rc.2",
     "pubnub-react": "^1.2.0",

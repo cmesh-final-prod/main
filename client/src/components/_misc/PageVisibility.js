@@ -22,7 +22,9 @@ function mapStateToProps({ currentUser, selectedMesh }) {
 //////////////////////////////////////////
 
 const pageVisibiltyProps = (ownProps, status) => {
+  const { fingerPrint } = ownProps.currentUser;
   return {
+    fingerPrint,
     log: {
       logType: status,
       componentServed: 'mesh-list-wrapper',

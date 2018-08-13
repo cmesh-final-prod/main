@@ -7,7 +7,9 @@ import * as actions from 'actions';
 
 class Footer extends Component {
   handleClick() {
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.CONTACT_US_CLICKED,
         componentServed: '_misc-footer'
@@ -42,7 +44,11 @@ class Footer extends Component {
   }
 }
 
+function mapStateToProps({ currentUser }) {
+  return { currentUser };
+}
+
 export default connect(
-  null,
+  mapStateToProps,
   actions
 )(Footer);

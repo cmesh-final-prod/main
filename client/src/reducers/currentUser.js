@@ -1,10 +1,11 @@
-import { CLEAR_STATE, FETCH_CURRENT_USER } from 'actions/types';
+import { CLEAR_STATE, FETCH_CURRENT_USER, CREATE_LOG } from 'actions/types';
 
 const initialState = {
   isAuth: false,
   isFetching: false,
   isCompliant: false,
   data: {},
+  fingerPrint: null,
   error: null
 };
 
@@ -12,6 +13,8 @@ export default (state = initialState, action) => {
   switch (action.type) {
     case CLEAR_STATE:
       return initialState;
+    case `${CREATE_LOG}: MOUNT`:
+      return { ...state, fingerPrint: action.payload };
     case `${FETCH_CURRENT_USER}_PENDING`:
       return { ...state, isFetching: true };
     case `${FETCH_CURRENT_USER}_REJECTED`:

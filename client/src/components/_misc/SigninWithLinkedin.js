@@ -60,7 +60,9 @@ class SigninWithLinkedin extends Component {
   }
 
   handleSigninClick() {
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.SIGNIN_WITH_LINKEDIN_CLICKED,
         componentServed: '_misc-signinWithLinkedin',
@@ -71,7 +73,9 @@ class SigninWithLinkedin extends Component {
   }
 
   handleTermsOfUseClick() {
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.TERMS_OF_USE_CLICKED,
         componentServed: '_misc-signinWithLinkedin',
@@ -112,8 +116,8 @@ class SigninWithLinkedin extends Component {
   }
 }
 
-function mapStateToProps({ selectedMesh }) {
-  return { selectedMesh };
+function mapStateToProps({ currentUser, selectedMesh }) {
+  return { currentUser, selectedMesh };
 }
 
 //////////////////////////////////////////

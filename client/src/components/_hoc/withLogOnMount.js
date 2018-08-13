@@ -9,16 +9,15 @@ import * as actions from 'actions';
 export default (ChildComponent, logProps) => {
   class ComposedComponent extends Component {
     componentDidMount() {
-      const createLogProps = {
-        device: deviceDetect(),
-        browser: { browserName, browserVersion },
-        log: logProps(this.props)
-      };
-      this.props.createLog(createLogProps);
-
       setTimeout(
         new Fingerprint2().get((result, components) => {
-          console.log('-----------------------', result);
+          const createLogProps = {
+            fingerPrint: result,
+            device: deviceDetect(),
+            browser: { browserName, browserVersion },
+            log: logProps(this.props)
+          };
+          this.props.createLog(createLogProps);
         }),
         500
       );

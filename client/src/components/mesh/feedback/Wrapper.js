@@ -36,7 +36,9 @@ class Feedback extends Component {
     this.props.addMeshFeedback(meshId, userId, feedbackProps);
     this.props.fetchCurrentUser(meshId);
 
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.FEEDBACK_SUBMITTED,
         componentServed: 'mesh-feedback-wrapper',

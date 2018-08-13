@@ -20,7 +20,9 @@ class Item extends Component {
 
   renderViewBg() {
     if (this.state.viewed) {
+      const { fingerPrint } = this.props.currentUser;
       const createLogProps = {
+        fingerPrint,
         log: {
           logType: L.LINKEDIN_VIEWED,
           componentServed: 'mesh-list-item',
@@ -84,7 +86,9 @@ class Item extends Component {
   }
 
   handlePhotoClick() {
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.PROFILE_PIC_VIEWED,
         componentServed: 'mesh-list-item',

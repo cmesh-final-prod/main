@@ -18,7 +18,9 @@ import Stats from 'components/root/panels/Stats';
 class MeshPanel extends Component {
   handleClick() {
     this.props.selectMesh(this.props.meshId);
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.JOIN_CLICKED,
         componentServed: 'root-panels-panel',
@@ -105,8 +107,8 @@ class MeshPanel extends Component {
   }
 }
 
-function mapStateToProps({ meshes }) {
-  return { meshes };
+function mapStateToProps({ meshes, currentUser }) {
+  return { meshes, currentUser };
 }
 
 //////////////////////////////////////////

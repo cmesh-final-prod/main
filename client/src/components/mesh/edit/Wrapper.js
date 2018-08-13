@@ -16,10 +16,12 @@ class Edit extends Component {
   handleSubmit(editedProfile) {
     const { meshId } = this.props.match.params;
     const userId = this.props.currentUser.data._id;
+    const { fingerPrint } = this.props.currentUser;
     this.props.addMeshUser(meshId, userId);
     this.props.editUserInfo(userId, editedProfile);
 
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.IM_GOOD_CLICKED,
         componentServed: 'mesh-edit-wrapper',
