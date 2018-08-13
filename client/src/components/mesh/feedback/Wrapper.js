@@ -132,7 +132,9 @@ class Feedback extends Component {
   }
 
   handleFeebackBtnClick() {
+    const { fingerPrint } = this.props.currentUser;
     const createLogProps = {
+      fingerPrint,
       log: {
         logType: L.FEEDBACK_BTN_CLICKED,
         componentServed: 'mesh-feedback-wrapper',

@@ -9,7 +9,7 @@ const UserAgentSchema = new Schema({
   fingerPrint: String,
   ip: String,
   device: DeviceSchema,
-  browser: [BrowserSchema],
+  browser: BrowserSchema,
   firstVisitedAt: Number
 });
 
