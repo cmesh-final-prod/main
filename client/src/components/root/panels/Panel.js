@@ -40,7 +40,7 @@ class MeshPanel extends Component {
     return (
       <PanelHeader
         title={this.props.title}
-        color="white-text"
+        color="dark-primary-color-text"
         endDate={this.props.endDate}
         orgTitle={this.props.orgTitle}
         onExpiry={() => this.props.fetchMeshes(lng, lat)}
