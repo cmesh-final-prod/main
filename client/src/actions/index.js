@@ -125,5 +125,5 @@ export const createOrg = orgProps => {
 
 export const createLog = createLogProps => {
   axios.post('/api/logs', createLogProps);
-  return { type: T.CREATE_LOG };
+  return { type: `${T.CREATE_LOG}: ${createLogProps.log.logType}` };
 };
