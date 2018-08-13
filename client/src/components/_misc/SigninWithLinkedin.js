@@ -1,8 +1,16 @@
 import React, { Component } from 'react';
+import * as L from 'components/_misc/LOG-TYPES';
 
 // importing components
 import NavbarWrapper from 'components/_misc/navbar/Wrapper';
 import Footer from 'components/_misc/Footer';
+
+// container elements
+import { connect } from 'react-redux';
+import * as actions from 'actions';
+
+// importing _hoc
+import withLogOnMount from 'components/_hoc/withLogOnMount';
 
 class SigninWithLinkedin extends Component {
   renderWhyLinkedin() {
@@ -40,10 +48,37 @@ class SigninWithLinkedin extends Component {
       <div className="col s10 offset-s1">
         <p>
           By signin in, you aggree with our{' '}
-          <span className="light-blue-text">terms and conditions</span>
+          <a
+            href="https://www.circlemesh.com"
+            onClick={() => this.handleTermsOfUseClick()}
+          >
+            <span className="light-blue-text">terms and conditions</span>
+          </a>
         </p>
       </div>
     );
+  }
+
+  handleSigninClick() {
+    const createLogProps = {
+      log: {
+        logType: L.SIGNIN_WITH_LINKEDIN_CLICKED,
+        componentServed: '_misc-signinWithLinkedin',
+        meshId: this.props.selectedMesh.data.meshId
+      }
+    };
+    this.props.createLog(createLogProps);
+  }
+
+  handleTermsOfUseClick() {
+    const createLogProps = {
+      log: {
+        logType: L.TERMS_OF_USE_CLICKED,
+        componentServed: '_misc-signinWithLinkedin',
+        meshId: this.props.selectedMesh.data.meshId
+      }
+    };
+    this.props.createLog(createLogProps);
   }
 
   render() {
@@ -63,6 +98,7 @@ class SigninWithLinkedin extends Component {
               <a
                 href="/auth/linkedin"
                 className="btn btn-large light-blue signin-btn"
+                onClick={() => this.handleSigninClick()}
               >
                 Signin With Linkedin
               </a>
@@ -76,4 +112,27 @@ class SigninWithLinkedin extends Component {
   }
 }
 
-export default SigninWithLinkedin;
+function mapStateToProps({ selectedMesh }) {
+  return { selectedMesh };
+}
+
+//////////////////////////////////////////
+//////   withLogOnMount Props    /////////
+//////////////////////////////////////////
+
+const logProps = ownProps => {
+  return {
+    logType: L.MOUNT,
+    componentServed: '_misc-signinWithLinkedin',
+    meshId: ownProps.selectedMesh.data.meshId
+  };
+};
+
+//////////////////////////////////////////
+//////     ------ End -------    /////////
+//////////////////////////////////////////
+
+export default connect(
+  mapStateToProps,
+  actions
+)(withLogOnMount(SigninWithLinkedin, logProps));

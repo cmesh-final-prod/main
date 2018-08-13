@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import * as L from 'components/_misc/LOG-TYPES';
 
 // importing components
 import Oops from 'components/locationError/Oops';
+
+// importing _hoc
+import withLogOnMount from 'components/_hoc/withLogOnMount';
 
 class Instructions extends Component {
   renderProblem() {
@@ -44,4 +48,19 @@ class Instructions extends Component {
   }
 }
 
-export default Instructions;
+//////////////////////////////////////////
+//////   withLogOnMount Props    /////////
+//////////////////////////////////////////
+
+const logProps = ownProps => {
+  return {
+    logType: L.MOUNT,
+    componentServed: 'locationError-instructions'
+  };
+};
+
+//////////////////////////////////////////
+//////     ------ End -------    /////////
+//////////////////////////////////////////
+
+export default withLogOnMount(Instructions, logProps);

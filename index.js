@@ -54,6 +54,7 @@ require('./routes/auth')(app);
 require('./routes/user')(app);
 require('./routes/mesh')(app);
 require('./routes/org')(app);
+require('./routes/log')(app);
 
 //////////////////////////////////////////////////////////////////
 ////////////            4. ERROR HANDLING          ///////////////

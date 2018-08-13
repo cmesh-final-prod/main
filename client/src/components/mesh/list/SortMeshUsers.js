@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import * as L from 'components/_misc/LOG-TYPES';
 
 // container elements
 import { connect } from 'react-redux';
+import * as actions from 'actions';
 
 let allClass;
 let hiringClass;
@@ -47,6 +49,16 @@ class SortMeshUsers extends Component {
   handleClick(optionId) {
     this.props.onClick(optionId);
     this.setState({ sortOption: optionId });
+
+    const createLogProps = {
+      log: {
+        logType: `${L.SORT_OPTION_CLICKED}: ${optionId}`,
+        componentServed: 'mesh-list-sortMeshUsers',
+        meshId: this.props.selectedMesh.data.meshId,
+        userId: this.props.currentUser.data._id
+      }
+    };
+    this.props.createLog(createLogProps);
   }
 
   renderButtonClass() {
@@ -126,8 +138,11 @@ class SortMeshUsers extends Component {
   }
 }
 
-function mapStateToProps({ selectedMesh }) {
-  return { selectedMesh };
+function mapStateToProps({ currentUser, selectedMesh }) {
+  return { currentUser, selectedMesh };
 }
 
-export default connect(mapStateToProps)(SortMeshUsers);
+export default connect(
+  mapStateToProps,
+  actions
+)(SortMeshUsers);

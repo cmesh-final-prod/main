@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import * as L from 'components/_misc/LOG-TYPES';
 
 // importing components
 import ListItem from 'components/mesh/list/Item';
 import PanelHeader from 'components/_misc/PanelHeader';
 import FeedbackWrapper from 'components/mesh/feedback/Wrapper';
 import SortMeshUsers from 'components/mesh/list/SortMeshUsers';
+import PageVisibility from 'components/_misc/PageVisibility';
 
 // container elements
 import { connect } from 'react-redux';
@@ -12,6 +14,7 @@ import * as actions from 'actions';
 
 // importing hoc
 import withPubNub from 'components/_hoc/withPubNub';
+import withLogOnMount from 'components/_hoc/withLogOnMount';
 
 class ListWrapper extends Component {
   state = { sortOption: 'all' };
@@ -19,6 +22,7 @@ class ListWrapper extends Component {
   async componentWillMount() {
     const { meshId } = this.props.match.params;
     await this.props.fetchMeshUsers(meshId);
+    return <PageVisibility />;
   }
 
   renderHeader() {
@@ -55,6 +59,7 @@ class ListWrapper extends Component {
           hiring={user.hiring}
           lookingForJob={user.lookingForJob}
           isOrganizer={user.isOrganizer}
+          fellowUserId={user.userId}
         />
       );
     });
@@ -100,13 +105,14 @@ class ListWrapper extends Component {
             </div>
           </div>
         </div>
+        <PageVisibility />
       </div>
     );
   }
 }
 
-function mapStateToProps({ selectedMesh }) {
-  return { selectedMesh };
+function mapStateToProps({ currentUser, selectedMesh }) {
+  return { currentUser, selectedMesh };
 }
 
 //////////////////////////////////////////
@@ -119,10 +125,23 @@ const callback = ownProps => {
 };
 
 //////////////////////////////////////////
+//////   withLogOnMount Props    /////////
+//////////////////////////////////////////
+
+const logProps = ownProps => {
+  return {
+    logType: L.MOUNT,
+    componentServed: 'mesh-list-wrapper',
+    meshId: ownProps.match.params.meshId,
+    userId: ownProps.currentUser.data._id
+  };
+};
+
+//////////////////////////////////////////
 //////     ------ End -------    /////////
 //////////////////////////////////////////
 
 export default connect(
   mapStateToProps,
   actions
-)(withPubNub(ListWrapper, channel, callback));
+)(withPubNub(withLogOnMount(ListWrapper, logProps), channel, callback));

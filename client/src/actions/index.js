@@ -118,3 +118,12 @@ export const createOrg = orgProps => {
     payload: response
   };
 };
+
+//////////////////////////////////////////////////////////////////
+////////////              LOG ROUTES               ///////////////
+//////////////////////////////////////////////////////////////////
+
+export const createLog = createLogProps => {
+  axios.post('/api/logs', createLogProps);
+  return { type: T.CREATE_LOG };
+};

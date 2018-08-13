@@ -16,7 +16,6 @@
     "ip": "^1.1.5",
     "lodash": "^4.17.10",
     "materialize-css": "^1.0.0-rc.2",
-    "public-ip": "^2.4.0",
     "pubnub-react": "^1.2.0",
     "react": "^16.4.1",
     "react-device-detect": "^1.5.8",

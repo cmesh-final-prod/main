@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
+import * as L from 'components/_misc/LOG-TYPES';
 
 // importing components
 import Oops from 'components/locationError/Oops';
+
+// importing _hoc
+import withLogOnMount from 'components/_hoc/withLogOnMount';
 
 class BrowserNotSupported extends Component {
   renderProblem() {
@@ -38,4 +42,19 @@ class BrowserNotSupported extends Component {
   }
 }
 
-export default BrowserNotSupported;
+//////////////////////////////////////////
+//////   withLogOnMount Props    /////////
+//////////////////////////////////////////
+
+const logProps = ownProps => {
+  return {
+    logType: L.MOUNT,
+    componentServed: 'locationError-browserNotSupported'
+  };
+};
+
+//////////////////////////////////////////
+//////     ------ End -------    /////////
+//////////////////////////////////////////
+
+export default withLogOnMount(BrowserNotSupported, logProps);

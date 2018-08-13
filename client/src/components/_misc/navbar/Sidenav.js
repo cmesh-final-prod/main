@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import M from 'materialize-css';
 import { Link } from 'react-router-dom';
+import * as L from 'components/_misc/LOG-TYPES';
 
 // importing constants
 import { SIDENAV_MENU, MESH_PROPS } from 'components/_misc/CONSTANTS';
@@ -65,7 +66,17 @@ class Sidenav extends Component {
   }
 }
 
-export const hamburgerMenu = () => {
+export const hamburgerMenu = ownProps => {
+  const handleClick = () => {
+    const createLogProps = {
+      log: {
+        logType: L.SIDENAV_MENU_CLICKED,
+        componentServed: '_misc-navbar-sidenav'
+      }
+    };
+    ownProps.createLog(createLogProps);
+  };
+
   return (
     <ul className="left">
       <li>
@@ -73,6 +84,7 @@ export const hamburgerMenu = () => {
           href=""
           data-target="mobile-nav"
           className="button-collapse sidenav-trigger white-text"
+          onClick={() => handleClick()}
         >
           <i className="material-icons">menu</i>
         </a>

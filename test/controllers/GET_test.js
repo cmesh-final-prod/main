@@ -8,7 +8,7 @@ describe('it fetches data', () => {
   const orgId = '5b643eb692f6932da4cf7ae0';
   const meshId = '5b643eb692f6932da4cf7ae2';
 
-  it('fetches current user', async () => {
+  xit('fetches current user', async () => {
     const res = await request(app).get(`/api/users/${meshId}`);
     console.log(res.body);
   });

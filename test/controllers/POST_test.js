@@ -6,6 +6,8 @@ const request = require('supertest');
 const Org = require('../../db/models/Org');
 const User = require('../../db/models/User');
 const Mesh = require('../../db/models/Mesh');
+const Log = require('../../db/models/Log');
+const UserAgent = require('../../db/models/UserAgent');
 
 // importing controllers
 const createUser = require('../../controllers/POST/createUser');
@@ -82,5 +84,16 @@ describe('Create User', () => {
     // ]);
     //
     // assert(lnCount === 5 && lnCount === usersCount);
+  });
+});
+
+//////////////////////////////////////////////////////////////////
+////////////                  LOG                  ///////////////
+//////////////////////////////////////////////////////////////////
+
+describe('Create log', () => {
+  it('creates a user log', async () => {
+    const res = await request(app).post('/api/logs');
+    console.log(res.body);
   });
 });

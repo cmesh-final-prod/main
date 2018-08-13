@@ -18,3 +18,6 @@ export const ADD_MESH_FEEDBACK = 'ADD_MESH_FEEDBACK';
 
 // ORG ROUTES
 export const CREATE_ORG = 'CREATE_ORG';
+
+// LOG ROUTES
+export const CREATE_LOG = 'CREATE_LOG';

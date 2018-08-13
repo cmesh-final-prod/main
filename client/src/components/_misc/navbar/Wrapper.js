@@ -5,6 +5,10 @@ import Sidenav, { hamburgerMenu } from 'components/_misc/navbar/Sidenav';
 import Logo from 'components/_misc/Logo';
 import { withRouter } from 'react-router-dom';
 
+// container elements
+import { connect } from 'react-redux';
+import * as actions from 'actions';
+
 class NavbarWrapper extends Component {
   renderTitle() {
     return <Logo />;
@@ -12,7 +16,7 @@ class NavbarWrapper extends Component {
 
   renderLeftIcon() {
     const { url } = this.props.match;
-    return url === '/mesh' ? '' : hamburgerMenu();
+    return url === '/mesh' ? '' : hamburgerMenu(this.props);
   }
 
   renderRightIcon() {}
@@ -43,4 +47,7 @@ class NavbarWrapper extends Component {
   }
 }
 
-export default withRouter(NavbarWrapper);
+export default connect(
+  null,
+  actions
+)(withRouter(NavbarWrapper));

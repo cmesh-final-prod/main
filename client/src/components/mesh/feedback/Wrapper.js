@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import M from 'materialize-css';
 import StarRatingComponent from 'react-star-rating-component';
+import * as L from 'components/_misc/LOG-TYPES';
 
 // container elements
 import { connect } from 'react-redux';
@@ -34,6 +35,16 @@ class Feedback extends Component {
     const feedbackProps = { ...this.state };
     this.props.addMeshFeedback(meshId, userId, feedbackProps);
     this.props.fetchCurrentUser(meshId);
+
+    const createLogProps = {
+      log: {
+        logType: L.FEEDBACK_SUBMITTED,
+        componentServed: 'mesh-feedback-wrapper',
+        meshId: this.props.selectedMesh.data.meshId,
+        userId: this.props.currentUser.data._id
+      }
+    };
+    this.props.createLog(createLogProps);
   }
 
   shouldDisable() {
@@ -118,11 +129,27 @@ class Feedback extends Component {
     );
   }
 
+  handleFeebackBtnClick() {
+    const createLogProps = {
+      log: {
+        logType: L.FEEDBACK_BTN_CLICKED,
+        componentServed: 'mesh-feedback-wrapper',
+        meshId: this.props.selectedMesh.data.meshId,
+        userId: this.props.currentUser.data._id
+      }
+    };
+    this.props.createLog(createLogProps);
+  }
+
   renderForm() {
     return (
       <div className="row m-feedback-trigger">
         <div className="col s8 offset-s2 center waves-effects btn gradient-1 z-depth-2">
-          <a href="#feedbackModal" className="modal-trigger">
+          <a
+            href="#feedbackModal"
+            className="modal-trigger"
+            onClick={() => this.handleFeebackBtnClick()}
+          >
             <p className="white-text responsive">PLEASE PROVIDE FEEDBACK</p>
           </a>
         </div>

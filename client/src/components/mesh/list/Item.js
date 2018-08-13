@@ -1,9 +1,14 @@
 import React, { Component } from 'react';
 import M from 'materialize-css';
+import * as L from 'components/_misc/LOG-TYPES';
 
 // importing components
 import ViewLn from 'components/_misc/labels/ViewLn';
 import Label from 'components/_misc/labels/Label';
+
+// container elements
+import { connect } from 'react-redux';
+import * as actions from 'actions';
 
 class Item extends Component {
   state = { viewed: false, bookmarked: false };
@@ -15,6 +20,16 @@ class Item extends Component {
 
   renderViewBg() {
     if (this.state.viewed) {
+      const createLogProps = {
+        log: {
+          logType: L.LINKEDIN_VIEWED,
+          componentServed: 'mesh-list-item',
+          meshId: this.props.selectedMesh.data.meshId,
+          userId: this.props.currentUser.data._id,
+          fellowUserId: this.props.fellowUserId
+        }
+      };
+      this.props.createLog(createLogProps);
       return 'grey lighten-3';
     } else {
       return 'white';
@@ -68,6 +83,19 @@ class Item extends Component {
     );
   }
 
+  handlePhotoClick() {
+    const createLogProps = {
+      log: {
+        logType: L.PROFILE_PIC_VIEWED,
+        componentServed: 'mesh-list-item',
+        meshId: this.props.selectedMesh.data.meshId,
+        userId: this.props.currentUser.data._id,
+        fellowUserId: this.props.fellowUserId
+      }
+    };
+    this.props.createLog(createLogProps);
+  }
+
   render() {
     const { firstName, lastName, headline, profileLink, photos } = this.props;
 
@@ -79,6 +107,7 @@ class Item extends Component {
               src={photos}
               alt=""
               className="circle z-depth-3 materialboxed"
+              onClick={() => this.handlePhotoClick()}
             />
           </div>
           <div className="col s9 m10">
@@ -105,7 +134,7 @@ class Item extends Component {
                 <ViewLn
                   profileLink={profileLink}
                   bg={this.renderViewBg()}
-                  onClick={viewed => this.setState({ viewed })}
+                  onClick={truthy => this.setState({ viewed: truthy })}
                 />
                 {this.renderLabels()}
               </div>
@@ -117,4 +146,11 @@ class Item extends Component {
   }
 }
 
-export default Item;
+function mapStateToProps({ currentUser, selectedMesh }) {
+  return { currentUser, selectedMesh };
+}
+
+export default connect(
+  mapStateToProps,
+  actions
+)(Item);

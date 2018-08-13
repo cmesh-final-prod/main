@@ -1,20 +1,9 @@
 const Mesh = require('../../db/models/Mesh');
 const dateParser = require('../../utils/dateParser');
 const pubnub = require('../../utils/pubnub');
-const requestIp = require('request-ip');
 
 const fetchMeshes = async (req, res, next) => {
   try {
-    // ip = req.ip;
-    ip = req.headers['x-forwarded-for'] || req.connection.remoteAddress;
-    ip2 =
-      (req.headers['x-forwarded-for'] || '').split(',').pop() ||
-      req.connection.remoteAddress ||
-      req.socket.remoteAddress ||
-      req.connection.socket.remoteAddress;
-
-    ip3 = requestIp.getClientIp(req);
-    console.log('-----------', ip);
     const { lng, lat } = req.query;
     const now_milli = new Date().getTime();
 
@@ -108,10 +97,7 @@ const fetchMeshes = async (req, res, next) => {
     if (nearByAndActiveMeshes.length > 0) {
       res.send({
         isFound: true,
-        publicInfo: nearByAndActiveMeshes,
-        ip,
-        ip2,
-        ip3
+        publicInfo: nearByAndActiveMeshes
       });
     } else {
       res.send({ isFound: false });

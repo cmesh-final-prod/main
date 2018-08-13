@@ -5,7 +5,6 @@ const initialState = {
   isPopulated: false,
   isLocated: false,
   data: [],
-  ip: '',
   location: {},
   error: null
 };
@@ -24,14 +23,12 @@ export default (state = initialState, action) => {
         error: action.payload
       };
     case `${FETCH_MESHES}_FULFILLED`:
-      console.log('---------', action.payload.data);
       if (action.payload.data.isFound) {
         return {
           ...state,
           isFetching: false,
           isPopulated: true,
-          data: action.payload.data.publicInfo,
-          ip: action.payload.data.ip
+          data: action.payload.data.publicInfo
         };
       } else {
         return {

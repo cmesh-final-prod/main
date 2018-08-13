@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
+// importing log types
+import * as L from 'components/_misc/LOG-TYPES';
+
+// importing hoc
+import withLogOnMount from 'components/_hoc/withLogOnMount';
+
 // container elements
 import { connect } from 'react-redux';
 import * as actions from 'actions';
@@ -12,6 +18,14 @@ import Stats from 'components/root/panels/Stats';
 class MeshPanel extends Component {
   handleClick() {
     this.props.selectMesh(this.props.meshId);
+    const createLogProps = {
+      log: {
+        logType: L.JOIN_CLICKED,
+        componentServed: 'root-panels-panel',
+        meshId: this.props.meshId
+      }
+    };
+    this.props.createLog(createLogProps);
   }
 
   refreshMeshes = () => {
@@ -95,7 +109,23 @@ function mapStateToProps({ meshes }) {
   return { meshes };
 }
 
+//////////////////////////////////////////
+//////   withLogOnMount Props    /////////
+//////////////////////////////////////////
+
+const logProps = ownProps => {
+  return {
+    logType: L.MOUNT,
+    componentServed: 'root-panels-panel',
+    meshId: ownProps.meshId
+  };
+};
+
+//////////////////////////////////////////
+//////     ------ End -------    /////////
+//////////////////////////////////////////
+
 export default connect(
   mapStateToProps,
   actions
-)(MeshPanel);
+)(withLogOnMount(MeshPanel, logProps));

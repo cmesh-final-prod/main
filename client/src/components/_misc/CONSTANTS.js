@@ -30,7 +30,7 @@ export const MESH_PROPS = (lng, lat) => {
   return {
     title: 'This event has an organizer',
     coordinates: [lng, lat],
-    duration: 0.02,
+    duration: 1,
     startDate: new Date(),
     description:
       'Odit sit ab repudiandae dolor necessitatibus ea asperiores a consectetur.',
