@@ -7,7 +7,7 @@ const ViewLn = ({ profileLink, bg, onClick }) => {
   return (
     <a
       href={profileLink}
-      className={`label grey-text grey-border ${bg}`}
+      className={`label grey-text color-5-border ${bg}`}
       rel="noopener noreferrer"
       target="_blank"
       onClick={() => onClick(true)}

@@ -43,17 +43,17 @@ class Item extends Component {
       {
         text: 'organizer',
         cond: this.props.isOrganizer,
-        bg: 'grey lighten-1 white-text grey-border'
+        bg: 'grey lighten-1 white-text color-5-border'
       },
       {
         text: 'hiring',
         cond: this.props.hiring,
-        bg: 'light-blue white-text light-blue-border'
+        bg: 'color-3 white-text color-3-border'
       },
       {
         text: 'looking for opportunities',
         cond: this.props.lookingForJob,
-        bg: 'light-blue-text white light-blue-border'
+        bg: 'white color-3-text color-3-border'
       }
     ];
 

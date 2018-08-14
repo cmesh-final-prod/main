@@ -8,11 +8,11 @@ class Expired extends Component {
 
   render() {
     return (
-      <section className="section-expiry">
+      <section>
         <div className="container m-expiry center">
           <i className="material-icons large text-color-1">broken_image</i>
           <br />
-          <h4 className="text-color-1 flow-text">This mesh has expired!</h4>
+          <h4 className="color-5-text flow-text">This mesh has expired!</h4>
         </div>
       </section>
     );

@@ -23,13 +23,18 @@ class MeshWrapper extends Component {
     return (
       <div>
         <NavbarWrapper />
-        <Route exact path={`${match.url}/:meshId`} component={EditWrapper} />
-        <Route
-          exact
-          path={`${match.url}/:meshId/list`}
-          component={ListWrapper}
-        />
-        <Route path={`${match.url}/:meshId/list/expired`} component={Expired} />
+        <section>
+          <Route exact path={`${match.url}/:meshId`} component={EditWrapper} />
+          <Route
+            exact
+            path={`${match.url}/:meshId/list`}
+            component={ListWrapper}
+          />
+          <Route
+            path={`${match.url}/:meshId/list/expired`}
+            component={Expired}
+          />
+        </section>
         <Footer />
       </div>
     );

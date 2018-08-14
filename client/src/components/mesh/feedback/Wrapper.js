@@ -148,7 +148,7 @@ class Feedback extends Component {
   renderForm() {
     return (
       <div className="row m-feedback-trigger">
-        <div className="col s8 offset-s2 center waves-effects btn gradient-1 z-depth-2">
+        <div className="col s8 offset-s2 center waves-effects color-1 z-depth-2">
           <a
             href="#feedbackModal"
             className="modal-trigger"

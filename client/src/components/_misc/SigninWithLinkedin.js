@@ -89,7 +89,7 @@ class SigninWithLinkedin extends Component {
     return (
       <div>
         <NavbarWrapper />
-        <section className="section center">
+        <section>
           <div className="row">
             <div className="col s10 offset-s1 grey lighten-5 left-align text-color-1 signin">
               <div className="signin-title">Why Linkedin?</div>
