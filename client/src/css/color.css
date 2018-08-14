@@ -2,15 +2,22 @@
 
 .color-1 {
   /* background-color: #5d6987 !important; */
-  background-color: #efefef !important;
+  /* background-color: #ffffff !important; */
+  /* background-color: #5f636a !important; */
+  /* Rectangle: */
+  background: #2f3448;
+  box-shadow: 0 4px 13px 0 rgba(0, 0, 0, 0.5) !important;
 }
 
 .color-2 {
-  background-color: #359f92 !important;
+  /* background-color: #359f92 !important; */
+  /* background-color: #7aacc8 !important; */
+  /* background-color: #6382b1 !important; */
+  background-color: #ffffff !important;
 }
 
 .color-3 {
-  background-color: #8aa5ea !important;
+  /* background-color: #8aa5ea !important; */
 }
 
 .color-4 {
@@ -30,7 +37,7 @@
 }
 
 .gradient-1 {
-  background-image: linear-gradient(
+  /* background-image: linear-gradient(
     144deg,
     #6f8ebd 54%,
     #a07ccb 110%
@@ -40,9 +47,23 @@
     144deg,
     #46c5b6 104%,
     #a07ccb 110%
-  ) !important;
+  ) !important; */
 
   /* box-shadow: 0 20px 74px 10px rgba(78, 112, 125, 0.56); */
+
+  /* panel: */
+  /* background-image: linear-gradient(-44deg, #2e6a8a 0%, #a0cde6 100%);
+  box-shadow: 0 18px 52px 9px #4e707d; */
+  /* 
+  background-color: #4d648d; */
+
+  /* panel: */
+  /* background-image: linear-gradient(134deg, #283e52 50%, #483f4a 120%);
+  box-shadow: 0 18px 52px 0 #000000;
+   */
+  /* panel: */
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 18px 52px 0 #000000;
 }
 
 /* Text color */
@@ -54,7 +75,7 @@
 
 .color-2-text {
   /* color: #6f8ebd !important; */
-  color: #ffffff !important;
+  color: #283e52 !important;
 }
 
 .color-3-text {
@@ -63,11 +84,12 @@
 
 .color-4-text {
   /* color: #ffffff !important; */
-  color: #6e7985 !important;
+  /* color: #6e7985 !important; */
+  /* color: #8db0c3 !important; */
 }
 
 .color-5-text {
-  color: #6e7985 !important;
+  /* color: #6e7985 !important; */
 }
 
 /* Tools */

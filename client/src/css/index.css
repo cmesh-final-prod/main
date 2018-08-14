@@ -2,9 +2,19 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #748885;
+  /* background-color: #748885; */
   /* background-color: #5d6987; */
   /* background-image: linear-gradient(180deg, #6c8cd8 54%, #5d6987 120%); */
+  /* background-image: linear-gradient(
+    -45deg,
+    rgba(46, 106, 138, 0.65) 13%,
+    rgba(160, 205, 230, 0.56) 100%
+  ); */
+
+  /* background-color: #b0b4bb !important; */
+
+  /* main-bg: */
+  background-image: linear-gradient(44deg, #000000 0%, #404662 100%);
 }
 
 .btn {
