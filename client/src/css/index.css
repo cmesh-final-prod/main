@@ -5,3 +5,22 @@ body {
   background-color: #5d6987;
   /* background-image: linear-gradient(180deg, #6c8cd8 54%, #5d6987 120%); */
 }
+
+.btn {
+  background-color: #5d6987;
+  color: white;
+}
+
+.btn-large {
+  background-color: #5d6987;
+  color: white;
+}
+
+section {
+  min-height: 95vh;
+}
+
+footer {
+  background-color: #dddddd !important;
+  height: 10vh;
+}

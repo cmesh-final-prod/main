@@ -55,7 +55,7 @@ class Stats extends Component {
 
     return STATS.map(item => {
       return this.state[item.id] ? (
-        <div key={item.id} className="m-stats white-text">
+        <div key={item.id} className="m-stats color-1-text">
           <div className="m-stats-data right-align">{item.data}</div>
           <div className="m-stats-text left-align">{item.text}</div>
         </div>

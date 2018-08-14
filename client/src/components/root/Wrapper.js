@@ -46,7 +46,7 @@ class RootWrapper extends Component {
     return (
       <div>
         <NavbarWrapper sidenav={true} />
-        <div className="section-root">{this.renderContent()}</div>
+        <section>{this.renderContent()}</section>
         <Footer />
       </div>
     );

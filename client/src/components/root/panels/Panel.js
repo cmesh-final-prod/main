@@ -40,7 +40,7 @@ class MeshPanel extends Component {
     return (
       <PanelHeader
         title={this.props.title}
-        color="dark-primary-color-text"
+        color="color-1-text"
         endDate={this.props.endDate}
         orgTitle={this.props.orgTitle}
         onExpiry={() => this.props.fetchMeshes(lng, lat)}
@@ -65,7 +65,7 @@ class MeshPanel extends Component {
         <div className="row">
           <div className="m-body col s10 offset-s1">
             <div className="m-body-inner white-text">
-              <div className="m-body-resting pulse btn-floating btn-flat transparent circle">
+              <div className="m-body-resting pulse btn-floating btn-flat grey darken-4 white-text circle">
                 LIVE
               </div>
             </div>
@@ -88,7 +88,7 @@ class MeshPanel extends Component {
           onClick={() => this.handleClick()}
           className="btn-join btn-large waves-effect white-text accent-color"
         >
-          <p className="flow-text">JOIN THE ROOM</p>
+          <p className="flow-text">JOIN THE MESH</p>
         </Link>
       </div>
     );
@@ -96,7 +96,7 @@ class MeshPanel extends Component {
 
   render() {
     return (
-      <div className="card m-panel z-depth-5 primary-color">
+      <div className="card m-panel z-depth-5 gradient-1">
         <div className="card-content">
           {this.renderPanelHeader()}
           {this.renderPanelBody()}

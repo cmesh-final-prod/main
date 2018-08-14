@@ -20,16 +20,16 @@ class Footer extends Component {
 
   render() {
     return (
-      <footer className="color-1">
-        <div className="row center">
-          <div className="col s6 white-text">
+      <footer>
+        <div className="row center color-5">
+          <div className="col s6 grey-text text-darken-2">
             <p>&copy; All Rights Reserved</p>
           </div>
           <div className="col s6">
             <div className="footer-btn">
               <a
                 href="mailto:team@circlemesh.com"
-                className="white-text right-align"
+                className="grey-text text-darken-2 right-align"
                 onClick={() => this.handleClick()}
               >
                 <p>
