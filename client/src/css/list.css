@@ -9,6 +9,10 @@
   padding: -10px;
 }
 
+.list-wrapper {
+  margin-top: -5px !important;
+}
+
 .m-main {
   position: relative;
   top: 48px;
@@ -16,13 +20,13 @@
   min-height: 80vh;
   width: 98vw;
   min-width: 200px;
+  border-radius: 20px;
 }
 
 .sort-options {
   position: fixed;
-  left: 1vw;
   z-index: 1;
-  width: 98vw;
+  width: 100vw;
 }
 
 .m-main .m-header {
@@ -31,7 +35,7 @@
   font-size: 116%;
   height: 130px;
   width: 100%;
-  border: 1px solid #edebeb;
+  border-bottom: 1px solid #edebeb;
   border-radius: 0px 0px 0px 0px;
 }
 
