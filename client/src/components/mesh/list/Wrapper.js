@@ -30,7 +30,7 @@ class ListWrapper extends Component {
     return (
       <PanelHeader
         title={data.title}
-        bg=""
+        bg="color-1"
         color="color-1-text"
         endDate={data.endDate}
         orgTitle={data.orgTitle}
@@ -92,7 +92,7 @@ class ListWrapper extends Component {
     return (
       <div className="list-wrapper">
         <SortMeshUsers onClick={sortOption => this.setState({ sortOption })} />
-        <div className="card m-main z-depth-0">
+        <div className="card m-main transparent z-depth-0">
           <div className="card-content">
             <div className="m-ghost" />
             {this.renderHeader()}

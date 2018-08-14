@@ -31,7 +31,7 @@ class Sidenav extends Component {
       return (
         <li key={item.id}>
           <Link to={item.url} onClick={item.onClick}>
-            <h5 className={` color-5-text ${item.className}`}>
+            <h5 className={` color-4-text ${item.className}`}>
               {item.name}
               <i className="material-icons left">{item.icon}</i>
             </h5>
@@ -43,7 +43,7 @@ class Sidenav extends Component {
     return (
       <ul className="sidenav color-1" id="mobile-nav">
         <div className="brand-logo transparent center">
-          <h4 className="color-5-text">
+          <h4 className="color-4-text">
             circle<b>mesh</b>
           </h4>
         </div>
@@ -53,7 +53,7 @@ class Sidenav extends Component {
           <li>
             <div className="center">
               <button
-                className="btn light-blue white color-1-text btn-create"
+                className="btn light-blue white color-4-text btn-create"
                 onClick={() => this.createMeshProps()}
               >
                 Create
@@ -85,7 +85,7 @@ export const hamburgerMenu = ownProps => {
         <a
           href=""
           data-target="mobile-nav"
-          className="button-collapse sidenav-trigger primary-color-text"
+          className="button-collapse sidenav-trigger color-4-text"
           onClick={() => handleClick()}
         >
           <i className="material-icons">menu</i>

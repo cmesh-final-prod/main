@@ -1,6 +1,10 @@
 .m-feedback-trigger {
+  position: fixed;
+  top: 80vh;
+  width: 100%;
   margin-top: 10px;
   margin-bottom: 0px !important;
+  z-index: 1;
 }
 
 .m-feedback-trigger .col {
