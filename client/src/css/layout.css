@@ -1,3 +1,8 @@
+.nav-wrapper {
+  color: #878f98 !important;
+  background-color: white !important;
+}
+
 .row-divider {
   margin: 0px;
 }

@@ -19,7 +19,7 @@ const Info = ({
         id: 1,
         text: 'hiring',
         render: hiring,
-        className: 'color-3 white-text color-3-border'
+        className: 'color-1 white-text color-3-border'
       },
       {
         id: 2,
@@ -47,7 +47,7 @@ const Info = ({
             type="text"
             value={headline}
             placeholder="Position at Company"
-            className="text-color-1 validate center"
+            className="color-4-text validate center"
             onChange={event => onChange(event.target.value)}
             onFocus={() => onFocus()}
             required
@@ -62,9 +62,9 @@ const Info = ({
   };
 
   return (
-    <div className="edit-basic-profile grey lighten-5">
+    <div className="edit-basic-profile grey lighten-4">
       <div className="row">
-        <div className="col s12 text-color-1">
+        <div className="col s12 color-4-text">
           <img src={photos[0]} alt="" className="circle" />
           <br />
           <span className="responsive edit-name">

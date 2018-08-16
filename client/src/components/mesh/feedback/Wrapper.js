@@ -119,7 +119,7 @@ class Feedback extends Component {
         <div className="row">
           <div className="col s12 m-feedback-footer center">
             <div
-              className="waves-effect color-1 m-feedback-button btn"
+              className="waves-effect grey btn-1 m-feedback-button btn"
               onClick={() => this.handleSumbit()}
               disabled={this.shouldDisable()}
             >
@@ -147,14 +147,14 @@ class Feedback extends Component {
 
   renderForm() {
     return (
-      <div className="row m-feedback-trigger responsive">
-        <div className="col s8 offset-s2 center waves-effects color-2 z-depth-2 responsive">
+      <div className="row m-feedback-trigger">
+        <div className="col s10 offset-s1 center waves-effects grey btn-1 z-depth-2 responsive">
           <a
             href="#feedbackModal"
             className="modal-trigger"
             onClick={() => this.handleFeebackBtnClick()}
           >
-            <p className="color-2-text">PLEASE PROVIDE FEEDBACK</p>
+            <p className="white-text flow-text">PLEASE PROVIDE FEEDBACK</p>
           </a>
         </div>
         {this.renderModal()}

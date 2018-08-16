@@ -43,7 +43,7 @@ class Questions extends Component {
     };
 
     return (
-      <div className="color-1 white-text edit-questions">
+      <div className="color-4-text grey lighten-4 edit-questions">
         <div className="row">{questions()}</div>
       </div>
     );

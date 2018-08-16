@@ -64,8 +64,8 @@ class SortMeshUsers extends Component {
   }
 
   renderButtonClass() {
-    const active = 'grey white-text';
-    const inActive = 'grey lighten-5 grey-text';
+    const active = 'white color-1-text';
+    const inActive = 'grey-text';
     switch (this.state.sortOption) {
       case 'all':
         allClass = active;
@@ -133,7 +133,7 @@ class SortMeshUsers extends Component {
   render() {
     this.renderButtonClass();
     return (
-      <div className="horizontal-menu sort-options">
+      <div className="horizontal-menu sort-options grey lighten-3 z-depth-2">
         {this.renderSortOptions()}
       </div>
     );

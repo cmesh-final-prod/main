@@ -43,17 +43,17 @@ class Item extends Component {
       {
         text: 'organizer',
         cond: this.props.isOrganizer,
-        bg: 'grey lighten-1 white-text color-5-border'
+        bg: 'grey lighten-3 grey-text color-5-border'
       },
       {
         text: 'hiring',
         cond: this.props.hiring,
-        bg: 'color-3 white-text color-3-border'
+        bg: 'color-1 white-text color-3-border'
       },
       {
         text: 'looking for opportunities',
         cond: this.props.lookingForJob,
-        bg: 'white color-3-text color-3-border'
+        bg: 'white color-1-text color-3-border'
       }
     ];
 
@@ -68,7 +68,7 @@ class Item extends Component {
 
   renderHiringLabel() {
     return this.props.hiring ? (
-      <Label text="hiring" bg="light-blue white-text" />
+      <Label text="hiring" bg="color-1 white-text color-3-border" />
     ) : (
       ''
     );
@@ -78,7 +78,7 @@ class Item extends Component {
     return this.props.lookingForJob ? (
       <Label
         text="looking for opportunities"
-        bg="light-blue-text white light-blue-border"
+        bg="lwhite color-1-text color-3-border"
       />
     ) : (
       ''
@@ -118,11 +118,11 @@ class Item extends Component {
             <div className="row">
               <div className="col s10 m-info">
                 <p>
-                  <span className="m-name text-color-1 flow-text">
+                  <span className="m-name color-4-text flow-text">
                     {`${firstName} ${lastName.substring(0, 1)}.`}
                   </span>
                   <br />
-                  <span className="m-headline text-color-1 flow-text">
+                  <span className="m-headline color-4-text flow-text">
                     {headline}
                   </span>
                 </p>

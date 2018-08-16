@@ -86,7 +86,7 @@ class MeshPanel extends Component {
         <Link
           to="/mesh"
           onClick={() => this.handleClick()}
-          className="btn-join btn-large grey waves-effect color-2 color-2-text "
+          className="btn-join btn-large grey waves-effect btn-1 "
         >
           <p className="flow-text">JOIN THE MESH</p>
         </Link>

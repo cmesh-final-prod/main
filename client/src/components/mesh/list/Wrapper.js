@@ -30,7 +30,7 @@ class ListWrapper extends Component {
     return (
       <PanelHeader
         title={data.title}
-        bg="color-1"
+        bg="white"
         color="color-1-text"
         endDate={data.endDate}
         orgTitle={data.orgTitle}

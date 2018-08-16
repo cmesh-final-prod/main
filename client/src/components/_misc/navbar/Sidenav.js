@@ -41,7 +41,7 @@ class Sidenav extends Component {
     });
 
     return (
-      <ul className="sidenav color-1" id="mobile-nav">
+      <ul className="sidenav" id="mobile-nav">
         <div className="brand-logo transparent center">
           <h4 className="color-4-text">
             circle<b>mesh</b>

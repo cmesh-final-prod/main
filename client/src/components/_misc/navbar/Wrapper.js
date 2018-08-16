@@ -29,7 +29,7 @@ class NavbarWrapper extends Component {
     return (
       <div>
         <div className="navbar-fixed">
-          <nav className="color-1 opacity-1">
+          <nav className="white">
             <div className="nav-wrapper">
               <div className="row">
                 <div className="">

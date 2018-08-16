@@ -10,7 +10,7 @@ class Button extends Component {
     return (
       <Link
         to={`${this.props.match.url}/list`}
-        className="btn waves-effect grey color-4 color-1-text center btn-letsGo"
+        className="btn waves-effect grey btn-1 center btn-letsGo"
         onClick={() => this.props.onClick()}
         disabled={this.activateButton()}
       >
