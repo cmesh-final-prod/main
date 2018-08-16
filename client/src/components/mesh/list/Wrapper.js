@@ -32,6 +32,8 @@ class ListWrapper extends Component {
         title={data.title}
         bg=""
         color="color-4-text"
+        labelBg="color-2"
+        labelText="white-text"
         endDate={data.endDate}
         orgTitle={data.orgTitle}
         onExpiry={() =>

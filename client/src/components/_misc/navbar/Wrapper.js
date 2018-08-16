@@ -32,7 +32,7 @@ class NavbarWrapper extends Component {
           <nav className="white">
             <div className="nav-wrapper">
               <div className="row">
-                <div className="">
+                <div className="white-text">
                   {this.renderTitle()}
                   {this.renderLeftIcon()}
                   {this.renderRightIcon()}

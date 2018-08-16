@@ -42,6 +42,8 @@ class MeshPanel extends Component {
         title={this.props.title}
         bg=""
         color="white-text"
+        labelBg="color-1"
+        labelText="white-text"
         endDate={this.props.endDate}
         orgTitle={this.props.orgTitle}
         onExpiry={() => this.props.fetchMeshes(lng, lat)}

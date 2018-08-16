@@ -85,7 +85,7 @@ export const hamburgerMenu = ownProps => {
         <a
           href=""
           data-target="mobile-nav"
-          className="button-collapse sidenav-trigger color-4-text"
+          className="button-collapse sidenav-trigger"
           onClick={() => handleClick()}
         >
           <i className="material-icons">menu</i>

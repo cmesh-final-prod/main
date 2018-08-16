@@ -72,18 +72,24 @@ export default (ChildComponent, isNotSupported, isLocated, isNotLocated) => {
           return;
         case error.POSITION_UNAVAILABLE:
           this.postLog(L.LOCATION_POSITION_UNAVAILABLE);
-          break;
+          isNotLocated(this.props);
+          return;
         case error.TIMEOUT:
           this.postLog(L.LOCATION_TIMEOUT);
-          break;
+          isNotLocated(this.props);
+          return;
         case error.UNKNOWN_ERROR:
           this.postLog(L.LOCATION_UNKNOWN_ERROR);
-          break;
+          isNotLocated(this.props);
+          return;
         default:
           this.postLog(L.LOCATION_DEFAULT_CASE);
-          break;
+          isNotLocated(this.props);
+          return;
       }
       this.postLog(L.LOCATION_NO_ERROR_CODE);
+      isNotLocated(this.props);
+      return;
     }
 
     render() {

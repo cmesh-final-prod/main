@@ -24,7 +24,7 @@ class PanelHeader extends Component {
           <div className="m-labels">
             <Label
               text={orgTitle}
-              bg="grey-text text-darken-1 grey lighten-4"
+              bg={`${this.props.labelText} ${this.props.labelBg}`}
             />
           </div>
         </div>

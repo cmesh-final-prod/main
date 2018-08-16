@@ -148,16 +148,16 @@ class Feedback extends Component {
   renderForm() {
     return (
       <div className="row m-feedback-trigger">
-        <div className="col s10 offset-s1 center waves-effects btn grey btn-1 z-depth-2">
+        <div className="col s10 offset-s1 center waves-effects btn grey lighten-4 z-depth-2">
           <a
             href="#feedbackModal"
             className="modal-trigger"
             onClick={() => this.handleFeebackBtnClick()}
           >
-            <p className="white-text">
+            <p className="color-4-text">
               RATE YOUR EXPERIENCE
-              <i className="material-icons white-text left">star</i>
-              <i className="material-icons white-text right">star</i>
+              <i className="material-icons color-4-text left">star</i>
+              <i className="material-icons color-4-text right">star</i>
             </p>
           </a>
         </div>

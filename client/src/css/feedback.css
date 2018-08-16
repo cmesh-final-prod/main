@@ -4,6 +4,7 @@
   width: 100%;
   margin-bottom: 0px !important;
   z-index: 1;
+  overflow: hidden;
 }
 
 .m-feedback-trigger .col {
