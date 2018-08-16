@@ -94,7 +94,7 @@ class ListWrapper extends Component {
         <SortMeshUsers onClick={sortOption => this.setState({ sortOption })} />
         <div className="card m-main transparent z-depth-0">
           <div className="card-content">
-            <div className="combinedHeader color-5-border">
+            <div className="combinedHeader">
               {this.renderHeader()}
               {this.renderFeedback()}
             </div>

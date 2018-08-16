@@ -9,7 +9,8 @@
 .m-feedback-trigger .col {
   height: 3em;
   line-height: 3em;
-  border-radius: 20px;
+  border-radius: 30px;
+  margin-bottom: 10px;
 }
 
 .m-feedback-trigger .col p {
