@@ -1,8 +1,7 @@
 .m-feedback-trigger {
-  position: fixed;
-  top: 70vh;
+  /* position: fixed;
+  top: 70vh; */
   width: 100%;
-  margin-top: 10px;
   margin-bottom: 0px !important;
   z-index: 1;
 }

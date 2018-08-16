@@ -128,7 +128,7 @@ class Item extends Component {
                 </p>
               </div>
               <div className="col s2 m-bookmark">
-                <i className="material-icons text-color-1 small">
+                <i className="material-icons color-4-text small">
                   bookmark_border
                 </i>
               </div>

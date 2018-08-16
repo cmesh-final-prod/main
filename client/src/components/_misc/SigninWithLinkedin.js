@@ -35,7 +35,7 @@ class SigninWithLinkedin extends Component {
       return (
         <div key={reason.id} className="row">
           <div className="col s2 offset-s1 signin-check">
-            <i className="material-icons right text-color-1">check_circle</i>
+            <i className="material-icons right color-4-text">check_circle</i>
           </div>
           <div className="col s9 signin-reason">{reason.text}</div>
         </div>
@@ -91,7 +91,7 @@ class SigninWithLinkedin extends Component {
         <NavbarWrapper />
         <section>
           <div className="row">
-            <div className="col s10 offset-s1 grey lighten-5 left-align text-color-1 signin">
+            <div className="col s10 offset-s1 white color-1-border left-align color-4-text signin">
               <div className="signin-title">Why Linkedin?</div>
               <div className="divider signin-divider" />
               {this.renderWhyLinkedin()}
@@ -101,7 +101,7 @@ class SigninWithLinkedin extends Component {
             <div className="col s10 offset-s1">
               <a
                 href="/auth/linkedin"
-                className="btn btn-large light-blue signin-btn"
+                className="btn btn-large grey btn-1 signin-btn"
                 onClick={() => this.handleSigninClick()}
               >
                 Signin With Linkedin

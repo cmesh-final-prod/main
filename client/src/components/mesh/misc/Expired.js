@@ -10,9 +10,9 @@ class Expired extends Component {
     return (
       <section>
         <div className="container m-expiry center">
-          <i className="material-icons large text-color-1">broken_image</i>
+          <i className="material-icons large color-4-text">broken_image</i>
           <br />
-          <h4 className="color-5-text flow-text">This mesh has expired!</h4>
+          <h4 className="color-4-text flow-text">This mesh has expired!</h4>
         </div>
       </section>
     );
