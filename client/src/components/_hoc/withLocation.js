@@ -87,9 +87,6 @@ export default (ChildComponent, isNotSupported, isLocated, isNotLocated) => {
           isNotLocated(this.props);
           return;
       }
-      this.postLog(L.LOCATION_NO_ERROR_CODE);
-      isNotLocated(this.props);
-      return;
     }
 
     render() {

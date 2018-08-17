@@ -33,7 +33,7 @@ class BrowserNotSupported extends Component {
 
   render() {
     return (
-      <section className="section-location">
+      <section>
         <Oops />
         {this.renderProblem()}
         {this.renderSolution()}

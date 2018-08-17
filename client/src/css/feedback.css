@@ -1,10 +1,20 @@
 .m-feedback-trigger {
-  /* position: fixed;
-  top: 70vh; */
-  width: 100%;
+  padding-left: 22px;
   margin-bottom: 0px !important;
-  z-index: 1;
+}
+
+.feedback-trigger-btn {
+  height: 20px !important;
+  font-size: 0.8em;
   overflow: hidden;
+  width: 200px !important;
+  line-height: 20px !important;
+}
+
+.feedback-star {
+  font-size: 1.5em;
+  margin-top: 2px;
+  margin-left: 0px !important;
 }
 
 .m-feedback-trigger .col {

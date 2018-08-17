@@ -61,13 +61,13 @@ class Feedback extends Component {
     const CONTENT = [
       {
         id: 'eventFeedback',
-        text: 'How was your experience coming to this event?',
+        text: 'Overall, how was the event today?',
         cb: this.handleEventFeedback.bind(this),
         desc: 'eventDescription'
       },
       {
         id: 'cmeshFeedback',
-        text: 'How was your experience using this app?',
+        text: 'How useful was Circlemesh in this event?',
         cb: this.handleCmeshFeedback.bind(this),
         desc: 'cmeshDescription'
       }
@@ -76,7 +76,7 @@ class Feedback extends Component {
     return CONTENT.map(content => {
       return (
         <div key={content.id} className="m-feedback-type grey lighten-5">
-          <p className="text-color-1">{content.text}</p>
+          <p className="color-1-text">{content.text}</p>
           <div className="m-feedback-star">
             <StarRatingComponent
               name={content.id}
@@ -93,7 +93,7 @@ class Feedback extends Component {
             <div className="m-feedback-textarea">
               <textarea
                 id={content.id}
-                className="materialize-textarea text-color-1"
+                className="materialize-textarea color-1-text"
                 placeholder="please explain"
                 onChange={e =>
                   this.setState({ [content.desc]: e.target.value })
@@ -110,7 +110,7 @@ class Feedback extends Component {
     return (
       <div className="modal m-feedback-modal" id="feedbackModal">
         <div className="modal-content m-feedback-content">
-          <p className="m-feedback-title text-color-1">
+          <p className="m-feedback-title color-1-text">
             <i className="material-icons left medium">feedback</i>Feedback
           </p>
           <div className="m-feedback-divider divider color-1" />
@@ -148,17 +148,32 @@ class Feedback extends Component {
   renderForm() {
     return (
       <div className="row m-feedback-trigger">
-        <div className="col s10 offset-s1 center waves-effects btn grey lighten-4 z-depth-2">
+        <div className="col s4 left-align waves-effects white z-depth-2 feedback-trigger-btn">
           <a
             href="#feedbackModal"
             className="modal-trigger"
             onClick={() => this.handleFeebackBtnClick()}
           >
-            <p className="color-4-text">
-              RATE YOUR EXPERIENCE
-              <i className="material-icons color-4-text left">star</i>
-              <i className="material-icons color-4-text right">star</i>
-            </p>
+            <div className="color-1-text">
+              Provide Feedback
+              <span className="feedback-star-group">
+                <i className="material-icons color-1-text right feedback-star">
+                  star_border
+                </i>
+                <i className="material-icons color-1-text right feedback-star">
+                  star_border
+                </i>
+                <i className="material-icons color-1-text right feedback-star">
+                  star_border
+                </i>
+                <i className="material-icons color-1-text right feedback-star">
+                  star_border
+                </i>
+                <i className="material-icons color-1-text right feedback-star">
+                  star_border
+                </i>
+              </span>
+            </div>
           </a>
         </div>
         {this.renderModal()}

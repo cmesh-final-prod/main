@@ -9,7 +9,7 @@ class SpinnerM extends Component {
         </div>
         <div className="row">
           <div className="col s12 center text">
-            <h4 className="text-color-1 flow-text">{text}</h4>
+            <h4 className="grey-text text-lighten-3 flow-text">{text}</h4>
           </div>
         </div>
       </div>
