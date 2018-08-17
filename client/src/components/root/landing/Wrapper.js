@@ -12,7 +12,7 @@ class Content extends Component {
     return (
       <div className="container">
         <div className="center motto">
-          <p className="text-color-1">
+          <p className="white-text">
             <span>CONNECT</span>
             <br />
             WITH PEOPLE

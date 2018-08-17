@@ -26,10 +26,15 @@ class Instructions extends Component {
     return (
       <div className="row">
         <div className="col s10 offset-s1 grey-text location-problem">
-          Your location services may be turned <b>on</b>.{' '}
-          <span className="">
-            However, <b>this browser doesn't have access to your location!</b>
-          </span>
+          <b>This browser doesn't have access to location services... :(</b>
+          <br />
+          <div className="grey lighten-4 grey-text location-note">
+            Circlemesh uses location services to show you active events at your
+            location.{' '}
+            <b>
+              It does not save or track your location after the event is over.
+            </b>
+          </div>
         </div>
       </div>
     );
@@ -82,7 +87,7 @@ class Instructions extends Component {
           key={step.id}
           className="col s12 left-align grey-text location-instructions-solution color-5-border z-depth-3"
         >
-          <h5>STEP {step.id}</h5>
+          <h5>STEP {step.id} of 2</h5>
           <div className="divider" />
           <h6>
             <b>{step.text}</b>
