@@ -35,10 +35,9 @@ class Instructions extends Component {
           <b>This browser doesn't have access to your location :(</b>
           <br />
           <div className="grey lighten-4 grey-text location-note">
-            Circlemesh uses location services to show you active events nearby.
-            <br />
+            Circlemesh uses location services to show you active events nearby.{' '}
             <b>
-              It does not save or track your location after the event is over!
+              It does not save or track your location after the event is over.
             </b>
           </div>
         </div>
