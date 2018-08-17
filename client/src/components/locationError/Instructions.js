@@ -1,6 +1,12 @@
 import React, { Component } from 'react';
 import * as L from 'components/_misc/LOG-TYPES';
-import { isAndroid, isChrome, isFirefox, isOpera } from 'react-device-detect';
+import {
+  isSafari,
+  isAndroid,
+  isChrome,
+  isFirefox,
+  isOpera
+} from 'react-device-detect';
 
 // importing components
 import Oops from 'components/locationError/Oops';
@@ -29,10 +35,10 @@ class Instructions extends Component {
           <b>This browser doesn't have access to your location :(</b>
           <br />
           <div className="grey lighten-4 grey-text location-note">
-            Circlemesh uses location services to show you active events at your
-            location. <br />
+            Circlemesh uses location services to show you active events nearby.
+            <br />
             <b>
-              It does not save or track your location after the event is over.
+              It does not save or track your location after the event is over!
             </b>
           </div>
         </div>
@@ -59,8 +65,12 @@ class Instructions extends Component {
         browser = 'Opera';
         browser1 = opera1;
         browser2 = opera2;
-      } else {
+      } else if (isSafari) {
         browser = 'Safari';
+        browser1 = safari1;
+        browser2 = safari2;
+      } else {
+        browser = 'this browser';
         browser1 = safari1;
         browser2 = safari2;
       }
@@ -75,8 +85,7 @@ class Instructions extends Component {
       },
       {
         id: 2,
-        text:
-          'Within location services, select this browser and then select "While Using The App"',
+        text: `Within location services, select ${browser} and then select: While Using the App`,
         path: `Privacy > Location Services > ${browser}`,
         img: [browser1, browser2]
       }
