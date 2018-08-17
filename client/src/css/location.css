@@ -54,3 +54,7 @@
   padding: 10px 10px 10px 10px;
   border-radius: 10px;
 }
+
+.location-instructions-solution h6 {
+  line-height: 1.4em;
+}

@@ -26,11 +26,11 @@ class Instructions extends Component {
     return (
       <div className="row">
         <div className="col s10 offset-s1 grey-text location-problem">
-          <b>This browser doesn't have access to location services... :(</b>
+          <b>This browser doesn't have access to your location :(</b>
           <br />
           <div className="grey lighten-4 grey-text location-note">
             Circlemesh uses location services to show you active events at your
-            location.{' '}
+            location. <br />
             <b>
               It does not save or track your location after the event is over.
             </b>
@@ -75,7 +75,8 @@ class Instructions extends Component {
       },
       {
         id: 2,
-        text: 'Select "While Using The App"',
+        text:
+          'Within location services, select this browser and then select "While Using The App"',
         path: `Privacy > Location Services > ${browser}`,
         img: [browser1, browser2]
       }
@@ -87,11 +88,11 @@ class Instructions extends Component {
           key={step.id}
           className="col s12 left-align grey-text location-instructions-solution color-5-border z-depth-3"
         >
-          <h5>STEP {step.id} of 2</h5>
+          <h5>
+            STEP {step.id} of {iOS_steps.length}
+          </h5>
           <div className="divider" />
-          <h6>
-            <b>{step.text}</b>
-          </h6>
+          <h6 className="blue-text text-lighten-1">{step.text}</h6>
           <p>{step.path}</p>
           <div className="center">
             {step.img.map(img => {
