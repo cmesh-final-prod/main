@@ -3,8 +3,8 @@ import { isMobile, isTablet } from 'react-device-detect';
 
 // importing assets
 import mockIphone from 'assets/web/iphone/iphoneMock2.png';
-import createMeshImg from 'assets/web/about/createMesh.svg';
-import inMeshImg from 'assets/web/about/inMesh.svg';
+import createMeshImg from 'assets/web/about/createMesh.png';
+import inMeshImg from 'assets/web/about/inMesh.png';
 import bgImg2 from 'assets/web/bg/bgImg2.png';
 
 class About extends Component {
@@ -37,7 +37,7 @@ class About extends Component {
 
     return CONTENT.map(content => {
       return (
-        <section key={content.id} className={`${content.bg} about`}>
+        <div key={content.id} className={`${content.bg} about`}>
           <div className="row">
             <div className="col l7 m12 s12 center container">
               <p className={`white-text center ${this.renderSize()}`}>
@@ -48,7 +48,7 @@ class About extends Component {
               <img src={content.img} alt="" className={this.renderSize()} />
             </div>
           </div>
-        </section>
+        </div>
       );
     });
   }
@@ -57,7 +57,7 @@ class About extends Component {
     return (
       <div>
         <img src={bgImg2} alt="" className="about-bg" />
-        {this.renderSections()}
+        <section>{this.renderSections()}</section>
       </div>
     );
   }

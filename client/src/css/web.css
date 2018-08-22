@@ -1,29 +1,13 @@
 .about-bg {
   position: fixed;
   top: 0px;
-  z-index: -1 !important;
+  z-index: -1;
+  min-height: 100%;
+  min-width: 100%;
 }
 .about .row {
   z-index: 10;
 }
-
-/* .about-bg-1 {
-  background-image: url('../assets/web/bg/bgImg1.png');
-  height: 100vh;
-  width: 100vw;
-}
-
-.about-bg-2 {
-  background-image: url('../assets/web/bg/bgImg2.png');
-  height: 100vh;
-  width: 100vw;
-}
-
-.about-bg-3 {
-  background-image: url('../assets/web/bg/bgImg3.png');
-  height: 100vh;
-  width: 100vw;
-} */
 
 .about img {
   max-width: 100%;
