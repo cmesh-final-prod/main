@@ -10,26 +10,6 @@ import Footer from 'components/_misc/Footer';
 import withLocation from 'components/_hoc/withLocation';
 
 class LocationErrorWrapper extends Component {
-  // handleClick() {
-  //   const options = {
-  //     enableHighAccuracy: true
-  //   };
-  //   navigator.geolocation.getCurrentPosition(
-  //     this.receivedLocation,
-  //     this.notReceivedLocation,
-  //     options
-  //   );
-  // }
-  //
-  // receivedLocation(position) {
-  //   this.props.history.push('/');
-  // }
-  //
-  // notReceivedLocation(positionError) {
-  //   console.log('navigator.geolcation === true && notReceivedLocation');
-  //   return <h2>PLEAAASE!</h2>;
-  // }
-
   render() {
     return (
       <div>

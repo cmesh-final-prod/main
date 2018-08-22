@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="309px" height="60px" viewBox="0 0 309 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>navbar</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy" transform="translate(-938.000000, -284.000000)">
+            <g id="mock" transform="translate(926.000000, 201.000000)">
+                <g id="navbar7" transform="translate(16.800000, 85.400000)">
+                    <g id="navbar">
+                        <rect id="Rectangle" fill="#7494B9" x="0" y="0" width="300" height="51.2"></rect>
+                        <g id="hamburgerMenu" transform="translate(32.800000, 18.400000)" stroke="#4F6680" stroke-linecap="square" stroke-width="0.8">
+                            <path d="M0,0.8 L16,0.8" id="Line-2"></path>
+                            <path d="M0,6.4 L16,6.4" id="Line-3"></path>
+                            <path d="M0,12 L16,12" id="Line-4"></path>
+                        </g>
+                        <text id="circlemesh" font-family="Helvetica" font-size="25.6" font-weight="normal" fill="#FFFFFF">
+                            <tspan x="86.69375" y="25.8">circle</tspan>
+                            <tspan x="146.43125" y="25.8" font-family="Helvetica-Bold, Helvetica" font-weight="bold">mesh</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

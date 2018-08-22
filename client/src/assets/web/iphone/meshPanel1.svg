@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="289px" height="381px" viewBox="0 0 289 381" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>meshPanel1</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="97.8672516%" y2="98.5439185%" id="linearGradient-1">
+            <stop stop-color="#7392B7" offset="0%"></stop>
+            <stop stop-color="#8AB7D4" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="233.6" height="326.4" rx="24"></rect>
+        <filter x="-19.7%" y="-11.6%" width="139.4%" height="128.2%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="2" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="8" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="12" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.258823529   0 0 0 0 0.337254902   0 0 0 0 0.42745098  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <rect id="path-4" x="0" y="0" width="209.6" height="45.6" rx="16"></rect>
+        <filter x="-2.6%" y="-7.7%" width="105.2%" height="124.1%" filterUnits="objectBoundingBox" id="filter-5">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.192681958   0 0 0 0 0.31016558   0 0 0 0 0.450387968  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Desktop-HD-Copy" transform="translate(-948.000000, -366.000000)">
+            <g id="mock" transform="translate(926.000000, 201.000000)">
+                <g id="meshPanel1" transform="translate(49.600000, 184.200000)">
+                    <g id="panel">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <g id="join" transform="translate(12.000000, 271.200000)">
+                        <g id="Rectangle-2">
+                            <use fill="black" fill-opacity="1" filter="url(#filter-5)" xlink:href="#path-4"></use>
+                            <use fill="#86B2D0" fill-rule="evenodd" xlink:href="#path-4"></use>
+                        </g>
+                        <text id="JOIN-THE-MESH" font-family="Helvetica-Bold, Helvetica" font-size="19.2" font-weight="bold" fill="#FFFFFF">
+                            <tspan x="30.5234375" y="32.6">JOIN THE MESH</tspan>
+                        </text>
+                    </g>
+                    <path d="M0.4,105.2 L233.2,105.2" id="Line-5" stroke="#FFFFFF" stroke-width="0.8" stroke-linecap="square"></path>
+                    <g id="meshInfo" transform="translate(8.400000, 131.200000)" fill="#FFFFFF">
+                        <text id="83" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="32" font-weight="bold">
+                            <tspan x="46.816" y="34">83</tspan>
+                        </text>
+                        <text id="people-have-joined" font-family="HelveticaNeue, Helvetica Neue" font-size="19.2" font-weight="normal">
+                            <tspan x="92.4" y="18.8">people have </tspan>
+                            <tspan x="92.4" y="40.8">joined</tspan>
+                        </text>
+                    </g>
+                    <g id="meshInfo" transform="translate(9.000000, 194.000000)" fill="#FFFFFF">
+                        <text id="12" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="32" font-weight="bold">
+                            <tspan x="46.816" y="31">12</tspan>
+                        </text>
+                        <text id="hiring" font-family="HelveticaNeue, Helvetica Neue" font-size="19.2" font-weight="normal">
+                            <tspan x="92.4" y="22.8">hiring</tspan>
+                        </text>
+                    </g>
+                    <g id="title" transform="translate(14.400000, 7.800000)">
+                        <text font-family="Helvetica" font-size="24" font-weight="normal" fill="#FFFFFF">
+                            <tspan x="0" y="23">Learn how to </tspan>
+                            <tspan x="0" y="52">organize data…</tspan>
+                        </text>
+                        <g id="organizer" transform="translate(0.000000, 68.800000)">
+                            <rect id="Rectangle-3" fill="#7392B7" x="0" y="1" width="80" height="12" rx="6"></rect>
+                            <text id="Circlemesh" font-family="Helvetica" font-size="8" font-weight="normal" fill="#FFFFFF">
+                                <tspan x="20.3960937" y="8.8">Circlemesh</tspan>
+                            </text>
+                        </g>
+                    </g>
+                    <g id="timer" transform="translate(161.600000, 86.400000)" fill="#FFFFFF" font-family="Helvetica-Light, Helvetica" font-size="11.2" font-weight="300">
+                        <text id="04:25:31">
+                            <tspan x="13.4048" y="11">04:25:31</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

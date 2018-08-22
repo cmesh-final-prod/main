@@ -5,6 +5,7 @@ import { withRouter } from 'react-router-dom';
 import NavbarWrapper from 'components/_misc/navbar/Wrapper';
 import PanelsWrapper from 'components/root/panels/Wrapper';
 import LandingWrapper from 'components/root/landing/Wrapper';
+import About from 'components/web/About.js';
 import Footer from 'components/_misc/Footer';
 import SpinnerM from 'components/_misc/spinners/M';
 
@@ -27,7 +28,7 @@ class RootWrapper extends Component {
 
   meshesNotFound() {
     setTimeout(() => this.setState({ showSpinner: false }), 2000);
-    return this.state.showSpinner ? <SpinnerM /> : <LandingWrapper />;
+    return this.state.showSpinner ? <SpinnerM /> : <About />;
   }
 
   renderContent() {

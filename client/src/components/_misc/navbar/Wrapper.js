@@ -10,6 +10,8 @@ import { connect } from 'react-redux';
 import * as actions from 'actions';
 
 class NavbarWrapper extends Component {
+  state = { navClass: 'color-1' };
+
   renderTitle() {
     return <Logo />;
   }
@@ -21,6 +23,23 @@ class NavbarWrapper extends Component {
 
   renderRightIcon() {}
 
+  meshesNotFound() {
+    setTimeout(
+      () => this.setState({ navClass: 'web-navbar transparent' }),
+      2000
+    );
+    return this.state.navClass;
+  }
+
+  renderClass() {
+    const { isFetching, isPopulated } = this.props.meshes;
+    return isFetching && !isPopulated
+      ? 'color-1'
+      : isPopulated
+        ? 'color-1'
+        : this.meshesNotFound();
+  }
+
   renderContent() {
     return <Sidenav />;
   }
@@ -28,8 +47,8 @@ class NavbarWrapper extends Component {
   render() {
     return (
       <div>
-        <div className="navbar-fixed">
-          <nav className="white">
+        <div className={`navbar-fixed ${this.renderClass()}`}>
+          <nav className={this.renderClass()}>
             <div className="nav-wrapper">
               <div className="row">
                 <div className="white-text">
@@ -47,8 +66,8 @@ class NavbarWrapper extends Component {
   }
 }
 
-function mapStateToProps({ currentUser }) {
-  return { currentUser };
+function mapStateToProps({ currentUser, meshes }) {
+  return { currentUser, meshes };
 }
 
 export default connect(

@@ -7,14 +7,14 @@ import 'materialize-css/dist/css/materialize.min.css';
 import 'css/index.css';
 
 // importing components
-import App from 'components/App';
+import ComponentsWrapper from 'components/Wrapper';
 import Root from 'Root';
 
 ReactDOM.render(
   <Root>
     <div>
       <Router>
-        <App />
+        <ComponentsWrapper />
       </Router>
     </div>
   </Root>,

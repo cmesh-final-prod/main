@@ -1,0 +1,44 @@
+.about-bg-1 {
+  background-image: url('../assets/web/bg/bgImg1.png');
+  height: 100vh;
+  width: 100vw;
+}
+
+.about-bg-2 {
+  background-image: url('../assets/web/bg/bgImg2.png');
+  height: 100vh;
+  width: 100vw;
+}
+
+.about-bg-3 {
+  background-image: url('../assets/web/bg/bgImg3.png');
+  height: 100vh;
+  width: 100vw;
+}
+
+.about .row {
+  padding-top: 15vh;
+}
+
+.about img {
+  max-width: 100%;
+}
+
+.font-small {
+  font-size: 2em;
+  max-height: 60vh;
+}
+
+.font-medium {
+  padding-top: 10vh;
+  font-size: 3.5em;
+  max-height: 75vh;
+}
+
+.font-large {
+  padding-top: 10vh;
+  padding-left: 10px;
+  padding-right: 10px;
+  font-size: 3em;
+  max-height: 75vh;
+}
