@@ -5,6 +5,7 @@ import { isMobile, isTablet } from 'react-device-detect';
 import mockIphone from 'assets/web/iphone/iphoneMock2.png';
 import createMeshImg from 'assets/web/about/createMesh.svg';
 import inMeshImg from 'assets/web/about/inMesh.svg';
+import bgImg2 from 'assets/web/bg/bgImg2.png';
 
 class About extends Component {
   renderSize() {
@@ -20,20 +21,17 @@ class About extends Component {
       {
         id: 1,
         text: `Networking At Meetups Made Simple`,
-        img: mockIphone,
-        bg: 'about-bg-1'
+        img: mockIphone
       },
       {
         id: 2,
         text: 'Create A Location-Based Mesh Network',
-        img: createMeshImg,
-        bg: 'about-bg-2'
+        img: createMeshImg
       },
       {
         id: 3,
         text: 'Attendees Join The Mesh At Circlemesh.com',
-        img: inMeshImg,
-        bg: 'about-bg-3'
+        img: inMeshImg
       }
     ];
 
@@ -56,7 +54,12 @@ class About extends Component {
   }
 
   render() {
-    return <div>{this.renderSections()}</div>;
+    return (
+      <div>
+        <img src={bgImg2} alt="" className="about-bg" />
+        {this.renderSections()}
+      </div>
+    );
   }
 }
 export default About;
