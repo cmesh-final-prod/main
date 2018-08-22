@@ -25,13 +25,13 @@ class About extends Component {
       },
       {
         id: 2,
-        text: 'Create A Mesh At The Meetup Location',
+        text: 'Create A Location-Based Mesh Network',
         img: createMeshImg,
         bg: 'about-bg-2'
       },
       {
         id: 3,
-        text: 'Attendees Join At Circlemesh.com',
+        text: 'Attendees Join The Mesh At Circlemesh.com',
         img: inMeshImg,
         bg: 'about-bg-3'
       }
@@ -42,7 +42,7 @@ class About extends Component {
         <section key={content.id} className={`${content.bg} about`}>
           <div className="row">
             <div className="col l7 m12 s12 center container">
-              <p className={`white-text ${this.renderSize()}`}>
+              <p className={`white-text center ${this.renderSize()}`}>
                 {content.text}
               </p>
             </div>

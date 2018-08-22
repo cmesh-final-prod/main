@@ -16,10 +16,6 @@
   width: 100vw;
 }
 
-.about .row {
-  padding-top: 15vh;
-}
-
 .about img {
   max-width: 100%;
 }
@@ -27,18 +23,39 @@
 .font-small {
   font-size: 2em;
   max-height: 60vh;
+  max-width: 90%;
 }
 
 .font-medium {
-  padding-top: 10vh;
-  font-size: 3.5em;
+  padding-top: 15vh;
+  font-size: 3em;
   max-height: 75vh;
+  max-width: 90%;
 }
 
 .font-large {
-  padding-top: 10vh;
-  padding-left: 10px;
-  padding-right: 10px;
+  padding-top: 20vh;
   font-size: 3em;
   max-height: 75vh;
+}
+
+p.font-small {
+  padding-top: 10vh;
+  margin-left: 5%;
+}
+
+p.font-medium {
+  margin-left: 5%;
+}
+
+p.font-large {
+  max-width: 70%;
+  margin-left: 25%;
+}
+
+iframe {
+  margin-top: 5vh;
+  height: 80vh;
+  width: 80vw;
+  background-color: white;
 }
