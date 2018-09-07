@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #fafafa;
+  /* background-color: #fafafa; */
 }
 
 .btn {
@@ -15,8 +15,17 @@ body {
   color: white;
 }
 
-section {
+.app section {
   min-height: 95vh;
+}
+
+.web section {
+  min-height: 65vh;
+}
+
+.padding-1 {
+  padding-left: 10vw !important;
+  padding-right: 10vw !important;
 }
 
 footer {
@@ -25,20 +34,20 @@ footer {
   height: 12vh;
 }
 
-.switch label input[type='checkbox']:checked + .lever {
+.switch label input[type="checkbox"]:checked + .lever {
   background-color: #7392b7 !important;
 }
-.switch label input[type='checkbox']:checked + .lever:after {
+.switch label input[type="checkbox"]:checked + .lever:after {
   background-color: #90b5e0 !important;
 }
 
-.input-field input[type='text'].valid {
+.input-field input[type="text"].valid {
   border-bottom: 1px solid #7392b7 !important;
   box-shadow: 0 1px 0 0 #000;
 }
 
 /* label underline focus color */
-.input-field input[type='text']:focus {
+.input-field input[type="text"]:focus {
   border-bottom: 1px solid #7392b7 !important;
   box-shadow: 0 1px 0 0 #000;
 }

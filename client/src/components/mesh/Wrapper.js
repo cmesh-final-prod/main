@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import React, { Component } from "react";
+import { Route } from "react-router-dom";
 
 // importing components
-import NavbarWrapper from 'components/_misc/navbar/Wrapper';
-import EditWrapper from 'components/mesh/edit/Wrapper';
-import ListWrapper from 'components/mesh/list/Wrapper';
-import Expired from 'components/mesh/misc/Expired';
-import Footer from 'components/_misc/Footer';
+import NavbarWrapper from "components/_misc/navbar/Wrapper";
+import EditWrapper from "components/mesh/edit/Wrapper";
+import ListWrapper from "components/mesh/list/Wrapper";
+import Expired from "components/mesh/misc/Expired";
+import Footer from "components/_misc/Footer";
 
 // importing hoc
-import withAuth from 'components/_hoc/withAuth';
-import withSelection from 'components/_hoc/withSelection';
-import withSpinner from 'components/_hoc/withSpinner';
+import withAuth from "components/_hoc/withAuth";
+import withSelection from "components/_hoc/withSelection";
+import withSpinner from "components/_hoc/withSpinner";
 
 // TODO: Check if user is still at the event location-- stillAtLocation
 // May be create a watch geolocation tag?
@@ -21,7 +21,7 @@ class MeshWrapper extends Component {
   render() {
     const { match } = this.props;
     return (
-      <div>
+      <div className="app">
         <NavbarWrapper />
         <section>
           <Route exact path={`${match.url}/:meshId`} component={EditWrapper} />

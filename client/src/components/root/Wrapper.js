@@ -1,21 +1,20 @@
-import React, { Component } from 'react';
-import { withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 
 // importing components
-import NavbarWrapper from 'components/_misc/navbar/Wrapper';
-import PanelsWrapper from 'components/root/panels/Wrapper';
-import LandingWrapper from 'components/root/landing/Wrapper';
-import About from 'components/web/About.js';
-import Footer from 'components/_misc/Footer';
-import SpinnerM from 'components/_misc/spinners/M';
+import NavbarWrapper from "components/_misc/navbar/Wrapper";
+import PanelsWrapper from "components/root/panels/Wrapper";
+import About from "components/web/About.js";
+import Footer from "components/_misc/Footer";
+import SpinnerM from "components/_misc/spinners/M";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 // importing hoc
-import withLocation from 'components/_hoc/withLocation';
-import withPubNub from 'components/_hoc/withPubNub';
+import withLocation from "components/_hoc/withLocation";
+import withPubNub from "components/_hoc/withPubNub";
 
 // TODO: BUG FIX Can't call set state on an unmounted component
 
@@ -45,7 +44,7 @@ class RootWrapper extends Component {
 
   render() {
     return (
-      <div>
+      <div className="app">
         <NavbarWrapper sidenav={true} />
         <section>{this.renderContent()}</section>
         <Footer />
@@ -63,7 +62,7 @@ function mapStateToProps({ meshes }) {
 //////////////////////////////////////////
 
 const isNotSupported = ownProps => {
-  ownProps.history.push('/locationError');
+  ownProps.history.push("/locationError");
 };
 const isLocated = (ownProps, lng, lat) => {
   ownProps.postLocationToStore(lng, lat);
@@ -71,14 +70,14 @@ const isLocated = (ownProps, lng, lat) => {
 };
 
 const isNotLocated = ownProps => {
-  ownProps.history.push('/locationError');
+  ownProps.history.push("/locationError");
 };
 
 //////////////////////////////////////////
 //////      withPubNub Props     /////////
 //////////////////////////////////////////
 
-const channel = 'fetchMeshes';
+const channel = "fetchMeshes";
 const callback = ownProps => {
   ownProps.fetchMeshes(ownProps.lng, ownProps.lat);
 };

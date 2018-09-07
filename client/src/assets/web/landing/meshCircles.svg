@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="367px" height="359px" viewBox="0 0 367 359" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>meshCircles</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-1">
+            <stop stop-color="#3023AE" offset="0%"></stop>
+            <stop stop-color="#C86DD7" offset="100%"></stop>
+        </linearGradient>
+        <path d="M186.062481,316 C213.695992,316 227.924903,300.537772 245.631688,282.99565 C259.472449,269.2836 278.379934,255.760123 288.06906,237.729789 C298.205748,218.866594 311,206.521395 311,183.5 C311,162.546281 302.832891,152.21143 293.925135,135.350987 C280.691948,110.303443 267.265028,81.5384525 241.622608,68.5965737 C224.244876,59.8259306 206.769975,51 186.062481,51 C156.439096,51 135.358485,64.4144553 115.299289,79.1818213 C95.8358512,93.5105962 77.0769097,108.786505 68.9689222,135.350987 C65.1708353,147.794791 56,169.783088 56,183.5 C56,202.148523 57.3140063,217.535262 64.0353722,233.250712 C72.8113308,253.770074 87.6774292,263.226365 105.319816,276.934567 C127.187247,293.925646 156.4375,316 186.062481,316 Z" id="path-2"></path>
+        <filter x="-35.7%" y="-33.6%" width="171.4%" height="168.7%" filterUnits="objectBoundingBox" id="filter-3">
+            <feMorphology radius="5" operator="dilate" in="SourceAlpha" result="shadowSpreadOuter1"></feMorphology>
+            <feOffset dx="0" dy="2" in="shadowSpreadOuter1" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="25" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0.48627451   0 0 0 0 0.4   0 0 0 0 0.788235294  0 0 0 1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="0%" y1="0%" x2="101.999998%" y2="100.999999%" id="linearGradient-4">
+            <stop stop-color="#594BDC" offset="0%"></stop>
+            <stop stop-color="#C86DD7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Circlemesh" transform="translate(-946.000000, -239.000000)">
+            <g id="Section-1">
+                <g id="meshCircles" transform="translate(945.000000, 238.000000)">
+                    <g id="Oval" transform="translate(183.500000, 183.500000) rotate(50.000000) translate(-183.500000, -183.500000) ">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill-opacity="0.5" fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <path d="M185.062481,316 C212.695992,316 226.924903,300.537772 244.631688,282.99565 C258.472449,269.2836 277.379934,255.760123 287.06906,237.729789 C297.205748,218.866594 310,206.521395 310,183.5 C310,162.546281 301.832891,152.21143 292.925135,135.350987 C279.691948,110.303443 266.265028,81.5384525 240.622608,68.5965737 C223.244876,59.8259306 205.769975,51 185.062481,51 C155.439096,51 134.358485,64.4144553 114.299289,79.1818213 C94.8358512,93.5105962 76.0769097,108.786505 67.9689222,135.350987 C64.1708353,147.794791 55,169.783088 55,183.5 C55,202.148523 61.2475563,215.817437 67.9689222,231.532887 C76.7448808,252.052249 88.1308709,273.422181 105.773257,287.130383 C127.640689,304.121461 155.4375,316 185.062481,316 Z" id="Oval" fill-opacity="0.3" fill="url(#linearGradient-4)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

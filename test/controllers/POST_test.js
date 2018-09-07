@@ -1,36 +1,36 @@
-const assert = require('assert');
-const app = require('../../index');
-const request = require('supertest');
+const assert = require("assert");
+const app = require("../../index");
+const request = require("supertest");
 
 // importing models
-const Org = require('../../db/models/Org');
-const User = require('../../db/models/User');
-const Mesh = require('../../db/models/Mesh');
-const Log = require('../../db/models/Log');
-const UserAgent = require('../../db/models/UserAgent');
+const Org = require("../../db/models/Org");
+const User = require("../../db/models/User");
+const Mesh = require("../../db/models/Mesh");
+const Log = require("../../db/models/Log");
+const UserAgent = require("../../db/models/UserAgent");
 
 // importing controllers
-const createUser = require('../../controllers/POST/createUser');
+const createUser = require("../../controllers/POST/createUser");
 
 // importing constants
-const profiles = require('../utils/USERS');
-const orgs = require('../utils/ORGS');
-const meshProps = require('../utils/MESHES');
+const profiles = require("../utils/USERS");
+const orgs = require("../utils/ORGS");
+const meshProps = require("../utils/MESHES");
 
 //////////////////////////////////////////////////////////////////
 ////////////                  MESH                 ///////////////
 //////////////////////////////////////////////////////////////////
 
-describe('Create Mesh', () => {
+describe("Create Mesh", () => {
   let org;
   beforeEach(async () => {
     await Promise.all([Mesh.remove(), Org.remove()]);
     org = await request(app)
-      .post('/api/orgs')
+      .post("/api/orgs")
       .send(orgs[0]);
   });
 
-  xit('creates a new mesh', async () => {
+  xit("creates a new mesh", async () => {
     const orgId = org.body.data._id;
     const mesh = await request(app)
       .post(`/api/meshes/${orgId}`)
@@ -43,17 +43,23 @@ describe('Create Mesh', () => {
 ////////////                   ORG                 ///////////////
 //////////////////////////////////////////////////////////////////
 
-describe('Create Org', () => {
+describe("Create Org", () => {
   beforeEach(async () => {
-    await Org.remove();
+    // await Org.remove();
   });
 
-  xit('creates a new organization', async () => {
+  xit("creates a new organization", async () => {
     const org = await request(app)
-      .post('/api/orgs')
+      .post("/api/orgs")
       .send(orgs[0]);
-
     console.log(org.body);
+  });
+
+  it("signins into an existing organization", async () => {
+    const res = await request(app)
+      .post("/api/orgs/signin")
+      .send({ email: "hello2@gmail.com", password: "123" });
+    console.log(res.body);
   });
 });
 
@@ -61,12 +67,12 @@ describe('Create Org', () => {
 ////////////                  USER                 ///////////////
 //////////////////////////////////////////////////////////////////
 
-describe('Create User', () => {
+describe("Create User", () => {
   beforeEach(async () => {
     await User.remove();
   });
 
-  xit('creates a new linkedin user', async () => {
+  xit("creates a new linkedin user", async () => {
     const done = () => {};
 
     await Promise.all([
@@ -91,9 +97,9 @@ describe('Create User', () => {
 ////////////                  LOG                  ///////////////
 //////////////////////////////////////////////////////////////////
 
-describe('Create log', () => {
-  it('creates a user log', async () => {
-    const res = await request(app).post('/api/logs');
+describe("Create log", () => {
+  xit("creates a user log", async () => {
+    const res = await request(app).post("/api/logs");
     console.log(res.body);
   });
 });

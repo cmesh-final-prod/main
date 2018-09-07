@@ -1,0 +1,77 @@
+@media screen and (min-width: 601px) {
+  .tagline p {
+    font-size: 40px;
+  }
+
+  .tagline {
+    margin-top: 15vh;
+    height: 20em;
+  }
+
+  .web-section-title {
+    margin-top: 20vh;
+    font-size: 40px;
+    font-weight: bold;
+  }
+
+  .text-size-1 {
+    font-size: 30px;
+  }
+  .tagline-text {
+    padding-top: 4em !important;
+  }
+}
+
+@media screen and (max-width: 601px) {
+  .tagline p {
+    font-size: 6vw;
+  }
+
+  .tagline {
+    height: 20em;
+  }
+  .web-section-title {
+    margin-top: 10vh;
+    font-size: 6vw;
+    font-weight: bold;
+  }
+  .text-size-1 {
+    font-size: 5vw;
+  }
+  .tagline-img {
+    margin-top: 2vh;
+  }
+}
+
+.tagline-img {
+  height: 100%;
+  padding: 0px 0px 0px 0px !important;
+}
+
+.tagline-img img {
+  height: 100%;
+}
+
+.tagline-text .row {
+  margin: 0px 0px 0px 0px !important;
+  /* padding: 0px 0px 0px 0px !important; */
+}
+
+.typing {
+  padding: 0px 0px 0px 0px !important;
+  max-height: 6vw;
+}
+
+.t3 p {
+  margin: 0px 0px 0px 0px !important;
+  padding: 0px 0px 0px 0px !important;
+}
+
+.t1 p {
+  margin-bottom: 0px !important;
+}
+
+.what-is-mesh .row {
+  padding: 0px 0px 0px 0px !important;
+  margin: 0px 0px 0px 0px !important;
+}

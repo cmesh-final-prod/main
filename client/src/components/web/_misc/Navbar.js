@@ -1,28 +1,30 @@
-import React, { Component } from 'react';
-import { isMobile, isTablet } from 'react-device-detect';
-import { Link, withRouter } from 'react-router-dom';
+import React, { Component } from "react";
+import { isMobile, isTablet } from "react-device-detect";
+import { Link, withRouter } from "react-router-dom";
 
 class Navbar extends Component {
   renderClass() {
-    return isTablet ? 'left' : isMobile ? 'center' : 'left';
+    return isTablet ? "left" : isMobile ? "center" : "left";
   }
 
   renderNavColor() {
     const { pathname } = this.props.location;
-    return pathname === '/web/about' ? 'web-navbar transparent' : 'color-1';
+    return pathname === "/web/about" ? "white z-depth-0" : "color-1";
   }
 
   renderMenu() {
     const { url } = this.props.match;
     const MENU = [
-      { id: 1, title: 'Terms Of Use', url: `${url}/terms-of-use` },
-      { id: 2, title: 'Log In', url: '/terms-of-use' }
+      { id: 2, title: "How It Works", url: "/manage" },
+      { id: 1, title: "Sign In", url: "/manage" }
     ];
 
     return MENU.map(item => {
       return (
         <li key={item.id}>
-          <Link to={item.url}>{item.title}</Link>
+          <Link to={item.url} className="color-1-text">
+            {item.title}
+          </Link>
         </li>
       );
     });
@@ -35,12 +37,16 @@ class Navbar extends Component {
           <div className="nav-wrapper">
             <div className="container">
               <div className={`brand-logo ${this.renderClass()}`}>
-                <Link to="/">
+                <Link to="/" className="color-1-text">
                   circle<b>mesh</b>
                 </Link>
               </div>
+
               <ul className="right hide-on-med-and-down">
                 {this.renderMenu()}
+                <li>
+                  <div className="btn gradient-2">Create A Mesh</div>
+                </li>
               </ul>
             </div>
           </div>
