@@ -7,6 +7,7 @@ import PanelsWrapper from "components/root/panels/Wrapper";
 import About from "components/web/About.js";
 import Footer from "components/_misc/Footer";
 import SpinnerM from "components/_misc/spinners/M";
+import LandingWrapper from "components/web/landing/Wrapper";
 
 // container elements
 import { connect } from "react-redux";
@@ -27,7 +28,7 @@ class RootWrapper extends Component {
 
   meshesNotFound() {
     setTimeout(() => this.setState({ showSpinner: false }), 2000);
-    return this.state.showSpinner ? <SpinnerM /> : <About />;
+    return this.state.showSpinner ? <SpinnerM /> : <LandingWrapper />;
   }
 
   renderContent() {
@@ -44,7 +45,7 @@ class RootWrapper extends Component {
 
   render() {
     return (
-      <div className="app">
+      <div>
         <NavbarWrapper sidenav={true} />
         <section>{this.renderContent()}</section>
         <Footer />

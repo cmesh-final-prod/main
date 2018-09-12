@@ -1,0 +1,175 @@
+@media screen and (max-width: 601px) {
+  .tagline p {
+    font-size: 6vw;
+  }
+  .tagline {
+    height: 20em;
+  }
+
+  .tagline-img {
+    margin-top: 2vh;
+  }
+
+  .tagline-img img {
+    width: 90vw !important;
+  }
+
+  .whatsMesh .text {
+    position: relative;
+    width: 90%;
+  }
+
+  .whatsMesh {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cityImg {
+    position: relative;
+    top: 0vh !important;
+    width: 200%;
+    left: -70vw;
+  }
+
+  .eventDetails {
+    position: absolute;
+    left: 50vw !important;
+    top: 70vw;
+    height: 10%;
+    width: 50vw !important;
+    padding: 0px 0px 0px 0px !important;
+  }
+
+  .userBenefits {
+    margin-top: -10vh !important;
+  }
+
+  .userBenefits .title-text {
+    position: absolute;
+    top: 0px;
+    width: 50vw;
+  }
+
+  .iphoneBlur {
+    position: absolute;
+    max-width: 100%;
+    height: 80vh;
+  }
+
+  .people {
+    width: 80vw;
+  }
+
+  .people img {
+    position: absolute;
+    width: 70vw !important;
+    left: 15vw;
+  }
+
+  .person1 {
+    top: 15%;
+  }
+
+  .person2 {
+    top: 33%;
+  }
+  .person3 {
+    top: 51%;
+  }
+  .person4 {
+    top: 69%;
+  }
+  .userBenefits .text div {
+    border-radius: 20px;
+    min-height: 12vh;
+    padding-left: 2vw;
+    padding-right: 4vw;
+    padding-top: 1vw;
+    width: 90vw;
+    margin-left: 2vw;
+  }
+
+  .userBenefits .benefit {
+    margin-top: 0vh;
+  }
+
+  .userBenefits .text p {
+    margin-left: 8vw;
+  }
+
+  .orgBenefits {
+    padding-top: 0px !important;
+    padding-left: 6vw !important;
+    margin-top: -10vh !important;
+    z-index: 2;
+  }
+
+  .orgStats {
+    width: 70vw;
+    margin-top: 10vw;
+    margin-left: 5vw;
+  }
+
+  .feedback1 {
+    position: absolute;
+    left: 0px;
+    top: 65vw;
+    width: 40vw;
+  }
+
+  .feedback2 {
+    position: absolute;
+    left: 48vw;
+    top: 65vw;
+    width: 40vw;
+  }
+
+  .howItWorks {
+    padding-bottom: 1px !important;
+  }
+
+  .howItWorks .title-text {
+    border-bottom: 1px solid #a7b1c9;
+    width: 50vw;
+    margin-left: 25vw;
+  }
+
+  .card-1 {
+    border-radius: 20px;
+    width: 80vw !important;
+    margin-left: 7vw;
+    margin-right: 10vw;
+    margin-bottom: 10vw;
+    min-height: 52vh;
+  }
+
+  .card-1 .title {
+    border-bottom: 1px solid #fcfcfc;
+    min-height: 10vh;
+    line-height: 7vw;
+  }
+
+  .card-1 .title .sub-title {
+    margin-left: -5vw;
+  }
+
+  .meshDetails {
+    width: 80%;
+    margin-left: 10%;
+  }
+
+  .card-1 .typing-url {
+    position: absolute;
+    margin-top: 15vw;
+    margin-left: 12vw;
+    z-index: 1;
+  }
+
+  .contactUs .call div {
+    border-radius: 40px !important;
+    height: 8vh;
+    line-height: 8vh;
+    width: 50vw !important;
+    margin-top: 10vw;
+  }
+}

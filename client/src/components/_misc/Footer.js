@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import * as L from 'components/_misc/LOG-TYPES';
+import React, { Component } from "react";
+import * as L from "components/_misc/LOG-TYPES";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 class Footer extends Component {
   handleClick() {
@@ -12,7 +12,7 @@ class Footer extends Component {
       fingerPrint,
       log: {
         logType: L.CONTACT_US_CLICKED,
-        componentServed: '_misc-footer'
+        componentServed: "_misc-footer"
       }
     };
     this.props.createLog(createLogProps);
@@ -20,16 +20,18 @@ class Footer extends Component {
 
   render() {
     return (
-      <footer className="grey lighten-4">
+      <footer className="color-4">
         <div className="row center">
-          <div className="col s6 grey-text">
-            <p>&copy; All Rights Reserved</p>
+          <div className="col s8 white-text">
+            <p>
+              &copy; Circle<b>Mesh</b> | All Rights Reserved
+            </p>
           </div>
-          <div className="col s6">
+          <div className="col s4">
             <div className="footer-btn">
               <a
                 href="mailto:team@circlemesh.com"
-                className="grey-text center-align"
+                className="white-text center-align"
                 onClick={() => this.handleClick()}
               >
                 <p>

@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Fade from "react-reveal/Fade";
 
 // importing assets
 import iphoneBlur from "assets/web/green/iphoneBlur.png";
@@ -8,17 +9,36 @@ import person3 from "assets/web/green/person3.png";
 import person4 from "assets/web/green/person4.png";
 
 class UserBenefits extends Component {
+  renderImages() {
+    const USERS = [
+      { img: person1, class: "person1" },
+      { img: person2, class: "person2" },
+      { img: person3, class: "person3" },
+      { img: person4, class: "person4" }
+    ];
+
+    return USERS.map(user => {
+      return (
+        <div key={user.img}>
+          <Fade top duration={2000}>
+            <img src={user.img} alt="" className={user.class} />
+          </Fade>
+        </div>
+      );
+    });
+  }
+
   renderBenefits() {
     const BENEFITS = [
       "Identify interesting people in the room",
-      "Connect with them directly on linkedin",
+      "Connect with them directly on LinkedIn",
       "Let the room know if they are hiring or looking for opportunities"
     ];
 
     return BENEFITS.map(benefit => {
       return (
         <li key={benefit}>
-          <div className="gradient-3 benefit">
+          <div className="color-6">
             <p className="main-text white-text light-text">{benefit}</p>
           </div>
         </li>
@@ -32,16 +52,11 @@ class UserBenefits extends Component {
         <div className="row">
           <div className="col s12 m7 illustration">
             <img src={iphoneBlur} alt="" className="iphoneBlur" />
-            <div className="people">
-              <img src={person1} alt="" className="person1" />
-              <img src={person2} alt="" className="person2" />
-              <img src={person3} alt="" className="person3" />
-              <img src={person4} alt="" className="person4" />
-            </div>
+            <div className="people">{this.renderImages()}</div>
           </div>
           <div className="col s12 m5 text">
             <p className="title-text bold-text white-text">Attendees can now</p>
-            <ul>{this.renderBenefits()}</ul>
+            <ul className="benefit">{this.renderBenefits()}</ul>
             <p className="main-text light-text white-text">and more...</p>
           </div>
         </div>

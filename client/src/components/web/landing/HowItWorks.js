@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Typing from "react-typing-animation";
 
 // importing assets
 import meshDetails from "assets/web/green/meshDetails.png";
@@ -9,6 +10,15 @@ import icon_oneTimeSetup from "assets/web/green/oneTimeSetup.png";
 import icon_loudspeaker from "assets/web/green/loudspeaker.png";
 
 class HowItWorks extends Component {
+  renderTyping() {
+    return (
+      <Typing loop={true} speed={100} cursorClassName="grey-text text-darken-2">
+        <p className="grey-text text-darken-2 sub-text">www.circlemesh.com</p>
+        <Typing.Delay ms={2000} />
+      </Typing>
+    );
+  }
+
   renderSteps() {
     const STEPS = [
       {
@@ -17,7 +27,8 @@ class HowItWorks extends Component {
         text: "Simply link your meetup account with circlemesh",
         img: signinMeetup,
         icon: icon_oneTimeSetup,
-        class: "signinMeetup"
+        class: "signinMeetup",
+        func: ""
       },
       {
         id: 2,
@@ -26,7 +37,8 @@ class HowItWorks extends Component {
           "Circlemesh automatically creates mesh networks for all your upcoming events",
         img: meshDetails,
         icon: icon_automatic,
-        class: "meshDetails"
+        class: "meshDetails",
+        func: ""
       },
       {
         id: 3,
@@ -35,7 +47,8 @@ class HowItWorks extends Component {
           "At the start of an event, ask attendees to join your mesh using any smartphone browser",
         img: iphoneUpper,
         icon: icon_loudspeaker,
-        class: "iphoneUpper"
+        class: "iphoneUpper",
+        func: this.renderTyping()
       }
     ];
 
@@ -54,7 +67,10 @@ class HowItWorks extends Component {
               </div>
             </div>
             <div className="img center">
-              <img src={step.img} alt="" className={step.class} />
+              <div className={step.class}>
+                <div className="typing-url">{step.func}</div>
+                <img src={step.img} alt="" />
+              </div>
             </div>
             <div className="text">
               <p className="white-text light-text sub-text">{step.text}</p>
@@ -68,7 +84,7 @@ class HowItWorks extends Component {
   render() {
     return (
       <section className="grey lighten-4 padding-top padding-bottom howItWorks">
-        <div className="row">
+        <div className="row center">
           <p className="title-text bold-text color-3-text center">
             HOW IT WORKS
           </p>

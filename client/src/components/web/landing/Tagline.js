@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import Typing from "react-typing-animation";
 
+// importing components
+import MeshCircles from "components/_misc/MeshCircles";
+
 // importing assets
-import meshCircles from "assets/web/green/meshCircles2.png";
+import meshCircles from "assets/web/green/meshCircles.png";
 
 class Tagline extends Component {
   renderTypingText() {
@@ -32,8 +35,8 @@ class Tagline extends Component {
     return (
       <section className="min-height-2">
         <div className="row tagline">
-          <div className="col s12 m3 push-m6 tagline-img center">
-            <img src={meshCircles} alt="" />
+          <div className="col s12 m3 push-m7 tagline-img center">
+            <MeshCircles />
           </div>
           <div className="col s12 m6 pull-m3 offset-m1 tagline-text">
             <div className="row">

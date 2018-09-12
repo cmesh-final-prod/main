@@ -1,16 +1,16 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // importing components
-import Sidenav, { hamburgerMenu } from 'components/_misc/navbar/Sidenav';
-import Logo from 'components/_misc/Logo';
-import { withRouter } from 'react-router-dom';
+import Sidenav, { hamburgerMenu } from "components/_misc/navbar/Sidenav";
+import Logo from "components/_misc/Logo";
+import { withRouter } from "react-router-dom";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 class NavbarWrapper extends Component {
-  state = { navClass: 'color-1' };
+  state = { navClass: "color-1" };
 
   renderTitle() {
     return <Logo />;
@@ -18,25 +18,22 @@ class NavbarWrapper extends Component {
 
   renderLeftIcon() {
     const { url } = this.props.match;
-    return url === '/mesh' ? '' : hamburgerMenu(this.props);
+    return url === "/mesh" ? "" : hamburgerMenu(this.props);
   }
 
   renderRightIcon() {}
 
   meshesNotFound() {
-    setTimeout(
-      () => this.setState({ navClass: 'web-navbar transparent' }),
-      2000
-    );
+    setTimeout(() => this.setState({ navClass: "" }), 2000);
     return this.state.navClass;
   }
 
   renderClass() {
     const { isFetching, isPopulated } = this.props.meshes;
     return isFetching && !isPopulated
-      ? 'color-1'
+      ? "color-1"
       : isPopulated
-        ? 'color-1'
+        ? "color-1"
         : this.meshesNotFound();
   }
 

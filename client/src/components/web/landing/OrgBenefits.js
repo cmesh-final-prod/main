@@ -1,4 +1,5 @@
 import React from "react";
+import Jump from "react-reveal/Jump";
 
 // importing assets
 import orgStats from "assets/web/green/stats.png";
@@ -16,8 +17,10 @@ const OrgBenefits = () => {
         </div>
         <div className="col s12 m5">
           <img src={orgStats} alt="" className="orgStats" />
-          <img src={feedback1} alt="" className="feedback1" />
-          <img src={feedback2} alt="" className="feedback2" />
+          <Jump>
+            <img src={feedback1} alt="" className="feedback1" />
+            <img src={feedback2} alt="" className="feedback2" />
+          </Jump>
         </div>
       </div>
     </section>

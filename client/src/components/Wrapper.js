@@ -13,6 +13,7 @@ import "css/list.css";
 import "css/signin.css";
 import "css/location.css";
 import "css/landing.css";
+import "css/landingMobile.css";
 
 // importing wrapper components
 import RootWrapper from "components/root/Wrapper";

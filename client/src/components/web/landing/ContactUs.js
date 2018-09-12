@@ -7,14 +7,14 @@ const ContactUs = () => {
   return (
     <section className="contactUs">
       <div className="text padding-left padding-right padding-top padding-bottom">
-        <div className="row">
+        <div className="row title">
           <div className="col s8 m3">
             <p className="title-text bold-text white-text">
               Have <br />Questions?
             </p>
           </div>
         </div>
-        <div className="row">
+        <div className="row content">
           <div className="col s12 m4 offset-m2">
             <p className="main-text white-text email">
               Send us an email at <br />
