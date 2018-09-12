@@ -1,11 +1,8 @@
 import React, { Component } from "react";
-import Typing from "react-typing-animation";
+import Typist from "react-typist";
 
 // importing components
 import MeshCircles from "components/_misc/MeshCircles";
-
-// importing assets
-import meshCircles from "assets/web/green/meshCircles.png";
 
 class Tagline extends Component {
   renderTypingText() {
@@ -15,9 +12,9 @@ class Tagline extends Component {
       return (
         <p key={text}>
           {text}
-          <Typing.Delay ms={1000} />
-          <Typing.Backspace count={text.length} />
-          <Typing.Delay ms={1000} />
+          <Typist.Delay ms={1000} />
+          <Typist.Backspace count={text.length} />
+          <Typist.Delay ms={1000} />
         </p>
       );
     });
@@ -25,9 +22,12 @@ class Tagline extends Component {
 
   renderTyping() {
     return (
-      <Typing loop={true} speed={50} cursorClassName="color-2-text">
+      <Typist cursor={{ show: false }}>
         <div className="color-2-text typing">{this.renderTypingText()}</div>
-      </Typing>
+        <div className="color-2-text typing">
+          <p>meetups</p>
+        </div>
+      </Typist>
     );
   }
 

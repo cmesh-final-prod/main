@@ -1,27 +1,27 @@
-import React, { Component } from 'react';
-import M from 'materialize-css';
-import { Link } from 'react-router-dom';
-import * as L from 'components/_misc/LOG-TYPES';
+import React, { Component } from "react";
+import M from "materialize-css";
+import { Link } from "react-router-dom";
+import * as L from "components/_misc/LOG-TYPES";
 
 // importing constants
-import { SIDENAV_MENU, MESH_PROPS } from 'components/_misc/CONSTANTS';
+import { SIDENAV_MENU, MESH_PROPS } from "components/_misc/CONSTANTS";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 class Sidenav extends Component {
   componentDidMount() {
-    const elems = document.querySelectorAll('.sidenav');
+    const elems = document.querySelectorAll(".sidenav");
     M.Sidenav.init(elems);
   }
 
   createMeshProps() {
     const { lng, lat } = this.props.meshes.location;
     let orgId;
-    process.env.NODE_ENV === 'development'
-      ? (orgId = '5b655afae0596954907ef72c')
-      : (orgId = '5b6bf03df239d60014bd6bce');
+    process.env.NODE_ENV === "development"
+      ? (orgId = "5b655afae0596954907ef72c")
+      : (orgId = "5b6bf03df239d60014bd6bce");
 
     this.props.createMesh(MESH_PROPS(lng, lat), orgId);
   }
@@ -73,7 +73,7 @@ export const hamburgerMenu = ownProps => {
       fingerPrint,
       log: {
         logType: L.SIDENAV_MENU_CLICKED,
-        componentServed: '_misc-navbar-sidenav'
+        componentServed: "_misc-navbar-sidenav"
       }
     };
     ownProps.createLog(createLogProps);
@@ -85,7 +85,7 @@ export const hamburgerMenu = ownProps => {
         <a
           href=""
           data-target="mobile-nav"
-          className="button-collapse sidenav-trigger"
+          className="button-collapse sidenav-trigger color-3-text"
           onClick={() => handleClick()}
         >
           <i className="material-icons">menu</i>

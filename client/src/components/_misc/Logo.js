@@ -1,9 +1,9 @@
-import React from 'react';
+import React from "react";
 
 const Logo = () => {
   return (
     <div className="brand-logo">
-      <span className="">
+      <span className="color-3-text">
         circle<b>mesh</b>
       </span>
     </div>

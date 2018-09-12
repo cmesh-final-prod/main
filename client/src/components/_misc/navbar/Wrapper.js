@@ -10,7 +10,7 @@ import { connect } from "react-redux";
 import * as actions from "actions";
 
 class NavbarWrapper extends Component {
-  state = { navClass: "color-1" };
+  state = { navClass: "color-5" };
 
   renderTitle() {
     return <Logo />;
@@ -24,16 +24,16 @@ class NavbarWrapper extends Component {
   renderRightIcon() {}
 
   meshesNotFound() {
-    setTimeout(() => this.setState({ navClass: "" }), 2000);
+    setTimeout(() => this.setState({ navClass: "color-5" }), 2000);
     return this.state.navClass;
   }
 
   renderClass() {
     const { isFetching, isPopulated } = this.props.meshes;
     return isFetching && !isPopulated
-      ? "color-1"
+      ? "color-5"
       : isPopulated
-        ? "color-1"
+        ? "color-5"
         : this.meshesNotFound();
   }
 

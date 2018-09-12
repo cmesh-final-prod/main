@@ -1,20 +1,22 @@
 .spinner-m {
   position: absolute;
-  top: 35vh;
+  top: 20vh;
   left: 25vw;
   width: 50vw;
 }
 
 .spinner-m .icon {
   position: relative;
-  left: 10vw;
-  width: 30vw;
-  height: 30vw;
+  width: 50vw;
+  height: 50vw;
 }
 
-.spinner-m span {
-  font-size: 4em;
-  line-height: 30vw;
+.spinner-m img {
+  width: 100%;
+}
+
+.spinner-m .row {
+  margin-top: -8vw;
 }
 
 .btn-create {

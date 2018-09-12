@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Typing from "react-typing-animation";
 
 // importing assets
 import meshDetails from "assets/web/green/meshDetails.png";
@@ -12,10 +11,7 @@ import icon_loudspeaker from "assets/web/green/loudspeaker.png";
 class HowItWorks extends Component {
   renderTyping() {
     return (
-      <Typing loop={true} speed={100} cursorClassName="grey-text text-darken-2">
-        <p className="grey-text text-darken-2 sub-text">www.circlemesh.com</p>
-        <Typing.Delay ms={2000} />
-      </Typing>
+      <p className="grey-text text-darken-2 sub-text">www.circlemesh.com</p>
     );
   }
 

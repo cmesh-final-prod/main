@@ -1,11 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+
+// importing components
+import MeshCircles from "components/_misc/MeshCircles";
 
 class SpinnerM extends Component {
   renderIcon(text) {
     return (
       <div className="spinner-m">
-        <div className="white-text gradient-1 center circle z-depth-5 icon btn-floating pulse grey lighten-1">
-          <span>m</span>
+        <div className="icon">
+          <MeshCircles />
         </div>
         <div className="row">
           <div className="col s12 center text">
@@ -18,8 +21,8 @@ class SpinnerM extends Component {
 
   render() {
     return this.props.searching
-      ? this.renderIcon('Searching...')
-      : this.renderIcon('No active mesh networks found...');
+      ? this.renderIcon("Searching...")
+      : this.renderIcon("No active mesh networks found...");
   }
 }
 

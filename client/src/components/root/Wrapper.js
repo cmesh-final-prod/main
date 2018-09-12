@@ -4,7 +4,6 @@ import { withRouter } from "react-router-dom";
 // importing components
 import NavbarWrapper from "components/_misc/navbar/Wrapper";
 import PanelsWrapper from "components/root/panels/Wrapper";
-import About from "components/web/About.js";
 import Footer from "components/_misc/Footer";
 import SpinnerM from "components/_misc/spinners/M";
 import LandingWrapper from "components/web/landing/Wrapper";
@@ -47,7 +46,7 @@ class RootWrapper extends Component {
     return (
       <div>
         <NavbarWrapper sidenav={true} />
-        <section>{this.renderContent()}</section>
+        <section className="min-height-1">{this.renderContent()}</section>
         <Footer />
       </div>
     );
