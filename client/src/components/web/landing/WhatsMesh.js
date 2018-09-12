@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import Flip from "react-reveal/Flip";
+import Pulse from "react-reveal/Pulse";
 
 // importing assets
 import cityImg from "assets/web/green/whatsMesh.png";
@@ -17,9 +17,9 @@ class WhatsMesh extends Component {
     return DETAILS.map(detail => {
       return (
         <div key={detail.img}>
-          <Flip top duration={3000}>
+          <Pulse>
             <img src={detail.img} alt="" className={detail.class} />
-          </Flip>
+          </Pulse>
         </div>
       );
     });
