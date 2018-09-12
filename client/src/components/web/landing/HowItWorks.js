@@ -1,11 +1,82 @@
 import React, { Component } from "react";
 
+// importing assets
+import meshDetails from "assets/web/green/meshDetails.png";
+import signinMeetup from "assets/web/green/signinMeetup.png";
+import iphoneUpper from "assets/web/green/iphoneUpper.png";
+import icon_automatic from "assets/web/green/automatic.png";
+import icon_oneTimeSetup from "assets/web/green/oneTimeSetup.png";
+import icon_loudspeaker from "assets/web/green/loudspeaker.png";
+
 class HowItWorks extends Component {
+  renderSteps() {
+    const STEPS = [
+      {
+        id: 1,
+        title: "ONE TIME SETUP",
+        text: "Simply link your meetup account with circlemesh",
+        img: signinMeetup,
+        icon: icon_oneTimeSetup,
+        class: "signinMeetup"
+      },
+      {
+        id: 2,
+        title: "AUTO MESH CREATION",
+        text:
+          "Circlemesh automatically creates mesh networks for all your upcoming events",
+        img: meshDetails,
+        icon: icon_automatic,
+        class: "meshDetails"
+      },
+      {
+        id: 3,
+        title: "LET ATTENDEES KNOW",
+        text:
+          "At the start of an event, ask attendees to join your mesh using any smartphone browser",
+        img: iphoneUpper,
+        icon: icon_loudspeaker,
+        class: "iphoneUpper"
+      }
+    ];
+
+    return STEPS.map(step => {
+      return (
+        <div className="col s12 m3 " key={step.id}>
+          <div className="card-1 color-4 z-depth-3">
+            <div className="title row">
+              <div className="col s2">
+                <img src={step.icon} alt="" />
+              </div>{" "}
+              <div className="col s10 left ">
+                <p className="white-text sub-title bold-text center">
+                  {step.title}
+                </p>
+              </div>
+            </div>
+            <div className="img center">
+              <img src={step.img} alt="" className={step.class} />
+            </div>
+            <div className="text">
+              <p className="white-text light-text sub-text">{step.text}</p>
+            </div>
+          </div>
+        </div>
+      );
+    });
+  }
+
   render() {
     return (
-      <section className="grey lighten-4">
-        <div className="row padding-1">
-          <p className="web-section-title color-1-text">How It Works</p>
+      <section className="grey lighten-4 padding-top padding-bottom howItWorks">
+        <div className="row">
+          <p className="title-text bold-text color-3-text center">
+            HOW IT WORKS
+          </p>
+        </div>
+        <div className="row">
+          <div className="col ghost hide-on-med-and-down" />
+          {this.renderSteps()}
+          <div className="col ghost hide-on-med-and-down" />
         </div>
       </section>
     );

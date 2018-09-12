@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="157px" height="24px" viewBox="0 0 157 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 51.1 (57501) - http://www.bohemiancoding.com/sketch -->
+    <title>circlemesh</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" stop-opacity="0.5" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.5" offset="100%"></stop>
+        </linearGradient>
+        <text id="text-2" font-family="Helvetica" font-size="32" font-weight="normal">
+            <tspan x="79.8671875" y="43">circle</tspan>
+            <tspan x="154.539062" y="43" font-family="Helvetica-Bold, Helvetica" font-weight="bold">mesh</tspan>
+        </text>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Circlemesh" transform="translate(-80.000000, -20.000000)">
+            <g id="Navbar">
+                <g id="circlemesh">
+                    <use fill="#A7B1C9" fill-rule="evenodd" xlink:href="#text-2"></use>
+                    <use fill-opacity="0.3" fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#text-2"></use>
+                    <use fill="#A7B1C9" fill-opacity="1" xlink:href="#text-2"></use>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

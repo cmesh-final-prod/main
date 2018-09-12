@@ -10,3 +10,110 @@
 .web-navbar {
   position: absolute;
 }
+
+.min-height-1 {
+  min-height: 95vh;
+}
+
+.padding-1 {
+  padding: 10vh 10vw 10vh 10vw !important;
+}
+
+.padding-top {
+  padding-top: 10vh !important;
+}
+
+.padding-bottom {
+  padding-bottom: 15vh !important;
+}
+
+.padding-left {
+  padding-left: 10vw !important;
+}
+
+.padding-right {
+  padding-right: 10vw !important;
+}
+
+section {
+  margin: 0px !important;
+}
+
+.bold-text {
+  font-weight: bold;
+}
+
+.light-text {
+  font-weight: lighter;
+}
+
+.btn-1 {
+  display: inline-flex;
+  height: 2em;
+  line-height: 2em;
+  border-radius: 20px !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.btn-2 {
+  display: inline-flex;
+  height: 3em;
+  line-height: 3em;
+  font-size: 1.2em;
+  border-radius: 30px !important;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+@media screen and (min-width: 601px) {
+  .title-text {
+    font-size: 2.4vw;
+  }
+
+  .sub-title {
+    font-size: 1.2vw;
+  }
+
+  .main-text {
+    font-size: 1.8vw;
+  }
+
+  .sub-text {
+    font-size: 1.2vw;
+  }
+
+  .min-height-2 {
+    min-height: 65vh;
+  }
+}
+
+@media screen and (max-width: 601px) {
+  .title-text {
+    font-size: 6vw;
+  }
+
+  .sub-title {
+    font-size: 4vw;
+  }
+
+  .main-text {
+    font-size: 5vw;
+  }
+
+  .sub-text {
+    font-size: 2vw;
+  }
+
+  .min-height-2 {
+    min-height: 70vh;
+  }
+}
+
+.opacity-1 {
+  opacity: 0.15 !important;
+}
+
+.brand-logo {
+  font-size: 1.6em !important;
+}

@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  /* background-color: #fafafa; */
+  background-color: #fcfcfc;
 }
 
 .btn {
@@ -17,15 +17,6 @@ body {
 
 .app section {
   min-height: 95vh;
-}
-
-.web section {
-  min-height: 65vh;
-}
-
-.padding-1 {
-  padding-left: 10vw !important;
-  padding-right: 10vw !important;
 }
 
 footer {

@@ -9,7 +9,7 @@ class Navbar extends Component {
 
   renderNavColor() {
     const { pathname } = this.props.location;
-    return pathname === "/web/about" ? "white z-depth-0" : "color-1";
+    return pathname === "/web/about" ? "color-5 z-depth-0" : "color-1";
   }
 
   renderMenu() {
@@ -22,7 +22,7 @@ class Navbar extends Component {
     return MENU.map(item => {
       return (
         <li key={item.id}>
-          <Link to={item.url} className="color-1-text">
+          <Link to={item.url} className="color-3-text">
             {item.title}
           </Link>
         </li>
@@ -37,7 +37,7 @@ class Navbar extends Component {
           <div className="nav-wrapper">
             <div className="container">
               <div className={`brand-logo ${this.renderClass()}`}>
-                <Link to="/" className="color-1-text">
+                <Link to="/" className="color-3-text">
                   circle<b>mesh</b>
                 </Link>
               </div>
@@ -45,7 +45,7 @@ class Navbar extends Component {
               <ul className="right hide-on-med-and-down">
                 {this.renderMenu()}
                 <li>
-                  <div className="btn gradient-2">Create A Mesh</div>
+                  <div className="gradient-2 btn-1 white-text">Sign Up</div>
                 </li>
               </ul>
             </div>

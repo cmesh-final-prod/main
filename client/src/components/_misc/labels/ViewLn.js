@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 // importing assets
-import linkedinLogo3 from 'assets/in-3.png';
+import linkedinLogo3 from "assets/linkedin/in-3.png";
 
 const ViewLn = ({ profileLink, bg, onClick }) => {
   return (
