@@ -120,7 +120,9 @@ export const createOrg = orgProps => {
 };
 
 export const fetchMeetupGroupInfo = () => {
-  const response = axios.get("https://api.meetup.com/members/self");
+  const response = axios.get(
+    "https://api.meetup.com/members/self/?access_token=96dfb74c21648ce8b805282355789b72"
+  );
   return {
     type: T.FETCH_MEETUP_GROUP_INFO,
     payload: response

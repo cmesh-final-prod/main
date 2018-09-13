@@ -23,6 +23,8 @@
     "client-address": "^1.0.0",
     "concurrently": "^3.6.0",
     "cookie-session": "^2.0.0-beta.3",
+    "cors": "^2.8.4",
+    "cron": "^1.4.1",
     "express": "^4.16.3",
     "faker": "^4.1.0",
     "jsonwebtoken": "^8.3.0",
@@ -39,6 +41,7 @@
     "path-parser": "^4.1.1",
     "pubnub": "^4.21.2",
     "redux-logger": "^3.0.6",
+    "request": "^2.88.0",
     "sort-by": "^1.2.0",
     "supertest": "^3.1.0"
   }

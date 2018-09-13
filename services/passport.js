@@ -73,9 +73,9 @@ passport.use(
       scope: ["event_management", "group_edit", "group_content_edit"],
       passReqToCallback: true
     },
-    (req, acessToken, refreshToken, profile, done) => {
+    (req, accessToken, refreshToken, profile, done) => {
       process.nextTick(() => {
-        addMeetupAuthController(req, profile, done);
+        addMeetupAuthController(req, accessToken, refreshToken, profile, done);
       });
     }
   )
