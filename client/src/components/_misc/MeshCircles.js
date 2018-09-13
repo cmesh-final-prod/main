@@ -6,11 +6,13 @@ import meshCircles from "assets/web/green/meshCircles.png";
 class MeshCircles extends Component {
   renderCircles() {
     return (
-      <img
-        src={meshCircles}
-        alt=""
-        className="animated infinite pulse slower"
-      />
+      <div className="animated fadeIn slow">
+        <img
+          src={meshCircles}
+          alt=""
+          className="animated infinite pulse slower"
+        />
+      </div>
     );
   }
 
