@@ -1,9 +1,9 @@
-const User = require('../../db/models/User');
-const latestPolicyUpdateOn = require('../../utils/termsOfUse');
+const User = require("../../db/models/User");
+const latestPolicyUpdateOn = require("../../utils/termsOfUse");
 
 const createUser = async (profile, done) => {
   const existingUser = await User.findOne({
-    'linkedin._id': profile.id
+    "linkedin._id": profile.id
   });
 
   if (existingUser) {
@@ -42,7 +42,7 @@ const createUser = async (profile, done) => {
     termsOfUse
   });
 
-  return done(null, user);
+  return done(null, { info: { id: user.id, provider: "linkedin" } });
 };
 
 module.exports = createUser;

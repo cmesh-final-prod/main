@@ -2,7 +2,15 @@ import React, { Component } from "react";
 import { isMobile, isTablet } from "react-device-detect";
 import { Link, withRouter } from "react-router-dom";
 
+// container elements
+import * as actions from "actions";
+import { connect } from "react-redux";
+
 class Navbar extends Component {
+  fetchMeetupInfo() {
+    this.props.fetchMeetupGroupInfo();
+  }
+
   renderClass() {
     return isTablet ? "left" : isMobile ? "center" : "left";
   }
@@ -15,16 +23,20 @@ class Navbar extends Component {
   renderMenu() {
     const { url } = this.props.match;
     const MENU = [
-      { id: 2, title: "How It Works", url: "/manage" },
-      { id: 1, title: "Sign In", url: "/manage" }
+      {
+        id: 2,
+        title: "How It Works",
+        url: "/auth/meetup?orgId=5b655afae0596954907ef72c"
+      },
+      { id: 1, title: "Sign In", url: "" }
     ];
 
     return MENU.map(item => {
       return (
         <li key={item.id}>
-          <Link to={item.url} className="color-3-text">
+          <a href={item.url} className="color-3-text">
             {item.title}
-          </Link>
+          </a>
         </li>
       );
     });
@@ -36,7 +48,10 @@ class Navbar extends Component {
         <nav className={this.renderNavColor()}>
           <div className="nav-wrapper">
             <div className="container">
-              <div className={`brand-logo ${this.renderClass()}`}>
+              <div
+                onClick={() => this.fetchMeetupInfo()}
+                className={`brand-logo ${this.renderClass()}`}
+              >
                 <Link to="/" className="color-3-text">
                   circle<b>mesh</b>
                 </Link>
@@ -56,4 +71,7 @@ class Navbar extends Component {
   }
 }
 
-export default withRouter(Navbar);
+export default connect(
+  null,
+  actions
+)(withRouter(Navbar));

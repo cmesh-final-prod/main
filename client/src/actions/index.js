@@ -1,5 +1,5 @@
-import * as T from 'actions/types';
-import axios from 'axios';
+import * as T from "actions/types";
+import axios from "axios";
 
 //////////////////////////////////////////////////////////////////
 //////                  --ATTENTION--                        /////
@@ -112,9 +112,17 @@ export const addMeshFeedback = (meshId, userId, feedbackProps) => {
 //////////////////////////////////////////////////////////////////
 
 export const createOrg = orgProps => {
-  const response = axios.post('/api/orgs', orgProps);
+  const response = axios.post("/api/orgs", orgProps);
   return {
     type: T.CREATE_ORG,
+    payload: response
+  };
+};
+
+export const fetchMeetupGroupInfo = () => {
+  const response = axios.get("https://api.meetup.com/members/self");
+  return {
+    type: T.FETCH_MEETUP_GROUP_INFO,
     payload: response
   };
 };
@@ -124,9 +132,9 @@ export const createOrg = orgProps => {
 //////////////////////////////////////////////////////////////////
 
 export const createLog = createLogProps => {
-  axios.post('/api/logs', createLogProps);
+  axios.post("/api/logs", createLogProps);
 
-  if (createLogProps.log.logType === 'MOUNT') {
+  if (createLogProps.log.logType === "MOUNT") {
     return {
       type: `${T.CREATE_LOG}: ${createLogProps.log.logType}`,
       payload: createLogProps.fingerPrint
