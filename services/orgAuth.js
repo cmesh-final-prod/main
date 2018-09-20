@@ -19,7 +19,6 @@ const jwtOptions = {
 
 const jwtAutenticate = new JwtStrategy(jwtOptions, async (payload, done) => {
   try {
-    console.log("----------------is org auth");
     const org = await Org.findOne({ _id: payload.sub });
 
     if (org) {

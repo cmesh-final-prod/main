@@ -27,8 +27,8 @@ require("./services/orgAuth");
 // seeding data
 // require('./db/seeds');
 
-const jwt = require("./utils/jwt");
-console.log(jwt.encode("5ba2e864ad6b4035da04621a"));
+// const jwt = require("./utils/jwt");
+// console.log(jwt.encode("5ba2e864ad6b4035da04621a"));
 
 //////////////////////////////////////////////////////////////////
 ////////////             1. EXPRESS APP            ///////////////

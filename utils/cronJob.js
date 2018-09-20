@@ -4,7 +4,6 @@ const Org = require("../db/models/Org");
 // importing utils
 const axios = require("./axios");
 
-console.log("Before job instantiation");
 const job = new CronJob("0 */20 * * * *", async function() {
   const date = new Date();
   try {

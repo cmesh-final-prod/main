@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import qs from "query-string";
+import qs from "qs";
 
 // importing components
 import Template from "components/manage/host/Template";
@@ -27,7 +27,7 @@ class Tryagain extends Component {
 
   renderText1() {
     const { location } = this.props;
-    const query = qs.parse(location.search);
+    const query = qs.parse(location.search, { ignoreQueryPrefix: true });
     const { isFound } = query;
     return isFound === "true" ? this.renderIsFound() : this.renderIsNotFound();
   }

@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import qs from "query-string";
+import qs from "qs";
 
 // import components
 import HostSignin from "components/manage/host/Signin";
@@ -32,7 +32,7 @@ class Wrapper extends Component {
   renderRedirectLogic() {
     const { push } = this.props.history;
     const { location } = this.props;
-    const query = qs.parse(location.search);
+    const query = qs.parse(location.search, { ignoreQueryPrefix: true });
     const { isFound, isMultiple, isSuccess } = query;
     let { url } = this.props.match;
     if (url[url.length - 1] === "/") {
@@ -43,7 +43,6 @@ class Wrapper extends Component {
       if (isMultiple === "true") {
         return push(`${url}/multiple`);
       } else if (isSuccess === "true") {
-        console.log("------host----: success");
         return push("/manage/app");
       } else if (isFound === "true") {
         return push(`${url}/tryagain?isFound=true`);
