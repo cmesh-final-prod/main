@@ -18,7 +18,11 @@ export const ADD_MESH_FEEDBACK = "ADD_MESH_FEEDBACK";
 
 // ORG ROUTES
 export const CREATE_ORG = "CREATE_ORG";
+export const FETCH_ORG = "FETCH_ORG";
 export const FETCH_MEETUP_GROUP_INFO = "FETCH_MEETUP_GROUP_INFO";
+export const SYNC_MEETUPS = "SYNC_MEETUPS";
+export const FETCH_ORG_MESHES = "FETCH_ORG_MESHES";
+export const SIGNIN_ORG = "SIGNIN_ORG";
 
 // LOG ROUTES
 export const CREATE_LOG = "CREATE_LOG";

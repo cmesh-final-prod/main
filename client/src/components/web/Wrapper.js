@@ -6,31 +6,40 @@ import Navbar from "components/web/_misc/Navbar";
 import Footer from "components/_misc/Footer";
 import Terms from "components/web/_misc/Terms";
 import LandingWrapper from "components/web/landing/Wrapper";
+import FormWrapper from "components/web/form/Wrapper";
 
-class AboutWrapper extends Component {
+// container elements
+import { connect } from "react-redux";
+
+class Wrapper extends Component {
+  componentDidMount() {
+    const { isAuth } = this.props.auth;
+    return isAuth ? this.props.history.push("/manage/app") : "";
+  }
+
   render() {
+    const { url } = this.props.match;
     return (
       <div className="web">
         <Navbar />
         <Route
           exact
-          path={`${this.props.match.url}`}
+          path={`${url}`}
           render={() => {
-            return <Redirect to={`${this.props.match.url}/about`} />;
+            return <Redirect to={`${url}/about`} />;
           }}
         />
-        <Route
-          path={`${this.props.match.url}/about`}
-          component={LandingWrapper}
-        />
-        <Route
-          path={`${this.props.match.url}/terms-of-use`}
-          component={Terms}
-        />
+        <Route path={`${url}/about`} component={LandingWrapper} />
+        <Route path={`${url}/terms-of-use`} component={Terms} />
+        <Route path={`${url}/form`} component={FormWrapper} />
         <Footer />
       </div>
     );
   }
 }
 
-export default AboutWrapper;
+function mapStateToProps({ auth }) {
+  return { auth };
+}
+
+export default connect(mapStateToProps)(Wrapper);

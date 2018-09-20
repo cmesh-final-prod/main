@@ -1,3 +1,13 @@
+.btn {
+  background-color: #7392b7;
+  color: white;
+}
+
+.btn-large {
+  background-color: #7392b7;
+  color: white;
+}
+
 .row-divider {
   margin: 0px;
 }
@@ -86,6 +96,10 @@ section {
   .min-height-2 {
     min-height: 70vh;
   }
+
+  .min-height-3 {
+    min-height: 88vh;
+  }
 }
 
 @media screen and (max-width: 601px) {
@@ -106,6 +120,10 @@ section {
   }
 
   .min-height-2 {
+    min-height: 70vh;
+  }
+
+  .min-height-3 {
     min-height: 70vh;
   }
 }

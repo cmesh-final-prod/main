@@ -1,5 +1,8 @@
 const passport = require("passport");
 
+// importing controllers
+const meetupRedirect = require("../controllers/GET/meetupRedirect");
+
 module.exports = app => {
   app.get(
     "/auth/linkedin",
@@ -27,9 +30,6 @@ module.exports = app => {
   app.get(
     "/auth/meetup/callback",
     passport.authenticate("meetup", { failureRedirect: "/auth/meetup" }),
-    function(req, res) {
-      // Successul authentication, redirect home.
-      res.redirect("/");
-    }
+    meetupRedirect
   );
 };

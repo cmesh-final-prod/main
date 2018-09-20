@@ -15,6 +15,8 @@ import "css/location.css";
 import "css/landing.css";
 import "css/landingMobile.css";
 import "animate.css/animate.css";
+import "css/manage.css";
+import "css/host.css";
 
 // importing wrapper components
 import RootWrapper from "components/root/Wrapper";

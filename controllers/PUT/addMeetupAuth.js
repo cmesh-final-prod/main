@@ -1,29 +1,48 @@
 const Org = require("../../db/models/Org");
 
+// importing controllers
+const addMeetupGroup = require("../PUT/addMeetupGroup");
+
+// importing utils
+const axios = require("../../utils/axios");
+
 const addMeetupAuth = async (req, accessToken, refreshToken, profile, done) => {
   try {
-    // cron job test
-    const CronJob = require("cron").CronJob;
-    console.log("Before job instantiation");
-    const job = new CronJob("* * * * * *", function() {
-      const d = new Date();
-      console.log("Every Second:", accessToken);
-    });
-    console.log("After job instantiation");
-    job.start();
-
     const { orgId } = req.session;
+    const memberId = profile.id;
+    const response = await axios.fetchMeetupGroups(accessToken);
+    const organizedGroups = await response.filter(group => {
+      return group.self.role;
+    });
 
-    console.log(profile);
+    if (organizedGroups.length === 0) {
+      return done(null, {
+        info: {
+          id: orgId,
+          provider: "meetup",
+          isFound: false
+        }
+      });
+    } else if (organizedGroups.length === 1) {
+      const urlName = organizedGroups[0].urlname;
 
-    await Org.update(
-      { _id: orgId },
-      {
-        meetup: { _id: profile.id }
-      }
-    );
-
-    return done(null, { info: { id: orgId, provider: "meetup" } });
+      await addMeetupGroup(
+        orgId,
+        memberId,
+        accessToken,
+        refreshToken,
+        urlName,
+        done
+      );
+    } else {
+      return done(null, {
+        info: {
+          id: orgId,
+          provider: "meetup",
+          isMultiple: true
+        }
+      });
+    }
   } catch (e) {
     return done(e, null);
   }

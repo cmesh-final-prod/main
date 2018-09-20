@@ -7,8 +7,8 @@ const mongoose = require("mongoose");
 const User = require("../db/models/User");
 
 // importing controllers
-const createUserController = require("../controllers/POST/createUser");
-const addMeetupAuthController = require("../controllers/PUT/addMeetupAuth");
+const createUser = require("../controllers/POST/createUser");
+const addMeetupAuth = require("../controllers/PUT/addMeetupAuth");
 
 ///////////////////////////////////////////////////////////////
 ///////////       Serializing-Deserializing         ///////////
@@ -49,7 +49,7 @@ passport.use(
     },
     (acessToken, refreshToken, profile, done) => {
       process.nextTick(() => {
-        createUserController(profile, done);
+        createUser(profile, done);
       });
     }
   )
@@ -70,12 +70,12 @@ passport.use(
       autoGenerateUsername: true,
       state: true,
       proxy: true,
-      scope: ["event_management", "group_edit", "group_content_edit"],
+      scope: ["event_management", "ageless"],
       passReqToCallback: true
     },
     (req, accessToken, refreshToken, profile, done) => {
       process.nextTick(() => {
-        addMeetupAuthController(req, accessToken, refreshToken, profile, done);
+        addMeetupAuth(req, accessToken, refreshToken, profile, done);
       });
     }
   )

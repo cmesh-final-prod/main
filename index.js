@@ -22,27 +22,20 @@ require("./db/models/User");
 require("./db/models/Mesh");
 require("./db/models/Org");
 require("./services/passport");
+require("./services/orgAuth");
 
 // seeding data
 // require('./db/seeds');
 
-// requesting meetup data
-// ?access_token=96dfb74c21648ce8b805282355789b72
-const request = require("request");
-request(
-  "https://api.meetup.com/San-Francisco-Networking-Meetup/events/",
-  function(error, response, body) {
-    console.log("error:", error); // Print the error if one occurred
-    console.log("statusCode:", response && response.statusCode); // Print the response status code if a response was received
-    console.log("Event: ", body); // Print the HTML for the Google homepage.
-  }
-);
+const jwt = require("./utils/jwt");
+console.log(jwt.encode("5ba2e864ad6b4035da04621a"));
 
 //////////////////////////////////////////////////////////////////
 ////////////             1. EXPRESS APP            ///////////////
 //////////////////////////////////////////////////////////////////
 
 const app = express();
+require("./utils/cronJob");
 
 //////////////////////////////////////////////////////////////////
 ////////////             2. MIDDLEWARES            ///////////////

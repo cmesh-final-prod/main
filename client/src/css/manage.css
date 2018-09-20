@@ -1,0 +1,31 @@
+.manage {
+  min-height: 90vh !important;
+  display: flex;
+  margin: 0 !important;
+}
+
+.manage-mesh {
+  height: 30vh;
+  border-radius: 20px;
+}
+
+.form .row {
+  margin-top: 10vh;
+}
+
+.form form {
+  border-radius: 30px;
+  padding: 2vh 3vw 5vh 3vw !important;
+}
+
+.form input {
+  color: #fafafa !important;
+}
+
+.form button {
+  height: 5vh;
+}
+
+.form .error {
+  margin-top: 8vh !important;
+}

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 // importing components
-import IndeterminateSpinner from 'components/_misc/spinners/Indeterminate';
+import IndeterminateSpinner from "components/_misc/spinners/Indeterminate";
 
 // container elements
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 
 export default ChildComponent => {
   class ComposedComponent extends Component {

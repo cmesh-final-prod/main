@@ -112,9 +112,47 @@ export const addMeshFeedback = (meshId, userId, feedbackProps) => {
 //////////////////////////////////////////////////////////////////
 
 export const createOrg = orgProps => {
-  const response = axios.post("/api/orgs", orgProps);
+  const response = axios.post("/api/orgs/create", orgProps);
   return {
     type: T.CREATE_ORG,
+    payload: response
+  };
+};
+
+export const signinOrg = orgProps => {
+  const response = axios.post("/api/orgs/signin", orgProps);
+  return {
+    type: T.SIGNIN_ORG,
+    payload: response
+  };
+};
+
+export const fetchOrg = token => {
+  const response = axios.get(`/api/orgs`, {
+    headers: { authorization: token }
+  });
+
+  return {
+    type: T.FETCH_ORG,
+    payload: response
+  };
+};
+
+export const syncMeetups = token => {
+  axios.get(`/api/orgs/meetups/sync`, {
+    headers: { authorization: token }
+  });
+  return {
+    type: T.SYNC_MEETUPS
+  };
+};
+
+export const fetchOrgMeshes = token => {
+  const response = axios.get(`/api/orgs/meshes`, {
+    headers: { authorization: token }
+  });
+  return {
+    type: T.FETCH_ORG_MESHES,
     payload: response
   };
 };

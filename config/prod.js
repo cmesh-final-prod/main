@@ -9,5 +9,6 @@ module.exports = {
   jwtKey: process.env.JWT_KEY,
   meetupClientId: process.env.MEETUP_CLIENT_ID,
   meetupClientSecret: process.env.MEETUP_CLIENT_SECRET,
-  meetupCallbackURL: process.env.MEETUP_CALLBACK_URL
+  meetupCallbackURL: process.env.MEETUP_CALLBACK_URL,
+  selfURL: process.env.SELF_URL
 };

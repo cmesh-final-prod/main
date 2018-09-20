@@ -1,28 +1,28 @@
-import React, { Component } from 'react';
-import * as L from 'components/_misc/LOG-TYPES';
+import React, { Component } from "react";
+import * as L from "components/_misc/LOG-TYPES";
 
 // importing components
-import NavbarWrapper from 'components/_misc/navbar/Wrapper';
-import Footer from 'components/_misc/Footer';
+import NavbarWrapper from "components/_misc/navbar/Wrapper";
+import Footer from "components/_misc/Footer";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 // importing _hoc
-import withLogOnMount from 'components/_hoc/withLogOnMount';
+import withLogOnMount from "components/_hoc/withLogOnMount";
 
 class SigninWithLinkedin extends Component {
   renderWhyLinkedin() {
     const REASONS = [
       {
         id: 1,
-        text: 'Linkedin is the most popular professional networking platform'
+        text: "Linkedin is the most popular professional networking platform"
       },
       {
         id: 2,
         text:
-          'Using linkedin you can easily share your basic profile information with others in the room'
+          "Using linkedin you can easily share your basic profile information with others in the room"
       },
       {
         id: 3,
@@ -47,7 +47,7 @@ class SigninWithLinkedin extends Component {
     return (
       <div className="col s10 offset-s1">
         <p>
-          By signin in, you aggree with our{' '}
+          By signin in, you agree with our{" "}
           <a
             href="https://www.circlemesh.com"
             onClick={() => this.handleTermsOfUseClick()}
@@ -65,7 +65,7 @@ class SigninWithLinkedin extends Component {
       fingerPrint,
       log: {
         logType: L.SIGNIN_WITH_LINKEDIN_CLICKED,
-        componentServed: '_misc-signinWithLinkedin',
+        componentServed: "_misc-signinWithLinkedin",
         meshId: this.props.selectedMesh.data.meshId
       }
     };
@@ -78,7 +78,7 @@ class SigninWithLinkedin extends Component {
       fingerPrint,
       log: {
         logType: L.TERMS_OF_USE_CLICKED,
-        componentServed: '_misc-signinWithLinkedin',
+        componentServed: "_misc-signinWithLinkedin",
         meshId: this.props.selectedMesh.data.meshId
       }
     };
@@ -127,7 +127,7 @@ function mapStateToProps({ currentUser, selectedMesh }) {
 const logProps = ownProps => {
   return {
     logType: L.MOUNT,
-    componentServed: '_misc-signinWithLinkedin',
+    componentServed: "_misc-signinWithLinkedin",
     meshId: ownProps.selectedMesh.data.meshId
   };
 };

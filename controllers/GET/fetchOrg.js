@@ -2,13 +2,25 @@ const Org = require("../../db/models/Org");
 
 const fetchOrg = async (req, res, next) => {
   try {
-    const { orgId } = req.params;
-    const org = await Org.findOne({ _id: orgId });
-    if (org) {
-      return res.send({ found: true, data: org });
-    } else {
-      return res.send({ found: false, message: "No Organization Found" });
-    }
+    const org = req.user;
+    const { _id, title, url, description, photo, primaryOrganizerId } = org;
+    let urlName;
+
+    org.meetup ? (urlName = org.meetup.urlName) : "";
+
+    const org_public = {
+      title,
+      url,
+      description,
+      photo,
+      primaryOrganizerId,
+      urlName
+    };
+
+    return res.send({
+      data: org_public,
+      orgId: _id
+    });
   } catch (e) {
     next(e);
   }

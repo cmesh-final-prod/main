@@ -1,33 +1,63 @@
-import { CREATE_ORG } from 'actions/types';
+import { CLEAR_STATE, FETCH_ORG, FETCH_ORG_MESHES } from "actions/types";
 
 const initialState = {
   isFetching: false,
+  isFetched: false,
   isPopulated: false,
-  message: '',
+  orgId: null,
   data: {},
-  error: null
+  orgMeshes: [],
+  error: null,
+  isEmailError: false,
+  isAuthError: false
 };
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case `${CREATE_ORG}_PENDING`:
-      return { ...state, isFetching: true };
-    case `${CREATE_ORG}_REJECTED`:
-      return { ...state, isFetching: false, error: action.payload };
-    case `${CREATE_ORG}_FULFILLED`:
-      const { message } = action.payload;
-      if (action.payload.created) {
-        const { data } = action.payload;
-        return {
-          ...state,
-          isFetching: false,
-          isPopulated: true,
-          data,
-          message
-        };
-      } else {
-        return { ...state, isFetchig: false, isPopulated: false, message };
-      }
+    case CLEAR_STATE:
+      return { ...initialState };
+    case `${FETCH_ORG}_PENDING`:
+      return {
+        ...state,
+        isFetching: true,
+        isFetched: false,
+        isPopulated: false
+      };
+    case `${FETCH_ORG}_REJECTED`:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload,
+        isFetched: false,
+        isPopulated: false
+      };
+    case `${FETCH_ORG}_FULFILLED`:
+      const { data, orgId } = action.payload.data;
+      return {
+        ...state,
+        isFetching: false,
+        isFetched: true,
+        data,
+        orgId
+      };
+    case `${FETCH_ORG_MESHES}_PENDING`:
+      return {
+        ...state,
+        isFetching: true,
+        isFetched: false,
+        isPopulated: false
+      };
+    case `${FETCH_ORG_MESHES}_REJECTED`:
+      return {
+        ...state,
+        isFetching: false,
+        error: action.payload,
+        isFetched: false,
+        isPopulated: false
+      };
+    case `${FETCH_ORG_MESHES}_FULFILLED`:
+      const { orgMeshes } = action.payload.data;
+      return { ...state, isFetching: false, isPopulated: true, orgMeshes };
     default:
       return state;
   }
