@@ -24,12 +24,20 @@ const createMesh = async (req, res, next) => {
     if (existingMesh) {
       return res.send({ message: "Mesh already exists" });
     } else {
+      // Event Details
       const startDate_utc = dateParser.utc(startDate);
       const endDate_utc = dateParser.addHours(startDate_utc, duration);
-      const startDate_utc_pre = dateParser.subtractHours(startDate_utc, 1);
+      // Mesh Details
+      const start = dateParser.subtractHours(startDate_utc, 1);
+      const end = dateParser.addHours(endDate_utc, 1);
+      const startTime = dateParser.milli(start);
+      const endTime = dateParser.milli(end);
 
-      const startDate_milli = dateParser.milli(startDate);
-      const endDate_milli = dateParser.milli(endDate_utc);
+      // const startDate_utc_pre = dateParser.subtractHours(startDate_utc, 1);
+      //
+      // const startDate_milli = dateParser.milli(startDate);
+      // const endDate_milli = dateParser.milli(endDate_utc);
+
       const createdAt = new Date().getTime();
 
       const mesh = await Mesh.create({
@@ -40,8 +48,8 @@ const createMesh = async (req, res, next) => {
           startDate: startDate_utc,
           endDate: endDate_utc
         },
-        startDate: startDate_milli,
-        endDate: endDate_milli,
+        startDate: startTime,
+        endDate: endTime,
         duration,
         provider,
         geometry: {

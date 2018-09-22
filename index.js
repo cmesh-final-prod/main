@@ -30,6 +30,20 @@ require("./services/orgAuth");
 // const jwt = require("./utils/jwt");
 // console.log(jwt.encode("5ba2e864ad6b4035da04621a"));
 
+const dateParser = require("./utils/dateParser");
+const date = new Date();
+const start = dateParser.subtractHours(date, 1);
+const end = dateParser.addHours(date, 1);
+const start1 = new Date(start);
+const end1 = new Date(end);
+console.log(
+  date.toLocaleTimeString(),
+  "--------MINUS 1",
+  start1.toLocaleTimeString(),
+  "---------PLUS 1",
+  end1.toLocaleTimeString()
+);
+
 //////////////////////////////////////////////////////////////////
 ////////////             1. EXPRESS APP            ///////////////
 //////////////////////////////////////////////////////////////////

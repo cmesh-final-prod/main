@@ -4,6 +4,14 @@
     padding: 2vh 3vw 2vh 3vw;
     margin-bottom: 2vh;
   }
+
+  .host-multiple .group {
+    padding-top: 3vh !important;
+    padding-bottom: 3vh !important;
+    border-radius: 30px;
+    margin-bottom: 4vh !important;
+    min-height: 10vh;
+  }
 }
 
 @media screen and (max-width: 601px) {
@@ -11,6 +19,14 @@
     border-radius: 30px;
     padding: 2vh 8vw 2vh 8vw !important;
     margin-bottom: 2vh;
+  }
+
+  .host-multiple .group {
+    padding-top: 1vh !important;
+    padding-bottom: 1vh !important;
+    border-radius: 30px;
+    margin-bottom: 4vh !important;
+    min-height: 10vh;
   }
 }
 
@@ -33,10 +49,10 @@
 }
 
 .host-multiple .group {
+  padding-top: 1vh;
   border-radius: 30px;
-  margin-bottom: 4vh;
+  margin-bottom: 4vh !important;
   min-height: 10vh;
-  line-height: 10vh;
 }
 
 .host-multiple button {
