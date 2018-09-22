@@ -2,6 +2,9 @@ const axios = require("axios");
 const keys = require("../config/keys");
 const { ObjectId } = require("mongoose").Types;
 
+// importing models
+const Org = require("../db/models/Org");
+
 // importing utils
 const jwt = require("./jwt");
 
@@ -86,31 +89,27 @@ module.exports = {
     const url = `https://api.meetup.com/${urlName}`;
     const response = await axios.get(url);
     return response.data;
+  },
+
+  async addMeetupGroupSummary(
+    orgId,
+    summary,
+    memberId,
+    accessToken,
+    refreshToken
+  ) {
+    await Org.update(
+      { _id: orgId },
+      {
+        meetup: {
+          summary,
+          memberId,
+          accessToken: jwt.encode(accessToken),
+          refreshToken: jwt.encode(refreshToken)
+        }
+      }
+    );
+
+    return;
   }
 };
-
-// if (!startDate && !lon) {
-//   return {
-//     message: "Mesh created",
-//     startDate: false,
-//     location: false
-//   };
-// } else if (!startDate) {
-//   return {
-//     message: "Mesh created",
-//     startDate: false,
-//     location: true
-//   };
-// } else if (!lon) {
-//   return {
-//     message: "Mesh created",
-//     startDate: true,
-//     location: false
-//   };
-// } else {
-//   return {
-//     message: "Mesh created",
-//     startDate: true,
-//     location: true
-//   };
-// }

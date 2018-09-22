@@ -142,6 +142,7 @@ export const syncMeetups = token => {
   axios.get(`/api/orgs/meetups/sync`, {
     headers: { authorization: token }
   });
+
   return {
     type: T.SYNC_MEETUPS
   };
@@ -163,6 +164,32 @@ export const fetchMeetupGroupInfo = () => {
   );
   return {
     type: T.FETCH_MEETUP_GROUP_INFO,
+    payload: response
+  };
+};
+
+export const fetchMeetupSummary = token => {
+  const response = axios.get(`/api/orgs/meetups/summary`, {
+    headers: { authorization: token }
+  });
+
+  return {
+    type: T.FETCH_MEETUP_SUMMARY,
+    payload: response
+  };
+};
+
+export const addMeetupURL = (token, urlName) => {
+  const response = axios.put(
+    `/api/orgs/meetups/${urlName}`,
+    {},
+    {
+      headers: { authorization: token }
+    }
+  );
+
+  return {
+    type: T.ADD_MEETUP_URL,
     payload: response
   };
 };

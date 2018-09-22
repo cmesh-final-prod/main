@@ -18,8 +18,8 @@ class Wrapper extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isFetching } = this.props.org;
-    if (isFetching !== prevProps.org.isFetching) {
+    const { data } = this.props.org;
+    if (data !== prevProps.org.data) {
       this.renderAuthRedirect();
     }
   }
@@ -28,7 +28,7 @@ class Wrapper extends Component {
     const { url } = this.props.match;
     const { data } = this.props.org;
     const { push } = this.props.history;
-    return data.urlName ? push(`${url}/meshes`) : push(`/manage/host`);
+    return data.urlName ? push(`${url}/meshes`) : "";
   }
 
   render() {

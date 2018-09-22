@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Typist from "react-typist";
+import { Link } from "react-router-dom";
 
 // importing components
 import MeshCircles from "components/_misc/MeshCircles";
@@ -31,9 +32,19 @@ class Tagline extends Component {
     );
   }
 
+  renderSmallScreenButtons() {
+    return (
+      <Link to="/web/form/create">
+        <button className="btn gradient-2 hide-on-med-and-up">
+          create account
+        </button>
+      </Link>
+    );
+  }
+
   render() {
     return (
-      <section className="min-height-2">
+      <section id="TAGLINE" className="min-height-2 scrollSpy">
         <div className="row tagline">
           <div className="col s12 m3 push-m7 tagline-img center">
             <MeshCircles />
@@ -56,6 +67,7 @@ class Tagline extends Component {
                 </p>
               </div>
             </div>
+            <div className="center">{this.renderSmallScreenButtons()}</div>
           </div>
         </div>
       </section>

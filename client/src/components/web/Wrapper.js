@@ -30,7 +30,7 @@ class Wrapper extends Component {
           }}
         />
         <Route path={`${url}/about`} component={LandingWrapper} />
-        <Route path={`${url}/terms-of-use`} component={Terms} />
+        <Route path={`${url}/terms`} component={Terms} />
         <Route path={`${url}/form`} component={FormWrapper} />
         <Footer />
       </div>

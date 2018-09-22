@@ -31,3 +31,14 @@
   height: 7vh;
   border-radius: 30px;
 }
+
+.host-multiple .group {
+  border-radius: 30px;
+  margin-bottom: 4vh;
+  min-height: 10vh;
+  line-height: 10vh;
+}
+
+.host-multiple button {
+  border-radius: 30px;
+}

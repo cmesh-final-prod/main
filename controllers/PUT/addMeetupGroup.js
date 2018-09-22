@@ -1,8 +1,9 @@
+// importing models
 const Org = require("../../db/models/Org");
-const jwt = require("../../utils/jwt");
 
 // importing utils
 const axios = require("../../utils/axios");
+const jwt = require("../../utils/jwt");
 
 const addMeetupGroup = async (
   orgId,
@@ -10,6 +11,7 @@ const addMeetupGroup = async (
   accessToken,
   refreshToken,
   urlName,
+  summary,
   done
 ) => {
   const existingMeetupOrg = await Org.findOne({ "meetup.urlName": urlName });
@@ -70,6 +72,7 @@ const addMeetupGroup = async (
         timeZone: timezone,
         photo,
         meetup: {
+          summary,
           memberId,
           accessToken: jwt.encode(accessToken),
           refreshToken: jwt.encode(refreshToken),

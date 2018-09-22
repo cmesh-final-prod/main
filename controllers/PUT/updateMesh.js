@@ -49,6 +49,7 @@ const updateMesh = async (req, res, next) => {
     console.log("-----------mesh updated: ", mesh);
 
     pubnub.dispatchAction("fetchMeshes");
+    pubnub.dispatchAction("fetchOrgMeshes");
 
     res.send({ message: "Mesh updated" });
   } catch (e) {

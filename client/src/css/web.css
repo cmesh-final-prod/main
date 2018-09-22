@@ -1,3 +1,7 @@
+nav .create {
+  border-radius: 30px;
+}
+
 .about-bg {
   position: fixed;
   top: 0px;

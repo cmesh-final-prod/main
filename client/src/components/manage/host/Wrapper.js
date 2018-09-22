@@ -17,8 +17,8 @@ class Wrapper extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    const { isFetching } = this.props.org;
-    if (isFetching !== prevProps.org.isFetching) {
+    const { data } = this.props.org;
+    if (data !== prevProps.org.data) {
       this.renderAuthRedirect();
     }
   }

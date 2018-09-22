@@ -7,7 +7,7 @@ const GeoJSONSchema = require("../schema/GeoJSON");
 const EventDetailsSchema = require("../schema/EventDetails");
 
 const MeshSchema = new Schema({
-  eventId: String,
+  eventId: { type: String, unique: true },
   eventDetails: EventDetailsSchema,
   startDate: Number,
   endDate: Number,

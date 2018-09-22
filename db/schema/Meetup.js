@@ -3,8 +3,10 @@ const { Schema } = mongoose;
 
 // importing subdocuments
 const MeetupCategory = require("../../db/schema/MeetupCategory");
+const MeetupGroupSummary = require("../../db/schema/MeetupGroupSummary");
 
 const MeetupSchema = new Schema({
+  summary: [MeetupGroupSummary],
   memberId: String,
   accessToken: String,
   refreshToken: String,

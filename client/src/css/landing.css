@@ -8,6 +8,11 @@
   /* padding: 0px 0px 0px 0px !important; */
 }
 
+.tagline-text .btn {
+  border-radius: 30px;
+  margin-top: 6vw;
+}
+
 .typing {
   padding: 0px 0px 0px 0px !important;
   max-height: 6vw;

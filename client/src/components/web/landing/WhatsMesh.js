@@ -27,7 +27,10 @@ class WhatsMesh extends Component {
 
   render() {
     return (
-      <section className="color-4 whatsMesh padding-left padding-top padding-bottom">
+      <section
+        id="WHATS-MESH"
+        className="color-4 whatsMesh padding-left padding-top padding-bottom scrollSpy"
+      >
         <div className="text">
           <p className="white-text bold-text title-text">
             What's a mesh <br />network?

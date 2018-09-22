@@ -15,6 +15,15 @@ const addMeetupAuth = async (req, accessToken, refreshToken, profile, done) => {
       return group.self.role;
     });
 
+    const summary = await organizedGroups.map(group => {
+      return {
+        groupId: group.id,
+        name: group.name,
+        urlName: group.urlname,
+        role: group.self.role
+      };
+    });
+
     if (organizedGroups.length === 0) {
       return done(null, {
         info: {
@@ -32,9 +41,18 @@ const addMeetupAuth = async (req, accessToken, refreshToken, profile, done) => {
         accessToken,
         refreshToken,
         urlName,
+        summary,
         done
       );
     } else {
+      axios.addMeetupGroupSummary(
+        orgId,
+        summary,
+        memberId,
+        accessToken,
+        refreshToken
+      );
+
       return done(null, {
         info: {
           id: orgId,

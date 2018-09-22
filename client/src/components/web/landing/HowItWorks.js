@@ -79,7 +79,10 @@ class HowItWorks extends Component {
 
   render() {
     return (
-      <section className="grey lighten-4 padding-top padding-bottom howItWorks">
+      <section
+        id="HOW-IT-WORKS"
+        className="grey lighten-4 padding-top padding-bottom howItWorks scrollSpy"
+      >
         <div className="row center">
           <p className="title-text bold-text color-3-text center">
             HOW IT WORKS

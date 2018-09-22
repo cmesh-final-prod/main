@@ -1,3 +1,43 @@
+@media screen and (min-width: 601px) {
+  .org-mesh {
+    height: 35vh;
+    padding: 2vh 2vw 2vh 2vw !important;
+  }
+
+  .org-mesh .title {
+    height: 8vh;
+  }
+
+  .org-mesh td {
+    margin: 0px !important;
+    padding: 1vh 0 0 0 !important;
+  }
+
+  .form .row {
+    margin-top: 10vh;
+  }
+}
+
+@media screen and (max-width: 601px) {
+  .org-mesh {
+    height: 40vh;
+    padding: 2vh 6vw 2vh 6vw !important;
+  }
+
+  .org-mesh .title {
+    height: 8vh;
+  }
+
+  .org-mesh td {
+    margin: 0px !important;
+    padding: 1vh 0 0 0 !important;
+  }
+
+  .form .row {
+    margin-top: 5vh;
+  }
+}
+
 .manage {
   min-height: 90vh !important;
   display: flex;
@@ -5,12 +45,45 @@
 }
 
 .manage-mesh {
-  height: 30vh;
-  border-radius: 20px;
+  padding: 2vh 3vw 2vh 3vw !important;
 }
 
-.form .row {
-  margin-top: 10vh;
+.manage-mesh .title-text {
+  margin-bottom: 3vh !important;
+}
+
+.org-mesh {
+  border-radius: 20px;
+  margin-bottom: 3vh;
+}
+
+.org-mesh .title {
+  padding-bottom: 2vh !important;
+  border-bottom: 1px solid #fcfcfc;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.org-mesh table {
+  margin-top: 2vh !important;
+}
+
+.org-mesh table tr {
+  border: 0px !important;
+}
+
+.org-mesh .status {
+  border-radius: 30px;
+  margin-top: 5vh;
+}
+
+.org-mesh .status .sub-title {
+  height: 5vh;
+  display: inline-flex !important;
+}
+
+.org-mesh .status i {
+  margin-right: 0.5vw;
 }
 
 .form form {
@@ -28,4 +101,9 @@
 
 .form .error {
   margin-top: 8vh !important;
+}
+
+.isSignedUp {
+  margin: -2vh 0 0 0 !important;
+  padding: 0 !important;
 }

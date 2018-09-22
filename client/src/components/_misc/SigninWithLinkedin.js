@@ -48,10 +48,7 @@ class SigninWithLinkedin extends Component {
       <div className="col s10 offset-s1">
         <p>
           By signin in, you agree with our{" "}
-          <a
-            href="https://www.circlemesh.com"
-            onClick={() => this.handleTermsOfUseClick()}
-          >
+          <a href="/web/terms" onClick={() => this.handleTermsOfUseClick()}>
             <span className="light-blue-text">terms and conditions</span>
           </a>
         </p>

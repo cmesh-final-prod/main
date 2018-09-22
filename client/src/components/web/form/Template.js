@@ -1,4 +1,8 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
+
+// importing components
+import HowItWorks from "components/web/landing/HowItWorks";
 
 class Template extends Component {
   renderMarketingText() {
@@ -34,13 +38,26 @@ class Template extends Component {
       <div className="col s10 offset-s1">
         <p className="grey-text text-lighten-2">
           By clicking submit, you agree with our{" "}
-          <a href="https://www.circlemesh.com">
+          <a href="/web/terms">
             <span className="light-blue-text">terms and conditions</span>
           </a>
         </p>
       </div>
     ) : (
       ""
+    );
+  }
+
+  isSignedUp() {
+    const { isSignedUp } = this.props;
+    return isSignedUp ? (
+      <p>
+        Don't have an account? <Link to="/web/form/create">Create Account</Link>
+      </p>
+    ) : (
+      <p>
+        Already have an account? <Link to="/web/form/signin">Sign In</Link>
+      </p>
     );
   }
 
@@ -54,32 +71,40 @@ class Template extends Component {
     } = this.props;
 
     return (
-      <section className="color-5 min-height-3 form">
-        <div className="row center">
-          <div className="col m7 hide-on-med-and-down padding-right marketing">
-            {this.renderMarketingText()}
-          </div>
-          <form
-            action=""
-            onSubmit={event => handleSubmit(event)}
-            className="col s10 offset-s1 m3 z-depth-4 color-4"
-          >
-            <h4 className="white-text bold-text">{title}</h4>
-            <div className="input-field grey-text text-lighten-4">
-              {inputFields}
+      <div>
+        <section className="color-5 min-height-3 form">
+          <div className="row center">
+            <div className="col m7 hide-on-med-and-down padding-right marketing">
+              {this.renderMarketingText()}
             </div>
-            <button
-              className="white btn btn-1 col s12"
-              type="submit"
-              disabled={disabled}
+            <form
+              action=""
+              onSubmit={event => handleSubmit(event)}
+              className="col s10 offset-s1 m3 z-depth-4 color-4"
             >
-              <span className="center-block">{buttonText}</span>
-            </button>
-            {this.renderTerms()}
-            {this.renderErrorMessage()}
-          </form>
-        </div>
-      </section>
+              <h4 className="white-text bold-text">{title}</h4>
+              <div className="input-field grey-text text-lighten-4">
+                {inputFields}
+              </div>
+              <button
+                className="white btn btn-1 col s12"
+                type="submit"
+                disabled={disabled}
+              >
+                <span className="center-block">{buttonText}</span>
+              </button>
+              {this.renderTerms()}
+              {this.renderErrorMessage()}
+            </form>
+          </div>
+          <div className="row center isSignedUp">
+            <div className="col s10 offset-s1 m3 offset-m7">
+              {this.isSignedUp()}
+            </div>
+          </div>
+        </section>
+        <HowItWorks />
+      </div>
     );
   }
 }

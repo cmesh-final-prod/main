@@ -1,12 +1,21 @@
 import React, { Component } from "react";
 import { isMobile, isTablet } from "react-device-detect";
 import { Link, withRouter } from "react-router-dom";
+import M from "materialize-css";
+
+// importing components
+import Sidenav, { hamburgerMenu } from "components/_misc/navbar/Sidenav";
 
 // container elements
 import * as actions from "actions";
 import { connect } from "react-redux";
 
 class Navbar extends Component {
+  componentDidMount() {
+    const elems = document.querySelectorAll(".scrollSpy");
+    M.ScrollSpy.init(elems);
+  }
+
   fetchMeetupInfo() {
     this.props.fetchMeetupGroupInfo();
   }
@@ -27,7 +36,7 @@ class Navbar extends Component {
       {
         id: 2,
         title: "How It Works",
-        url: "/auth/meetup?orgId=5b655afae0596954907ef72c"
+        url: "#HOW-IT-WORKS"
       },
       { id: 1, title: "Sign In", url: "/web/form/signin" }
     ];
@@ -35,39 +44,48 @@ class Navbar extends Component {
     return MENU.map(item => {
       return (
         <li key={item.id}>
-          <Link to={item.url} className="color-3-text">
+          <a href={item.url} className="color-3-text">
             {item.title}
-          </Link>
+          </a>
         </li>
       );
     });
   }
+  renderTitle() {
+    return (
+      <div className={`brand-logo ${this.renderClass()}`}>
+        <a href="/" className="color-3-text">
+          circle<b>mesh</b>
+        </a>
+      </div>
+    );
+  }
 
   render() {
     return (
-      <div className={`navbar-fixed ${this.renderNavColor()}`}>
-        <nav className={this.renderNavColor()}>
-          <div className="nav-wrapper">
-            <div className="container">
-              <div className={`brand-logo ${this.renderClass()}`}>
-                <Link to="/" className="color-3-text">
-                  circle<b>mesh</b>
-                </Link>
-              </div>
+      <div id="NAV">
+        <div className={`navbar-fixed scrollSpy ${this.renderNavColor()}`}>
+          <nav className={this.renderNavColor()}>
+            <div className="nav-wrapper">
+              <div className="container">
+                {this.renderTitle()}
+                {hamburgerMenu(this.props)}
 
-              <ul className="right hide-on-med-and-down">
-                {this.renderMenu()}
-                <li>
-                  <Link to="/web/form/create">
-                    <div className="gradient-2 btn-1 white-text">
-                      CREATE ACCOUNT
-                    </div>
-                  </Link>
-                </li>
-              </ul>
+                <ul className="right hide-on-med-and-down">
+                  {this.renderMenu()}
+                  <li>
+                    <Link to="/web/form/create">
+                      <button className="gradient-2 btn white-text create">
+                        CREATE ACCOUNT
+                      </button>
+                    </Link>
+                  </li>
+                </ul>
+              </div>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
+        <Sidenav />
       </div>
     );
   }

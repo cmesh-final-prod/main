@@ -64,8 +64,16 @@
   border: 1px solid #5d6987 !important;
 }
 
+.color-2-border {
+  border: 1px solid #eeeeee !important;
+}
+
 .color-3-border {
   border: 1px solid #7392b7 !important;
+}
+
+.color-4-border {
+  border: 1px solid #ffffff !important;
 }
 
 .color-5-border {

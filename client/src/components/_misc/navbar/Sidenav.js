@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import M from "materialize-css";
-import { Link } from "react-router-dom";
 import * as L from "components/_misc/LOG-TYPES";
 
 // importing constants
@@ -16,50 +15,27 @@ class Sidenav extends Component {
     M.Sidenav.init(elems);
   }
 
-  createMeshProps() {
-    const { lng, lat } = this.props.meshes.location;
-    let orgId;
-    process.env.NODE_ENV === "development"
-      ? (orgId = "5b655afae0596954907ef72c")
-      : (orgId = "5b6bf03df239d60014bd6bce");
-
-    this.props.createMesh(MESH_PROPS(lng, lat), orgId);
-  }
-
   render() {
     const sidenavMenu = SIDENAV_MENU.map(item => {
       return (
-        <li key={item.id}>
-          <Link to={item.url} onClick={item.onClick}>
-            <h5 className={` color-4-text ${item.className}`}>
+        <li key={item.id} className="sidenav-btn">
+          <a href={item.url} onClick={item.onClick}>
+            <button className={`btn z-depth-0 ${item.className}`}>
               {item.name}
-              <i className="material-icons left">{item.icon}</i>
-            </h5>
-          </Link>
+            </button>
+          </a>
         </li>
       );
     });
 
     return (
-      <ul className="sidenav" id="mobile-nav">
-        <div className="brand-logo transparent center">
-          <h4 className="color-4-text">
-            circle<b>mesh</b>
-          </h4>
+      <ul className="sidenav color-4" id="mobile-nav">
+        <div className="brand-logo white-text center">
+          circle<b>mesh</b>
         </div>
-        <div className="divider" />
-        <div className="sidenav-list container">
-          {sidenavMenu}
-          <li>
-            <div className="center">
-              <button
-                className="btn light-blue white color-4-text btn-create"
-                onClick={() => this.createMeshProps()}
-              >
-                Create
-              </button>
-            </div>
-          </li>
+
+        <div className="sidenav-list row center">
+          <div className="col s12">{sidenavMenu}</div>
         </div>
       </ul>
     );
@@ -68,7 +44,11 @@ class Sidenav extends Component {
 
 export const hamburgerMenu = ownProps => {
   const handleClick = () => {
-    const { fingerPrint } = ownProps.currentUser;
+    let fingerPrint;
+    ownProps.currentUser
+      ? (fingerPrint = ownProps.currentUser.fingerPrint)
+      : "";
+
     const createLogProps = {
       fingerPrint,
       log: {

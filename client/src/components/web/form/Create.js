@@ -139,9 +139,9 @@ class Create extends Component {
     return (
       <div>
         <Template
-          marketingText1="One time setup."
-          marketingText2="Unlimited events."
-          marketingText3="For free."
+          marketingText1="one time setup"
+          marketingText2="unlimited events"
+          marketingText3="for free."
           title="Create Account"
           buttonText="SUBMIT"
           errorOne={this.renderErrorMessage("email")}
@@ -150,6 +150,7 @@ class Create extends Component {
           handleSubmit={event => this.handleSubmit(event)}
           disabled={email && password && confirmPassword ? false : true}
           terms={true}
+          isSignedUp={false}
         />
       </div>
     );

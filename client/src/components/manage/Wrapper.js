@@ -18,7 +18,7 @@ class ManageWrapper extends Component {
   }
 
   componentDidUpdate(prevProps) {
-    if (this.props.org.isFetching !== prevProps.org.isFetching) {
+    if (this.props.org.isFetched !== prevProps.org.isFetched) {
       this.renderRedirectLogic();
     }
   }

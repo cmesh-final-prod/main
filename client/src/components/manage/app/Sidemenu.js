@@ -4,18 +4,18 @@ import { Link, withRouter } from "react-router-dom";
 const MENU = [
   {
     id: 1,
-    text: "meshes",
+    text: "EVENTS",
     path: "/meshes",
-    icon: "data_usage",
-    icon_clicked: "check"
-  },
-  {
-    id: 2,
-    text: "dashboard",
-    path: "/dashboard",
     icon: "dashboard",
-    icon_clicked: "check"
+    icon_clicked: "dashboard"
   }
+  // {
+  //   id: 2,
+  //   text: "dashboard",
+  //   path: "/dashboard",
+  //   icon: "dashboard",
+  //   icon_clicked: "check"
+  // }
 ];
 
 class Sidemenu extends Component {

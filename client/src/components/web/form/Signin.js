@@ -81,15 +81,16 @@ class Signin extends Component {
     return (
       <div>
         <Template
-          marketingText1="One time setup."
-          marketingText2="Unlimited events."
-          marketingText3="For free."
+          marketingText1="one time setup"
+          marketingText2="unlimited events"
+          marketingText3="for free."
           title="Sign In"
           buttonText="SUBMIT"
           errorOne={this.renderErrorMessage()}
           inputFields={this.renderInputFields()}
           handleSubmit={event => this.handleSubmit(event)}
           disabled={email && password ? false : true}
+          isSignedUp={true}
         />
       </div>
     );

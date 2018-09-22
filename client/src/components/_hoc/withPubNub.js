@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import PubNubReact from 'pubnub-react';
-import keys from 'config/keys';
+import React, { Component } from "react";
+import PubNubReact from "pubnub-react";
+import keys from "config/keys";
 
 export default (ChildComponent, channel, callback) => {
   class ComposedComponent extends Component {
