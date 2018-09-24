@@ -104,7 +104,7 @@ class Item extends Component {
     const { firstName, lastName, headline, profileLink, photos } = this.props;
 
     return (
-      <li className="m-listItem">
+      <li className="m-listItem color-11">
         <div className="row">
           <div className="col s3 m-avatar m2">
             <img

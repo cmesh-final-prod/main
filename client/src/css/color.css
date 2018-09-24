@@ -4,7 +4,13 @@
 }
 
 .gradient-2 {
-  background-image: linear-gradient(300deg, #74ebd5 0%, #8fc3e0 100%);
+  /* background-image: linear-gradient(300deg, #74ebd5 0%, #8fc3e0 100%); */
+  /* background-image: linear-gradient(110deg, #74ebd5 0%, #9face6 100%); */
+  /* background: #7ddfd9; */
+  /* Rectangle 25: */
+  /* background-image: linear-gradient(-44deg, #7ae4d7 0%, #85d5db 100%); */
+  /* Rectangle 25: */
+  background-image: linear-gradient(312deg, #74ebd5 0%, #8fc3e0 80%);
 }
 
 .gradient-3 {
@@ -12,7 +18,10 @@
 }
 
 .shadow-2 {
-  box-shadow: 0 5px 40px 15px rgba(179, 243, 236, 0.66);
+  /* box-shadow: 0 5px 40px 15px rgba(179, 243, 236, 0.66); */
+  /* box-shadow: 0 2px 30px 20 rgba(123, 226, 216, 0.72); */
+  /* box-shadow: 0 2px 30px 10px rgba(125, 223, 217, 0.61); */
+  box-shadow: 0 2px 30px 10px rgba(123, 226, 216, 0.52);
 }
 
 .color-1 {
@@ -45,6 +54,18 @@
 
 .color-8 {
   background-color: #8cc7df !important;
+}
+
+.color-9 {
+  background-color: #cafefa !important;
+}
+
+.color-10 {
+  background-color: #51a9c2 !important;
+}
+
+.color-11 {
+  background-color: #f2f3f5 !important;
 }
 
 .btn-1 {
@@ -82,6 +103,18 @@
 
 .color-8-text {
   color: #8cc7df !important;
+}
+
+.color-9-text {
+  color: #6ab2ae !important;
+}
+
+.color-10-text {
+  color: #92eae4 !important;
+}
+
+.color-11-text {
+  color: #408d88 !important;
 }
 
 .color-1-border {

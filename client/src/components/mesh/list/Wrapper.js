@@ -32,7 +32,7 @@ class ListWrapper extends Component {
         title={"Levaraging Customer-Focused Strategies To Achieve High Growth"}
         bg=""
         color="color-4-text light-text"
-        labelBg="color-3"
+        labelBg="color-5-border white"
         labelText="grey-text text-darken-1"
         endDate={data.endDate}
         orgTitle={data.orgTitle}

@@ -41,8 +41,8 @@ class MeshPanel extends Component {
       <PanelHeader
         title={"Levaraging Customer-Focused Strategies To Achieve High Growth"}
         bg=""
-        color="white-text"
-        labelBg="color-8"
+        color="white-text light-text"
+        labelBg="transparent color-4-border"
         labelText="white-text"
         endDate={this.props.endDate}
         orgTitle={this.props.orgTitle}
@@ -89,7 +89,7 @@ class MeshPanel extends Component {
         <Link
           to="/mesh"
           onClick={() => this.handleClick()}
-          className="btn-join color-7 grey waves-effect btn z-depth-0"
+          className="btn-join color-10 color-10-text grey waves-effect btn z-depth-0"
         >
           <p className="flow-text bold-text">JOIN THE MESH</p>
         </Link>

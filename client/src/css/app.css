@@ -126,9 +126,9 @@
 .m-panel .m-header {
   position: absolute;
   top: 0%;
-  height: 30%;
+  height: 27%;
   width: 100%;
-  border-bottom: 1px solid #dddddd;
+  border-bottom: 1px solid #ffffff;
 }
 
 .m-panel .m-title {
@@ -150,18 +150,23 @@
   overflow: scroll;
   font-size: 6vw;
   max-height: 2.8em;
-  line-height: 1.4em;
+  line-height: 8vw;
   text-overflow: ellipsis;
+  font-weight: 400 !important;
 }
 
 .m-timer {
   position: absolute;
+  top: 75%;
   left: 75%;
   right: 2%;
-  top: 82%;
   width: 20%;
   min-width: 60px;
   opacity: 0.7;
+}
+
+.m-panel .m-timer {
+  top: 105%;
 }
 
 .m-body {
