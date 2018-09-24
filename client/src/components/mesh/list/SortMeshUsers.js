@@ -108,7 +108,7 @@ class SortMeshUsers extends Component {
 
   render() {
     return (
-      <div className="horizontal-menu sort-options color-4 z-depth-2">
+      <div className="horizontal-menu sort-options color-12 z-depth-2">
         {this.renderSortOptions()}
       </div>
     );

@@ -85,7 +85,7 @@ class Feedback extends Component {
               onStarClick={content.cb}
               renderStarIcon={() => (
                 <span>
-                  <i className="material-icons">star_border</i>
+                  <i className="material-icons small">star_border</i>
                 </span>
               )}
               emptyStarColor={"#cccccc"}
@@ -111,7 +111,7 @@ class Feedback extends Component {
       <div className="modal bottom-sheet m-feedback-modal" id="feedbackModal">
         <div className="modal-content m-feedback-content">
           <p className="m-feedback-title color-6-text">
-            <i className="material-icons left medium">forum</i>Feedback
+            <i className="material-icons left large">forum</i>Feedback
           </p>
           <div className="m-feedback-divider divider color-1" />
           {this.renderModalContent()}
@@ -180,21 +180,3 @@ export default connect(
   mapStateToProps,
   actions
 )(Feedback);
-
-// <span className="feedback-star-group">
-//   <i className="material-icons color-1-text right feedback-star">
-//     star_border
-//   </i>
-//   <i className="material-icons color-1-text right feedback-star">
-//     star_border
-//   </i>
-//   <i className="material-icons color-1-text right feedback-star">
-//     star_border
-//   </i>
-//   <i className="material-icons color-1-text right feedback-star">
-//     star_border
-//   </i>
-//   <i className="material-icons color-1-text right feedback-star">
-//     star_border
-//   </i>
-// </span>

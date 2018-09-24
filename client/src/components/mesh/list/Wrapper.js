@@ -31,9 +31,9 @@ class ListWrapper extends Component {
       <PanelHeader
         title={"Levaraging Customer-Focused Strategies To Achieve High Growth"}
         bg=""
-        color="color-4-text light-text"
+        color="color-12-text"
         labelBg="color-5-border white"
-        labelText="grey-text text-darken-1"
+        labelText="color-12-text"
         endDate={data.endDate}
         orgTitle={data.orgTitle}
         onExpiry={() =>

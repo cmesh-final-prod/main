@@ -152,7 +152,7 @@
   max-height: 2.8em;
   line-height: 8vw;
   text-overflow: ellipsis;
-  font-weight: 400 !important;
+  font-weight: 400;
 }
 
 .m-timer {

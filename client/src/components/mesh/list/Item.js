@@ -32,9 +32,9 @@ class Item extends Component {
         }
       };
       this.props.createLog(createLogProps);
-      return "grey lighten-3";
+      return "grey lighten-3 grey-text text-darken-1";
     } else {
-      return "white";
+      return "color-12 white-text";
     }
   }
 
@@ -48,12 +48,12 @@ class Item extends Component {
       {
         text: "hiring",
         cond: this.props.hiring,
-        bg: "color-8 white-text color-8-border"
+        bg: "color-10 color-10-text-lighten info"
       },
       {
         text: "looking for opportunities",
         cond: this.props.lookingForJob,
-        bg: "white color-8-text color-8-border"
+        bg: "color-10 color-10-text-lighten info"
       }
     ];
 
@@ -104,7 +104,7 @@ class Item extends Component {
     const { firstName, lastName, headline, profileLink, photos } = this.props;
 
     return (
-      <li className="m-listItem color-11">
+      <li className="m-listItem">
         <div className="row">
           <div className="col s3 m-avatar m2">
             <img
@@ -118,11 +118,11 @@ class Item extends Component {
             <div className="row">
               <div className="col s10 m-info">
                 <p>
-                  <span className="m-name color-4-text flow-text">
+                  <span className="m-name color-12-text flow-text">
                     {`${firstName} ${lastName.substring(0, 1)}.`}
                   </span>
                   <br />
-                  <span className="m-headline color-4-text flow-text">
+                  <span className="m-headline color-12-text flow-text">
                     {headline}
                   </span>
                 </p>
