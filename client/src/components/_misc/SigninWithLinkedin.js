@@ -45,7 +45,7 @@ class SigninWithLinkedin extends Component {
 
   renderTerms() {
     return (
-      <div className="col s10 offset-s1">
+      <div className="col s8 offset-s2 center-align">
         <p>
           By signin in, you agree with our{" "}
           <a href="/web/terms" onClick={() => this.handleTermsOfUseClick()}>
@@ -98,7 +98,7 @@ class SigninWithLinkedin extends Component {
             <div className="col s10 offset-s1">
               <a
                 href="/auth/linkedin"
-                className="btn btn-large grey btn-1 signin-btn"
+                className="btn btn-large color-8 grey signin-btn"
                 onClick={() => this.handleSigninClick()}
               >
                 Signin With Linkedin

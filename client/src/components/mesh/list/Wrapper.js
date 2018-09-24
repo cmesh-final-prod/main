@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import * as L from 'components/_misc/LOG-TYPES';
+import React, { Component } from "react";
+import * as L from "components/_misc/LOG-TYPES";
 
 // importing components
-import ListItem from 'components/mesh/list/Item';
-import PanelHeader from 'components/_misc/PanelHeader';
-import FeedbackWrapper from 'components/mesh/feedback/Wrapper';
-import SortMeshUsers from 'components/mesh/list/SortMeshUsers';
-import PageVisibility from 'components/_misc/PageVisibility';
+import ListItem from "components/mesh/list/Item";
+import PanelHeader from "components/_misc/PanelHeader";
+import FeedbackWrapper from "components/mesh/feedback/Wrapper";
+import SortMeshUsers from "components/mesh/list/SortMeshUsers";
+import PageVisibility from "components/_misc/PageVisibility";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 // importing hoc
-import withPubNub from 'components/_hoc/withPubNub';
-import withLogOnMount from 'components/_hoc/withLogOnMount';
+import withPubNub from "components/_hoc/withPubNub";
+import withLogOnMount from "components/_hoc/withLogOnMount";
 
 class ListWrapper extends Component {
-  state = { sortOption: 'all' };
+  state = { sortOption: "all" };
 
   async componentWillMount() {
     const { meshId } = this.props.match.params;
@@ -29,11 +29,11 @@ class ListWrapper extends Component {
     const { data } = this.props.selectedMesh;
     return (
       <PanelHeader
-        title={data.title}
+        title={"Levaraging Customer-Focused Strategies To Achieve High Growth"}
         bg=""
-        color="color-1-text"
-        labelBg="color-1"
-        labelText="white-text"
+        color="color-4-text light-text"
+        labelBg="color-3"
+        labelText="grey-text text-darken-1"
         endDate={data.endDate}
         orgTitle={data.orgTitle}
         onExpiry={() =>
@@ -78,11 +78,11 @@ class ListWrapper extends Component {
       });
 
       switch (this.state.sortOption) {
-        case 'all':
+        case "all":
           return this.renderUsers(users);
-        case 'hiring':
+        case "hiring":
           return this.renderUsers(usersHiring);
-        case 'lookingForJob':
+        case "lookingForJob":
           return this.renderUsers(usersLookingForJob);
         default:
           return this.renderUsers(users);
@@ -96,15 +96,13 @@ class ListWrapper extends Component {
         <SortMeshUsers onClick={sortOption => this.setState({ sortOption })} />
         <div className="card m-main transparent z-depth-0">
           <div className="card-content">
-            <div className="combinedHeader">
-              {this.renderHeader()}
-              {this.renderFeedback()}
-            </div>
+            <div className="combinedHeader">{this.renderHeader()}</div>
             <div className="m-list">
               <ul className="">{this.renderList()}</ul>
             </div>
           </div>
         </div>
+        {this.renderFeedback()}
         <PageVisibility />
       </div>
     );
@@ -119,7 +117,7 @@ function mapStateToProps({ currentUser, selectedMesh }) {
 //////      withPubNub Props     /////////
 //////////////////////////////////////////
 
-const channel = 'fetchMeshUsers';
+const channel = "fetchMeshUsers";
 const callback = ownProps => {
   ownProps.fetchMeshUsers(ownProps.match.params.meshId);
 };
@@ -131,7 +129,7 @@ const callback = ownProps => {
 const logProps = ownProps => {
   return {
     logType: L.MOUNT,
-    componentServed: 'mesh-list-wrapper',
+    componentServed: "mesh-list-wrapper",
     meshId: ownProps.match.params.meshId,
     userId: ownProps.currentUser.data._id
   };

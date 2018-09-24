@@ -1,23 +1,23 @@
-import React, { Component } from 'react';
-import M from 'materialize-css';
-import StarRatingComponent from 'react-star-rating-component';
-import * as L from 'components/_misc/LOG-TYPES';
+import React, { Component } from "react";
+import M from "materialize-css";
+import StarRatingComponent from "react-star-rating-component";
+import * as L from "components/_misc/LOG-TYPES";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 class Feedback extends Component {
   state = {
     eventFeedback: 0,
-    eventDescription: '',
+    eventDescription: "",
     cmeshFeedback: 0,
-    cmeshDescription: '',
+    cmeshDescription: "",
     submittedAt: new Date().getTime()
   };
 
   componentDidMount() {
-    const elems = document.querySelectorAll('.modal');
+    const elems = document.querySelectorAll(".modal");
     M.Modal.init(elems);
   }
 
@@ -41,7 +41,7 @@ class Feedback extends Component {
       fingerPrint,
       log: {
         logType: L.FEEDBACK_SUBMITTED,
-        componentServed: 'mesh-feedback-wrapper',
+        componentServed: "mesh-feedback-wrapper",
         meshId: this.props.selectedMesh.data.meshId,
         userId: this.props.currentUser.data._id
       }
@@ -60,23 +60,23 @@ class Feedback extends Component {
   renderModalContent() {
     const CONTENT = [
       {
-        id: 'eventFeedback',
-        text: 'Overall, how was the event today?',
+        id: "eventFeedback",
+        text: "Overall, how was the event today?",
         cb: this.handleEventFeedback.bind(this),
-        desc: 'eventDescription'
+        desc: "eventDescription"
       },
       {
-        id: 'cmeshFeedback',
-        text: 'How useful was Circlemesh in this event?',
+        id: "cmeshFeedback",
+        text: "How useful was Circlemesh in this event?",
         cb: this.handleCmeshFeedback.bind(this),
-        desc: 'cmeshDescription'
+        desc: "cmeshDescription"
       }
     ];
 
     return CONTENT.map(content => {
       return (
         <div key={content.id} className="m-feedback-type grey lighten-5">
-          <p className="color-1-text">{content.text}</p>
+          <p className="color-7-text sub-title">{content.text}</p>
           <div className="m-feedback-star">
             <StarRatingComponent
               name={content.id}
@@ -88,7 +88,7 @@ class Feedback extends Component {
                   <i className="material-icons">star_border</i>
                 </span>
               )}
-              emptyStarColor={'#cccccc'}
+              emptyStarColor={"#cccccc"}
             />
             <div className="m-feedback-textarea">
               <textarea
@@ -108,10 +108,10 @@ class Feedback extends Component {
 
   renderModal() {
     return (
-      <div className="modal m-feedback-modal" id="feedbackModal">
+      <div className="modal bottom-sheet m-feedback-modal" id="feedbackModal">
         <div className="modal-content m-feedback-content">
-          <p className="m-feedback-title color-1-text">
-            <i className="material-icons left medium">feedback</i>Feedback
+          <p className="m-feedback-title color-6-text">
+            <i className="material-icons left medium">forum</i>Feedback
           </p>
           <div className="m-feedback-divider divider color-1" />
           {this.renderModalContent()}
@@ -119,7 +119,7 @@ class Feedback extends Component {
         <div className="row">
           <div className="col s12 m-feedback-footer center">
             <div
-              className="waves-effect grey btn-1 m-feedback-button btn"
+              className="waves-effect grey btn-large color-7 color-6-text m-feedback-button btn"
               onClick={() => this.handleSumbit()}
               disabled={this.shouldDisable()}
             >
@@ -137,7 +137,7 @@ class Feedback extends Component {
       fingerPrint,
       log: {
         logType: L.FEEDBACK_BTN_CLICKED,
-        componentServed: 'mesh-feedback-wrapper',
+        componentServed: "mesh-feedback-wrapper",
         meshId: this.props.selectedMesh.data.meshId,
         userId: this.props.currentUser.data._id
       }
@@ -147,33 +147,14 @@ class Feedback extends Component {
 
   renderForm() {
     return (
-      <div className="row m-feedback-trigger">
-        <div className="col s4 left-align waves-effects white z-depth-2 feedback-trigger-btn">
+      <div className="row m-feedback-trigger center-block">
+        <div className="center waves-effects btn btn-large white shadow-2 color-7 feedback-trigger-btn">
           <a
             href="#feedbackModal"
             className="modal-trigger"
             onClick={() => this.handleFeebackBtnClick()}
           >
-            <div className="color-1-text">
-              Provide Feedback
-              <span className="feedback-star-group">
-                <i className="material-icons color-1-text right feedback-star">
-                  star_border
-                </i>
-                <i className="material-icons color-1-text right feedback-star">
-                  star_border
-                </i>
-                <i className="material-icons color-1-text right feedback-star">
-                  star_border
-                </i>
-                <i className="material-icons color-1-text right feedback-star">
-                  star_border
-                </i>
-                <i className="material-icons color-1-text right feedback-star">
-                  star_border
-                </i>
-              </span>
-            </div>
+            <div className="color-6-text bold-text">Provide Feedback</div>
           </a>
         </div>
         {this.renderModal()}
@@ -187,7 +168,7 @@ class Feedback extends Component {
 
   render() {
     const { isFeedbackProvided } = this.props.currentUser.data;
-    return isFeedbackProvided ? '' : this.renderForm();
+    return isFeedbackProvided ? "" : this.renderForm();
   }
 }
 
@@ -199,3 +180,21 @@ export default connect(
   mapStateToProps,
   actions
 )(Feedback);
+
+// <span className="feedback-star-group">
+//   <i className="material-icons color-1-text right feedback-star">
+//     star_border
+//   </i>
+//   <i className="material-icons color-1-text right feedback-star">
+//     star_border
+//   </i>
+//   <i className="material-icons color-1-text right feedback-star">
+//     star_border
+//   </i>
+//   <i className="material-icons color-1-text right feedback-star">
+//     star_border
+//   </i>
+//   <i className="material-icons color-1-text right feedback-star">
+//     star_border
+//   </i>
+// </span>

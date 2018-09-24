@@ -1,19 +1,19 @@
-import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
 
 // importing log types
-import * as L from 'components/_misc/LOG-TYPES';
+import * as L from "components/_misc/LOG-TYPES";
 
 // importing hoc
-import withLogOnMount from 'components/_hoc/withLogOnMount';
+import withLogOnMount from "components/_hoc/withLogOnMount";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 // importing components
-import PanelHeader from 'components/_misc/PanelHeader';
-import Stats from 'components/root/panels/Stats';
+import PanelHeader from "components/_misc/PanelHeader";
+import Stats from "components/root/panels/Stats";
 
 class MeshPanel extends Component {
   handleClick() {
@@ -23,7 +23,7 @@ class MeshPanel extends Component {
       fingerPrint,
       log: {
         logType: L.JOIN_CLICKED,
-        componentServed: 'root-panels-panel',
+        componentServed: "root-panels-panel",
         meshId: this.props.meshId
       }
     };
@@ -39,10 +39,10 @@ class MeshPanel extends Component {
     const { lng, lat } = this.props.meshes.location;
     return (
       <PanelHeader
-        title={this.props.title}
+        title={"Levaraging Customer-Focused Strategies To Achieve High Growth"}
         bg=""
         color="white-text"
-        labelBg="color-1"
+        labelBg="color-8"
         labelText="white-text"
         endDate={this.props.endDate}
         orgTitle={this.props.orgTitle}
@@ -89,9 +89,9 @@ class MeshPanel extends Component {
         <Link
           to="/mesh"
           onClick={() => this.handleClick()}
-          className="btn-join btn-large grey waves-effect btn-1 "
+          className="btn-join color-7 grey waves-effect btn z-depth-0"
         >
-          <p className="flow-text">JOIN THE MESH</p>
+          <p className="flow-text bold-text">JOIN THE MESH</p>
         </Link>
       </div>
     );
@@ -99,7 +99,7 @@ class MeshPanel extends Component {
 
   render() {
     return (
-      <div className="card m-panel z-depth-5 gradient-1">
+      <div className="card m-panel gradient-2 shadow-2 z-depth-5">
         <div className="card-content">
           {this.renderPanelHeader()}
           {this.renderPanelBody()}
@@ -121,7 +121,7 @@ function mapStateToProps({ meshes, currentUser }) {
 const logProps = ownProps => {
   return {
     logType: L.MOUNT,
-    componentServed: 'root-panels-panel',
+    componentServed: "root-panels-panel",
     meshId: ownProps.meshId
   };
 };

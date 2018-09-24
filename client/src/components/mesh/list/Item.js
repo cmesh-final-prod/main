@@ -1,20 +1,20 @@
-import React, { Component } from 'react';
-import M from 'materialize-css';
-import * as L from 'components/_misc/LOG-TYPES';
+import React, { Component } from "react";
+import M from "materialize-css";
+import * as L from "components/_misc/LOG-TYPES";
 
 // importing components
-import ViewLn from 'components/_misc/labels/ViewLn';
-import Label from 'components/_misc/labels/Label';
+import ViewLn from "components/_misc/labels/ViewLn";
+import Label from "components/_misc/labels/Label";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 class Item extends Component {
   state = { viewed: false, bookmarked: false };
 
   componentDidMount() {
-    const elems = document.querySelectorAll('.materialboxed');
+    const elems = document.querySelectorAll(".materialboxed");
     M.Materialbox.init(elems);
   }
 
@@ -25,35 +25,35 @@ class Item extends Component {
         fingerPrint,
         log: {
           logType: L.LINKEDIN_VIEWED,
-          componentServed: 'mesh-list-item',
+          componentServed: "mesh-list-item",
           meshId: this.props.selectedMesh.data.meshId,
           userId: this.props.currentUser.data._id,
           fellowUserId: this.props.fellowUserId
         }
       };
       this.props.createLog(createLogProps);
-      return 'grey lighten-3';
+      return "grey lighten-3";
     } else {
-      return 'white';
+      return "white";
     }
   }
 
   renderLabels() {
     const LABELS = [
       {
-        text: 'organizer',
+        text: "organizer",
         cond: this.props.isOrganizer,
-        bg: 'grey lighten-3 grey-text color-5-border'
+        bg: "grey lighten-3 grey-text color-5-border"
       },
       {
-        text: 'hiring',
+        text: "hiring",
         cond: this.props.hiring,
-        bg: 'color-1 white-text color-3-border'
+        bg: "color-8 white-text color-8-border"
       },
       {
-        text: 'looking for opportunities',
+        text: "looking for opportunities",
         cond: this.props.lookingForJob,
-        bg: 'white color-1-text color-3-border'
+        bg: "white color-8-text color-8-border"
       }
     ];
 
@@ -61,7 +61,7 @@ class Item extends Component {
       return label.cond ? (
         <Label key={label.text} text={label.text} bg={label.bg} />
       ) : (
-        ''
+        ""
       );
     });
   }
@@ -70,7 +70,7 @@ class Item extends Component {
     return this.props.hiring ? (
       <Label text="hiring" bg="color-1 white-text color-3-border" />
     ) : (
-      ''
+      ""
     );
   }
 
@@ -81,7 +81,7 @@ class Item extends Component {
         bg="lwhite color-1-text color-3-border"
       />
     ) : (
-      ''
+      ""
     );
   }
 
@@ -91,7 +91,7 @@ class Item extends Component {
       fingerPrint,
       log: {
         logType: L.PROFILE_PIC_VIEWED,
-        componentServed: 'mesh-list-item',
+        componentServed: "mesh-list-item",
         meshId: this.props.selectedMesh.data.meshId,
         userId: this.props.currentUser.data._id,
         fellowUserId: this.props.fellowUserId
@@ -128,9 +128,7 @@ class Item extends Component {
                 </p>
               </div>
               <div className="col s2 m-bookmark">
-                <i className="material-icons color-4-text small">
-                  bookmark_border
-                </i>
+                <i className="material-icons color-4-text small" />
               </div>
             </div>
             <div className="row">

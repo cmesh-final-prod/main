@@ -50,11 +50,11 @@ section {
 }
 
 .bold-text {
-  font-weight: bold;
+  font-weight: bold !important;
 }
 
 .light-text {
-  font-weight: lighter;
+  font-weight: lighter !important;
 }
 
 .btn-1 {

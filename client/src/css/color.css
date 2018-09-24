@@ -4,11 +4,15 @@
 }
 
 .gradient-2 {
-  background-image: linear-gradient(270deg, #74ebd5 0%, #8fc3e0 100%);
+  background-image: linear-gradient(300deg, #74ebd5 0%, #8fc3e0 100%);
 }
 
 .gradient-3 {
   background-image: linear-gradient(-180deg, #505a79 0%, #454e6b 100%);
+}
+
+.shadow-2 {
+  box-shadow: 0 5px 40px 15px rgba(179, 243, 236, 0.66);
 }
 
 .color-1 {
@@ -33,6 +37,14 @@
 
 .color-6 {
   background-color: #374161;
+}
+
+.color-7 {
+  background-color: #84f7f0 !important;
+}
+
+.color-8 {
+  background-color: #8cc7df !important;
 }
 
 .btn-1 {
@@ -60,6 +72,18 @@
   color: #454e6b !important;
 }
 
+.color-6-text {
+  color: #54b1ac !important;
+}
+
+.color-7-text {
+  color: #5c8d8a !important;
+}
+
+.color-8-text {
+  color: #8cc7df !important;
+}
+
 .color-1-border {
   border: 1px solid #5d6987 !important;
 }
@@ -78,4 +102,8 @@
 
 .color-5-border {
   border: 1px solid #dddddd !important;
+}
+
+.color-8-border {
+  border: 1px solid #8cc7df !important;
 }

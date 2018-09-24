@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
 // importing components
-import Label from 'components/_misc/labels/Label';
+import Label from "components/_misc/labels/Label";
 
 const Info = ({
   firstName,
@@ -17,15 +17,15 @@ const Info = ({
     const Q = [
       {
         id: 1,
-        text: 'hiring',
+        text: "hiring",
         render: hiring,
-        className: 'color-1 white-text color-3-border'
+        className: "color-8 white-text color-8-border"
       },
       {
         id: 2,
-        text: 'looking for opportunities',
+        text: "looking for opportunities",
         render: lookingForJob,
-        className: 'white color-1-text color-3-border'
+        className: "white color-8-text color-8-border"
       }
     ];
 
@@ -33,7 +33,7 @@ const Info = ({
       return q.render ? (
         <Label key={q.id} bg={q.className} text={q.text} />
       ) : (
-        ''
+        ""
       );
     });
   };

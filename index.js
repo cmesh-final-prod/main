@@ -42,14 +42,16 @@ require("./utils/cronJob");
 ////////////       2. SECURE REDIRECT LOGIC        ///////////////
 //////////////////////////////////////////////////////////////////
 
-app.enable("trust proxy");
-app.use(function(req, res, next) {
-  if (req.secure) {
-    next();
-  } else {
-    res.redirect("https://" + req.headers.host + req.url);
-  }
-});
+if (process.env.NODE_ENV === "production") {
+  app.enable("trust proxy");
+  app.use(function(req, res, next) {
+    if (req.secure) {
+      next();
+    } else {
+      res.redirect("https://" + req.headers.host + req.url);
+    }
+  });
+}
 
 //////////////////////////////////////////////////////////////////
 ////////////             3. MIDDLEWARES            ///////////////

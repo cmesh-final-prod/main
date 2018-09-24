@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import * as L from 'components/_misc/LOG-TYPES';
+import React, { Component } from "react";
+import * as L from "components/_misc/LOG-TYPES";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 let allClass;
 let hiringClass;
@@ -14,7 +14,7 @@ class SortMeshUsers extends Component {
     all: true,
     hiring: false,
     lookingForJob: false,
-    sortOption: 'all'
+    sortOption: "all"
   };
 
   componentDidMount() {
@@ -33,8 +33,8 @@ class SortMeshUsers extends Component {
     let lookingForJob = 0;
 
     users.forEach(user => {
-      const a = user.hiring ? hiring++ : '';
-      const b = user.lookingForJob ? lookingForJob++ : '';
+      const a = user.hiring ? hiring++ : "";
+      const b = user.lookingForJob ? lookingForJob++ : "";
       return [a, b];
     });
 
@@ -55,7 +55,7 @@ class SortMeshUsers extends Component {
       fingerPrint,
       log: {
         logType: `${L.SORT_OPTION_CLICKED}: ${optionId}`,
-        componentServed: 'mesh-list-sortMeshUsers',
+        componentServed: "mesh-list-sortMeshUsers",
         meshId: this.props.selectedMesh.data.meshId,
         userId: this.props.currentUser.data._id
       }
@@ -63,77 +63,52 @@ class SortMeshUsers extends Component {
     this.props.createLog(createLogProps);
   }
 
-  renderButtonClass() {
-    const active = 'white color-1-text';
-    const inActive = 'grey-text text-lighten-3';
-    switch (this.state.sortOption) {
-      case 'all':
-        allClass = active;
-        hiringClass = inActive;
-        lookingForJobClass = inActive;
-        return;
-      case 'hiring':
-        allClass = inActive;
-        hiringClass = active;
-        lookingForJobClass = inActive;
-        return;
-      case 'lookingForJob':
-        allClass = inActive;
-        hiringClass = inActive;
-        lookingForJobClass = active;
-        return;
-      default:
-        allClass = active;
-        hiringClass = inActive;
-        lookingForJobClass = inActive;
-        return;
-    }
-  }
-
   renderSortOptions() {
     const { isPopulated } = this.props.selectedMesh;
     if (isPopulated) {
       const SORT_OPTIONS = [
         {
-          id: 'all',
-          name: 'all',
-          className: allClass,
+          id: "all",
+          name: "all",
           render: this.state.all
         },
         {
-          id: 'hiring',
-          name: 'hiring',
-          className: hiringClass,
+          id: "hiring",
+          name: "hiring",
           render: this.state.hiring
         },
         {
-          id: 'lookingForJob',
-          name: 'looking for opportunities',
-          className: lookingForJobClass,
+          id: "lookingForJob",
+          name: "looking for opportunities",
           render: this.state.lookingForJob
         }
       ];
 
       return SORT_OPTIONS.map(option => {
+        const active = "white color-5-text";
+        const inActive = "grey-text text-lighten-3";
+        let className;
+        this.state.sortOption === option.id
+          ? (className = active)
+          : (className = inActive);
         return option.render ? (
           <div
             key={option.id}
-            className={`${option.className} label`}
+            className={`${className} label`}
             onClick={() => this.handleClick(option.id)}
           >
             {option.name}
           </div>
         ) : (
-          ''
+          ""
         );
       });
     }
   }
 
   render() {
-    this.renderButtonClass();
     return (
-      <div className="horizontal-menu sort-options color-2 z-depth-2">
+      <div className="horizontal-menu sort-options color-4 z-depth-2">
         {this.renderSortOptions()}
       </div>
     );

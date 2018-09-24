@@ -16,19 +16,19 @@ footer {
 }
 
 .switch label input[type="checkbox"]:checked + .lever {
-  background-color: #7392b7 !important;
+  background-color: #74a8bd !important;
 }
 .switch label input[type="checkbox"]:checked + .lever:after {
-  background-color: #90b5e0 !important;
+  background-color: #8cc7df !important;
 }
 
 .input-field input[type="text"].valid {
-  border-bottom: 1px solid #7392b7 !important;
+  border-bottom: 1px solid #8cc7df !important;
   box-shadow: 0 1px 0 0 #000;
 }
 
 /* label underline focus color */
 .input-field input[type="text"]:focus {
-  border-bottom: 1px solid #7392b7 !important;
+  border-bottom: 1px solid #8cc7df !important;
   box-shadow: 0 1px 0 0 #000;
 }

@@ -1,5 +1,5 @@
 .m-labels {
-  padding-left: 5px !important;
+  padding-left: 0px !important;
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
@@ -10,11 +10,12 @@
   border-radius: 20px;
   padding: 0px 10px 20px 10px;
   display: flex;
-  font-size: 1em;
+  font-size: 4vw;
   line-height: 20px;
   height: 20px;
   margin-right: 5px;
   margin-top: 5px;
+  overflow: hidden;
 }
 
 .label img {

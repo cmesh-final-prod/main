@@ -1,14 +1,20 @@
 .m-feedback-trigger {
+  position: fixed;
+  top: 80vh;
   padding-left: 22px;
   margin-bottom: 0px !important;
+  z-index: 10;
 }
 
 .feedback-trigger-btn {
-  height: 20px !important;
-  font-size: 0.8em;
+  position: absolute;
+  left: 20vw;
+  font-size: 3.8vw;
   overflow: hidden;
-  width: 200px !important;
-  line-height: 20px !important;
+  border-radius: 30px;
+  height: 14vw;
+  line-height: 14vw;
+  width: 60vw;
 }
 
 .feedback-star {
@@ -37,7 +43,9 @@
 }
 
 .m-feedback-button {
-  border-radius: 10px;
+  height: 12vw;
+  line-height: 12vw;
+  border-radius: 30px;
 }
 
 .m-feedback-title {

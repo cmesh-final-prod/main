@@ -15,13 +15,14 @@ const addMeetupAuth = require("../controllers/PUT/addMeetupAuth");
 ///////////////////////////////////////////////////////////////
 
 passport.serializeUser((user, done) => {
+  console.log("------------USER: ", user);
   done(null, user.info);
 });
 
 passport.deserializeUser((info, done) => {
   switch (info.provider) {
     case "linkedin":
-      return User.findById(id).then(user => {
+      return User.findById(info.id).then(user => {
         done(null, user);
       });
     case "meetup":

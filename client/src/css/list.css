@@ -30,6 +30,7 @@
 }
 
 .combinedHeader {
+  font-size: 4vw;
 }
 
 .m-main .m-header {
@@ -39,7 +40,6 @@
 }
 
 .m-main .m-title {
-  font-weight: bold;
 }
 
 .m-ghost {
@@ -66,24 +66,22 @@
 }
 
 .m-avatar {
-  padding-left: 3px !important;
-  padding-right: 3px !important;
+  padding: 0vw 0 2vw 2vw !important;
 }
 
 .m-avatar img {
   position: relative;
-  width: 100%;
+  width: 95%;
   max-width: 150px;
 }
 
 .m-name {
-  font-size: 1.4em;
+  font-size: 5.4vw;
   font-weight: lighter;
 }
 
 .m-headline {
-  font-size: 1em;
-  font-weight: bold;
+  font-size: 5.4vw;
 }
 
 .m-bookmark {

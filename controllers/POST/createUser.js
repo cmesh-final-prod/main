@@ -7,7 +7,7 @@ const createUser = async (profile, done) => {
   });
 
   if (existingUser) {
-    return done(null, existingUser);
+    return done(null, { info: { id: existingUser.id, provider: "linkedin" } });
   }
 
   const emailsArray = await profile.emails.map(email => {
