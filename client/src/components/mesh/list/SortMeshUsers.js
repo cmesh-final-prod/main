@@ -5,10 +5,6 @@ import * as L from "components/_misc/LOG-TYPES";
 import { connect } from "react-redux";
 import * as actions from "actions";
 
-let allClass;
-let hiringClass;
-let lookingForJobClass;
-
 class SortMeshUsers extends Component {
   state = {
     all: true,

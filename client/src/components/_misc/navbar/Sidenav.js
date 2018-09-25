@@ -3,7 +3,7 @@ import M from "materialize-css";
 import * as L from "components/_misc/LOG-TYPES";
 
 // importing constants
-import { SIDENAV_MENU, MESH_PROPS } from "components/_misc/CONSTANTS";
+import { SIDENAV_MENU } from "components/_misc/CONSTANTS";
 
 // container elements
 import { connect } from "react-redux";
@@ -45,9 +45,10 @@ class Sidenav extends Component {
 export const hamburgerMenu = ownProps => {
   const handleClick = () => {
     let fingerPrint;
-    ownProps.currentUser
-      ? (fingerPrint = ownProps.currentUser.fingerPrint)
-      : "";
+
+    if (ownProps.currentUser) {
+      fingerPrint = ownProps.currentUser.fingerPrint;
+    }
 
     const createLogProps = {
       fingerPrint,

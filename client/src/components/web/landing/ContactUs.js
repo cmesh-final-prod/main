@@ -22,7 +22,11 @@ const ContactUs = () => {
             </p>
           </div>
           <div className="col s12 m6 call center">
-            <a href="https://calendly.com/cnijhara" target="_blank">
+            <a
+              href="https://calendly.com/cnijhara"
+              rel="noopener noreferrer"
+              target="_blank"
+            >
               <div className="gradient-2 white-text bold-text">
                 SCHEDULE A CALL
               </div>

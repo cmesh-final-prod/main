@@ -43,7 +43,7 @@ class Multiple extends Component {
         : (optionColor = "grey-text color-2-border");
 
       return (
-        <a href="#" key={group._id}>
+        <a href="" key={group._id}>
           <div
             className={`group sub-title z-depth-2 ${optionColor}`}
             onClick={() =>

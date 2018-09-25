@@ -44,7 +44,7 @@ class NavbarWrapper extends Component {
   render() {
     return (
       <div>
-        <div className={`navbar-fixed ${this.renderClass()} `}>
+        <div className={`navbar-fixed`}>
           <nav className={`${this.renderClass()} z-depth-0`}>
             <div className="nav-wrapper">
               <div className="row">
