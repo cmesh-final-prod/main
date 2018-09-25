@@ -14,12 +14,12 @@ import thunk from "redux-thunk";
 import promise from "redux-promise-middleware";
 import logger from "redux-logger";
 
-let middlewares = [promise(), thunk];
+let middlewares = [promise(), thunk, logger];
 
 // Development vs. Production
-if (process.env.NODE_ENV === "development") {
-  middlewares.push(logger);
-}
+// if (process.env.NODE_ENV === "development") {
+//   middlewares.push(logger);
+// }
 
 export default ({ children }) => {
   const persistedState = loadState();
