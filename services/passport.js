@@ -43,11 +43,12 @@ passport.use(
       clientID: keys.linkedinClientId,
       clientSecret: keys.linkedinClientSecret,
       callbackURL: keys.linkedinCallbackURL,
-      scope: ["r_emailaddress", "r_basicprofile"],
+      scope: ["r_basicprofile", "r_emailaddress"],
       state: true,
       proxy: true
     },
     (acessToken, refreshToken, profile, done) => {
+      console.log("----------LINKEDIN PROFILE: ", profile);
       process.nextTick(() => {
         createUser(profile, done);
       });
