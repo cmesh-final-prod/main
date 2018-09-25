@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { deviceDetect, browserName, browserVersion } from 'react-device-detect';
-import Fingerprint2 from 'fingerprintjs2';
+import React, { Component } from "react";
+import { deviceDetect, browserName, browserVersion } from "react-device-detect";
+import Fingerprint2 from "fingerprintjs2";
 
 // container elements
-import { connect } from 'react-redux';
-import * as actions from 'actions';
+import { connect } from "react-redux";
+import * as actions from "actions";
 
 export default (ChildComponent, logProps) => {
   class ComposedComponent extends Component {
@@ -19,7 +19,7 @@ export default (ChildComponent, logProps) => {
           };
           this.props.createLog(createLogProps);
         }),
-        500
+        1000
       );
     }
 

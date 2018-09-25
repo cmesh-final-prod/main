@@ -87,6 +87,10 @@
   margin: 0px 0px 0px 0px;
 }
 
+.edit-basic-profile .label.info {
+  margin-right: 2vw;
+}
+
 .edit-questions {
   margin-top: 20px;
   padding: 10px 20px 0px 20px;

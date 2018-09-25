@@ -44,6 +44,7 @@
     "passport-oauth2-meetup": "^1.1.0",
     "path-parser": "^4.1.1",
     "pubnub": "^4.21.2",
+    "react-ga": "^2.5.3",
     "redux-logger": "^3.0.6",
     "sort-by": "^1.2.0",
     "supertest": "^3.1.0"

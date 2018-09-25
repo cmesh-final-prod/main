@@ -16,10 +16,10 @@ footer {
 }
 
 .switch label input[type="checkbox"]:checked + .lever {
-  background-color: #74a8bd !important;
+  background-color: #51a9c2 !important;
 }
 .switch label input[type="checkbox"]:checked + .lever:after {
-  background-color: #8cc7df !important;
+  background-color: #b6f8ec !important;
 }
 
 .input-field input[type="text"].valid {

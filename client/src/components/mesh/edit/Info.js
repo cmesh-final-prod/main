@@ -19,13 +19,13 @@ const Info = ({
         id: 1,
         text: "hiring",
         render: hiring,
-        className: "color-8 white-text color-8-border"
+        className: "color-10 color-10-text-lighten info"
       },
       {
         id: 2,
         text: "looking for opportunities",
         render: lookingForJob,
-        className: "white color-8-text color-8-border"
+        className: "color-10 color-10-text-lighten info"
       }
     ];
 
