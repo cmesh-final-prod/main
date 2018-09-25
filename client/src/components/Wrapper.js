@@ -29,18 +29,18 @@ import LocationErrorWrapper from "components/locationError/Wrapper";
 import SigninWithLinkedin from "components/_misc/SigninWithLinkedin";
 
 // Google Analytics
-// import ReactGA from "react-ga";
-// ReactGA.initialize("UA-111361924-1");
-// ReactGA.pageview("/");
-// ReactGA.pageview("/signinWithLinkedin");
-// ReactGA.pageview("/mesh");
-// ReactGA.pageview("/mesh/:meshId");
-// ReactGA.pageview("/mesh/:meshId/list");
-// ReactGA.pageview("/web/about");
-// ReactGA.pageview("/web/form/signin");
-// ReactGA.pageview("/web/form/create");
-// ReactGA.pageview("/manage/host");
-// ReactGA.pageview("/manage/app");
+import ReactGA from "react-ga";
+ReactGA.initialize("UA-111361924-1");
+ReactGA.pageview("/");
+ReactGA.pageview("/signinWithLinkedin");
+ReactGA.pageview("/mesh");
+ReactGA.pageview("/mesh/:meshId");
+ReactGA.pageview("/mesh/:meshId/list");
+ReactGA.pageview("/web/about");
+ReactGA.pageview("/web/form/signin");
+ReactGA.pageview("/web/form/create");
+ReactGA.pageview("/manage/host");
+ReactGA.pageview("/manage/app");
 
 class ComponentsWrapper extends Component {
   render() {
