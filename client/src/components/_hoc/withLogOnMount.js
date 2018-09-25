@@ -19,7 +19,7 @@ export default (ChildComponent, logProps) => {
           };
           this.props.createLog(createLogProps);
         }),
-        1000
+        500
       );
     }
 
