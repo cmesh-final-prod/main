@@ -1,4 +1,6 @@
+// importing models
 const Org = require("../../db/models/Org");
+const Mesh = require("../../db/models/Mesh");
 
 // importing utils
 const axios = require("../../utils/axios");
@@ -9,6 +11,7 @@ const syncMeetups = async (req, res, next) => {
     const org = req.user;
     const { lastSync } = org;
     const orgId = org._id;
+    const org_createdAt = org.createdAt;
     const provider = "meetup";
     const { urlName, accessToken } = org.meetup;
     const decoded_accessToken = jwt.decode(accessToken).sub;
@@ -30,8 +33,8 @@ const syncMeetups = async (req, res, next) => {
         };
         const startDate = meetup.time;
         const duration = meetup.duration / 1000 / 3600;
-        const createdAt = meetup.created;
-        const updatedAt = meetup.updated;
+        const meetup_createdAt = meetup.created;
+        const meetup_updatedAt = meetup.updated;
 
         const meshProps = {
           eventId,
@@ -46,12 +49,20 @@ const syncMeetups = async (req, res, next) => {
           address
         };
 
-        if (!lastSync) {
+        if (!lastSync && startDate >= org_createdAt) {
           await axios.createMesh(meshProps, eventProps, coordinates, orgId);
           axios.updateLastSync(orgId);
-          console.log("-------------- mesh created w/ org: ", title);
+          console.log(
+            "--------------NEVER SYNC'D mesh created w/ org: ",
+            title
+          );
         } else {
-          if (updatedAt >= lastSync) {
+          const existingMesh = await Mesh.findOne({ eventId });
+          if (!existingMesh && startDate >= org_createdAt) {
+            await axios.createMesh(meshProps, eventProps, coordinates, orgId);
+            axios.updateLastSync(orgId);
+            console.log("-------------- mesh created w/ org: ", title);
+          } else if (meetup_updatedAt >= lastSync) {
             await axios.updateMesh(meshProps, eventProps, coordinates, eventId);
             axios.updateLastSync(orgId);
             console.log("-------------- mesh updated w/ org: ", title);
@@ -60,7 +71,7 @@ const syncMeetups = async (req, res, next) => {
               "-------------- no changes ",
               title,
               lastSync,
-              updatedAt
+              meetup_updatedAt
             );
           }
         }
