@@ -29,7 +29,7 @@ class ListWrapper extends Component {
     const { data } = this.props.selectedMesh;
     return (
       <PanelHeader
-        title={"Levaraging Customer-Focused Strategies To Achieve High Growth"}
+        title={data.title}
         bg=""
         color="color-12-text"
         labelBg="color-5-border white"

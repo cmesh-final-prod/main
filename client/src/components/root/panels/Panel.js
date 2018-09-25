@@ -39,7 +39,7 @@ class MeshPanel extends Component {
     const { lng, lat } = this.props.meshes.location;
     return (
       <PanelHeader
-        title={"Levaraging Customer-Focused Strategies To Achieve High Growth"}
+        title={this.props.title}
         bg=""
         color="white-text light-text"
         labelBg="transparent color-4-border"
