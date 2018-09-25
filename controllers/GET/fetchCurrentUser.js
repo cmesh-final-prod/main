@@ -7,7 +7,7 @@ const fetchCurrentUser = async (req, res, next) => {
     let user = {};
     let userInfo = {};
 
-    const { linkedin, _id, orgId } = await req.user;
+    const { linkedin, _id, orgId } = req.user;
 
     if (req.user.userInfo) {
       userInfo = req.user.userInfo;
