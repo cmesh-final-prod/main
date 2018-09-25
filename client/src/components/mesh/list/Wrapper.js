@@ -27,15 +27,16 @@ class ListWrapper extends Component {
 
   renderHeader() {
     const { data } = this.props.selectedMesh;
+    const { title, orgTitle, endDate } = data;
     return (
       <PanelHeader
-        title={data.title}
+        title={"Leveraging Customer-Focused Strategies to Achieve High Growth"}
         bg=""
         color="color-12-text"
         labelBg="color-5-border white"
         labelText="color-12-text"
-        endDate={data.endDate}
-        orgTitle={data.orgTitle}
+        endDate={endDate}
+        orgTitle={"ProductTank SF"}
         onExpiry={() =>
           this.props.history.push(`${this.props.match.url}/expired`)
         }
