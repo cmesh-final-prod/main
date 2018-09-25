@@ -33,11 +33,6 @@ const createMesh = async (req, res, next) => {
       const startTime = dateParser.milli(start);
       const endTime = dateParser.milli(end);
 
-      // const startDate_utc_pre = dateParser.subtractHours(startDate_utc, 1);
-      //
-      // const startDate_milli = dateParser.milli(startDate);
-      // const endDate_milli = dateParser.milli(endDate_utc);
-
       const createdAt = new Date().getTime();
 
       const mesh = await Mesh.create({

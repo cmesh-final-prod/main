@@ -37,15 +37,16 @@ class MeshPanel extends Component {
 
   renderPanelHeader() {
     const { lng, lat } = this.props.meshes.location;
+    const { title, orgTitle, endDate } = this.props;
     return (
       <PanelHeader
-        title={this.props.title}
+        title={"Leveraging Customer-Focused Strategies to Achieve High Growth"}
         bg=""
         color="white-text light-text"
         labelBg="transparent color-4-border"
         labelText="white-text"
-        endDate={this.props.endDate}
-        orgTitle={this.props.orgTitle}
+        endDate={endDate}
+        orgTitle={"ProductTank SF"}
         onExpiry={() => this.props.fetchMeshes(lng, lat)}
       />
     );
