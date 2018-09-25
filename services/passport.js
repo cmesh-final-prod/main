@@ -19,12 +19,11 @@ passport.serializeUser((user, done) => {
   done(null, user.info);
 });
 
-passport.deserializeUser((info, done) => {
+passport.deserializeUser(async (info, done) => {
   switch (info.provider) {
     case "linkedin":
-      return User.findById(info.id).then(user => {
-        done(null, user);
-      });
+      const user = await User.findById(info.id);
+      return done(null, user);
     case "meetup":
       return done(null, info);
     default:
